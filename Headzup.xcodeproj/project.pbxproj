@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
+		14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */; };
+		14983CCE1B557A170059A5CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCD1B557A170059A5CA /* ViewController.swift */; };
+		14983CD11B557A170059A5CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14983CCF1B557A170059A5CA /* Main.storyboard */; };
+		14983CD31B557A170059A5CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14983CD21B557A170059A5CA /* Images.xcassets */; };
+		14983CD61B557A170059A5CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 14983CD41B557A170059A5CA /* LaunchScreen.xib */; };
+		14983CE21B557A170059A5CA /* HeadzupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CE11B557A170059A5CA /* HeadzupTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14983CDC1B557A170059A5CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14983CBB1B557A170059A5CA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14983CC21B557A170059A5CA;
+			remoteInfo = Headzup;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14983CC71B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14983CC81B557A170059A5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14983CCB1B557A170059A5CA /* Headzup.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Headzup.xcdatamodel; sourceTree = "<group>"; };
+		14983CCD1B557A170059A5CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		14983CD01B557A170059A5CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14983CD21B557A170059A5CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		14983CD51B557A170059A5CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		14983CDB1B557A170059A5CA /* HeadzupTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeadzupTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14983CE01B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14983CE11B557A170059A5CA /* HeadzupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadzupTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14983CC01B557A170059A5CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14983CD81B557A170059A5CA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14983CBA1B557A170059A5CA = {
+			isa = PBXGroup;
+			children = (
+				14983CC51B557A170059A5CA /* Headzup */,
+				14983CDE1B557A170059A5CA /* HeadzupTests */,
+				14983CC41B557A170059A5CA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		14983CC41B557A170059A5CA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14983CC31B557A170059A5CA /* Headzup.app */,
+				14983CDB1B557A170059A5CA /* HeadzupTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14983CC51B557A170059A5CA /* Headzup */ = {
+			isa = PBXGroup;
+			children = (
+				14983CC81B557A170059A5CA /* AppDelegate.swift */,
+				14983CCD1B557A170059A5CA /* ViewController.swift */,
+				14983CCF1B557A170059A5CA /* Main.storyboard */,
+				14983CD21B557A170059A5CA /* Images.xcassets */,
+				14983CD41B557A170059A5CA /* LaunchScreen.xib */,
+				14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */,
+				14983CC61B557A170059A5CA /* Supporting Files */,
+			);
+			path = Headzup;
+			sourceTree = "<group>";
+		};
+		14983CC61B557A170059A5CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14983CC71B557A170059A5CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		14983CDE1B557A170059A5CA /* HeadzupTests */ = {
+			isa = PBXGroup;
+			children = (
+				14983CE11B557A170059A5CA /* HeadzupTests.swift */,
+				14983CDF1B557A170059A5CA /* Supporting Files */,
+			);
+			path = HeadzupTests;
+			sourceTree = "<group>";
+		};
+		14983CDF1B557A170059A5CA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				14983CE01B557A170059A5CA /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14983CC21B557A170059A5CA /* Headzup */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14983CE51B557A170059A5CA /* Build configuration list for PBXNativeTarget "Headzup" */;
+			buildPhases = (
+				14983CBF1B557A170059A5CA /* Sources */,
+				14983CC01B557A170059A5CA /* Frameworks */,
+				14983CC11B557A170059A5CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Headzup;
+			productName = Headzup;
+			productReference = 14983CC31B557A170059A5CA /* Headzup.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14983CDA1B557A170059A5CA /* HeadzupTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14983CE81B557A170059A5CA /* Build configuration list for PBXNativeTarget "HeadzupTests" */;
+			buildPhases = (
+				14983CD71B557A170059A5CA /* Sources */,
+				14983CD81B557A170059A5CA /* Frameworks */,
+				14983CD91B557A170059A5CA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14983CDD1B557A170059A5CA /* PBXTargetDependency */,
+			);
+			name = HeadzupTests;
+			productName = HeadzupTests;
+			productReference = 14983CDB1B557A170059A5CA /* HeadzupTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14983CBB1B557A170059A5CA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Inflexxion;
+				TargetAttributes = {
+					14983CC21B557A170059A5CA = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					14983CDA1B557A170059A5CA = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 14983CC21B557A170059A5CA;
+					};
+				};
+			};
+			buildConfigurationList = 14983CBE1B557A170059A5CA /* Build configuration list for PBXProject "Headzup" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14983CBA1B557A170059A5CA;
+			productRefGroup = 14983CC41B557A170059A5CA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14983CC21B557A170059A5CA /* Headzup */,
+				14983CDA1B557A170059A5CA /* HeadzupTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14983CC11B557A170059A5CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14983CD11B557A170059A5CA /* Main.storyboard in Resources */,
+				14983CD61B557A170059A5CA /* LaunchScreen.xib in Resources */,
+				14983CD31B557A170059A5CA /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14983CD91B557A170059A5CA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14983CBF1B557A170059A5CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
+				14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */,
+				14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14983CD71B557A170059A5CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14983CE21B557A170059A5CA /* HeadzupTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14983CDD1B557A170059A5CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14983CC21B557A170059A5CA /* Headzup */;
+			targetProxy = 14983CDC1B557A170059A5CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		14983CCF1B557A170059A5CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14983CD01B557A170059A5CA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		14983CD41B557A170059A5CA /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14983CD51B557A170059A5CA /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14983CE31B557A170059A5CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14983CE41B557A170059A5CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14983CE61B557A170059A5CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Headzup/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		14983CE71B557A170059A5CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Headzup/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		14983CE91B557A170059A5CA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HeadzupTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Headzup.app/Headzup";
+			};
+			name = Debug;
+		};
+		14983CEA1B557A170059A5CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HeadzupTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Headzup.app/Headzup";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14983CBE1B557A170059A5CA /* Build configuration list for PBXProject "Headzup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14983CE31B557A170059A5CA /* Debug */,
+				14983CE41B557A170059A5CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14983CE51B557A170059A5CA /* Build configuration list for PBXNativeTarget "Headzup" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14983CE61B557A170059A5CA /* Debug */,
+				14983CE71B557A170059A5CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		14983CE81B557A170059A5CA /* Build configuration list for PBXNativeTarget "HeadzupTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14983CE91B557A170059A5CA /* Debug */,
+				14983CEA1B557A170059A5CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				14983CCB1B557A170059A5CA /* Headzup.xcdatamodel */,
+			);
+			currentVersion = 14983CCB1B557A170059A5CA /* Headzup.xcdatamodel */;
+			path = Headzup.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 14983CBB1B557A170059A5CA /* Project object */;
+}
