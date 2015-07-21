@@ -37,15 +37,15 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-5i-Tgh">
-                                        <rect key="frame" x="20" y="118" width="84" height="21"/>
+                                        <rect key="frame" x="20" y="118" width="83.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PIN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDZ-KF-uLv">
-                                        <rect key="frame" x="20" y="208" width="28" height="21"/>
+                                        <rect key="frame" x="20" y="208" width="28" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U8K-Pw-tnu">
@@ -54,13 +54,13 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q6r-ek-4VT">
-                                        <rect key="frame" x="20" y="298" width="116" height="21"/>
+                                        <rect key="frame" x="20" y="298" width="115.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gse-Tc-WA9">
-                                        <rect key="frame" x="214" y="407" width="121" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gse-Tc-WA9">
+                                        <rect key="frame" x="253" y="407" width="43" height="30"/>
                                         <state key="normal" title="Log In">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -73,6 +73,8 @@
                                     <constraint firstAttribute="trailing" secondItem="USq-Xi-gde" secondAttribute="trailing" constant="40" id="3Ke-K3-viB"/>
                                     <constraint firstItem="ooX-CQ-8Gx" firstAttribute="leading" secondItem="V6O-5i-Tgh" secondAttribute="leading" id="7LW-RR-FSW"/>
                                     <constraint firstItem="rSv-Nv-bcw" firstAttribute="leading" secondItem="SDZ-KF-uLv" secondAttribute="leading" id="DIp-q1-o05"/>
+                                    <constraint firstItem="gse-Tc-WA9" firstAttribute="top" secondItem="U8K-Pw-tnu" secondAttribute="bottom" constant="48" id="DSm-aT-knp"/>
+                                    <constraint firstAttribute="centerX" secondItem="gse-Tc-WA9" secondAttribute="centerX" constant="-0.5" id="E40-cm-Nnk"/>
                                     <constraint firstItem="U8K-Pw-tnu" firstAttribute="top" secondItem="q6r-ek-4VT" secondAttribute="bottom" constant="10" id="FjI-Zt-Ton"/>
                                     <constraint firstItem="USq-Xi-gde" firstAttribute="top" secondItem="i6A-Vk-FHM" secondAttribute="top" constant="10" id="NKb-te-Faw"/>
                                     <constraint firstItem="rSv-Nv-bcw" firstAttribute="leading" secondItem="i6A-Vk-FHM" secondAttribute="leading" constant="20" id="SWq-ct-8Ih"/>
