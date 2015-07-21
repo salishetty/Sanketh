@@ -46,6 +46,8 @@
 		14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983D101B5586950059A5CA /* UInt64Extension.swift */; };
 		14983D2D1B5586950059A5CA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983D121B5586950059A5CA /* Utils.swift */; };
 		14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983D2E1B558EFD0059A5CA /* Generics.swift */; };
+		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
+		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +106,8 @@
 		14983D101B5586950059A5CA /* UInt64Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt64Extension.swift; sourceTree = "<group>"; };
 		14983D121B5586950059A5CA /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		14983D2E1B558EFD0059A5CA /* Generics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,7 @@
 		14983CC51B557A170059A5CA /* Headzup */ = {
 			isa = PBXGroup;
 			children = (
+				578792391B5EE98600A7C6D4 /* SplashViewController.swift */,
 				14983CF41B557CF40059A5CA /* Cryptography */,
 				14983CEB1B557A8E0059A5CA /* HeadzupData */,
 				14983CC81B557A170059A5CA /* AppDelegate.swift */,
@@ -158,6 +163,7 @@
 				14983CD41B557A170059A5CA /* LaunchScreen.xib */,
 				14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */,
 				14983CC61B557A170059A5CA /* Supporting Files */,
+				5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */,
 			);
 			path = Headzup;
 			sourceTree = "<group>";
@@ -336,6 +342,8 @@
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
 				14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */,
 				14983D161B5586950059A5CA /* BitExtension.swift in Sources */,
+				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
+				5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */,
 				14983D201B5586950059A5CA /* NSDataExtension.swift in Sources */,
 				14983D181B5586950059A5CA /* Cipher.swift in Sources */,
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
