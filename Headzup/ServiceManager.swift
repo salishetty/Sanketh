@@ -15,7 +15,7 @@ public class ServiceManager:NSObject, NSURLSessionDelegate, NSURLSessionTaskDele
     public init(objContext: NSManagedObjectContext) {
         self.dbContext = objContext
     }
-    public func doPost(params : Dictionary<String, String>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
+    public func Login(params : Dictionary<String, String>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
         var request = NSMutableURLRequest(URL: NSURL(string: url)!)
         var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         var session = NSURLSession(configuration: configuration, delegate: self, delegateQueue:NSOperationQueue.mainQueue())
