@@ -19,9 +19,10 @@ public class UserInfo {
 
 public class AppContext {
     
-    public static var firstName = ""
+    public static var userName = ""
     public static var loginStatus = ""
-    public static var membershipUserID = ""
+    public static var phoneNumber = ""
+    public static var pin = ""
     public static let enc = false
     public static var userInfo = UserInfo()
     
@@ -31,9 +32,9 @@ public class AppContext {
     
     public static func list() {
         println("[loginStatus = \(loginStatus)]")
-        println("[membershipUserID = \(membershipUserID)]")
-        println("[firstName = \(firstName)]")
-        
+        println("[phone = \(phoneNumber)]")
+        println("[userName = \(userName)]")
+        println("[pin = \(pin)]")
         var info = getUserInfo()
         println("[deviceId = \(info.deviceId)]")
         println("[deviceType = \(info.deviceType)]")
@@ -42,13 +43,8 @@ public class AppContext {
     
     public static func getUserInfo() -> UserInfo {
         var info = UserInfo()
-        info.userId = membershipUserID
+        info.userId = phoneNumber
         return info
-    }
-    public static func hasConnectivity() -> Bool {
-        let reachability: Reachability = Reachability.reachabilityForInternetConnection()
-        let networkStatus: Int = reachability.currentReachabilityStatus().value
-        return networkStatus != 0
     }
 }
 

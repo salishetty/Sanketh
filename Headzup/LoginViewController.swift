@@ -7,30 +7,11 @@
 //
 
 import UIKit
-import CoreData
 
 class LoginViewController: UIViewController {
 
-    //Text Fields
-    @IBOutlet weak var firstNameTF: UITextField!
-    
-    @IBOutlet weak var pinTF: UITextField!
-    
-    @IBOutlet weak var phoneNumberTF: UITextField!
-    
-    var dataMgr: DataManager?  // initialized in viewDidLoad
-    var serviceMgr: ServiceManager?
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // init data and service managers
-        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
 
         // Do any additional setup after loading the view.
     }
@@ -50,57 +31,5 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func Login(sender: UIButton) {
-        let pin = pinTF.text
-        var phoneNumber:String = phoneNumberTF.text
-        let token:String = CryptoUtility().generateSecurityToken() as String
-        phoneNumber = phoneNumberTF.text
-         //Get login Url
-        var theURL:String = "http://10.200.20.87/api/MobileService/Login" //AppContext.svcUrl + "Login" //TO DO: Work on the service Url later
-        
-        if AppContext.hasConnectivity() {
 
-            serviceMgr?.Login(["username":phoneNumber, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
-
-                if let parseJSON = jsonData {
-                    var status = parseJSON["Status"] as? Int
-                    if(status == 1)
-                    {
-                        var memberhipUserID = parseJSON["MembershipUserID"] as? String
-                        // update cache and local db
-                        if AppContext.loginStatus == "" {
-
-                            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text, isSecured: true)
-                            
-                            AppContext.firstName = self.firstNameTF.text
-                            self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
-                            
-                            AppContext.loginStatus = LoginStatus.LoggedIn
-                            
-                            self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID!, isSecured: true)
-                            AppContext.membershipUserID = memberhipUserID!
-                        }
-                        self.loadViewController("HomePageView")
-                     }
-                    else
-                    {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            //self.feedbackLB.text = "Wrong credential, try again"
-                        }
-                    }
-                    
-                }
-            })
-        }
-        else
-        {
-            println("No network connection")
-             //feedbackLB.text = "Wrong credential, try again"
-          }
-
-    }
-
-    @IBAction func dismissKeyboard(sender: AnyObject) {
-        self.view.endEditing(true)
-    }
 }
