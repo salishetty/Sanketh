@@ -18,6 +18,8 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var phoneNumberTF: UITextField!
     
+    @IBOutlet weak var authErrorView: UIView!
+    @IBOutlet weak var authErrorLB: UILabel!
     var dataMgr: DataManager?  // initialized in viewDidLoad
     var serviceMgr: ServiceManager?
     
@@ -85,7 +87,10 @@ class LoginViewController: UIViewController {
                     else
                     {
                         dispatch_async(dispatch_get_main_queue()) {
-                            //self.feedbackLB.text = "Wrong credential, try again"
+
+                            self.authErrorLB.text = "Wrong credential, try again"
+                            self.authErrorView.addSubview(self.authErrorLB)
+                            self.authErrorView.hidden = false
                         }
                     }
                     
