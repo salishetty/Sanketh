@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
         let token:String = CryptoUtility().generateSecurityToken() as String
         phoneNumber = phoneNumberTF.text
          //Get login Url
-        var theURL:String = "http://10.200.20.87/api/MobileService/Login" //AppContext.svcUrl + "Login" //TO DO: Work on the service Url later
+        var theURL:String = AppContext.svcUrl + "Login" 
         
         if AppContext.hasConnectivity() {
 

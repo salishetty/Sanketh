@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140DED0B1B62C6CB001F6A3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 140DED0A1B62C6CB001F6A3F /* Settings.bundle */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
 		14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */; };
 		14983CCE1B557A170059A5CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCD1B557A170059A5CA /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		140DED0A1B62C6CB001F6A3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14983CC71B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14983CC81B557A170059A5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				14983CD21B557A170059A5CA /* Images.xcassets */,
 				14983CD41B557A170059A5CA /* LaunchScreen.xib */,
 				14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */,
+				140DED0A1B62C6CB001F6A3F /* Settings.bundle */,
 				14983CC61B557A170059A5CA /* Supporting Files */,
 				5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */,
 				14C1BF2D1B6178D400BE78DA /* Reachability.m */,
@@ -328,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140DED0B1B62C6CB001F6A3F /* Settings.bundle in Resources */,
 				14983CD11B557A170059A5CA /* Main.storyboard in Resources */,
 				14983CD61B557A170059A5CA /* LaunchScreen.xib in Resources */,
 				14983CD31B557A170059A5CA /* Images.xcassets in Resources */,
