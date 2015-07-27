@@ -22,7 +22,7 @@
 			<key>Key</key>
 			<string>st_env</string>
 			<key>DefaultValue</key>
-			<string>https://10.200.20.87/api/mobileservice/</string>
+			<string>https://10.200.30.87/api/mobileservice/</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>
