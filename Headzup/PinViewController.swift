@@ -1,14 +1,14 @@
 //
-//  SplashViewController.swift
+//  PinViewController.swift
 //  Headzup
 //
-//  Created by Sandeep Menon Ayyappankutty on 7/21/15.
+//  Created by Sandeep Menon Ayyappankutty on 7/27/15.
 //  Copyright (c) 2015 Inflexxion. All rights reserved.
 //
 
 import UIKit
 
-class SplashViewController: UIViewController {
+class PinViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,25 +21,6 @@ class SplashViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
-        {
-            self.loadViewController("TabView")
-        
-        }
-        else if (!AppContext.membershipUserID.isEmpty)
-        {
-            self.loadViewController("PinView")
-        }
-        else
-        {
-            self.loadViewController("LogInView")
-        }
-        
-    }
 
     /*
     // MARK: - Navigation
