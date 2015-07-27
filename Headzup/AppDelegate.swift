@@ -13,10 +13,51 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    func appInit() {
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        var dataMgr = DataManager(objContext: manObjContext)
+        var env = ""
+        var standardUserDefaults = NSUserDefaults.standardUserDefaults()
+        var us: AnyObject? = standardUserDefaults.objectForKey("st_env")
+        if us == nil {
+            self.registerDefaultsFromSettingsBundle();
+            us = standardUserDefaults.objectForKey("st_env")
+        }
+        env = us as! String
+        
+        // check env
+        AppContext.svcUrl = dataMgr.getMetaDataValue(MetaDataKeys.SvcUrl)
+        if AppContext.svcUrl != "" && AppContext.svcUrl != env {
+            dataMgr.deleteAllData("MetaData")
+        }
+        dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
+        AppContext.svcUrl = env
+    }
+    func registerDefaultsFromSettingsBundle() {
+        // this function writes default settings as settings
+        var settingsBundle = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")
+        if settingsBundle == nil {
+            NSLog("Could not find Settings.bundle");
+            return
+        }
+        var settings = NSDictionary(contentsOfFile:settingsBundle!.stringByAppendingPathComponent("Root.plist"))!
+        var preferences: [NSDictionary] = settings.objectForKey("PreferenceSpecifiers") as! [NSDictionary];
+        var defaultsToRegister = NSMutableDictionary(capacity:(preferences.count));
+        
+        for prefSpecification:NSDictionary in preferences {
+            var key: NSCopying? = prefSpecification.objectForKey("Key") as! NSCopying?
+            if key != nil {
+                defaultsToRegister.setObject(prefSpecification.objectForKey("DefaultValue")!, forKey: key!)
+            }
+        }
+        NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister as [NSObject : AnyObject]);
+    }
 
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        appInit()
         return true
     }
 
@@ -26,12 +67,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        appInit()
+        
+        var status = AppContext.loginStatus
+        switch status {
+        case LoginStatus.LoggedOut :
+            println ("user has logged out")
+        case LoginStatus.LoggedIn :
+            println ("user has logged in")
+        default :
+            AppContext.loginStatus = LoginStatus.NeverLoggedIn
+            println ("user has never logged in")
+            // go to home page directly
+            
+        }
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
