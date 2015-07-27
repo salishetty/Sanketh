@@ -13,14 +13,14 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="rub-cv-Sc0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6A-Vk-FHM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6A-Vk-FHM" customClass="UIControl">
                                 <rect key="frame" x="26" y="40" width="548" height="528"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeadzupLogo" translatesAutoresizingMaskIntoConstraints="NO" id="USq-Xi-gde">
@@ -128,6 +128,9 @@
                                     <constraint firstItem="U8K-Pw-tnu" firstAttribute="top" secondItem="rSv-Nv-bcw" secondAttribute="bottom" constant="60" id="vv3-ld-uaA"/>
                                     <constraint firstItem="ooX-CQ-8Gx" firstAttribute="leading" secondItem="i6A-Vk-FHM" secondAttribute="leading" constant="20" id="xE1-AR-uea"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="dismissKeyboard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="neg-XW-kSS"/>
+                                </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3g-6q-vaI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
@@ -163,6 +166,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="rub-cv-Sc0" secondAttribute="bottom" id="rtR-Ns-Vcr"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="i6A-Vk-FHM" secondAttribute="bottom" constant="32" id="sNs-PV-z4b"/>
                         </constraints>
+                        <connections>
+                            <action selector="dismissKeyboard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DL8-FQ-G9v"/>
+                        </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
