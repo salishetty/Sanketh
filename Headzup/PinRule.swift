@@ -11,6 +11,6 @@ import Foundation
 public class PinRule: RegexRule {
     
     public convenience init(message : String = "Enter a valid 4 digit pin"){
-        self.init(regex: "^[A-C][a-zA-Z0-9]{4}$", message : message)
+        self.init(regex: "^[a-zA-Z0-9]{4}$", message : message) 
     }
 }
