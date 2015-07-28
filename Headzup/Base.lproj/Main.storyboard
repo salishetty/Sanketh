@@ -37,13 +37,13 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rSv-Nv-bcw">
                                         <rect key="frame" x="20" y="239" width="508" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                         <connections>
                                             <action selector="dismissKeyboard:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="GQ0-FE-g4M"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-5i-Tgh">
-                                        <rect key="frame" x="20" y="118" width="84" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name or Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-5i-Tgh">
+                                        <rect key="frame" x="20" y="118" width="148" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U8K-Pw-tnu">
                                         <rect key="frame" x="20" y="329" width="508" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                         <connections>
                                             <action selector="dismissKeyboard:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="mXp-QP-ooO"/>
                                         </connections>
@@ -322,10 +322,10 @@
             </objects>
             <point key="canvasLocation" x="1760" y="466"/>
         </scene>
-        <!--Item-->
+        <!--Home Page-->
         <scene sceneID="TzH-3L-saQ">
             <objects>
-                <viewController storyboardIdentifier="HomePageView" id="qf9-7r-FRO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomePageView" title="Home Page" id="qf9-7r-FRO" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nhl-ZD-uBE"/>
                         <viewControllerLayoutGuide type="bottom" id="oMb-ui-ouE"/>
@@ -352,11 +352,41 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Gcx-ba-mUT" secondAttribute="trailing" constant="-16" id="fAa-7T-PyY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="J4Z-Gg-iot"/>
+                    <tabBarItem key="tabBarItem" title="Home" id="J4Z-Gg-iot"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyo-oR-PwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="1199"/>
+        </scene>
+        <!--Tools Page-->
+        <scene sceneID="Uqy-xX-pgr">
+            <objects>
+                <viewController storyboardIdentifier="ToolsPageView" title="Tools Page" id="eTU-u7-jjR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eeo-4s-EaL"/>
+                        <viewControllerLayoutGuide type="bottom" id="HUk-j8-IZZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KaS-iv-pvR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="uGq-jc-VBd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uGq-jc-VBd" firstAttribute="leading" secondItem="KaS-iv-pvR" secondAttribute="leadingMargin" constant="-16" id="9c7-3e-fg9"/>
+                            <constraint firstItem="uGq-jc-VBd" firstAttribute="top" secondItem="KaS-iv-pvR" secondAttribute="topMargin" id="FFd-qM-4AS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uGq-jc-VBd" secondAttribute="trailing" constant="-16" id="tvs-yM-N0n"/>
+                            <constraint firstItem="uGq-jc-VBd" firstAttribute="bottom" secondItem="KaS-iv-pvR" secondAttribute="bottomMargin" id="xvM-vi-pIO"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="l5N-OX-I18"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JSN-3M-ay8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="1944"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="UGp-48-cIg">
@@ -417,6 +447,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="qf9-7r-FRO" kind="relationship" relationship="viewControllers" id="dpa-r5-X5L"/>
+                        <segue destination="eTU-u7-jjR" kind="relationship" relationship="viewControllers" id="7Qb-gb-EWr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cj6-mf-SRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
