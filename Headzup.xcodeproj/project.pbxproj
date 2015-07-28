@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		140DED0B1B62C6CB001F6A3F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 140DED0A1B62C6CB001F6A3F /* Settings.bundle */; };
+		140DED121B67C693001F6A3F /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED111B67C693001F6A3F /* Rule.swift */; };
+		140DED141B67C6C0001F6A3F /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED131B67C6C0001F6A3F /* RequiredRule.swift */; };
+		140DED161B67C703001F6A3F /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED151B67C703001F6A3F /* RegexRule.swift */; };
+		140DED181B67CBE0001F6A3F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED171B67CBE0001F6A3F /* Validator.swift */; };
+		140DED1A1B67CC0C001F6A3F /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED191B67CC0C001F6A3F /* ValidationError.swift */; };
+		140DED1C1B67CC41001F6A3F /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED1B1B67CC41001F6A3F /* ValidationRule.swift */; };
+		140DED1E1B67CFE6001F6A3F /* PinRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED1D1B67CFE6001F6A3F /* PinRule.swift */; };
+		140DED201B67D380001F6A3F /* MinLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED1F1B67D380001F6A3F /* MinLengthRule.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
 		14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */; };
 		14983CCE1B557A170059A5CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCD1B557A170059A5CA /* ViewController.swift */; };
@@ -68,6 +76,14 @@
 
 /* Begin PBXFileReference section */
 		140DED0A1B62C6CB001F6A3F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		140DED111B67C693001F6A3F /* Rule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		140DED131B67C6C0001F6A3F /* RequiredRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequiredRule.swift; sourceTree = "<group>"; };
+		140DED151B67C703001F6A3F /* RegexRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexRule.swift; sourceTree = "<group>"; };
+		140DED171B67CBE0001F6A3F /* Validator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		140DED191B67CC0C001F6A3F /* ValidationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationError.swift; sourceTree = "<group>"; };
+		140DED1B1B67CC41001F6A3F /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
+		140DED1D1B67CFE6001F6A3F /* PinRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinRule.swift; sourceTree = "<group>"; };
+		140DED1F1B67D380001F6A3F /* MinLengthRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinLengthRule.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14983CC71B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14983CC81B557A170059A5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +157,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		140DED0E1B67C602001F6A3F /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				140DED101B67C624001F6A3F /* Core */,
+				140DED0F1B67C61D001F6A3F /* Rules */,
+			);
+			name = Validator;
+			sourceTree = "<group>";
+		};
+		140DED0F1B67C61D001F6A3F /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				140DED111B67C693001F6A3F /* Rule.swift */,
+				140DED131B67C6C0001F6A3F /* RequiredRule.swift */,
+				140DED151B67C703001F6A3F /* RegexRule.swift */,
+				140DED1D1B67CFE6001F6A3F /* PinRule.swift */,
+				140DED1F1B67D380001F6A3F /* MinLengthRule.swift */,
+			);
+			name = Rules;
+			sourceTree = "<group>";
+		};
+		140DED101B67C624001F6A3F /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				140DED171B67CBE0001F6A3F /* Validator.swift */,
+				140DED191B67CC0C001F6A3F /* ValidationError.swift */,
+				140DED1B1B67CC41001F6A3F /* ValidationRule.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
 		14983CBA1B557A170059A5CA = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +209,7 @@
 		14983CC51B557A170059A5CA /* Headzup */ = {
 			isa = PBXGroup;
 			children = (
+				140DED0E1B67C602001F6A3F /* Validator */,
 				5747DE521B66DFAD0054AC96 /* Controllers */,
 				14983CF41B557CF40059A5CA /* Cryptography */,
 				14983CEB1B557A8E0059A5CA /* HeadzupData */,
@@ -370,17 +418,23 @@
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */,
+				140DED121B67C693001F6A3F /* Rule.swift in Sources */,
 				14983D161B5586950059A5CA /* BitExtension.swift in Sources */,
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
 				5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */,
 				14983D201B5586950059A5CA /* NSDataExtension.swift in Sources */,
+				140DED1E1B67CFE6001F6A3F /* PinRule.swift in Sources */,
 				14983D181B5586950059A5CA /* Cipher.swift in Sources */,
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
 				14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */,
 				14983D1B1B5586950059A5CA /* Hash.swift in Sources */,
 				14983D151B5586950059A5CA /* Authenticator.swift in Sources */,
+				140DED141B67C6C0001F6A3F /* RequiredRule.swift in Sources */,
+				140DED201B67D380001F6A3F /* MinLengthRule.swift in Sources */,
+				140DED161B67C703001F6A3F /* RegexRule.swift in Sources */,
 				14983D2D1B5586950059A5CA /* Utils.swift in Sources */,
 				14983D1C1B5586950059A5CA /* HashBase.swift in Sources */,
+				140DED1C1B67CC41001F6A3F /* ValidationRule.swift in Sources */,
 				14983CEF1B557B910059A5CA /* DataManager.swift in Sources */,
 				14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */,
 				14C1BF2B1B61754400BE78DA /* HeadzupConstants.swift in Sources */,
@@ -391,6 +445,8 @@
 				14983CF31B557CA60059A5CA /* ApplicationData.swift in Sources */,
 				14983D1D1B5586950059A5CA /* HMAC.swift in Sources */,
 				14983D1E1B5586950059A5CA /* IntExtension.swift in Sources */,
+				140DED181B67CBE0001F6A3F /* Validator.swift in Sources */,
+				140DED1A1B67CC0C001F6A3F /* ValidationError.swift in Sources */,
 				14983D2A1B5586950059A5CA /* UInt32Extension.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				14983D1F1B5586950059A5CA /* MD5.swift in Sources */,

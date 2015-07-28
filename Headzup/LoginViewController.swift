@@ -9,20 +9,23 @@
 import UIKit
 import CoreData
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDelegate  {
 
     //Text Fields
     @IBOutlet weak var firstNameTF: UITextField!
-    
     @IBOutlet weak var pinTF: UITextField!
-    
     @IBOutlet weak var phoneNumberTF: UITextField!
     
+    //Error Labels
+    
+    @IBOutlet weak var firstNameErrorLB: UILabel!
+    @IBOutlet weak var pinErrorLB: UILabel!
+    @IBOutlet weak var phoneNumberLB: UILabel!
     @IBOutlet weak var authErrorView: UIView!
     @IBOutlet weak var authErrorLB: UILabel!
     var dataMgr: DataManager?  // initialized in viewDidLoad
     var serviceMgr: ServiceManager?
-    
+    let validator = Validator()
 
     
     override func viewDidLoad() {
@@ -35,6 +38,28 @@ class LoginViewController: UIViewController {
         serviceMgr = ServiceManager(objContext:manObjContext)
 
         // Do any additional setup after loading the view.
+        //Error Validation
+        validator.styleTransformers(success:{ (validationRule) -> Void in
+            println("here")
+            // clear error label
+            validationRule.errorLabel?.hidden = true
+            validationRule.errorLabel?.text = ""
+            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
+            validationRule.textField.layer.borderWidth = 0.5
+            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
+            
+            }, error:{ (validationError) -> Void in
+                println("error")
+                validationError.errorLabel?.hidden = false
+                validationError.errorLabel?.text = validationError.errorMessage
+                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
+                validationError.textField.layer.borderWidth = 1.0
+          })
+        
+        validator.registerField(firstNameTF, errorLabel: firstNameErrorLB , rules: [RequiredRule(), RequiredRule()])
+        validator.registerField(pinTF, errorLabel: pinErrorLB, rules: [RequiredRule()]) //, PinRule()
+        validator.registerField(phoneNumberTF, errorLabel: phoneNumberLB, rules: [RequiredRule(), MinLengthRule(length: 10)])
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,17 +78,24 @@ class LoginViewController: UIViewController {
     }
     */
     @IBAction func Login(sender: UIButton) {
+        println("Validating...")
+        validator.validate(self)
+    }
+    //ValidationDelegate Methods
+    
+    func validationSuccessful() {
+        println("Validation Success!")
         let pin = pinTF.text
         var phoneNumber:String = phoneNumberTF.text
         let token:String = CryptoUtility().generateSecurityToken() as String
         phoneNumber = phoneNumberTF.text
-         //Get login Url
-        var theURL:String = AppContext.svcUrl + "Login" 
+        //Get login Url
+        var theURL:String = AppContext.svcUrl + "Login"
         
         if AppContext.hasConnectivity() {
-
+            
             serviceMgr?.Login(["username":phoneNumber, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
-
+                
                 if let parseJSON = jsonData {
                     var status = parseJSON["Status"] as? Int
                     if(status == 1)
@@ -71,7 +103,7 @@ class LoginViewController: UIViewController {
                         var memberhipUserID = parseJSON["MembershipUserID"] as? String
                         // update cache and local db
                         if AppContext.loginStatus == "" {
-
+                            
                             self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text, isSecured: true)
                             
                             AppContext.firstName = self.firstNameTF.text
@@ -83,11 +115,11 @@ class LoginViewController: UIViewController {
                             AppContext.membershipUserID = memberhipUserID!
                         }
                         self.loadViewController("HomePageView")
-                     }
+                    }
                     else
                     {
                         dispatch_async(dispatch_get_main_queue()) {
-
+                            
                             self.authErrorLB.text = "Wrong credential, try again"
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
@@ -100,10 +132,14 @@ class LoginViewController: UIViewController {
         else
         {
             println("No network connection")
-             //feedbackLB.text = "Wrong credential, try again"
-          }
-
+            //feedbackLB.text = "Wrong credential, try again"
+        }
+        
     }
+    func validationFailed(errors:[UITextField:ValidationError]) {
+        println("Validation FAILED!")
+    }
+
 
     @IBAction func dismissKeyboard(sender: AnyObject) {
         self.view.endEditing(true)
