@@ -42,9 +42,6 @@
                                             <action selector="dismissKeyboard:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="GQ0-FE-g4M"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name or Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-5i-Tgh">
-                                        <rect key="frame" x="20" y="118" width="148" height="21"/>
-
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V6O-5i-Tgh">
                                         <rect key="frame" x="20" y="118" width="84" height="21"/>
 
