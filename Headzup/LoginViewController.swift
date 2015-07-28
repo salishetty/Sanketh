@@ -47,6 +47,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
             validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
             validationRule.textField.layer.borderWidth = 0.5
             validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
+            validationRule.textField.layer.cornerRadius = 5.0
             
             }, error:{ (validationError) -> Void in
                 println("error")
@@ -54,6 +55,8 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                 validationError.errorLabel?.text = validationError.errorMessage
                 validationError.textField.layer.borderColor = UIColor.redColor().CGColor
                 validationError.textField.layer.borderWidth = 1.0
+                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
+                validationError.textField.layer.cornerRadius = 5.0
           })
         
         validator.registerField(firstNameTF, errorLabel: firstNameErrorLB , rules: [RequiredRule(), RequiredRule()])
