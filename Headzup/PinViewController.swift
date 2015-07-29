@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import CoreData
 
 class PinViewController: UIViewController {
 
+    
+    
+    
+    var dataMgr: DataManager?  // initialized in viewDidLoad
+    var serviceMgr: ServiceManager?
+    let validator = Validator()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         // Do any additional setup after loading the view.
+        
+        
+        // init data and service managers
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        serviceMgr = ServiceManager(objContext:manObjContext)
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,6 +39,52 @@ class PinViewController: UIViewController {
     }
     
 
+    func validationSuccessful() {
+        println("Validation Success!")
+        let pin = pinTF.text
+        let token:String = CryptoUtility().generateSecurityToken() as String
+       
+        //Get login Url
+        var theURL:String = AppContext.svcUrl + "Login"
+        
+        if AppContext.hasConnectivity() {
+            
+                        
+            
+            
+            serviceMgr?.Login(["MembershipUserID":AppContext.membershipUserID, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+                
+                if let parseJSON = jsonData {
+                    var status = parseJSON["Status"] as? Int
+                    if(status == 1)
+                    {
+                            self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
+                            AppContext.loginStatus = LoginStatus.LoggedIn
+                    }
+                        self.loadViewController("HomePageView")
+                    }
+                    else
+                    {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            
+                            self.authErrorLB.text = "Wrong credential, try again"
+                            self.authErrorView.addSubview(self.authErrorLB)
+                            self.authErrorView.hidden = false
+                        }
+                    }
+            })
+        }
+            
+        else
+        {
+            
+            //feedbackLB.text = "Wrong credential, try again"
+        }
+        
+    }
+
+    
+    
     /*
     // MARK: - Navigation
 
