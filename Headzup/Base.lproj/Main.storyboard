@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9NA-DE-ZJ6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9NA-DE-ZJ6">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -175,8 +175,11 @@
                     <connections>
                         <outlet property="authErrorLB" destination="Ack-wU-4np" id="vvC-kQ-fdg"/>
                         <outlet property="authErrorView" destination="E3g-6q-vaI" id="SZv-c5-p2d"/>
+                        <outlet property="firstNameErrorLB" destination="Nl7-0c-m2u" id="dMd-3q-53g"/>
                         <outlet property="firstNameTF" destination="ooX-CQ-8Gx" id="JXr-ro-oPS"/>
+                        <outlet property="phoneNumberLB" destination="axe-zq-1EB" id="fQA-xe-LWN"/>
                         <outlet property="phoneNumberTF" destination="U8K-Pw-tnu" id="7yo-UB-Ak1"/>
+                        <outlet property="pinErrorLB" destination="B4g-qW-3Za" id="OCZ-9q-3pT"/>
                         <outlet property="pinTF" destination="rSv-Nv-bcw" id="nV6-7C-cBg"/>
                     </connections>
                 </viewController>
