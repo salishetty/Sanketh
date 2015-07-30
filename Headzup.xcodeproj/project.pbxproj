@@ -21,6 +21,7 @@
 		140DED251B6817DB001F6A3F /* MetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CEC1B557B340059A5CA /* MetaData.swift */; };
 		140DED271B69CE68001F6A3F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED261B69CE68001F6A3F /* Content.swift */; };
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
+		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
 		14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */; };
 		14983CCE1B557A170059A5CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCD1B557A170059A5CA /* ViewController.swift */; };
@@ -93,6 +94,7 @@
 		140DED231B68179F001F6A3F /* MetaDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetaDataTest.swift; sourceTree = "<group>"; };
 		140DED261B69CE68001F6A3F /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14983CC71B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14983CC81B557A170059A5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */,
 				5747DE531B66E0530054AC96 /* HomeViewController.swift */,
 				5747DE551B66E0630054AC96 /* PinViewController.swift */,
+				140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				14983D1D1B5586950059A5CA /* HMAC.swift in Sources */,
 				14983D1E1B5586950059A5CA /* IntExtension.swift in Sources */,
 				140DED181B67CBE0001F6A3F /* Validator.swift in Sources */,
+				140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */,
 				140DED271B69CE68001F6A3F /* Content.swift in Sources */,
 				140DED1A1B67CC0C001F6A3F /* ValidationError.swift in Sources */,
 				14983D2A1B5586950059A5CA /* UInt32Extension.swift in Sources */,
