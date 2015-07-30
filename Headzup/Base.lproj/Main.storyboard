@@ -349,7 +349,7 @@
                         <viewControllerLayoutGuide type="bottom" id="oMb-ui-ouE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rO0-O5-gvx">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Gcx-ba-mUT">
@@ -365,16 +365,55 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gcx-ba-mUT" firstAttribute="leading" secondItem="rO0-O5-gvx" secondAttribute="leadingMargin" constant="-16" id="HT3-nO-oZS"/>
-                            <constraint firstItem="oMb-ui-ouE" firstAttribute="top" secondItem="Gcx-ba-mUT" secondAttribute="bottom" id="OAA-0m-9OL"/>
+                            <constraint firstItem="Gcx-ba-mUT" firstAttribute="bottom" secondItem="rO0-O5-gvx" secondAttribute="bottomMargin" id="KiW-pU-Uoq"/>
                             <constraint firstItem="Gcx-ba-mUT" firstAttribute="top" secondItem="rO0-O5-gvx" secondAttribute="topMargin" id="aZ7-kC-y0Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Gcx-ba-mUT" secondAttribute="trailing" constant="-16" id="fAa-7T-PyY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="J4Z-Gg-iot"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="tab-icon-Home" id="J4Z-Gg-iot"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyo-oR-PwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="1199"/>
+        </scene>
+        <!--Profile Page-->
+        <scene sceneID="jgx-OS-K3p">
+            <objects>
+                <viewController storyboardIdentifier="ProfilePageView" title="Profile Page" id="50W-Pf-3Ev" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8zJ-WE-eKX"/>
+                        <viewControllerLayoutGuide type="bottom" id="slY-Or-bqM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qcc-RT-qXe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NrM-su-AWJ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYU-2u-yKt">
+                                <rect key="frame" x="277" y="244" width="56" height="30"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YYU-2u-yKt" firstAttribute="top" secondItem="NrM-su-AWJ" secondAttribute="bottom" constant="-307" id="7pF-9T-1AB"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="leading" secondItem="Qcc-RT-qXe" secondAttribute="leadingMargin" constant="-16" id="8yM-dl-AQc"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="bottom" secondItem="Qcc-RT-qXe" secondAttribute="bottomMargin" id="DKs-kr-TbJ"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="YYU-2u-yKt" secondAttribute="centerX" constant="-5" id="RXq-xO-Ovp"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="Qcc-RT-qXe" secondAttribute="topMargin" id="mud-bO-fXB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="NrM-su-AWJ" secondAttribute="trailing" constant="-16" id="rKQ-St-7ds"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="tab-icon-Account" id="d5i-VT-Ddn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wzc-N3-RvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="2654"/>
         </scene>
         <!--Tools Page-->
         <scene sceneID="Uqy-xX-pgr">
@@ -385,11 +424,11 @@
                         <viewControllerLayoutGuide type="bottom" id="HUk-j8-IZZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KaS-iv-pvR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="uGq-jc-VBd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -400,7 +439,7 @@
                             <constraint firstItem="uGq-jc-VBd" firstAttribute="bottom" secondItem="KaS-iv-pvR" secondAttribute="bottomMargin" id="xvM-vi-pIO"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="l5N-OX-I18"/>
+                    <tabBarItem key="tabBarItem" title="Toolbox" image="tab-icon-Tools" id="l5N-OX-I18"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSN-3M-ay8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -459,13 +498,14 @@
                 <tabBarController storyboardIdentifier="TabView" automaticallyAdjustsScrollViewInsets="NO" id="dTi-62-GX5" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="JSS-lx-MmJ">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="JSS-lx-MmJ">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="qf9-7r-FRO" kind="relationship" relationship="viewControllers" id="dpa-r5-X5L"/>
                         <segue destination="eTU-u7-jjR" kind="relationship" relationship="viewControllers" id="7Qb-gb-EWr"/>
+                        <segue destination="50W-Pf-3Ev" kind="relationship" relationship="viewControllers" id="7jF-IP-V8s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cj6-mf-SRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,5 +516,8 @@
     <resources>
         <image name="HeadzupLogo" width="400" height="99"/>
         <image name="background" width="414" height="736"/>
+        <image name="tab-icon-Account" width="15" height="15"/>
+        <image name="tab-icon-Home" width="15" height="15"/>
+        <image name="tab-icon-Tools" width="15" height="15"/>
     </resources>
 </document>
