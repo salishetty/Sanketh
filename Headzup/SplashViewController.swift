@@ -29,13 +29,13 @@ class SplashViewController: UIViewController {
         var dataMgr = DataManager(objContext: manObjContext)
         super.viewDidAppear(animated)
         AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+        AppContext.membershipUserID = dataMgr.getMetaDataValue(MetaDataKeys.MembershipUserID)
         
         if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
         {
             self.loadViewController("TabView")
-        
         }
-        else if (!AppContext.membershipUserID.isEmpty)
+        else if (AppContext.loginStatus ==  LoginStatus.LoggedOut && !AppContext.membershipUserID.isEmpty)
         {
             self.loadViewController("PinView")
         }

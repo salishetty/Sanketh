@@ -98,10 +98,8 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                     {
                             self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
                             AppContext.loginStatus = LoginStatus.LoggedIn
+                            self.loadViewController("TabView")
                     }
-                        self.loadViewController("TabView")
-                    }
-                    
                     else
                     {
                         dispatch_async(dispatch_get_main_queue()) {
@@ -111,13 +109,16 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                             self.authErrorView.hidden = false
                         }
                     }
+                }
             })
         }
             
         else
         {
-            
-            //feedbackLB.text = "Wrong credential, try again"
+            println("Check network connection")
+            self.authErrorLB.text = "Check network connection"
+            self.authErrorView.addSubview(self.authErrorLB)
+            self.authErrorView.hidden = false
         }
         
     }
