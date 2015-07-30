@@ -137,5 +137,72 @@ public class DataManager
         }
         dbContext.save(nil)
 }
+    public func saveContent(contentID:Int, contentName:String, contentDescription:String, contentValue:String, contentType:String, imagePath:String, audioPath:String)
+    {
+        // check if given strategy exists
+        let fetchRequest = NSFetchRequest(entityName: "Content")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Content]
+        var theContent:Content!
+        if (fetchResults?.count>0){
+            theContent = fetchResults?[0]
+            println("found \(theContent.contentName)")
+        } else {
+            println("creating new Content: \(contentID) : \(contentName)")
+            theContent = NSEntityDescription.insertNewObjectForEntityForName("Content", inManagedObjectContext: dbContext) as! Content
+        }
+        theContent.contentID = contentID
+        theContent.contentName = contentName
+        theContent.contentValue = contentValue
+        theContent.contentDescription = contentDescription
+        //save data to coreData
+        dbContext.save(nil)
+        println("Content Saved: \(theContent.toString())")
+    }
+    
+    public func getAllContents() -> [Content]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "Content")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Content]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) strategies: \n"
+        var m:Content!
+        
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        return fetchResults
+    }
+    public func getContentByID(contentID:Int)->Content?
+    {
+        var retVal = ""
+        // check if given Content exists
+        let fetchRequest = NSFetchRequest(entityName: "Content")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Content]
+        
+        var theContent:Content!
+        
+        if (fetchResults?.count>0)
+        {
+            theContent = fetchResults?[0]
+            
+            retVal = theContent.contentValue
+            println("found Content: \(theContent?.contentName)->\(retVal)")
+        }
+        else
+        {
+            println("Cannot find matching Content for \(contentID)")
+        }
+        
+        return theContent
+        
+    }
+
 
 }
