@@ -134,8 +134,10 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         }
         else
         {
-            println("No network connection")
-            //feedbackLB.text = "Wrong credential, try again"
+            println("Check network connection")
+            self.authErrorLB.text = "Check network connection"
+            self.authErrorView.addSubview(self.authErrorLB)
+            self.authErrorView.hidden = false
         }
         
     }

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -23,14 +24,18 @@ class SplashViewController: UIViewController {
     
     
     override func viewDidAppear(animated: Bool) {
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        var dataMgr = DataManager(objContext: manObjContext)
         super.viewDidAppear(animated)
+        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+        AppContext.membershipUserID = dataMgr.getMetaDataValue(MetaDataKeys.MembershipUserID)
         
         if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
         {
             self.loadViewController("TabView")
-        
         }
-        else if (!AppContext.membershipUserID.isEmpty)
+        else if (AppContext.loginStatus ==  LoginStatus.LoggedOut && !AppContext.membershipUserID.isEmpty)
         {
             self.loadViewController("PinView")
         }
