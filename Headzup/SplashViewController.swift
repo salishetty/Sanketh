@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class SplashViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
@@ -23,7 +24,11 @@ class SplashViewController: UIViewController {
     
     
     override func viewDidAppear(animated: Bool) {
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        var dataMgr = DataManager(objContext: manObjContext)
         super.viewDidAppear(animated)
+        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
         
         if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
         {

@@ -117,7 +117,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                             self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID!, isSecured: true)
                             AppContext.membershipUserID = memberhipUserID!
                         }
-                        self.loadViewController("HomePageView")
+                        self.loadViewController("TabView")
                     }
                     else
                     {
