@@ -22,6 +22,7 @@
 		140DED271B69CE68001F6A3F /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED261B69CE68001F6A3F /* Content.swift */; };
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
+		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
 		14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */; };
 		14983CCE1B557A170059A5CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCD1B557A170059A5CA /* ViewController.swift */; };
@@ -95,6 +96,7 @@
 		140DED261B69CE68001F6A3F /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14983CC71B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14983CC81B557A170059A5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				140DED151B67C703001F6A3F /* RegexRule.swift */,
 				140DED1D1B67CFE6001F6A3F /* PinRule.swift */,
 				140DED1F1B67D380001F6A3F /* MinLengthRule.swift */,
+				140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */,
 			);
 			name = Rules;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				14983D1E1B5586950059A5CA /* IntExtension.swift in Sources */,
 				140DED181B67CBE0001F6A3F /* Validator.swift in Sources */,
 				140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */,
+				140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */,
 				140DED271B69CE68001F6A3F /* Content.swift in Sources */,
 				140DED1A1B67CC0C001F6A3F /* ValidationError.swift in Sources */,
 				14983D2A1B5586950059A5CA /* UInt32Extension.swift in Sources */,

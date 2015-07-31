@@ -61,7 +61,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         
         validator.registerField(firstNameTF, errorLabel: firstNameErrorLB , rules: [RequiredRule(), RequiredRule()])
         validator.registerField(pinTF, errorLabel: pinErrorLB, rules: [RequiredRule(), PinRule()]) 
-        validator.registerField(phoneNumberTF, errorLabel: phoneNumberLB, rules: [RequiredRule(), MinLengthRule(length: 10)])
+        validator.registerField(phoneNumberTF, errorLabel: phoneNumberLB, rules: [RequiredRule(), PhoneRule()])
         
     }
 
