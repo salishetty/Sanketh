@@ -239,7 +239,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="L46-vn-7KN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPV-hd-fdH">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wPV-hd-fdH" customClass="UIControl">
                                 <rect key="frame" x="26" y="40" width="548" height="528"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HeadzupLogo" translatesAutoresizingMaskIntoConstraints="NO" id="l78-1T-ey5">
@@ -288,6 +288,9 @@
                                     <constraint firstAttribute="centerX" secondItem="KaS-gO-fgZ" secondAttribute="centerX" constant="-0.5" id="xka-wL-cTv"/>
                                     <constraint firstAttribute="trailing" secondItem="pq4-9s-7Rx" secondAttribute="trailing" constant="20" id="zQf-DU-vag"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="dismissKeyboard:" destination="RET-42-K0i" eventType="touchUpInside" id="dDl-hS-viZ"/>
+                                </connections>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0m-wi-IFU">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
