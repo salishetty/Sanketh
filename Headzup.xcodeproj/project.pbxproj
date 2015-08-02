@@ -228,8 +228,7 @@
 				14983CF41B557CF40059A5CA /* Cryptography */,
 				14983CEB1B557A8E0059A5CA /* HeadzupData */,
 				14983CC81B557A170059A5CA /* AppDelegate.swift */,
-				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
-				14983CCD1B557A170059A5CA /* ViewController.swift */,
+				579182961B6EBE27004ACFDD /* Helpers */,
 				14983CCF1B557A170059A5CA /* Main.storyboard */,
 				14983CF01B557C2D0059A5CA /* ServiceManager.swift */,
 				14983CF51B557ECB0059A5CA /* CryptoUtility.swift */,
@@ -323,6 +322,7 @@
 		5747DE521B66DFAD0054AC96 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				14983CCD1B557A170059A5CA /* ViewController.swift */,
 				578792391B5EE98600A7C6D4 /* SplashViewController.swift */,
 				5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */,
 				5747DE531B66E0530054AC96 /* HomeViewController.swift */,
@@ -330,6 +330,14 @@
 				140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		579182961B6EBE27004ACFDD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
