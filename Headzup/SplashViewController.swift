@@ -33,7 +33,7 @@ class SplashViewController: UIViewController {
         
         if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
         {
-            self.loadViewController("TabView")
+            self.loadViewController("TabView",tabIndex: 1)
         }
         else if (AppContext.loginStatus ==  LoginStatus.LoggedOut && !AppContext.membershipUserID.isEmpty)
         {
