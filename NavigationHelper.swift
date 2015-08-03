@@ -14,6 +14,30 @@ public extension UIViewController{
     func loadViewController(targetViewIdentifier:String)
     {
         let vc :AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier(targetViewIdentifier)
-        self.showViewController(vc as! UIViewController, sender: vc)
+        if vc.isKindOfClass(UITabBarController)
+        {
+            let tabview = vc as! UITabBarController
+            self.showViewController(tabview, sender: vc)
+        }
+        else
+        {
+         self.showViewController(vc as! UIViewController, sender: vc)
+        }
     }
+    
+    func loadViewController(targetViewIdentifier:String,tabIndex:Int)
+    {
+        let vc :AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier(targetViewIdentifier)
+        if vc.isKindOfClass(UITabBarController)
+        {
+            let tabview = vc as! UITabBarController
+            self.showViewController(tabview, sender: vc)
+            tabview.selectedIndex = tabIndex
+        }
+        else
+        {
+            self.showViewController(vc as! UIViewController, sender: vc)
+        }
+    }
+    
 }

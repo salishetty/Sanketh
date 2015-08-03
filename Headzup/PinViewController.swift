@@ -98,10 +98,8 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                     {
                             self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
                             AppContext.loginStatus = LoginStatus.LoggedIn
+                            self.loadViewController("TabView")
                     }
-                        self.loadViewController("TabView")
-                    }
-                    
                     else
                     {
                         dispatch_async(dispatch_get_main_queue()) {
@@ -111,13 +109,16 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                             self.authErrorView.hidden = false
                         }
                     }
+                }
             })
         }
             
         else
         {
-            
-            //feedbackLB.text = "Wrong credential, try again"
+            println("Check network connection")
+            self.authErrorLB.text = "Check network connection"
+            self.authErrorView.addSubview(self.authErrorLB)
+            self.authErrorView.hidden = false
         }
         
     }
@@ -126,15 +127,8 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         println("Validation FAILED!")
     }
 
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        self.view.endEditing(true)
     }
-    */
 
 }
