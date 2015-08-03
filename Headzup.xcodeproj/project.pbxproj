@@ -68,6 +68,8 @@
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
+		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
+		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +151,8 @@
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
+		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -259,6 +263,7 @@
 				140DED211B681741001F6A3F /* CoreDataTestCase.swift */,
 				140DED231B68179F001F6A3F /* MetaDataTest.swift */,
 				14983CDF1B557A170059A5CA /* Supporting Files */,
+				579182991B6EC853004ACFDD /* NotificationTests.swift */,
 			);
 			path = HeadzupTests;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 			isa = PBXGroup;
 			children = (
 				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
+				579182971B6EC294004ACFDD /* LogInHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
 				5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */,
 				14983D201B5586950059A5CA /* NSDataExtension.swift in Sources */,
+				579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */,
 				140DED1E1B67CFE6001F6A3F /* PinRule.swift in Sources */,
 				14983D181B5586950059A5CA /* Cipher.swift in Sources */,
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
@@ -502,6 +509,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */,
 				140DED221B681741001F6A3F /* CoreDataTestCase.swift in Sources */,
 				14983CE21B557A170059A5CA /* HeadzupTests.swift in Sources */,
 				140DED251B6817DB001F6A3F /* MetaData.swift in Sources */,
