@@ -255,5 +255,21 @@ public class DataManager
         dbContext.save(nil)
         println("Category Saved: \(theCategory.toString())")
     }
-
+    public func getAllcategories() -> [Category]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Category]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) Categories: \n"
+        var m:Category!
+        
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        return fetchResults
+    }
 }
