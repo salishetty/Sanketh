@@ -204,5 +204,56 @@ public class DataManager
         
     }
 
+    public func getContentByIDs(contentIDs:String) ->[Content]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "Content")
+        let contentIDsArray = contentIDs.componentsSeparatedByString(",")
+        var theContentArray:[Content]?
+        var contentID:String?
+        for var i = 0; i < contentIDsArray.count; i++ {
+            contentID = contentIDsArray[i]
+            
+            fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+            
+            let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Content]
+            
+            var theContent:Content!
+            if (fetchResults?.count>0)
+            {
+                theContent = fetchResults?[0]
+                
+                theContentArray?.append(theContent)
+                println("found Content: \(theContent?.contentName)")
+            }
+            else
+            {
+                println("Cannot find matching Content for \(contentID)")
+            }
+
+        }
+        return theContentArray
+    }
+    public func saveContentCategory(categoryID:Int, categoryName:String, contentIDs:String)
+    {
+        // check if given strategy exists
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Category]
+        var theCategory:Category!
+        if (fetchResults?.count>0){
+            theCategory = fetchResults?[0]
+            println("found \(theCategory.categoryName)")
+        } else {
+            println("creating new Category: \(categoryID) : \(categoryName)")
+            theCategory = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: dbContext) as! Category
+        }
+        theCategory.categoryID = categoryID
+        theCategory.categoryName = categoryName
+        theCategory.contentIDs = contentIDs
+        
+        //save data to coreData
+        dbContext.save(nil)
+        println("Category Saved: \(theCategory.toString())")
+    }
 
 }

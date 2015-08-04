@@ -14,5 +14,8 @@ public class Category: NSManagedObject {
     @NSManaged var categoryID: NSNumber
     @NSManaged var categoryName: String
     @NSManaged var contentIDs: String
-
+    
+    public func toString() -> String {
+        return "category: \(categoryID): \(categoryName) \n [\(contentIDs)]"
+    }
 }
