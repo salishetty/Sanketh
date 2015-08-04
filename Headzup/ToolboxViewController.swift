@@ -7,16 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var categoryTableView: UITableView!
     
-    var categoriesArray = ["View all", "Communicating about your pain", "Eating better", "Getting more active", "Managing your time", "Relaxing", "Sleeping better"]
+    //var categoriesArray = ["View all", "Communicating about your pain", "Eating better", "Getting more active", "Managing your time", "Relaxing", "Sleeping better"]
     
-
+    var categoriesArray:Array<Category> = []
+    var dataMgr: DataManager?  // initialized in viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Get Categories from Category object in CoreData
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        categoriesArray = manObjContext.executeFetchRequest(fetchRequest, error: nil) as! Array<Category>!
+        // ---------------------------------
+        println("Categories=\(categoriesArray.count)")
 
         // Do any additional setup after loading the view.
     }
@@ -39,7 +48,7 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         var cell:UITableViewCell = self.categoryTableView.dequeueReusableCellWithIdentifier("categoryCell") as! UITableViewCell
         
-        cell.textLabel?.text = self.categoriesArray[indexPath.row]
+        cell.textLabel?.text = self.categoriesArray[indexPath.row].categoryName
         
         return cell
     }

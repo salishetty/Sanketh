@@ -33,6 +33,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
         AppContext.svcUrl = env
+        
+        AppContext.categories = dataMgr.getAllcategories()
+        if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
+        //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
+
+            dataMgr.saveContentCategory(1, categoryName: "View all", contentIDs: "101, 102, 103, 110")
+            dataMgr.saveContentCategory(2, categoryName: "Communicating about your pain", contentIDs: "104, 105, 103, 111")
+            dataMgr.saveContentCategory(3, categoryName: "Eating better", contentIDs: "106, 107, 109, 112")
+            dataMgr.saveContentCategory(4, categoryName: "Getting more active", contentIDs: "108, 109, 102, 113")
+            dataMgr.saveContentCategory(5, categoryName: "Managing your time", contentIDs: "110, 101, 108, 114")
+            dataMgr.saveContentCategory(6, categoryName: "Relaxing", contentIDs: "103, 105, 107, 115")
+            dataMgr.saveContentCategory(7, categoryName: "Sleeping better", contentIDs: "103, 105, 107, 109")
+            //Save Content to CoreData
+            dataMgr.saveContent(101, contentName: "30 x 3 = Fewer Headaches", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(102, contentName: "App-propriate Help for Headaches", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(103, contentName: "Don’t Skip Breakfast", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(104, contentName: "Give Yourself A Break", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(105, contentName: "Knowledge is Power", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(106, contentName: "One Step at a Time", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(107, contentName: "Pain Hits the Road", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(108, contentName: "Screens Off", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(109, contentName: "Scents-able Sleep", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(110, contentName: "Sink or Swim?", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(111, contentName: "Sleeping in the Dark", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(112, contentName: "Sleep Journal", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(113, contentName: "Spike Your Water", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(114, contentName: "Time and Timer Again", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            dataMgr.saveContent(115, contentName: "Update Your Water (H20 2.0)", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
+            
+            AppContext.categories = dataMgr.getAllcategories()
+        }
     }
     func registerDefaultsFromSettingsBundle() {
         // this function writes default settings as settings

@@ -24,7 +24,7 @@ public class AppContext {
     public static var membershipUserID = ""
     public static let enc = false
     public static var userInfo = UserInfo()
-    
+    public static var categories:[Category]?
     public static var svcUrl = ""
     
     //public static func
