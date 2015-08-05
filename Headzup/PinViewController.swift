@@ -45,9 +45,11 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         dataMgr = DataManager(objContext: manObjContext)
         serviceMgr = ServiceManager(objContext:manObjContext)
         
-        
-        UserLB.text = "Hi, " + AppContext.firstName
-        
+        //Show user Name on screen
+       let username =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
+        UserLB.text = "Hi, " + username
+        AppContext.firstName = username
+ 
         // Do any additional setup after loading the view.
         //Error Validation
         validator.styleTransformers(success:{ (validationRule) -> Void in
