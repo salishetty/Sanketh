@@ -68,6 +68,7 @@
 		14CDA54E1B72796600FB040F /* TechnicalLogItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA54D1B72796600FB040F /* TechnicalLogItemsDTO.swift */; };
 		14CDA5501B727BB000FB040F /* TechnicalLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA54F1B727BB000FB040F /* TechnicalLog.swift */; };
 		14CDA5521B727BCF00FB040F /* UserActionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA5511B727BCF00FB040F /* UserActionLog.swift */; };
+		14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA5531B728C6100FB040F /* GeneralHelper.swift */; };
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
@@ -156,6 +157,7 @@
 		14CDA54D1B72796600FB040F /* TechnicalLogItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechnicalLogItemsDTO.swift; sourceTree = "<group>"; };
 		14CDA54F1B727BB000FB040F /* TechnicalLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechnicalLog.swift; sourceTree = "<group>"; };
 		14CDA5511B727BCF00FB040F /* UserActionLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionLog.swift; sourceTree = "<group>"; };
+		14CDA5531B728C6100FB040F /* GeneralHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 			children = (
 				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
 				579182971B6EC294004ACFDD /* LogInHelper.swift */,
+				14CDA5531B728C6100FB040F /* GeneralHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */,
+				14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */,
 				140DED121B67C693001F6A3F /* Rule.swift in Sources */,
 				14983D161B5586950059A5CA /* BitExtension.swift in Sources */,
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
