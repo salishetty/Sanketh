@@ -19,9 +19,30 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="TechnicalLog" representedClassName="PRODUCT_MODULE_NAME.TechnicalLog" syncable="YES">
+        <attribute name="appVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="eventDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exception" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSynched" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="logLevel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="moduleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="osVersion" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserActionLog" representedClassName="PRODUCT_MODULE_NAME.UserActionLog" syncable="YES">
+        <attribute name="actionDateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="actionType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="contentID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSynched" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="osVersion" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Category" positionX="-54" positionY="54" width="128" height="90"/>
         <element name="Content" positionX="-63" positionY="9" width="128" height="150"/>
         <element name="MetaData" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="TechnicalLog" positionX="-45" positionY="54" width="128" height="165"/>
+        <element name="UserActionLog" positionX="-36" positionY="99" width="128" height="150"/>
     </elements>
 </model>
