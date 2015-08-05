@@ -27,7 +27,10 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     
     @IBOutlet weak var authErrorLB: UILabel!
     
+    @IBOutlet weak var UserLB: UILabel!
 
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,8 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         dataMgr = DataManager(objContext: manObjContext)
         serviceMgr = ServiceManager(objContext:manObjContext)
         
+        
+        UserLB.text = "Hi, " + AppContext.firstName
         
         // Do any additional setup after loading the view.
         //Error Validation

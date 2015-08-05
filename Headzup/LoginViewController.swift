@@ -105,7 +105,8 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                     {
                         var memberhipUserID = parseJSON["MembershipUserID"] as? String
                         // update cache and local db
-                        if AppContext.loginStatus == "" {
+                        //Commented below if by sandeep since it leads dead Lock of information
+                        //if AppContext.loginStatus == "" {
                             
                             self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text, isSecured: true)
                             
@@ -116,8 +117,8 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                             
                             self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID!, isSecured: true)
                             AppContext.membershipUserID = memberhipUserID!
-                        }
-                        self.loadViewController("TabView")
+                       // }
+                        self.loadViewController("TabView",tabIndex:1)
                     }
                     else
                     {
