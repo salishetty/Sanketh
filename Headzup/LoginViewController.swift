@@ -30,13 +30,21 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Adding notification to
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "baseLoad", name:UIApplicationWillEnterForegroundNotification, object: nil)
+        baseLoad()
+    }
+
+    
+    func baseLoad()
+    {
         
         // init data and service managers
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
         serviceMgr = ServiceManager(objContext:manObjContext)
-
+        
         // Do any additional setup after loading the view.
         //Error Validation
         validator.styleTransformers(success:{ (validationRule) -> Void in
@@ -57,18 +65,38 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                 validationError.textField.layer.borderWidth = 1.0
                 validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
                 validationError.textField.layer.cornerRadius = 5.0
-          })
+        })
         
         validator.registerField(firstNameTF, errorLabel: firstNameErrorLB , rules: [RequiredRule(), RequiredRule()])
-        validator.registerField(pinTF, errorLabel: pinErrorLB, rules: [RequiredRule(), PinRule()]) 
-        validator.registerField(phoneNumberTF, errorLabel: phoneNumberLB, rules: [RequiredRule(), PhoneRule()])
+        validator.registerField(pinTF, errorLabel: pinErrorLB, rules: [RequiredRule(), PinRule()])
+        validator.registerField(phoneNumberTF, errorLabel: phoneNumberLB, rules: [RequiredRule(), MinLengthRule(length: 10,message:"Phone Number must be 10 digits long") ,PhoneRule()])
         
-    }
+        if(AppContext.hasConnectivity() == false)
+        {
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                self.authErrorLB.text = "Check network Connection."
+                self.authErrorView.addSubview(self.authErrorLB)
+                self.authErrorView.hidden = false
+                self.authErrorView.backgroundColor = UIColor.orangeColor()
+                self.authErrorView.layer.zPosition = 1
+            }
+            
+        }
+        else
+        {
+           self.authErrorView.hidden = true
+        }
 
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
 
     /*
@@ -120,13 +148,28 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                        // }
                         self.loadViewController("TabView",tabIndex:1)
                     }
+                    else if(status == 2)
+                    {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            
+                            self.authErrorLB.text = "There has been a change with your access to the Headzup app. Please call us at <xxx-xxxxxxx> or email us at <xxxxxxxxxxx@xxx.com>."
+                            self.authErrorLB.numberOfLines = 0
+                            self.authErrorView.addSubview(self.authErrorLB)
+                            self.authErrorView.hidden = false
+                            self.authErrorView.backgroundColor = UIColor.redColor()
+                            self.authErrorView.layer.zPosition = 1
+                        }
+                    }
                     else
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "Wrong credential, try again"
+                            self.authErrorLB.text = "The PIN and/or Phone Number entered doesn't match records."
+                            self.authErrorLB.numberOfLines = 0
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
+                            self.authErrorView.backgroundColor = UIColor.redColor()
+                            self.authErrorView.layer.zPosition = 1
                         }
                     }
                     
@@ -150,4 +193,11 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     @IBAction func dismissKeyboard(sender: AnyObject) {
         self.view.endEditing(true)
     }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    
 }
