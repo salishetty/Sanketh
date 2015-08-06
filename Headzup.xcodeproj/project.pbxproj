@@ -370,6 +370,7 @@
 				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
 				579182971B6EC294004ACFDD /* LogInHelper.swift */,
 				579F15021B728B20009488CA /* NotificationHelper.swift */,
+				14CDA5531B728C6100FB040F /* GeneralHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
