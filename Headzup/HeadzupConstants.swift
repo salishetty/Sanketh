@@ -29,7 +29,7 @@ public struct UserActionKeys
     public static let AppVersion = "appVersion"
     public static let ActionType = "actionType"
     public static let Comment = "comment"
-    
+    public static let UserActionItem = "userActionItem"
 }
 public struct TechnicalLogKeys
 {
