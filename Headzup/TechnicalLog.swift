@@ -19,5 +19,8 @@ public class TechnicalLog: NSManagedObject {
     @NSManaged var message: String
     @NSManaged var moduleName: String
     @NSManaged var osVersion: String
-
+    
+    public func toString() -> String {
+        return "- technicalLog: \(moduleName): \(eventDate), \(logLevel), \(appVersion), \(osVersion)"
+    }
 }
