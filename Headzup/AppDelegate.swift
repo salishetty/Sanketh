@@ -97,15 +97,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
 //    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+//        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+//        {
+//            //opened from a local notification when the app was on background
 //        application.applicationIconBadgeNumber = 0
 //        if notification.category! == NotificationConstants.GoalCategory {
-//             let tabController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController;
-//           tabController.selectedIndex = 0
-//                   }
+//            let tabController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController;
+//            NavigationHelper.AuthanticateAndNavigate(tabController, tagetView: "TabView", targetID: 1)
+//            }
 //        if notification.category == NotificationConstants.TrackerCategory {
 //            let tabController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController;
 //            tabController.selectedIndex = 1
 //        }
+//        }
+//
 //    }
     
     func applicationWillResignActive(application: UIApplication) {
