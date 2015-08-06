@@ -82,6 +82,13 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func NotificationOn(sender: UIButton) {
+        NotificationHelper.EnableGoalNotifcation();
+        
+    }
+    @IBAction func NotificationOff(sender: UIButton) {
+       
+    }
 
     @IBAction func Logout(sender: UIButton) {
         // update login status
@@ -102,5 +109,6 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+   
 }
