@@ -70,6 +70,7 @@
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
+		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 		6AB5BB8F1B710D6B00CF2DAD /* ToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */; };
 /* End PBXBuildFile section */
@@ -154,6 +155,7 @@
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
+		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 		6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolboxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,11 +263,11 @@
 		14983CDE1B557A170059A5CA /* HeadzupTests */ = {
 			isa = PBXGroup;
 			children = (
+				579182991B6EC853004ACFDD /* NotificationTests.swift */,
 				14983CE11B557A170059A5CA /* HeadzupTests.swift */,
 				140DED211B681741001F6A3F /* CoreDataTestCase.swift */,
 				140DED231B68179F001F6A3F /* MetaDataTest.swift */,
 				14983CDF1B557A170059A5CA /* Supporting Files */,
-				579182991B6EC853004ACFDD /* NotificationTests.swift */,
 			);
 			path = HeadzupTests;
 			sourceTree = "<group>";
@@ -345,6 +347,7 @@
 			children = (
 				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
 				579182971B6EC294004ACFDD /* LogInHelper.swift */,
+				579F15021B728B20009488CA /* NotificationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				TargetAttributes = {
 					14983CC21B557A170059A5CA = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = H4Z8UK87N8;
 					};
 					14983CDA1B557A170059A5CA = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -504,6 +508,7 @@
 				5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */,
 				14983D251B5586950059A5CA /* SHA1.swift in Sources */,
 				14983D131B5586950059A5CA /* AES.swift in Sources */,
+				579F15031B728B20009488CA /* NotificationHelper.swift in Sources */,
 				14983CF11B557C2D0059A5CA /* ServiceManager.swift in Sources */,
 				14983D221B5586950059A5CA /* Padding.swift in Sources */,
 			);
@@ -639,9 +644,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Headzup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Headzup/Headzup-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -652,9 +660,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Headzup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Headzup/Headzup-Bridging-Header.h";
 			};
 			name = Release;

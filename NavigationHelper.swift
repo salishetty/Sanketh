@@ -7,7 +7,7 @@
 //
 import Foundation
 import UIKit
-
+import CoreData
 
 public extension UIViewController{
     
@@ -39,5 +39,38 @@ public extension UIViewController{
             self.showViewController(vc as! UIViewController, sender: vc)
         }
     }
+}
+
+
+public class NavigationHelper
+{
     
+    static func AuthanticateAndNavigate(sourceView:UIViewController,tagetView:String = "",targetID:Int = 0)
+    {
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        var dataMgr = DataManager(objContext: manObjContext)
+        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+        AppContext.membershipUserID = dataMgr.getMetaDataValue(MetaDataKeys.MembershipUserID)
+        if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
+        {
+            if(tagetView.isEmpty)
+            {
+            sourceView.loadViewController("TabView",tabIndex: targetID)    
+            }
+            else
+            {
+              sourceView.loadViewController(tagetView,tabIndex: targetID)
+            }
+        }
+        else if (AppContext.loginStatus ==  LoginStatus.LoggedOut && !AppContext.membershipUserID.isEmpty)
+        {
+            sourceView.loadViewController("PinView")
+        }
+        else
+        {
+            sourceView.loadViewController("LogInView")
+        }
+
+    }
 }
