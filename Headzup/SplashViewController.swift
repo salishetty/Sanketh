@@ -15,6 +15,9 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadGoalView:",name:"GoalNotificationObserver", object: nil)
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,28 +27,16 @@ class SplashViewController: UIViewController {
     
     
     override func viewDidAppear(animated: Bool) {
-        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        var dataMgr = DataManager(objContext: manObjContext)
         super.viewDidAppear(animated)
-        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
-        AppContext.membershipUserID = dataMgr.getMetaDataValue(MetaDataKeys.MembershipUserID)
-        
-        if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
-        {
-            self.loadViewController("TabView",tabIndex: 1)
-        }
-        else if (AppContext.loginStatus ==  LoginStatus.LoggedOut && !AppContext.membershipUserID.isEmpty)
-        {
-            self.loadViewController("PinView")
-        }
-        else
-        {
-            self.loadViewController("LogInView")
-        }
-        
+        NavigationHelper.AuthanticateAndNavigate(self,tagetView: "")
     }
 
+    
+    func loadGoalView(notification: NSNotification){
+        NavigationHelper.AuthanticateAndNavigate(self,tagetView: "TabView",targetID:0)
+    }
+    
+    
     /*
     // MARK: - Navigation
 

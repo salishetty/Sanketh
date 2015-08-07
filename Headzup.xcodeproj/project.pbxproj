@@ -64,12 +64,18 @@
 		14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983D2E1B558EFD0059A5CA /* Generics.swift */; };
 		14C1BF2B1B61754400BE78DA /* HeadzupConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14C1BF2A1B61754400BE78DA /* HeadzupConstants.swift */; };
 		14C1BF2E1B6178D400BE78DA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 14C1BF2D1B6178D400BE78DA /* Reachability.m */; };
+		14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA54B1B7278D500FB040F /* UserActionItemsDTO.swift */; };
+		14CDA54E1B72796600FB040F /* TechnicalLogItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA54D1B72796600FB040F /* TechnicalLogItemsDTO.swift */; };
+		14CDA5501B727BB000FB040F /* TechnicalLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA54F1B727BB000FB040F /* TechnicalLog.swift */; };
+		14CDA5521B727BCF00FB040F /* UserActionLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA5511B727BCF00FB040F /* UserActionLog.swift */; };
+		14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA5531B728C6100FB040F /* GeneralHelper.swift */; };
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
+		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 		6AB5BB8F1B710D6B00CF2DAD /* ToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */; };
 /* End PBXBuildFile section */
@@ -148,12 +154,18 @@
 		14C1BF2C1B6178D300BE78DA /* Headzup-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Headzup-Bridging-Header.h"; sourceTree = "<group>"; };
 		14C1BF2D1B6178D400BE78DA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		14C1BF2F1B61793000BE78DA /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		14CDA54B1B7278D500FB040F /* UserActionItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionItemsDTO.swift; sourceTree = "<group>"; };
+		14CDA54D1B72796600FB040F /* TechnicalLogItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechnicalLogItemsDTO.swift; sourceTree = "<group>"; };
+		14CDA54F1B727BB000FB040F /* TechnicalLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TechnicalLog.swift; sourceTree = "<group>"; };
+		14CDA5511B727BCF00FB040F /* UserActionLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserActionLog.swift; sourceTree = "<group>"; };
+		14CDA5531B728C6100FB040F /* GeneralHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
+		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 		6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolboxViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -229,6 +241,7 @@
 		14983CC51B557A170059A5CA /* Headzup */ = {
 			isa = PBXGroup;
 			children = (
+				14CDA54A1B72788400FB040F /* DTO */,
 				140DED0E1B67C602001F6A3F /* Validator */,
 				5747DE521B66DFAD0054AC96 /* Controllers */,
 				14983CF41B557CF40059A5CA /* Cryptography */,
@@ -261,11 +274,11 @@
 		14983CDE1B557A170059A5CA /* HeadzupTests */ = {
 			isa = PBXGroup;
 			children = (
+				579182991B6EC853004ACFDD /* NotificationTests.swift */,
 				14983CE11B557A170059A5CA /* HeadzupTests.swift */,
 				140DED211B681741001F6A3F /* CoreDataTestCase.swift */,
 				140DED231B68179F001F6A3F /* MetaDataTest.swift */,
 				14983CDF1B557A170059A5CA /* Supporting Files */,
-				579182991B6EC853004ACFDD /* NotificationTests.swift */,
 			);
 			path = HeadzupTests;
 			sourceTree = "<group>";
@@ -281,6 +294,8 @@
 		14983CEB1B557A8E0059A5CA /* HeadzupData */ = {
 			isa = PBXGroup;
 			children = (
+				14CDA5511B727BCF00FB040F /* UserActionLog.swift */,
+				14CDA54F1B727BB000FB040F /* TechnicalLog.swift */,
 				140DED281B69CED6001F6A3F /* Category.swift */,
 				140DED261B69CE68001F6A3F /* Content.swift */,
 				14983CEC1B557B340059A5CA /* MetaData.swift */,
@@ -326,6 +341,15 @@
 			name = Cryptography;
 			sourceTree = "<group>";
 		};
+		14CDA54A1B72788400FB040F /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				14CDA54B1B7278D500FB040F /* UserActionItemsDTO.swift */,
+				14CDA54D1B72796600FB040F /* TechnicalLogItemsDTO.swift */,
+			);
+			name = DTO;
+			sourceTree = "<group>";
+		};
 		5747DE521B66DFAD0054AC96 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +369,8 @@
 			children = (
 				57E6529A1B5DA6320057803C /* NavigationHelper.swift */,
 				579182971B6EC294004ACFDD /* LogInHelper.swift */,
+				579F15021B728B20009488CA /* NotificationHelper.swift */,
+				14CDA5531B728C6100FB040F /* GeneralHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -398,6 +424,7 @@
 				TargetAttributes = {
 					14983CC21B557A170059A5CA = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = H4Z8UK87N8;
 					};
 					14983CDA1B557A170059A5CA = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -452,8 +479,10 @@
 			files = (
 				14983D281B5586950059A5CA /* UInt8Extension.swift in Sources */,
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
+				14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */,
+				14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */,
 				140DED121B67C693001F6A3F /* Rule.swift in Sources */,
 				14983D161B5586950059A5CA /* BitExtension.swift in Sources */,
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
@@ -472,6 +501,7 @@
 				14983D2D1B5586950059A5CA /* Utils.swift in Sources */,
 				14983D1C1B5586950059A5CA /* HashBase.swift in Sources */,
 				140DED1C1B67CC41001F6A3F /* ValidationRule.swift in Sources */,
+				14CDA54E1B72796600FB040F /* TechnicalLogItemsDTO.swift in Sources */,
 				14983CEF1B557B910059A5CA /* DataManager.swift in Sources */,
 				14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */,
 				14C1BF2B1B61754400BE78DA /* HeadzupConstants.swift in Sources */,
@@ -500,10 +530,13 @@
 				14983D211B5586950059A5CA /* Operators.swift in Sources */,
 				14983D231B5586950059A5CA /* PKCS7.swift in Sources */,
 				14C1BF2E1B6178D400BE78DA /* Reachability.m in Sources */,
+				14CDA5501B727BB000FB040F /* TechnicalLog.swift in Sources */,
+				14CDA5521B727BCF00FB040F /* UserActionLog.swift in Sources */,
 				14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */,
 				5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */,
 				14983D251B5586950059A5CA /* SHA1.swift in Sources */,
 				14983D131B5586950059A5CA /* AES.swift in Sources */,
+				579F15031B728B20009488CA /* NotificationHelper.swift in Sources */,
 				14983CF11B557C2D0059A5CA /* ServiceManager.swift in Sources */,
 				14983D221B5586950059A5CA /* Padding.swift in Sources */,
 			);
@@ -639,9 +672,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Headzup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Headzup/Headzup-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -652,9 +688,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Headzup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Headzup/Headzup-Bridging-Header.h";
 			};
 			name = Release;

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 public class DataManager
 {
@@ -254,6 +255,106 @@ public class DataManager
         //save data to coreData
         dbContext.save(nil)
         println("Category Saved: \(theCategory.toString())")
+    }
+    public func getAllcategories() -> [Category]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Category]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) Categories: \n"
+        var m:Category!
+        
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        return fetchResults
+    }
+    //Methods for UserAction Entity
+    
+    public func saveUserActionLog(actionType:String, actionDateTime:NSDate,contentID:String, comment:String, isSynched:Bool)
+    {
+        var theData = NSEntityDescription.insertNewObjectForEntityForName("UserActionLog", inManagedObjectContext: dbContext) as! UserActionLog
+        theData.osVersion = UIDevice.currentDevice().systemVersion
+        theData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+        theData.actionType = actionType
+        theData.actionDateTime = actionDateTime
+        theData.contentID = contentID
+        theData.comment = comment
+        theData.isSynched = isSynched
+        //save to coredata
+        dbContext.save(nil)
+        println("UserActionLog saved)")
+    }
+    
+    public func getUserActionLogs(max: Int) -> [UserActionLog]? {
+        
+        let fetchRequest = NSFetchRequest(entityName: "UserActionLog")
+        let oldOID = getMetaDataValue("UserActionID").toInt()
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [UserActionLog]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) user action logs: \n"
+        var m:UserActionLog!
+        
+        var r = [UserActionLog]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            var lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString?.lastPathComponent
+            //get the integer component of objectID
+            let currentOID = lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)).toInt()
+            println("ObjectID:\(lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)))")
+            if(currentOID > oldOID)
+            {
+                r.append(m)
+            }
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        
+        return r
+    }
+
+    public func getTechnicalLogs(max:Int)-> [TechnicalLog]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "TechnicalLog")
+        //let oldOID = NSUserDefaults.standardUserDefaults().stringForKey("ObjectID")
+        let oldOID = getMetaDataValue("TechnicalLogID").toInt()
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [TechnicalLog]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) technical Logs: \n"
+        var m:TechnicalLog!
+        
+        var r = [TechnicalLog]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            var lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString?.lastPathComponent
+            //get the integer component of objectID
+            let currentOID = lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)).toInt()
+            println("ObjectID:\(lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)))")
+            if(currentOID > oldOID)
+            {
+                r.append(m)
+            }
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        
+        return r
+        
+    }
+    public func deleteTechnicalLog(technicalLog:TechnicalLog)
+    {
+        //Delete TechnicalLog object from CoreData
+        dbContext.deleteObject(technicalLog)
     }
 
 }

@@ -11,7 +11,7 @@ public class PhoneRule: RegexRule {
     
     static let regex = "\\(?([0-9]{3})\\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})"
     
-    public convenience init(message : String = "Must be a valid phone number"){
+    public convenience init(message : String = "Phone number cannot contain letters."){
         self.init(regex: PhoneRule.regex, message: message)
     }
 }
