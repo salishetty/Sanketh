@@ -10,7 +10,7 @@ import Foundation
 
 public class UserActionItems
 {
-    var userId:String
+    var membershipUserId:String
     var deviceId:String
     var deviceType:String
     var actionDate:String
@@ -19,9 +19,9 @@ public class UserActionItems
     var actionType:String
     var comment:String
     
-    init(userId:String, deviceId:String, deviceType:String, actionDate:String, osVersion:String, appVersion:String, actionType:String, comment:String)
+    init(membershipUserID:String, deviceId:String, deviceType:String, actionDate:String, osVersion:String, appVersion:String, actionType:String, comment:String)
     {
-        self.userId = userId
+        self.membershipUserId = membershipUserID
         self.deviceId = deviceId
         self.deviceType = deviceType
         self.actionDate = actionDate

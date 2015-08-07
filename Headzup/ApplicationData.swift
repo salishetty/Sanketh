@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 public class UserInfo {
-    public var userId = ""
+    public var membershipUserID = ""
     public var deviceId = UIDevice.currentDevice().identifierForVendor.UUIDString
     public var deviceType =  UIDevice.currentDevice().model
 }
@@ -42,7 +42,7 @@ public class AppContext {
     
     public static func getUserInfo() -> UserInfo {
         var info = UserInfo()
-        info.userId = membershipUserID
+        info.membershipUserID = membershipUserID
         return info
     }
     public static func hasConnectivity() -> Bool {
