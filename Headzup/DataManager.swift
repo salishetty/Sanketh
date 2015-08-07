@@ -320,4 +320,41 @@ public class DataManager
         return r
     }
 
+    public func getTechnicalLogs(max:Int)-> [TechnicalLog]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "TechnicalLog")
+        //let oldOID = NSUserDefaults.standardUserDefaults().stringForKey("ObjectID")
+        let oldOID = getMetaDataValue("TechnicalLogID").toInt()
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [TechnicalLog]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) technical Logs: \n"
+        var m:TechnicalLog!
+        
+        var r = [TechnicalLog]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            var lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString?.lastPathComponent
+            //get the integer component of objectID
+            let currentOID = lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)).toInt()
+            println("ObjectID:\(lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)))")
+            if(currentOID > oldOID)
+            {
+                r.append(m)
+            }
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        
+        return r
+        
+    }
+    public func deleteTechnicalLog(technicalLog:TechnicalLog)
+    {
+        //Delete TechnicalLog object from CoreData
+        dbContext.deleteObject(technicalLog)
+    }
+
 }

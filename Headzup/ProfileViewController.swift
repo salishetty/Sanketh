@@ -110,5 +110,64 @@ class ProfileViewController: UIViewController {
     }
     */
     
-   
+   //TEMPORARY - TO BE MOVED LATER
+    @IBAction func SynchTechLogs(sender: UIButton) {
+        //Synch TechnicalLog
+        var uInfo = AppContext.getUserInfo()
+        var deviceId = uInfo.deviceId
+        var gHelper = GeneralHelper()
+        var dict = Dictionary<String, String>()
+        var tlItemsArray = [String:Dictionary<String, String>]()
+        var objectID:String?
+        let technicalLogs:[TechnicalLog] = dataMgr!.getTechnicalLogs(0)!
+        
+        if technicalLogs.count > 0
+        {
+            var index:Int32 = 0
+            for logItems in technicalLogs
+            {
+                println("TechnicalLog Items: \(logItems.message): \(logItems.exception):,\(logItems.moduleName): \(logItems.eventDate), \(logItems.logLevel), \(logItems.appVersion), \(logItems.osVersion)")
+                
+                var tLogItems = TechnicalLogItems(message: logItems.message, deviceId: deviceId, exception: logItems.exception, moduleName: logItems.moduleName, eventDate:logItems.eventDate, appVersion: logItems.appVersion, osVersion: logItems.osVersion, logLevel: logItems.logLevel)
+                dict = gHelper.technicalLogItemsToDictionary(tLogItems)
+                tlItemsArray["TechnicalLogItem"+String(index)] = dict
+                
+                
+                var lastComponent = logItems.objectID.URIRepresentation().absoluteString!.lastPathComponent
+                //Integer part of objectID
+                objectID = lastComponent.substringFromIndex(advance(lastComponent.startIndex, 1))
+                //update index
+                index++
+            }
+        }
+        
+        var theURL:String =  AppContext.svcUrl + "SynchTechnicalLogItems"
+        
+        if(tlItemsArray.count > 0)
+        {
+            serviceMgr?.synchTechnicalLog(tlItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+                
+                if let parseJSON = jsonData {
+                    var status = parseJSON["Status"] as? Int
+                    if(status == 1)
+                    {
+                        //if successful, save the last objectID to MetaData
+                        self.dataMgr?.saveMetaData("TechnicalLogID", value: objectID!, isSecured: true)
+                        //Delete all synched tech logs
+                        for (index, techLog) in enumerate(technicalLogs)
+                        {
+                            println("TechnicalLog Items: \(techLog.message): \(techLog.exception):,\(techLog.moduleName): \(techLog.eventDate), \(techLog.logLevel), \(techLog.appVersion), \(techLog.osVersion)")
+                            self.dataMgr?.deleteTechnicalLog(techLog)
+                        }
+                        println("Technical Logs/Items synchronized Successfully")
+                    }
+                }
+                
+                }
+            )
+            
+            // Do any additional setup after loading the view.
+        }
+
+    }
 }

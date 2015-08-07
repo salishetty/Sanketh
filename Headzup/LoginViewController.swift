@@ -128,8 +128,8 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
             serviceMgr?.Login(["username":phoneNumber, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
                 
                 if let parseJSON = jsonData {
-                    var status = parseJSON["Status"] as? Int
-                    if(status == 1)
+                    var status = parseJSON["Status"] as? String
+                    if(status == "1")
                     {
                         var memberhipUserID = parseJSON["MembershipUserID"] as? String
                         // update cache and local db
@@ -148,7 +148,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                        // }
                         self.loadViewController("TabView",tabIndex:1)
                     }
-                    else if(status == 2)
+                    else if(status == "2")
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
