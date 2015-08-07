@@ -15,7 +15,7 @@ public class GeneralHelper
     }
     func userActionItemsToDictionary(uaItems: UserActionItems) -> [String:String]
     {
-        return [UserActionKeys.UserID:uaItems.userId, UserActionKeys.DeviceID:uaItems.deviceId, UserActionKeys.DeviceType:uaItems.deviceType, UserActionKeys.ActionDate:uaItems.actionDate as String, UserActionKeys.OsVersion:uaItems.osVersion, UserActionKeys.AppVersion:uaItems.appVersion, UserActionKeys.ActionType:uaItems.actionType, UserActionKeys.Comment:uaItems.comment]
+        return [UserActionKeys.MembershipUserID:uaItems.membershipUserId, UserActionKeys.DeviceID:uaItems.deviceId, UserActionKeys.DeviceType:uaItems.deviceType, UserActionKeys.ActionDate:uaItems.actionDate as String, UserActionKeys.OsVersion:uaItems.osVersion, UserActionKeys.AppVersion:uaItems.appVersion, UserActionKeys.ActionType:uaItems.actionType, UserActionKeys.Comment:uaItems.comment]
     }
     func technicalLogItemsToDictionary(tLogItems: TechnicalLogItems) -> [String:String]
     {

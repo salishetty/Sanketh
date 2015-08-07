@@ -19,7 +19,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="TechnicalLog" representedClassName="PRODUCT_MODULE_NAME.TechnicalLog" syncable="YES">
+    <entity name="TechnicalLog" representedClassName="Headzup.TechnicalLog" syncable="YES">
         <attribute name="appVersion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="exception" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,7 +29,7 @@
         <attribute name="moduleName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="osVersion" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="UserActionLog" representedClassName="PRODUCT_MODULE_NAME.UserActionLog" syncable="YES">
+    <entity name="UserActionLog" representedClassName="Headzup.UserActionLog" syncable="YES">
         <attribute name="actionDateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="actionType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appVersion" optional="YES" attributeType="String" syncable="YES"/>

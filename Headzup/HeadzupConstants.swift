@@ -19,9 +19,16 @@ public struct MetaDataKeys{
     public static let MembershipUserID = "MembershipUserID"
     public static let SvcUrl = "SvcUrl"
 }
+public struct UserActions {
+    public static let Login = "1"
+    public static let Logout = "2"
+    public static let TrackData = "3"
+    public static let ViewHistory = "4"
+    public static let ViewStrategy = "5"
+}
 public struct UserActionKeys
 {
-    public static let UserID = "userID"
+    public static let MembershipUserID = "membershipUserID"
     public static let DeviceID = "deviceID"
     public static let DeviceType = "deviceType"
     public static let ActionDate = "actionDate"
