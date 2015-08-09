@@ -209,12 +209,15 @@ public class DataManager
     {
         let fetchRequest = NSFetchRequest(entityName: "Content")
         let contentIDsArray = contentIDs.componentsSeparatedByString(",")
-        var theContentArray:[Content]?
+        var theContentArray = [Content]()
+        
         var contentID:String?
         for var i = 0; i < contentIDsArray.count; i++ {
             contentID = contentIDsArray[i]
             
-            fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+            let fomattedContentID = NSNumberFormatter().numberFromString(contentID!)
+            var newContentID = fomattedContentID!.integerValue
+            fetchRequest.predicate = NSPredicate(format: "contentID == \"\(newContentID)\"")
             
             let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Content]
             
@@ -222,8 +225,8 @@ public class DataManager
             if (fetchResults?.count>0)
             {
                 theContent = fetchResults?[0]
-                
-                theContentArray?.append(theContent)
+                //Fill contentArray
+                theContentArray.append(theContent)
                 println("found Content: \(theContent?.contentName)")
             }
             else
@@ -234,6 +237,33 @@ public class DataManager
         }
         return theContentArray
     }
+    public func getCategoryByID(categoryID:Int)->Category?
+    {
+        var retVal = ""
+        // check if given Content exists
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Category]
+        
+        var theCategory:Category!
+        
+        if (fetchResults?.count>0)
+        {
+            theCategory = fetchResults?[0]
+            
+            retVal = theCategory.categoryName
+            println("found Category with Category Name: \(theCategory?.categoryName)->\(retVal)")
+        }
+        else
+        {
+            println("Cannot find matching Content for \(categoryID)")
+        }
+        
+        return theCategory
+        
+    }
+
     public func saveContentCategory(categoryID:Int, categoryName:String, contentIDs:String)
     {
         // check if given strategy exists

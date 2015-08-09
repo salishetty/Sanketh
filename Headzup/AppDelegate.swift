@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
         //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
 
-            dataMgr.saveContentCategory(1, categoryName: "View all", contentIDs: "101, 102, 103, 110")
+            dataMgr.saveContentCategory(1, categoryName: "View all", contentIDs: "101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115")
             dataMgr.saveContentCategory(2, categoryName: "Communicating about your pain", contentIDs: "104, 105, 103, 111")
             dataMgr.saveContentCategory(3, categoryName: "Eating better", contentIDs: "106, 107, 109, 112")
             dataMgr.saveContentCategory(4, categoryName: "Getting more active", contentIDs: "108, 109, 102, 113")

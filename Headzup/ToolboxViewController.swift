@@ -56,15 +56,21 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
-    
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
+        //Get the index of selected row
+        var indexOfSelectedCategory = 0
+        if let cell = sender as? UITableViewCell {
+             indexOfSelectedCategory = categoryTableView.indexPathForCell(cell)!.row
+        }
         // Pass the selected object to the new view controller.
+        let detailsScreen = segue.destinationViewController as! StrategyListTableViewController
+        detailsScreen.selectedCategory = (categoriesArray[indexOfSelectedCategory] as Category)
+        println("Selected Category:\(detailsScreen.selectedCategory?.categoryID)")
     }
-    */
+    
 
 }
