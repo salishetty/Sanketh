@@ -7,19 +7,35 @@
 //
 
 import UIKit
+import CoreData
 
 class StrategyListTableViewController: UITableViewController {
     
-    var strategiesArray = ["Strategy 1", "Strategy 2", "Strategy 3"]
-
+    //var strategiesArray = ["Strategy 1", "Strategy 2", "Strategy 3"]
+    var dataMgr: DataManager?
+    var strategiesArray:Array<Content> = []
+    var selectedCategory : Category?
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "[Category]"
+        // init data manager
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        
+        
+        var theCategory = dataMgr?.getCategoryByID(selectedCategory!.categoryID as! Int)
+        
+        var theContent = dataMgr?.getContentByIDs(theCategory!.contentIDs)
+        strategiesArray = theContent!
+        //Set Title to name of category
+        self.title = theCategory?.categoryName
         let backItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backItem
         
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        
+        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -52,7 +68,7 @@ class StrategyListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("strategyCell", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel?.text = self.strategiesArray[indexPath.row]
+        cell.textLabel?.text = self.strategiesArray[indexPath.row].contentName
 
         return cell
     }
