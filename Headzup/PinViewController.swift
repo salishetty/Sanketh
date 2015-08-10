@@ -111,7 +111,7 @@ func baseLoad()
 
     func validationSuccessful() {
         println("Validation Success!")
-        let pin = pinTF.text
+        let pin = pinTF.text.uppercaseString
         let token:String = CryptoUtility().generateSecurityToken() as String
        
         //Get login Url
@@ -122,15 +122,20 @@ func baseLoad()
             serviceMgr?.Login(["username":AppContext.membershipUserID, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
                 
                 if let parseJSON = jsonData {
-                    var status = parseJSON["Status"] as? Int
-                    if(status == 1)
+                    var status = parseJSON["Status"] as? String
+                    if(status == "1")
                     {
-                            self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
+                        self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
                             AppContext.loginStatus = LoginStatus.LoggedIn
                             self.dataMgr?.saveUserActionLog(UserActions.Login, actionDateTime: NSDate(), contentID: "", comment: "Login", isSynched: false)
                             self.loadViewController("TabView")
+                        }
+                        else
+                        {
+                            self.loadViewController("TabView", tabIndex: 1)
+                        }
                     }
-                    else if(status == 2)
+                    else if(status == "2")
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
