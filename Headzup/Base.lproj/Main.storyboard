@@ -402,8 +402,8 @@
                                     <action selector="Logout:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="Ctf-um-6Pw"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaj-0F-bwp">
-                                <rect key="frame" x="16" y="74" width="156" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaj-0F-bwp">
+                                <rect key="frame" x="222" y="95" width="156" height="30"/>
                                 <state key="normal" title="Stop Notification">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -411,17 +411,8 @@
                                     <action selector="NotificationOff:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="CQl-fg-f5V"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-KB-HKN">
-                                <rect key="frame" x="16" y="20" width="156" height="30"/>
-                                <state key="normal" title="Start Notification">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="NotificationOn:" destination="50W-Pf-3Ev" eventType="touchDown" id="BsJ-sz-e4x"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuM-Lg-ERl">
-                                <rect key="frame" x="385" y="20" width="118" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuM-Lg-ERl">
+                                <rect key="frame" x="246" y="170" width="118" height="30"/>
                                 <state key="normal" title="Synch Tech Logs">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -429,14 +420,29 @@
                                     <action selector="SynchTechLogs:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="gGj-jU-HUN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-KB-HKN">
+                                <rect key="frame" x="222" y="20" width="156" height="30"/>
+                                <state key="normal" title="Start Notification">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="NotificationOn:" destination="50W-Pf-3Ev" eventType="touchDown" id="BsJ-sz-e4x"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YYU-2u-yKt" firstAttribute="top" secondItem="NrM-su-AWJ" secondAttribute="bottom" constant="-307" id="7pF-9T-1AB"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="W1o-KB-HKN" secondAttribute="bottom" constant="-50" id="8D7-kp-3Ue"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="leading" secondItem="Qcc-RT-qXe" secondAttribute="leadingMargin" constant="-16" id="8yM-dl-AQc"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="bottom" secondItem="Qcc-RT-qXe" secondAttribute="bottomMargin" id="DKs-kr-TbJ"/>
+                            <constraint firstItem="IuM-Lg-ERl" firstAttribute="centerX" secondItem="NrM-su-AWJ" secondAttribute="centerX" constant="5" id="Nue-Sc-IgM"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="zaj-0F-bwp" secondAttribute="bottom" constant="-125" id="PPD-D1-5id"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="IuM-Lg-ERl" secondAttribute="bottom" constant="-200" id="QzW-84-cAn"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="YYU-2u-yKt" secondAttribute="centerX" constant="-5" id="RXq-xO-Ovp"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="zaj-0F-bwp" secondAttribute="centerX" id="Zn0-G2-FvF"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="Qcc-RT-qXe" secondAttribute="topMargin" id="mud-bO-fXB"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="W1o-KB-HKN" secondAttribute="centerX" id="qFI-w3-5TV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="NrM-su-AWJ" secondAttribute="trailing" constant="-16" id="rKQ-St-7ds"/>
                         </constraints>
                     </view>
