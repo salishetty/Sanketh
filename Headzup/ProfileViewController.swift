@@ -110,6 +110,13 @@ class ProfileViewController: UIViewController {
     }
     */
     
+    
+    @IBAction func AddTechLogs(sender: UIButton) {
+        var gHelpers = GeneralHelper()
+        
+        dataMgr?.saveTechnicalLog("Some Kind of Message", exception: "Some Kind of Exception", moduleName: "Login", eventDate: gHelpers.convertDateToString(NSDate()), appVersion: "1.0", osversion: "8.3", logLevel: "Error", isSynched: false)
+    }
+    
    //TEMPORARY - TO BE MOVED LATER
     @IBAction func SynchTechLogs(sender: UIButton) {
         //Synch TechnicalLog
