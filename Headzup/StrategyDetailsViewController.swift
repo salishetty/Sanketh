@@ -10,6 +10,8 @@ import UIKit
 
 class StrategyDetailsViewController: UIViewController {
 
+    @IBOutlet weak var strategyDetailsTV: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
