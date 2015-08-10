@@ -127,6 +127,7 @@ func baseLoad()
                     {
                             self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
                             AppContext.loginStatus = LoginStatus.LoggedIn
+                            self.dataMgr?.saveUserActionLog(UserActions.Login, actionDateTime: NSDate(), contentID: "", comment: "Login", isSynched: false)
                             self.loadViewController("TabView")
                     }
                     else if(status == 2)
