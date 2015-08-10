@@ -110,6 +110,10 @@ class ProfileViewController: UIViewController {
     }
     */
     
+    
+    @IBAction func AddTechLogs(sender: UIButton) {
+    }
+    
    //TEMPORARY - TO BE MOVED LATER
     @IBAction func SynchTechLogs(sender: UIButton) {
         //Synch TechnicalLog
