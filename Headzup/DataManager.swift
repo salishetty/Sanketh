@@ -350,6 +350,24 @@ public class DataManager
         return r
     }
 
+    public func saveTechnicalLog(message:String, exception:String, moduleName:String, eventDate:String, appVersion:String, osversion:String, logLevel:String, isSynched:Bool)
+    {
+        var theTechLogData = NSEntityDescription.insertNewObjectForEntityForName("TechnicalLog", inManagedObjectContext: dbContext) as! TechnicalLog
+        theTechLogData.message = message
+        theTechLogData.exception = exception
+        theTechLogData.moduleName = moduleName
+        theTechLogData.eventDate = eventDate
+        theTechLogData.osVersion = UIDevice.currentDevice().systemVersion
+        theTechLogData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+        theTechLogData.logLevel = logLevel
+        
+        
+        
+        theTechLogData.isSynched = isSynched
+        //save to coredata
+        dbContext.save(nil)
+        println("TechnicalLog saved)")
+    }
     public func getTechnicalLogs(max:Int)-> [TechnicalLog]?
     {
         let fetchRequest = NSFetchRequest(entityName: "TechnicalLog")
