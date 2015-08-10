@@ -109,14 +109,21 @@ class StrategyListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        var indexOfSelectedStrategy = 0
+        if let cell = sender as? UITableViewCell {
+            indexOfSelectedStrategy = tableView.indexPathForCell(cell)!.row
+        }
+        let detailsScreen = segue.destinationViewController as! StrategyDetailsViewController
+        detailsScreen.selectedStrategy = (strategiesArray[indexOfSelectedStrategy] as Content)
+        println("Selected Category:\(detailsScreen.selectedStrategy!.contentID)")
     }
-    */
+    
 
 }

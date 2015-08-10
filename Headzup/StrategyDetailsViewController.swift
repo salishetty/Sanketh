@@ -7,14 +7,28 @@
 //
 
 import UIKit
+import CoreData
 
 class StrategyDetailsViewController: UIViewController {
 
+    @IBOutlet weak var strategyDetailTV: UITextView!
+    var dataMgr: DataManager?
+    var strategiesArray:Array<Content> = []
+    var selectedStrategy : Content?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "[Strategy Name]"
+        // init data manager
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        var theContent = dataMgr?.getContentByID(selectedStrategy!.contentID as! Int)
+        self.title = theContent?.contentName //"[Strategy Name]"
+        self.strategyDetailTV.text = theContent?.contentValue
         
+        //UserActionTracking - ViewStrategy
+        self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
         // Do any additional setup after loading the view.
     }
 
