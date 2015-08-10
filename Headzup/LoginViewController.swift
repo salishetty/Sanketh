@@ -117,7 +117,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     func validationSuccessful() {
         println("Validation Success!")
         let pin = pinTF.text
-        var phoneNumber:String = phoneNumberTF.text
+        var phoneNumber:String = phoneNumberTF.text.uppercaseString
         let token:String = CryptoUtility().generateSecurityToken() as String
         phoneNumber = phoneNumberTF.text
         //Get login Url

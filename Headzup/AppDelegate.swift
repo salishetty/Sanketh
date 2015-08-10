@@ -11,7 +11,7 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     func appInit() {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -34,10 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
         AppContext.svcUrl = env
         
+        // Set login Status from Database
+        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+        
+        
         AppContext.categories = dataMgr.getAllcategories()
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
-        //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
-
+            //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
+            
             dataMgr.saveContentCategory(1, categoryName: "View all", contentIDs: "101, 102, 103, 110")
             dataMgr.saveContentCategory(2, categoryName: "Communicating about your pain", contentIDs: "104, 105, 103, 111")
             dataMgr.saveContentCategory(3, categoryName: "Eating better", contentIDs: "106, 107, 109, 112")
@@ -61,7 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dataMgr.saveContent(113, contentName: "Spike Your Water", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
             dataMgr.saveContent(114, contentName: "Time and Timer Again", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
             dataMgr.saveContent(115, contentName: "Update Your Water (H20 2.0)", contentDescription: "", contentValue: "", contentType: "", imagePath: "", audioPath: "")
-            
             AppContext.categories = dataMgr.getAllcategories()
         }
     }
@@ -84,45 +87,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister as [NSObject : AnyObject]);
     }
-
+    
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         appInit()
         //Enable notification on the application.
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Alert | .Badge | .Sound, categories: nil))  // types are UIUserNotificationType members
+        
+        //App Launched from Notification
+        let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
+        if (notification != nil) {
+            if notification.category == NotificationConstants.GoalCategory {
+                AppContext.currentView = "GoalView"
+            }
+        }
         return true
     }
-
     
     
-//    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-//        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
-//        {
-//            //opened from a local notification when the app was on background
-//        application.applicationIconBadgeNumber = 0
-//        if notification.category! == NotificationConstants.GoalCategory {
-//            let tabController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController;
-//            NavigationHelper.AuthanticateAndNavigate(tabController, tagetView: "TabView", targetID: 1)
-//            }
-//        if notification.category == NotificationConstants.TrackerCategory {
-//            let tabController = self.window?.rootViewController?.storyboard!.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController;
-//            tabController.selectedIndex = 1
-//        }
-//        }
-//
-//    }
+    
+        func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+            if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+            {
+                //opened from a local notification when the app was on background
+            application.applicationIconBadgeNumber = 0
+            if notification.category! == NotificationConstants.GoalCategory {
+                 AppContext.currentView = "GoalView"
+                }
+            if notification.category == NotificationConstants.TrackerCategory {
+                 AppContext.currentView = "GoalView"
+            }
+            }
+    
+        }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(application: UIApplication) {
-         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         appInit()
@@ -140,35 +149,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         }
     }
-
+    
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
-
+    
     // MARK: - Core Data stack
-
+    
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.inflexxion.Headzup" in the application's documents Application Support directory.
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         NSLog("\(paths[0])")
-
+        
         
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1] as! NSURL
-    }()
-
+        }()
+    
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("Headzup", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
-    }()
-
+        }()
+    
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
@@ -191,8 +200,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return coordinator
-    }()
-
+        }()
+    
     lazy var managedObjectContext: NSManagedObjectContext? = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
@@ -202,10 +211,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var managedObjectContext = NSManagedObjectContext()
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-    }()
-
+        }()
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
@@ -217,6 +226,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
 }
 
