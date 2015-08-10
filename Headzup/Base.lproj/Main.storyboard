@@ -429,17 +429,28 @@
                                     <action selector="NotificationOn:" destination="50W-Pf-3Ev" eventType="touchDown" id="BsJ-sz-e4x"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qye-f2-u0S">
+                                <rect key="frame" x="249" y="133" width="103" height="30"/>
+                                <state key="normal" title="Add Tech Logs">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="AddTechLogs:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="GWu-xS-JVD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="YYU-2u-yKt" firstAttribute="top" secondItem="NrM-su-AWJ" secondAttribute="bottom" constant="-307" id="7pF-9T-1AB"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="W1o-KB-HKN" secondAttribute="bottom" constant="-50" id="8D7-kp-3Ue"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="leading" secondItem="Qcc-RT-qXe" secondAttribute="leadingMargin" constant="-16" id="8yM-dl-AQc"/>
+                            <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="qye-f2-u0S" secondAttribute="bottom" constant="-163" id="C2o-OC-Cm2"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="bottom" secondItem="Qcc-RT-qXe" secondAttribute="bottomMargin" id="DKs-kr-TbJ"/>
                             <constraint firstItem="IuM-Lg-ERl" firstAttribute="centerX" secondItem="NrM-su-AWJ" secondAttribute="centerX" constant="5" id="Nue-Sc-IgM"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="zaj-0F-bwp" secondAttribute="bottom" constant="-125" id="PPD-D1-5id"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="IuM-Lg-ERl" secondAttribute="bottom" constant="-200" id="QzW-84-cAn"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="YYU-2u-yKt" secondAttribute="centerX" constant="-5" id="RXq-xO-Ovp"/>
+                            <constraint firstItem="qye-f2-u0S" firstAttribute="centerX" secondItem="NrM-su-AWJ" secondAttribute="centerX" constant="0.5" id="YsD-Yo-vNS"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="zaj-0F-bwp" secondAttribute="centerX" id="Zn0-G2-FvF"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="Qcc-RT-qXe" secondAttribute="topMargin" id="mud-bO-fXB"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="centerX" secondItem="W1o-KB-HKN" secondAttribute="centerX" id="qFI-w3-5TV"/>
