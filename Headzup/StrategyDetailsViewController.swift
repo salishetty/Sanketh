@@ -11,7 +11,7 @@ import CoreData
 
 class StrategyDetailsViewController: UIViewController {
 
-    @IBOutlet weak var strategyDetailTV: UITextView!
+    @IBOutlet weak var strategyDetailsTV: UITextView!
     var dataMgr: DataManager?
     var strategiesArray:Array<Content> = []
     var selectedStrategy : Content?
@@ -25,7 +25,7 @@ class StrategyDetailsViewController: UIViewController {
         dataMgr = DataManager(objContext: manObjContext)
         var theContent = dataMgr?.getContentByID(selectedStrategy!.contentID as! Int)
         self.title = theContent?.contentName //"[Strategy Name]"
-        self.strategyDetailTV.text = theContent?.contentValue
+        self.strategyDetailsTV.text = theContent?.contentValue
         
         //UserActionTracking - ViewStrategy
         self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
