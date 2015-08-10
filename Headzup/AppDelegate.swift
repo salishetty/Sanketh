@@ -108,20 +108,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-//        func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-//            if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
-//            {
-//                //opened from a local notification when the app was on background
-//            application.applicationIconBadgeNumber = 0
-//            if notification.category! == NotificationConstants.GoalCategory {
-//                 AppContext.currentView = "GoalView"
-//                }
-//            if notification.category == NotificationConstants.TrackerCategory {
-//                 AppContext.currentView = "GoalView"
-//            }
-//            }
-//    
-//        }
+        func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+            application.applicationIconBadgeNumber = 0
+            if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+            {
+                //opened from a local notification when the app was on background
+            
+            if notification.category! == NotificationConstants.GoalCategory {
+                 AppContext.currentView = "GoalView"
+                }
+            if notification.category == NotificationConstants.TrackerCategory {
+                 AppContext.currentView = "GoalView"
+            }
+            }
+    
+        }
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
