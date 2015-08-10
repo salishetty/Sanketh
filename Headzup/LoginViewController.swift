@@ -145,6 +145,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                             
                             self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID!, isSecured: true)
                             AppContext.membershipUserID = memberhipUserID!
+                            self.dataMgr?.saveUserActionLog(UserActions.Login, actionDateTime: NSDate(), contentID: "", comment: "Login", isSynched: false)
                        // }
                         self.loadViewController("TabView",tabIndex:1)
                     }

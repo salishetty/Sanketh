@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
         var uInfo = AppContext.getUserInfo()
         var deviceId = uInfo.deviceId
         var deviceType = uInfo.deviceType
-        var userId = uInfo.userId
+        var membershipUserID = uInfo.membershipUserID
         
         var dict = Dictionary<String, String>()
         var uaItemsArray = [String:Dictionary<String, String>]()
@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
             for userAction in userActions
             {
                 
-                var uaItems = UserActionItems(userId: userId, deviceId: deviceId, deviceType: deviceType, actionDate: gHelpers.convertDateToString(userAction.actionDateTime), osVersion: userAction.osVersion, appVersion: userAction.appVersion, actionType: userAction.actionType, comment:userAction.comment)
+                var uaItems = UserActionItems(membershipUserID: membershipUserID, deviceId: deviceId, deviceType: deviceType, actionDate: gHelpers.convertDateToString(userAction.actionDateTime), osVersion: userAction.osVersion, appVersion: userAction.appVersion, actionType: userAction.actionType, comment:userAction.comment)
                 dict = gHelpers.userActionItemsToDictionary(uaItems)
                 uaItemsArray[UserActionKeys.UserActionItem+String(index)] = dict
                 
@@ -96,7 +96,7 @@ class ProfileViewController: UIViewController {
         AppContext.loginStatus = LoginStatus.LoggedOut
         
         //TO BE REMOVED
-        //self.dataMgr?.saveUserActionLog(UserActions.Logout, actionDateTime: NSDate(), contentID: "", comment: "Logout", isSynched: false)
+        self.dataMgr?.saveUserActionLog(UserActions.Logout, actionDateTime: NSDate(), contentID: "", comment: "Logout", isSynched: false)
         
         self.loadViewController("PinView")
      }
