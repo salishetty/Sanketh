@@ -1,0 +1,24 @@
+//
+//  FavoriteItemsDTO.swift
+//  Headzup
+//
+//  Created by Abebe Woreta on 8/11/15.
+//  Copyright (c) 2015 Inflexxion. All rights reserved.
+//
+
+import Foundation
+
+public class FavoriteItems
+{
+    var userId:String
+    var groupType:NSNumber
+    var contentID:NSNumber
+    var isActive:String
+    init(userId:String, groupType:NSNumber, contentID:NSNumber, isActive:String)
+    {
+        self.userId = userId
+        self.groupType = groupType
+        self.contentID = contentID
+        self.isActive = isActive
+    }
+}
