@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppContext.categories = dataMgr.getAllcategories()
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
-        //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
-
+            //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
+            
             dataMgr.saveContentCategory(1, categoryName: "View all", contentIDs: "101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115")
             dataMgr.saveContentCategory(2, categoryName: "Communicating about your pain", contentIDs: "104, 105, 103, 111")
             dataMgr.saveContentCategory(3, categoryName: "Eating better", contentIDs: "106, 107, 109, 112")
@@ -93,8 +93,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         appInit()
-        //Enable notification on the application.
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: .Alert | .Badge | .Sound, categories: nil))  // types are UIUserNotificationType members
+        
+        NotificationHelper.SetupTrackerNotification(application)
+        
         
         //App Launched from Notification
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
@@ -106,23 +107,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    //Notification Section
     
-    
-        func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-            application.applicationIconBadgeNumber = 0
-            if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
-            {
-                //opened from a local notification when the app was on background
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        application.applicationIconBadgeNumber = 0
+        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+        {
+            //opened from a local notification when the app was on background
             
             if notification.category! == NotificationConstants.GoalCategory {
-                 AppContext.currentView = "GoalView"
-                }
+                AppContext.currentView = "GoalView"
+            }
             if notification.category == NotificationConstants.TrackerCategory {
-                 AppContext.currentView = "GoalView"
+                AppContext.currentView = "GoalView"
             }
-            }
-    
         }
+        
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        
+        switch (identifier!) {
+        case NotificationConstants.GoalComplete:
+            println("Error: unexpected notification action identifier!")
+        case NotificationConstants.TrackerComplete:
+            println("Error: unexpected notification action identifier!")
+        default: // switch statements must be exhaustive - this condition should never be met
+            println("Error: unexpected notification action identifier!")
+        }
+        completionHandler() // per developer documentation, app will terminate if we fail to call this
+    }
+    
+    //Notification Section Ends
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

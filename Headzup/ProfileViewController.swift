@@ -83,7 +83,9 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func NotificationOn(sender: UIButton) {
-        NotificationHelper.EnableGoalNotifcation();
+        
+        var date = NSDate()
+        NotificationHelper.EnableTrackerNotifcation(date);
         
     }
     @IBAction func NotificationOff(sender: UIButton) {
