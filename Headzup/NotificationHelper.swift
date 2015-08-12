@@ -20,14 +20,13 @@ public struct NotificationConstants {
 
 public class NotificationHelper
 {
-    static func EnableGoalNotifcation()
+    static func EnableGoalNotifcation(datetime:NSDate)
     {
         var goalNotification: UILocalNotification = UILocalNotification()
         goalNotification.alertBody = "Your goal is overdue"
         goalNotification.alertAction = "Daily Challenge"
-        
-        let date = NSDate()
-        goalNotification.fireDate = date
+       
+        goalNotification.fireDate = datetime
         
         goalNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         goalNotification.category = NotificationConstants.GoalCategory

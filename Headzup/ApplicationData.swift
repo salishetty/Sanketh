@@ -26,6 +26,7 @@ public class AppContext {
     public static var userInfo = UserInfo()
     public static var categories:[Category]?
     public static var svcUrl = ""
+    public static var currentView = "HomeView"
     
     //public static func
     

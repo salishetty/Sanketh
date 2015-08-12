@@ -14,6 +14,12 @@
         <attribute name="contentValue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imagePath" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ContentGroup" representedClassName="Headzup.ContentGroup" syncable="YES">
+        <attribute name="contentID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dateModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="groupType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="isActive" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <entity name="MetaData" representedClassName="Headzup.MetaData" syncable="YES">
         <attribute name="isSecured" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,5 +50,6 @@
         <element name="MetaData" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="TechnicalLog" positionX="-45" positionY="54" width="128" height="165"/>
         <element name="UserActionLog" positionX="-36" positionY="99" width="128" height="150"/>
+        <element name="ContentGroup" positionX="-45" positionY="90" width="128" height="105"/>
     </elements>
 </model>

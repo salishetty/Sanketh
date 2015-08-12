@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 class StrategyDetailsViewController: UIViewController {
 
@@ -15,6 +16,10 @@ class StrategyDetailsViewController: UIViewController {
     var dataMgr: DataManager?
     var strategiesArray:Array<Content> = []
     var selectedStrategy : Content?
+    
+    //Audio Player
+    var audioPlayer = AVPlayer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +35,12 @@ class StrategyDetailsViewController: UIViewController {
         //UserActionTracking - ViewStrategy
         self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
         // Do any additional setup after loading the view.
+        
+        
+        let url = theContent?.audioPath
+        let playerItem = AVPlayerItem( URL:NSURL( string:url! ) )
+        audioPlayer = AVPlayer(playerItem:playerItem)
+        
     }
 
     override func didReceiveMemoryWarning() {
