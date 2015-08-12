@@ -49,6 +49,7 @@ class StrategyDetailsViewController: UIViewController {
     }
     
 
+    @IBOutlet weak var addToFavorites: UIButton!
     @IBAction func AddToFavorites(sender: UIButton) {
     }
 
