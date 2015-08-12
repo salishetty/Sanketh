@@ -16,4 +16,7 @@ public class ContentGroup: NSManagedObject {
     @NSManaged var groupType: NSNumber
     @NSManaged var isActive: NSNumber
 
+    public func toString() -> String {
+        return "- contentGroup: \(groupType), \(contentID)"
+    }
 }

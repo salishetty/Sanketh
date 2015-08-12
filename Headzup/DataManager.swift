@@ -453,5 +453,39 @@ public class DataManager
         
         return theContentGroup
     }
+    public func getContentGroups(max: Int) -> [ContentGroup]? {
+        var gHelpers = GeneralHelper()
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        
+        let synchDate = getMetaDataValue("SynchDate")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) user action logs: \n"
+        var m:ContentGroup!
+        
+        var r = [ContentGroup]()
+        if synchDate != ""
+        {
+            for var i = 0; i < c; i++ {
+                m = fetchResults?[i]
+                //Do comparison using extension methods
+                if m.dateModified.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
+                {
+                    r.append(m)
+                }
+                s += m.toString() + "\n"
+            }
+        }
+        else
+        {
+            r = fetchResults!
+        }
+        println("\(s)")
+        
+        return r
+    }
 
 }
