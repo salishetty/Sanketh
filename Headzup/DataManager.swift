@@ -405,4 +405,53 @@ public class DataManager
         dbContext.deleteObject(technicalLog)
     }
 
+    public func saveContentGroup(groupType:NSNumber, dateModified:NSDate, contentID:NSNumber, isActive:Bool)
+    {
+        // check if given ContentGroup exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        
+        var theContentGroup:ContentGroup!
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            println("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            println("Creating new ContentGroup: \(contentID)")
+            theContentGroup = NSEntityDescription.insertNewObjectForEntityForName("ContentGroup", inManagedObjectContext: dbContext) as! ContentGroup
+        }
+        theContentGroup.groupType = groupType
+        theContentGroup.contentID = contentID
+        theContentGroup.isActive = isActive
+        theContentGroup.dateModified = dateModified
+        //save to coredata
+        dbContext.save(nil)
+        println("ContentGroup saved)")
+    }
+    public func deleteContentGroup(contentID:NSNumber)
+    {
+        var contentGroup:NSManagedObject = getContentGroup(contentID)!
+        //Delete from contentGroup object
+        dbContext.deleteObject(contentGroup)
+    }
+    public func getContentGroup(contentID:NSNumber)->ContentGroup?
+    {
+        
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        
+        var theContentGroup:ContentGroup!
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            println("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            println("No ContentGroup Found with a matching record for ContentID:\(contentID)")
+        }
+        
+        return theContentGroup
+    }
+
 }
