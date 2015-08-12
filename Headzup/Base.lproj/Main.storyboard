@@ -677,9 +677,6 @@
                                 <state key="normal" title="Add to Favorites">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="AddToFavorites:" destination="7WF-Xp-2y5" eventType="touchUpInside" id="XZY-TF-0FD"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ2-5B-C0i">
                                 <rect key="frame" x="260" y="344" width="80" height="30"/>
@@ -699,6 +696,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addToFavorites" destination="nxj-RE-Cks" id="Pji-Ni-0Pw"/>
                         <outlet property="strategyDetailsTV" destination="OSD-du-KIR" id="q3O-AH-DSe"/>
                     </connections>
                 </viewController>
