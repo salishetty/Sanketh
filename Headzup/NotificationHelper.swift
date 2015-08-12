@@ -26,17 +26,17 @@ public class NotificationHelper
         var trackerNotification: UILocalNotification = UILocalNotification()
         trackerNotification.alertBody = "Please update tracker"
         trackerNotification.alertAction = "Daily Tracker"
-        
         trackerNotification.fireDate = datetime
         
         trackerNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
-        trackerNotification.category = NotificationConstants.GoalCategory
+        trackerNotification.category = NotificationConstants.TrackerCategory
+        
         //goalNotification.userInfo = ["View": NotificationConstants.GoalView]
+        
         trackerNotification.timeZone = NSTimeZone.defaultTimeZone()
         trackerNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
         
         UIApplication.sharedApplication().scheduleLocalNotification(trackerNotification)
-        
         
     }
     
