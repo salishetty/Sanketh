@@ -49,6 +49,14 @@ class StrategyDetailsViewController: UIViewController {
     }
     
 
+    @IBAction func AddToFavorites(sender: UIButton) {
+    }
+
+    
+    @IBAction func SetAsGoal(sender: UIButton) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 
