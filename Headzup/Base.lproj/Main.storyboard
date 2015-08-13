@@ -647,6 +647,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="categoryTableView" destination="sLL-8p-f5K" id="KYO-tl-pFr"/>
+                        <outlet property="favoriteTableView" destination="qdq-bP-gCN" id="3TF-pK-YL1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSN-3M-ay8" userLabel="First Responder" sceneMemberID="firstResponder"/>

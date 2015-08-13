@@ -12,6 +12,7 @@ import CoreData
 class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var categoryTableView: UITableView!
+    @IBOutlet weak var favoriteTableView: UITableView!
     
     //var categoriesArray = ["View all", "Communicating about your pain", "Eating better", "Getting more active", "Managing your time", "Relaxing", "Sleeping better"]
     
