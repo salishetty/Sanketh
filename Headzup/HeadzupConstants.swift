@@ -49,3 +49,8 @@ public struct TechnicalLogKeys
     public static let OSVersion = "OSVersion"
     public static let LogLevel = "LogLevel"
 }
+public struct GroupType
+{
+    public static let Favorite = "1"
+    public static let OMG = "2"
+}
