@@ -35,7 +35,19 @@ class StrategyDetailsViewController: UIViewController {
         //UserActionTracking - ViewStrategy
         self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
         // Do any additional setup after loading the view.
+        var theContentGroup = dataMgr?.getContentGroup(selectedStrategy!.contentID)
         
+        if (theContentGroup?.isActive == 1)
+        {
+            addToFavorites.setTitle("Remove from Favorites", forState: UIControlState.Normal)
+            addToFavorites.addTarget(self, action: "RemoveFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+        else
+        {
+            addToFavorites.setTitle("Add to Favorites", forState: UIControlState.Normal)
+            addToFavorites.addTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
+
         
         let url = theContent?.audioPath
         let playerItem = AVPlayerItem( URL:NSURL( string:url! ) )
@@ -49,13 +61,34 @@ class StrategyDetailsViewController: UIViewController {
     }
     
 
-    @IBAction func AddToFavorites(sender: UIButton) {
-    }
+    @IBOutlet weak var addToFavorites: UIButton!
+    /*@IBAction func AddToFavorites(sender: UIButton) {
+    }*/
 
     
     @IBAction func SetAsGoal(sender: UIButton) {
     }
     
+    func AddToFavorites(sender:UIButton!) {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        var groupType = formatter.numberFromString(GroupType.Favorite)
+        var todayDate = NSDate()
+        dataMgr?.saveContentGroup(groupType!, dateModified: todayDate, contentID: selectedStrategy!.contentID, isActive: true)
+        addToFavorites.removeTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.viewDidLoad()
+    }
+    
+    func RemoveFavorites(sender:UIButton!) {
+        let formatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+        var groupType = formatter.numberFromString(GroupType.Favorite)
+        var todayDate = NSDate()
+        dataMgr?.saveContentGroup(groupType!, dateModified: todayDate, contentID: selectedStrategy!.contentID, isActive: false)
+        addToFavorites.removeTarget(self, action: "RemoveFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
+        self.viewDidLoad()
+    }
+
     
     /*
     // MARK: - Navigation
