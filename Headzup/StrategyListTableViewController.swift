@@ -39,7 +39,7 @@ class StrategyListTableViewController: UITableViewController {
         }
         else
         {
-            let favorites:[ContentGroup] = dataMgr!.getContentGroups(0)!
+            let favorites:[ContentGroup] = dataMgr!.getFavoritedContents()!
             if favorites.count > 0
             {
                 for favoriteItem in favorites
