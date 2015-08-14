@@ -571,7 +571,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qNs-k6-CPn" kind="show" id="TrV-85-Nub"/>
+                                            <segue destination="qNs-k6-CPn" kind="show" identifier="categoriesInfo" id="TrV-85-Nub"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -581,18 +581,56 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Browse by category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRt-6U-mTL">
-                                <rect key="frame" x="16" y="104" width="568" height="21"/>
+                                <rect key="frame" x="16" y="104" width="568" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qdq-bP-gCN">
+                                <rect key="frame" x="0.0" y="20" width="600" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="L0d-Sp-0sM"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="favoriteCell" textLabel="7RY-vX-VUh" imageView="8ew-Gf-4Ab" style="IBUITableViewCellStyleDefault" id="NOb-Gu-4TC">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NOb-Gu-4TC" id="tRh-ze-5fW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7RY-vX-VUh">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="u4" id="8ew-Gf-4Ab">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="qNs-k6-CPn" kind="show" identifier="favoritesInfo" id="b7f-tK-jp8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eTU-u7-jjR" id="1nv-FW-TFm"/>
+                                    <outlet property="delegate" destination="eTU-u7-jjR" id="Fhk-rd-U7m"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uGq-jc-VBd" firstAttribute="leading" secondItem="KaS-iv-pvR" secondAttribute="leadingMargin" constant="-16" id="9c7-3e-fg9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qdq-bP-gCN" secondAttribute="trailing" constant="-16" id="ANp-Ag-oge"/>
                             <constraint firstItem="uGq-jc-VBd" firstAttribute="top" secondItem="KaS-iv-pvR" secondAttribute="topMargin" id="FFd-qM-4AS"/>
+                            <constraint firstItem="qdq-bP-gCN" firstAttribute="top" secondItem="eeo-4s-EaL" secondAttribute="bottom" constant="20" id="Jkh-y1-dDA"/>
+                            <constraint firstItem="RRt-6U-mTL" firstAttribute="top" secondItem="qdq-bP-gCN" secondAttribute="bottom" constant="19" id="M0S-ft-chm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sLL-8p-f5K" secondAttribute="trailing" constant="-16" id="Tlg-cu-gEk"/>
                             <constraint firstItem="sLL-8p-f5K" firstAttribute="trailing" secondItem="RRt-6U-mTL" secondAttribute="trailing" constant="16" id="W5a-Uj-t6E"/>
+                            <constraint firstItem="qdq-bP-gCN" firstAttribute="leading" secondItem="KaS-iv-pvR" secondAttribute="leadingMargin" constant="-16" id="aIq-Pg-ENc"/>
                             <constraint firstItem="sLL-8p-f5K" firstAttribute="leading" secondItem="KaS-iv-pvR" secondAttribute="leadingMargin" constant="-16" id="iId-In-mMX"/>
                             <constraint firstItem="sLL-8p-f5K" firstAttribute="top" secondItem="uGq-jc-VBd" secondAttribute="bottom" constant="-354" id="mHw-mP-180"/>
                             <constraint firstItem="sLL-8p-f5K" firstAttribute="leading" secondItem="RRt-6U-mTL" secondAttribute="leading" constant="-16" id="meD-Dn-rP1"/>
@@ -601,6 +639,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="uGq-jc-VBd" secondAttribute="trailing" constant="-16" id="tvs-yM-N0n"/>
                             <constraint firstItem="uGq-jc-VBd" firstAttribute="bottom" secondItem="KaS-iv-pvR" secondAttribute="bottomMargin" id="xvM-vi-pIO"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="mHw-mP-180"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Toolbox" id="hya-GH-6rx">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Zl8-IO-S4R"/>
@@ -608,6 +651,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="categoryTableView" destination="sLL-8p-f5K" id="KYO-tl-pFr"/>
+                        <outlet property="favoriteTableView" destination="qdq-bP-gCN" id="AIJ-Q6-GB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSN-3M-ay8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -797,5 +841,9 @@
         <image name="tab-icon-Account" width="15" height="15"/>
         <image name="tab-icon-Home" width="15" height="15"/>
         <image name="tab-icon-Tools" width="15" height="15"/>
+        <image name="u4" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="b7f-tK-jp8"/>
+    </inferredMetricsTieBreakers>
 </document>

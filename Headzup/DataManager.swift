@@ -463,7 +463,7 @@ public class DataManager
         
         var c: Int! = fetchResults?.count
         
-        var s = "found \(c) user action logs: \n"
+        var s = "found \(c) content groups: \n"
         var m:ContentGroup!
         
         var r = [ContentGroup]()
@@ -485,6 +485,27 @@ public class DataManager
         }
         println("\(s)")
         
+        return r
+    }
+    
+    public func getFavoritedContents() -> [ContentGroup]?
+    {
+        var gHelpers = GeneralHelper()
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) Favorited contents: \n"
+        var m:ContentGroup!
+        var r = [ContentGroup]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            if m.isActive == 1
+            {
+                r.append(m)
+            }
+        }
         return r
     }
 

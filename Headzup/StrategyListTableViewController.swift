@@ -18,25 +18,38 @@ class StrategyListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
+        
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+
         // init data manager
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
         
-        
-        var theCategory = dataMgr?.getCategoryByID(selectedCategory!.categoryID as! Int)
-        
-        var theContent = dataMgr?.getContentByIDs(theCategory!.contentIDs)
-        strategiesArray = theContent!
-        //Set Title to name of category
-        self.title = theCategory?.categoryName
-        let backItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem = backItem
-        
-        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
-        
-        
-        
+        if (selectedCategory != nil)
+        {
+            var theCategory = dataMgr?.getCategoryByID(selectedCategory!.categoryID as! Int)
+            
+            var theContent = dataMgr?.getContentByIDs(theCategory!.contentIDs)
+            strategiesArray = theContent!
+            //Set Title to name of category
+            self.title = theCategory?.categoryName
+        }
+        else
+        {
+            let favorites:[ContentGroup] = dataMgr!.getFavoritedContents()!
+            if favorites.count > 0
+            {
+                for favoriteItem in favorites
+                {
+                    var theContent = dataMgr?.getContentByID(favoriteItem.contentID as! Int)
+                    strategiesArray.append(theContent!)
+                }
+            }
+            self.title = "My Favorites"
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
