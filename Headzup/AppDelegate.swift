@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appInit()
         
         NotificationHelper.SetupTrackerNotification(application)
-        
+        NotificationHelper.SetupGoalNotification(application)
         
         //App Launched from Notification
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!

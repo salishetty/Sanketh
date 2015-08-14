@@ -84,12 +84,13 @@ class ProfileViewController: UIViewController {
     
     @IBAction func NotificationOn(sender: UIButton) {
         
-        var date = NSDate()
+        let date = NSDate()
         NotificationHelper.EnableTrackerNotifcation(date);
         
     }
     @IBAction func NotificationOff(sender: UIButton) {
        
+        NotificationHelper.DisableNotification(NotificationConstants.TrackerName)
     }
 
     @IBAction func Logout(sender: UIButton) {
