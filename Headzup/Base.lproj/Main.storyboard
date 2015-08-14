@@ -571,7 +571,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qNs-k6-CPn" kind="show" id="TrV-85-Nub"/>
+                                            <segue destination="qNs-k6-CPn" kind="show" identifier="categoriesInfo" id="TrV-85-Nub"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -593,7 +593,7 @@
                                     <constraint firstAttribute="height" constant="65" id="L0d-Sp-0sM"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7RY-vX-VUh" imageView="8ew-Gf-4Ab" style="IBUITableViewCellStyleDefault" id="NOb-Gu-4TC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="favoriteCell" textLabel="7RY-vX-VUh" imageView="8ew-Gf-4Ab" style="IBUITableViewCellStyleDefault" id="NOb-Gu-4TC">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NOb-Gu-4TC" id="tRh-ze-5fW">
@@ -611,10 +611,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qNs-k6-CPn" kind="show" id="b7f-tK-jp8"/>
+                                            <segue destination="qNs-k6-CPn" kind="show" identifier="favoritesInfo" id="b7f-tK-jp8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eTU-u7-jjR" id="1nv-FW-TFm"/>
+                                    <outlet property="delegate" destination="eTU-u7-jjR" id="Fhk-rd-U7m"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -647,6 +651,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="categoryTableView" destination="sLL-8p-f5K" id="KYO-tl-pFr"/>
+                        <outlet property="favoriteTableView" destination="qdq-bP-gCN" id="AIJ-Q6-GB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSN-3M-ay8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -839,6 +844,6 @@
         <image name="u4" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TrV-85-Nub"/>
+        <segue reference="b7f-tK-jp8"/>
     </inferredMetricsTieBreakers>
 </document>

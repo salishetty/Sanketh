@@ -13,7 +13,8 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var categoryTableView: UITableView!
     
-    //var categoriesArray = ["View all", "Communicating about your pain", "Eating better", "Getting more active", "Managing your time", "Relaxing", "Sleeping better"]
+    @IBOutlet weak var favoriteTableView: UITableView!
+    var favoritesArray = ["My Favorites"]
     
     var categoriesArray:Array<Category> = []
     var dataMgr: DataManager?  // initialized in viewDidLoad
@@ -41,16 +42,36 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoriesArray.count
+        if(tableView == self.categoryTableView)
+        {
+            return self.categoriesArray.count
+            
+        }
+        else
+        {
+            return self.favoritesArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        var cell:UITableViewCell = self.categoryTableView.dequeueReusableCellWithIdentifier("categoryCell") as! UITableViewCell
-        
-        cell.textLabel?.text = self.categoriesArray[indexPath.row].categoryName
-        
-        return cell
+        if(tableView == self.categoryTableView)
+        {
+            var cell:UITableViewCell = self.categoryTableView.dequeueReusableCellWithIdentifier("categoryCell") as! UITableViewCell
+            
+            cell.textLabel?.text = self.categoriesArray[indexPath.row].categoryName
+            
+            return cell
+        }
+        else
+        {
+   
+            
+            var cell:UITableViewCell = self.favoriteTableView.dequeueReusableCellWithIdentifier("favoriteCell") as! UITableViewCell
+            
+            cell.textLabel?.text = self.favoritesArray[indexPath.row]// self.categoriesArray[indexPath.row].categoryName
+            
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -60,16 +81,19 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        //Get the index of selected row
-        var indexOfSelectedCategory = 0
-        if let cell = sender as? UITableViewCell {
-             indexOfSelectedCategory = categoryTableView.indexPathForCell(cell)!.row
+        if segue.identifier == "categoriesInfo"
+        {
+            // Get the new view controller using segue.destinationViewController.
+            //Get the index of selected row
+            var indexOfSelectedCategory = 0
+            if let cell = sender as? UITableViewCell {
+                indexOfSelectedCategory = categoryTableView.indexPathForCell(cell)!.row
+            }
+            // Pass the selected object to the new view controller.
+            let detailsScreen = segue.destinationViewController as! StrategyListTableViewController
+            detailsScreen.selectedCategory = (categoriesArray[indexOfSelectedCategory] as Category)
+            println("Selected Category:\(detailsScreen.selectedCategory?.categoryID)")
         }
-        // Pass the selected object to the new view controller.
-        let detailsScreen = segue.destinationViewController as! StrategyListTableViewController
-        detailsScreen.selectedCategory = (categoriesArray[indexOfSelectedCategory] as Category)
-        println("Selected Category:\(detailsScreen.selectedCategory?.categoryID)")
     }
     
 
