@@ -405,6 +405,11 @@ public class DataManager
         //Delete TechnicalLog object from CoreData
         dbContext.deleteObject(technicalLog)
     }
+    public func deleteUserActionLogs(userActionLog:UserActionLog)
+    {
+        //Delete UserActionLog object from CoreData
+        dbContext.deleteObject(userActionLog)
+    }
 
     public func saveContentGroup(groupType:NSNumber, dateModified:NSDate, contentID:NSNumber, isActive:Bool)
     {

@@ -35,7 +35,8 @@ class ProfileViewController: UIViewController {
         var uaItemsArray = [String:Dictionary<String, String>]()
         var objectID:String?
         var gHelpers = GeneralHelper()
-        if let userActions = dataMgr?.getUserActionLogs(0)
+        let userActions:[UserActionLog] = dataMgr!.getUserActionLogs(0)!
+        if userActions.count > 0
         {
             var index:Int32 = 0
             for userAction in userActions
@@ -68,6 +69,12 @@ class ProfileViewController: UIViewController {
                         if(status == 1)
                         {
                             self.dataMgr?.saveMetaData("UserActionID", value: objectID!, isSecured: true)
+                            //Delete all synched user Action logs
+                            for (index, userActionLog) in enumerate(userActions)
+                            {
+                                self.dataMgr?.deleteUserActionLogs(userActionLog)
+                            }
+
                             println("User Action Logs/Items synchronized Successfully")
                         }
                     }
