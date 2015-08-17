@@ -512,6 +512,15 @@
                                     <constraint firstItem="YYU-2u-yKt" firstAttribute="top" secondItem="VXG-Vg-dzV" secondAttribute="top" id="v19-Wp-Sdd"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-Gt-fBW">
+                                <rect key="frame" x="246" y="216" width="110" height="30"/>
+                                <state key="normal" title="Synch Favorites">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SynchFavorites:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="3h0-qw-ZzI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

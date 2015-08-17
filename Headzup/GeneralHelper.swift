@@ -21,6 +21,10 @@ public class GeneralHelper
     {
         return [TechnicalLogKeys.Message:tLogItems.message, TechnicalLogKeys.DeviceID:tLogItems.deviceId, TechnicalLogKeys.Exception:tLogItems.exception, TechnicalLogKeys.ModuleName:tLogItems.moduleName, TechnicalLogKeys.EventDate:tLogItems.eventDate as String, TechnicalLogKeys.AppVersion:tLogItems.appVersion, TechnicalLogKeys.OSVersion:tLogItems.osVersion, TechnicalLogKeys.LogLevel:tLogItems.logLevel]
     }
+    func favoriteItemsToDictionary(favoriteItems: FavoriteItems) -> [String:String]
+    {
+        return [FavoriteKeys.MembershipUserID:favoriteItems.membershipUserId, FavoriteKeys.GroupType:favoriteItems.groupType.stringValue, FavoriteKeys.ContentID:favoriteItems.contentID.stringValue, FavoriteKeys.IsActive:favoriteItems.isActive]
+    }
     func convertDateToString(date:NSDate)->String
     {
         var dateFormatter = NSDateFormatter()

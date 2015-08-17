@@ -10,13 +10,13 @@ import Foundation
 
 public class FavoriteItems
 {
-    var userId:String
+    var membershipUserId:String
     var groupType:NSNumber
     var contentID:NSNumber
     var isActive:String
-    init(userId:String, groupType:NSNumber, contentID:NSNumber, isActive:String)
+    init(membershipUserID:String, groupType:NSNumber, contentID:NSNumber, isActive:String)
     {
-        self.userId = userId
+        self.membershipUserId = membershipUserID
         self.groupType = groupType
         self.contentID = contentID
         self.isActive = isActive

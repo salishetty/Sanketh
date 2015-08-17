@@ -49,6 +49,13 @@ public struct TechnicalLogKeys
     public static let OSVersion = "OSVersion"
     public static let LogLevel = "LogLevel"
 }
+public struct FavoriteKeys
+{
+    public static let MembershipUserID = "MembershipUserID"
+    public static let GroupType = "GroupType"
+    public static let ContentID = "ContentID"
+    public static let IsActive = "IsActive"
+}
 public struct GroupType
 {
     public static let Favorite = "1"
