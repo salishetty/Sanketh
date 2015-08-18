@@ -88,19 +88,15 @@ class StrategyDetailsViewController: UIViewController{
     {
         var path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
         audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!), error: nil)
-        audioPlayer!.rate = 0.0
         audioPlayer!.prepareToPlay()
         
     }
-    
-    
-    
+     
     @IBAction func AudioHandler(sender: CustomButton) {
         
         println("Clicked")
         if let player = audioPlayer {
-            if player.rate == 0.0 {
-                player.rate = 1.0;
+          if (player.playing == false) {
                 player.play()
                 audioButton.setTitle("Pause", forState: UIControlState.Normal)
                 audioButton.backgroundColor = UIColor.orangeColor()
@@ -108,7 +104,6 @@ class StrategyDetailsViewController: UIViewController{
                 audioButton.ViewShadowColor = UIColor.redColor()
                 
             } else {
-                player.rate = 0.0;
                 player.pause()
                 audioButton.setTitle("Play", forState: UIControlState.Normal)
                 audioButton.backgroundColor = UIColor(netHex:0x6B930C)
