@@ -12,7 +12,8 @@ import AVFoundation
 
 class StrategyDetailsViewController: UIViewController {
 
-    @IBOutlet weak var strategyDetailsTV: UITextView!
+    @IBOutlet weak var MultiLineLabel: UILabel!
+    
     var dataMgr: DataManager?
     var strategiesArray:Array<Content> = []
     var selectedStrategy : Content?
@@ -30,7 +31,10 @@ class StrategyDetailsViewController: UIViewController {
         dataMgr = DataManager(objContext: manObjContext)
         var theContent = dataMgr?.getContentByID(selectedStrategy!.contentID as! Int)
         self.title = theContent?.contentName //"[Strategy Name]"
-        self.strategyDetailsTV.text = theContent?.contentValue
+        
+        self.MultiLineLabel.text = theContent?.contentValue
+        self.MultiLineLabel.numberOfLines = 0
+        
         
         //UserActionTracking - ViewStrategy
         self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
@@ -40,6 +44,9 @@ class StrategyDetailsViewController: UIViewController {
         if (theContentGroup?.isActive == 1)
         {
             addToFavorites.setTitle("Remove from Favorites", forState: UIControlState.Normal)
+            addToFavorites.backgroundColor = UIColor.orangeColor()
+            addToFavorites.superview?.layer.shadowColor = UIColor.redColor().CGColor
+            addToFavorites.superview?.reloadInputViews()
             addToFavorites.addTarget(self, action: "RemoveFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         }
         else
@@ -49,10 +56,10 @@ class StrategyDetailsViewController: UIViewController {
         }
 
         
-        let url = theContent?.audioPath
+        /*let url = theContent?.audioPath
         let playerItem = AVPlayerItem( URL:NSURL( string:url! ) )
         audioPlayer = AVPlayer(playerItem:playerItem)
-        
+        */
     }
 
     override func didReceiveMemoryWarning() {
