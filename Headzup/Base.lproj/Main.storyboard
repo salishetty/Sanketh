@@ -435,7 +435,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NrM-su-AWJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="NrM-su-AWJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zaj-0F-bwp">
@@ -474,8 +474,7 @@
                                     <action selector="AddTechLogs:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="GWu-xS-JVD"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-Vg-dzV">
-
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-Vg-dzV">
                                 <rect key="frame" x="36" y="423" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYU-2u-yKt" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
@@ -719,8 +718,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-SV-vEl">
-                                <rect key="frame" x="36" y="100" width="528" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-SV-vEl">
+                                <rect key="frame" x="36" y="266" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxj-RE-Cks" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -754,8 +753,8 @@
                                     <constraint firstItem="nxj-RE-Cks" firstAttribute="leading" secondItem="2dU-SV-vEl" secondAttribute="leading" id="yh9-hh-pWA"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-IA-ng5">
-                                <rect key="frame" x="36" y="170" width="528" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-IA-ng5">
+                                <rect key="frame" x="36" y="336" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ2-5B-C0i" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -792,24 +791,73 @@
                                     <constraint firstAttribute="trailing" secondItem="qQ2-5B-C0i" secondAttribute="trailing" id="c27-cN-geY"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q11-0O-E9Q">
-                                <rect key="frame" x="36" y="34" width="528" height="29"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Content-Demo" translatesAutoresizingMaskIntoConstraints="NO" id="qTO-lW-hfP">
+                                <rect key="frame" x="36" y="40" width="528" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="j1U-IN-hfb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q11-0O-E9Q">
+                                <rect key="frame" x="36" y="135" width="528" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-il-CbW">
+                                <rect key="frame" x="36" y="196" width="528" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4P-cs-EdV" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
+                                        <state key="normal" title="Play">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ViewButtonColor">
+                                                <color key="value" red="0.41960784309999999" green="0.57647058819999997" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="ViewShadowColor">
+                                                <color key="value" red="0.28126088719999998" green="0.38792497590000002" blue="0.029654672730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="ViewShadowHeight">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="AudioHandler:" destination="7WF-Xp-2y5" eventType="touchUpInside" id="h9G-dR-xjF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.48934885757524876" green="0.63117781677064766" blue="0.039426923219682358" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5Ky-yu-mVQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="c4P-cs-EdV" secondAttribute="bottom" id="9G0-r3-pPT"/>
+                                    <constraint firstAttribute="trailing" secondItem="c4P-cs-EdV" secondAttribute="trailing" id="Ny9-1S-wRx"/>
+                                    <constraint firstItem="c4P-cs-EdV" firstAttribute="top" secondItem="h9b-il-CbW" secondAttribute="top" id="SO1-eh-u8S"/>
+                                    <constraint firstItem="c4P-cs-EdV" firstAttribute="leading" secondItem="h9b-il-CbW" secondAttribute="leading" id="sH5-0O-nZZ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Q11-0O-E9Q" firstAttribute="top" secondItem="JE6-5Y-nV7" secondAttribute="bottom" constant="34" id="4Mt-Pt-br9"/>
                             <constraint firstItem="Igi-IA-ng5" firstAttribute="top" secondItem="nxj-RE-Cks" secondAttribute="bottom" constant="20" id="4vS-s4-bJW"/>
+                            <constraint firstItem="h9b-il-CbW" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leadingMargin" constant="20" id="9wr-dh-A2J"/>
                             <constraint firstItem="2dU-SV-vEl" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leadingMargin" constant="20" id="BJv-eG-enA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qTO-lW-hfP" secondAttribute="trailing" constant="20" id="Dx8-WH-clK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="h9b-il-CbW" secondAttribute="trailing" constant="20" id="E02-sE-lQh"/>
+                            <constraint firstItem="2dU-SV-vEl" firstAttribute="top" secondItem="h9b-il-CbW" secondAttribute="bottom" constant="20" id="QaI-N7-XTp"/>
                             <constraint firstItem="Q11-0O-E9Q" firstAttribute="top" secondItem="qQ2-5B-C0i" secondAttribute="bottom" constant="41" id="Z9d-QX-Yb9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2dU-SV-vEl" secondAttribute="trailing" constant="20" id="bUb-Xw-Y2W"/>
+                            <constraint firstItem="qTO-lW-hfP" firstAttribute="top" secondItem="JE6-5Y-nV7" secondAttribute="bottom" constant="40" id="bhh-4O-1d7"/>
                             <constraint firstItem="Q11-0O-E9Q" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leadingMargin" constant="20" id="cHf-wF-RIR"/>
-                            <constraint firstItem="nxj-RE-Cks" firstAttribute="top" secondItem="Q11-0O-E9Q" secondAttribute="bottom" constant="37" id="f1B-eq-w2n"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q11-0O-E9Q" secondAttribute="trailing" constant="20" id="gea-uO-kni"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Igi-IA-ng5" secondAttribute="trailing" constant="20" id="hbT-Ba-iB2"/>
+                            <constraint firstItem="h9b-il-CbW" firstAttribute="top" secondItem="Q11-0O-E9Q" secondAttribute="bottom" constant="40" id="mtJ-cV-UNv"/>
+                            <constraint firstItem="Q11-0O-E9Q" firstAttribute="top" secondItem="qTO-lW-hfP" secondAttribute="bottom" constant="20" id="olj-4P-Yjw"/>
+                            <constraint firstItem="qTO-lW-hfP" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leadingMargin" constant="20" id="plR-3C-SHw"/>
                             <constraint firstItem="Igi-IA-ng5" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leadingMargin" constant="20" id="yHH-Oi-H0J"/>
                         </constraints>
                         <variation key="default">
@@ -821,6 +869,7 @@
                     <connections>
                         <outlet property="MultiLineLabel" destination="Q11-0O-E9Q" id="odl-tx-IlM"/>
                         <outlet property="addToFavorites" destination="nxj-RE-Cks" id="MrW-Dp-64p"/>
+                        <outlet property="audioButton" destination="c4P-cs-EdV" id="kHi-ZZ-Cnz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACl-cg-3JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -915,6 +964,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Content-Demo" width="220" height="230"/>
         <image name="HeadzupLogo" width="400" height="99"/>
         <image name="background" width="414" height="736"/>
         <image name="tab-icon-Account" width="15" height="15"/>

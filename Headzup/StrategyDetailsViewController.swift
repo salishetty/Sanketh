@@ -11,8 +11,9 @@ import CoreData
 import AVFoundation
 
 class StrategyDetailsViewController: UIViewController{
-
+    
     @IBOutlet weak var MultiLineLabel: UILabel!
+    @IBOutlet weak var audioButton: CustomButton!
     
     var dataMgr: DataManager?
     var strategiesArray:Array<Content> = []
@@ -24,7 +25,7 @@ class StrategyDetailsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // init data manager
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
@@ -54,11 +55,12 @@ class StrategyDetailsViewController: UIViewController{
             addToFavorites.setTitle("Add to Favorites", forState: UIControlState.Normal)
             addToFavorites.addTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         }
-   
-        let audioPath = theContent?.audioPath
-        if ((audioPath?.isEmpty) == nil)
+        //Remove this after testing
+        theContent?.audioPath = "DemoAudio"
+        
+        if let audioPath = theContent?.audioPath
         {
-            prepareToPlay(audioPath!)
+            prepareToPlay(audioPath)
         }
         
         /*let url = theContent?.audioPath
@@ -66,19 +68,57 @@ class StrategyDetailsViewController: UIViewController{
         audioPlayer = AVPlayer(playerItem:playerItem)
         */
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     @IBOutlet weak var addToFavorites: UIButton!
     /*@IBAction func AddToFavorites(sender: UIButton) {
     }*/
-
+    
     
     @IBAction func SetAsGoal(sender: UIButton) {
+    }
+    
+    
+    func prepareToPlay(filename:String)
+    {
+        var path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
+        audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!), error: nil)
+        audioPlayer!.rate = 0.0
+        audioPlayer!.prepareToPlay()
+        
+    }
+    
+    
+    
+    @IBAction func AudioHandler(sender: CustomButton) {
+        
+        println("Clicked")
+        if let player = audioPlayer {
+            if player.rate == 0.0 {
+                player.rate = 1.0;
+                player.play()
+                audioButton.setTitle("Pause", forState: UIControlState.Normal)
+                audioButton.backgroundColor = UIColor.orangeColor()
+                audioButton.ViewButtonColor = UIColor.orangeColor()
+                audioButton.ViewShadowColor = UIColor.redColor()
+                
+            } else {
+                player.rate = 0.0;
+                player.pause()
+                audioButton.setTitle("Play", forState: UIControlState.Normal)
+                audioButton.backgroundColor = UIColor(netHex:0x6B930C)
+                audioButton.ViewButtonColor = UIColor(netHex:0x6B930C)
+                audioButton.ViewShadowColor = UIColor(netHex:0x486308)
+            
+            }
+            
+        }
+        
     }
     
     func AddToFavorites(sender:UIButton!) {
@@ -100,25 +140,18 @@ class StrategyDetailsViewController: UIViewController{
         addToFavorites.removeTarget(self, action: "RemoveFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         self.viewDidLoad()
     }
-
     
-    func prepareToPlay(filename:String)
-    {
-        var path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
-        audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!), error: nil)
-        audioPlayer!.prepareToPlay()
-  
-    }
+    
     
     
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

@@ -80,6 +80,7 @@
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
+		57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 		6A2CEF801B74FE740083B568 /* StrategyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */; };
 		6A2CEF821B7520C70083B568 /* StrategyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */; };
@@ -177,6 +178,7 @@
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXHelpers.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 		6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyListTableViewController.swift; sourceTree = "<group>"; };
 		6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyDetailsViewController.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				579182971B6EC294004ACFDD /* LogInHelper.swift */,
 				579F15021B728B20009488CA /* NotificationHelper.swift */,
 				14CDA5531B728C6100FB040F /* GeneralHelper.swift */,
+				57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				140DED291B69CED6001F6A3F /* Category.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				14983D1F1B5586950059A5CA /* MD5.swift in Sources */,
+				57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */,
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,
 				140710A51B7A8DD900F731EB /* DateExtensions.swift in Sources */,
