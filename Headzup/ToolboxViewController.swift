@@ -14,7 +14,6 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var categoryTableView: UITableView!
     @IBOutlet weak var favoriteTableView: UITableView!
     
-    @IBOutlet weak var favoriteTableView: UITableView!
     var favoritesArray = ["My Favorites"]
     
     var categoriesArray:Array<Category> = []
