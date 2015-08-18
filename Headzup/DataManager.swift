@@ -156,6 +156,7 @@ public class DataManager
         theContent.contentName = contentName
         theContent.contentValue = contentValue
         theContent.contentDescription = contentDescription
+        theContent.audioPath = audioPath
         //save data to coreData
         dbContext.save(nil)
         println("Content Saved: \(theContent.toString())")
@@ -404,6 +405,11 @@ public class DataManager
         //Delete TechnicalLog object from CoreData
         dbContext.deleteObject(technicalLog)
     }
+    public func deleteUserActionLogs(userActionLog:UserActionLog)
+    {
+        //Delete UserActionLog object from CoreData
+        dbContext.deleteObject(userActionLog)
+    }
 
     public func saveContentGroup(groupType:NSNumber, dateModified:NSDate, contentID:NSNumber, isActive:Bool)
     {
@@ -463,7 +469,7 @@ public class DataManager
         
         var c: Int! = fetchResults?.count
         
-        var s = "found \(c) user action logs: \n"
+        var s = "found \(c) content groups: \n"
         var m:ContentGroup!
         
         var r = [ContentGroup]()
@@ -485,6 +491,27 @@ public class DataManager
         }
         println("\(s)")
         
+        return r
+    }
+    
+    public func getFavoritedContents() -> [ContentGroup]?
+    {
+        var gHelpers = GeneralHelper()
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) Favorited contents: \n"
+        var m:ContentGroup!
+        var r = [ContentGroup]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            if m.isActive == 1
+            {
+                r.append(m)
+            }
+        }
         return r
     }
 

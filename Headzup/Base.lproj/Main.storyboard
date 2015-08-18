@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9NA-DE-ZJ6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9NA-DE-ZJ6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -475,6 +475,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXG-Vg-dzV">
+
                                 <rect key="frame" x="36" y="423" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYU-2u-yKt" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
@@ -512,12 +513,22 @@
                                     <constraint firstItem="YYU-2u-yKt" firstAttribute="top" secondItem="VXG-Vg-dzV" secondAttribute="top" id="v19-Wp-Sdd"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iWi-Gt-fBW">
+                                <rect key="frame" x="246" y="216" width="110" height="30"/>
+                                <state key="normal" title="Synch Favorites">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SynchFavorites:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="3h0-qw-ZzI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="W1o-KB-HKN" secondAttribute="bottom" constant="-50" id="8D7-kp-3Ue"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="leading" secondItem="Qcc-RT-qXe" secondAttribute="leadingMargin" constant="-16" id="8yM-dl-AQc"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="top" secondItem="qye-f2-u0S" secondAttribute="bottom" constant="-163" id="C2o-OC-Cm2"/>
+                            <constraint firstItem="slY-Or-bqM" firstAttribute="top" secondItem="VXG-Vg-dzV" secondAttribute="bottom" constant="50" id="Cdj-p3-5Fn"/>
                             <constraint firstItem="NrM-su-AWJ" firstAttribute="bottom" secondItem="Qcc-RT-qXe" secondAttribute="bottomMargin" id="DKs-kr-TbJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VXG-Vg-dzV" secondAttribute="trailing" constant="20" id="EmU-do-fZe"/>
                             <constraint firstItem="VXG-Vg-dzV" firstAttribute="leading" secondItem="Qcc-RT-qXe" secondAttribute="leadingMargin" constant="20" id="G0Y-Ff-jeU"/>
@@ -572,7 +583,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qNs-k6-CPn" kind="show" id="TrV-85-Nub"/>
+                                            <segue destination="qNs-k6-CPn" kind="show" identifier="categoriesInfo" id="TrV-85-Nub"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -594,7 +605,7 @@
                                     <constraint firstAttribute="height" constant="65" id="L0d-Sp-0sM"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="7RY-vX-VUh" imageView="8ew-Gf-4Ab" style="IBUITableViewCellStyleDefault" id="NOb-Gu-4TC">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="favoriteCell" textLabel="7RY-vX-VUh" imageView="8ew-Gf-4Ab" style="IBUITableViewCellStyleDefault" id="NOb-Gu-4TC">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NOb-Gu-4TC" id="tRh-ze-5fW">
@@ -612,10 +623,14 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qNs-k6-CPn" kind="show" id="b7f-tK-jp8"/>
+                                            <segue destination="qNs-k6-CPn" kind="show" identifier="favoritesInfo" id="b7f-tK-jp8"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eTU-u7-jjR" id="1nv-FW-TFm"/>
+                                    <outlet property="delegate" destination="eTU-u7-jjR" id="Fhk-rd-U7m"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -908,6 +923,6 @@
         <image name="u4" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TrV-85-Nub"/>
+        <segue reference="b7f-tK-jp8"/>
     </inferredMetricsTieBreakers>
 </document>

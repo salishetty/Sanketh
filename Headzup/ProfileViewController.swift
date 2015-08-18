@@ -35,7 +35,8 @@ class ProfileViewController: UIViewController {
         var uaItemsArray = [String:Dictionary<String, String>]()
         var objectID:String?
         var gHelpers = GeneralHelper()
-        if let userActions = dataMgr?.getUserActionLogs(0)
+        let userActions:[UserActionLog] = dataMgr!.getUserActionLogs(0)!
+        if userActions.count > 0
         {
             var index:Int32 = 0
             for userAction in userActions
@@ -68,6 +69,12 @@ class ProfileViewController: UIViewController {
                         if(status == 1)
                         {
                             self.dataMgr?.saveMetaData("UserActionID", value: objectID!, isSecured: true)
+                            //Delete all synched user Action logs
+                            for (index, userActionLog) in enumerate(userActions)
+                            {
+                                self.dataMgr?.deleteUserActionLogs(userActionLog)
+                            }
+
                             println("User Action Logs/Items synchronized Successfully")
                         }
                     }
@@ -84,12 +91,13 @@ class ProfileViewController: UIViewController {
     
     @IBAction func NotificationOn(sender: UIButton) {
         
-        var date = NSDate()
+        let date = NSDate()
         NotificationHelper.EnableTrackerNotifcation(date);
         
     }
     @IBAction func NotificationOff(sender: UIButton) {
        
+        NotificationHelper.DisableNotification(NotificationConstants.TrackerName)
     }
 
     @IBAction func Logout(sender: UIButton) {
@@ -175,6 +183,54 @@ class ProfileViewController: UIViewController {
                 }
             )
             
+            // Do any additional setup after loading the view.
+        }
+
+    }
+    
+    @IBAction func SynchFavorites(sender: UIButton) {
+        var uInfo = AppContext.getUserInfo()
+        var membershipUserID = uInfo.membershipUserID
+        //Synch Favorites - Strategies
+        var dict = Dictionary<String, String>()
+        var favItemsArray = [String:Dictionary<String, String>]()
+        var objectID:String?
+        var gHelper = GeneralHelper()
+        let favorites:[ContentGroup] = dataMgr!.getContentGroups(0)!
+        if favorites.count > 0
+        {
+            var index:Int32 = 0
+            for favoriteItem in favorites
+            {
+                println("Favorite Items: \(favoriteItem.groupType.stringValue): \(favoriteItem.contentID.stringValue):\((favoriteItem.isActive.stringValue))")
+                
+                var favoriteItems = FavoriteItems(membershipUserID: membershipUserID, groupType: favoriteItem.groupType, contentID: favoriteItem.contentID, isActive: favoriteItem.isActive.stringValue)
+                dict = gHelper.favoriteItemsToDictionary(favoriteItems)
+                favItemsArray["FavoriteItem"+String(index)] = dict
+                //update index
+                index++
+            }
+        }
+        var theURL:String =  AppContext.svcUrl + "SynchFavoriteItems"
+        
+        if(favItemsArray.count > 0)
+        {
+            serviceMgr?.synchFavorites(favItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+                
+                if let parseJSON = jsonData {
+                    var status = parseJSON["Status"] as? Int
+                    if(status == 1)
+                    {
+                        var synchDate = NSDate()
+                        //if successful, save the last objectID to NSUserDefaults
+                        //NSUserDefaults.standardUserDefaults().setObject(objectID, forKey: "ObjectID")
+                        self.dataMgr?.saveMetaData("SynchDate", value: gHelper.convertDateToString(synchDate), isSecured: true)
+                        println("Favorite Items synchronized Successfully")
+                    }
+                }
+                
+                }
+            )
             // Do any additional setup after loading the view.
         }
 

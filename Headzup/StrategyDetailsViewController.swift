@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import AVFoundation
 
-class StrategyDetailsViewController: UIViewController {
+class StrategyDetailsViewController: UIViewController{
 
     @IBOutlet weak var MultiLineLabel: UILabel!
     
@@ -19,7 +19,7 @@ class StrategyDetailsViewController: UIViewController {
     var selectedStrategy : Content?
     
     //Audio Player
-    var audioPlayer = AVPlayer()
+    var audioPlayer: AVAudioPlayer?
     
     
     override func viewDidLoad() {
@@ -54,7 +54,12 @@ class StrategyDetailsViewController: UIViewController {
             addToFavorites.setTitle("Add to Favorites", forState: UIControlState.Normal)
             addToFavorites.addTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         }
-
+   
+        let audioPath = theContent?.audioPath
+        if ((audioPath?.isEmpty) == nil)
+        {
+            prepareToPlay(audioPath!)
+        }
         
         /*let url = theContent?.audioPath
         let playerItem = AVPlayerItem( URL:NSURL( string:url! ) )
@@ -96,6 +101,15 @@ class StrategyDetailsViewController: UIViewController {
         self.viewDidLoad()
     }
 
+    
+    func prepareToPlay(filename:String)
+    {
+        var path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
+        audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!), error: nil)
+        audioPlayer!.prepareToPlay()
+  
+    }
+    
     
     /*
     // MARK: - Navigation
