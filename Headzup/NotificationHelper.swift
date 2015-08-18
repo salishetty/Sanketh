@@ -31,7 +31,7 @@ public class NotificationHelper
         trackerNotification.alertBody = "Please update tracker"
         trackerNotification.alertAction = "Daily Tracker"
         trackerNotification.fireDate = datetime
-        
+        trackerNotification.repeatInterval = NSCalendarUnit.CalendarUnitDay
         trackerNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         trackerNotification.category = NotificationConstants.TrackerCategory
         trackerNotification.userInfo = ["Name": NotificationConstants.TrackerName]
@@ -62,6 +62,37 @@ public class NotificationHelper
         }
     }
     
+    
+    static func UpdateGoalNotification(Name : String, alertText: String)
+    {
+        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
+        var datetime:NSDate = NSDate()
+        for notifyCancel in notifyArray as! [UILocalNotification]{
+            
+            let info: [String: String] = notifyCancel.userInfo as! [String: String]
+            
+            if info["Name"] == Name
+            {
+                datetime = notifyCancel.fireDate!
+                UIApplication.sharedApplication().cancelLocalNotification(notifyCancel)
+                
+            }
+            else
+            {
+                println("No Local Notification Found!")
+            }
+        }
+        
+        let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
+            .CalendarUnitDay,
+            value: 1,
+            toDate: datetime,
+            options: NSCalendarOptions(0))
+        EnableGoalNotifcation(tomorrow!, alertText: alertText)
+
+    }
+
+    
     static func SetupTrackerNotification(application: UIApplication)
     {
         let completeAction = UIMutableUserNotificationAction()
@@ -70,7 +101,6 @@ public class NotificationHelper
         completeAction.activationMode = UIUserNotificationActivationMode.Foreground
         completeAction.authenticationRequired = true
         completeAction.destructive = false
-        
         
         let trackerCategory = UIMutableUserNotificationCategory()
         trackerCategory.identifier = NotificationConstants.TrackerCategory
@@ -107,13 +137,13 @@ public class NotificationHelper
    
     }
 
-    static func EnableGoalNotifcation(datetime:NSDate)
+    static func EnableGoalNotifcation(datetime:NSDate , alertText: String )
     {
         var goalNotification: UILocalNotification = UILocalNotification()
-        goalNotification.alertBody = "Please update goal"
+        goalNotification.alertBody = alertText
         goalNotification.alertAction = "Goal"
         goalNotification.fireDate = datetime
-        
+        goalNotification.repeatInterval = NSCalendarUnit.CalendarUnitDay
         goalNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         goalNotification.category = NotificationConstants.GoalCategory
         goalNotification.userInfo = ["Name": NotificationConstants.GoalName]
