@@ -12,8 +12,8 @@ import CoreData
 class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var categoryTableView: UITableView!
-    
     @IBOutlet weak var favoriteTableView: UITableView!
+    
     var favoritesArray = ["My Favorites"]
     
     var categoriesArray:Array<Category> = []
