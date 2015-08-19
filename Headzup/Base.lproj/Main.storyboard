@@ -719,7 +719,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-SV-vEl">
-                                <rect key="frame" x="36" y="266" width="528" height="50"/>
+                                <rect key="frame" x="36" y="265" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxj-RE-Cks" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -754,7 +754,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-IA-ng5">
-                                <rect key="frame" x="36" y="336" width="528" height="50"/>
+                                <rect key="frame" x="36" y="335" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ2-5B-C0i" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -791,20 +791,20 @@
                                     <constraint firstAttribute="trailing" secondItem="qQ2-5B-C0i" secondAttribute="trailing" id="c27-cN-geY"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Content-Demo" translatesAutoresizingMaskIntoConstraints="NO" id="qTO-lW-hfP">
-                                <rect key="frame" x="36" y="40" width="528" height="0.0"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qTO-lW-hfP">
+                                <rect key="frame" x="36" y="40" width="528" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="75" id="j1U-IN-hfb"/>
+                                    <constraint firstAttribute="height" constant="75" placeholder="YES" id="j1U-IN-hfb"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q11-0O-E9Q">
-                                <rect key="frame" x="36" y="135" width="528" height="21"/>
+                                <rect key="frame" x="36" y="135" width="528" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-il-CbW">
-                                <rect key="frame" x="36" y="196" width="528" height="50"/>
+                                <rect key="frame" x="36" y="195" width="528" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4P-cs-EdV" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -870,6 +870,7 @@
                         <outlet property="MultiLineLabel" destination="Q11-0O-E9Q" id="odl-tx-IlM"/>
                         <outlet property="addToFavorites" destination="nxj-RE-Cks" id="MrW-Dp-64p"/>
                         <outlet property="audioButton" destination="c4P-cs-EdV" id="kHi-ZZ-Cnz"/>
+                        <outlet property="imageView" destination="qTO-lW-hfP" id="3BW-SV-HcK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACl-cg-3JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -964,7 +965,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Content-Demo" width="220" height="230"/>
         <image name="HeadzupLogo" width="400" height="99"/>
         <image name="background" width="414" height="736"/>
         <image name="tab-icon-Account" width="15" height="15"/>

@@ -14,6 +14,7 @@ class StrategyDetailsViewController: UIViewController{
     
     @IBOutlet weak var MultiLineLabel: UILabel!
     @IBOutlet weak var audioButton: CustomButton!
+    @IBOutlet weak var imageView: UIImageView!
     
     var dataMgr: DataManager?
     var strategiesArray:Array<Content> = []
@@ -55,12 +56,49 @@ class StrategyDetailsViewController: UIViewController{
             addToFavorites.setTitle("Add to Favorites", forState: UIControlState.Normal)
             addToFavorites.addTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         }
-        //Remove this after testing
-        theContent?.audioPath = "DemoAudio"
         
+        //Content Image
+        if let imagePath = theContent?.imagePath
+        {
+            if (!imagePath.isEmpty)
+            {
+                prepareToShow(imagePath)
+            }
+            else
+            {
+                let height: CGFloat = 0.0
+                imageView.frame.size.height = height
+                imageView.hidden = true
+            }
+        }
+        else
+        {
+            let height: CGFloat = 0.0
+            imageView.frame.size.height = height
+            imageView.hidden = true            
+        }
+
+        
+        
+        
+        //Audio
         if let audioPath = theContent?.audioPath
         {
+            if (!audioPath.isEmpty)
+            {
             prepareToPlay(audioPath)
+            }
+            else
+            {
+                audioButton.hidden = true
+                audioButton.superview?.hidden = true
+            }
+        }
+        else
+        {
+            audioButton.hidden = true
+            audioButton.superview?.hidden = true
+
         }
         
         /*let url = theContent?.audioPath
@@ -83,6 +121,20 @@ class StrategyDetailsViewController: UIViewController{
     @IBAction func SetAsGoal(sender: UIButton) {
     }
     
+    func prepareToShow(filename:String)
+    {
+        imageView.frame.size.height = 75
+        imageView.frame = CGRectMake(imageView.frame.origin.x ,imageView.frame.origin.y, imageView.frame.width, 75)
+        imageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
+        imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        imageView.clipsToBounds = true
+        
+        let size: CGSize = imageView.frame.size
+        imageView.image = UIImage(named:filename)!
+        
+    }
+    
+    
     
     func prepareToPlay(filename:String)
     {
@@ -91,7 +143,7 @@ class StrategyDetailsViewController: UIViewController{
         audioPlayer!.prepareToPlay()
         
     }
-     
+    
     @IBAction func AudioHandler(sender: CustomButton) {
         
         println("Clicked")

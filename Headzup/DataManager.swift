@@ -156,6 +156,7 @@ public class DataManager
         theContent.contentName = contentName
         theContent.contentValue = contentValue
         theContent.contentDescription = contentDescription
+        theContent.imagePath = imagePath
         theContent.audioPath = audioPath
         //save data to coreData
         dbContext.save(nil)
