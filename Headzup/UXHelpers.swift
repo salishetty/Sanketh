@@ -24,19 +24,30 @@ extension UIColor {
 }
 
 
-class UXHelpers {
+class ImageHelpers {
     
-    class func scaleUIImageToSize(let image: UIImage, let size: CGSize) -> UIImage {
+    class func resizeToSize(let image: UIImage, let size: CGSize) -> UIImage {
         let hasAlpha = false
         let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
         
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
         image.drawInRect(CGRect(origin: CGPointZero, size: size))
-        
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
         return scaledImage
     }
     
+    class func resizeToHeight(image: UIImage, height: CGFloat) -> UIImage {
+        
+        let scale = height / image.size.height
+        let width = image.size.width * scale
+        UIGraphicsBeginImageContext(CGSizeMake(width, height))
+        image.drawInRect(CGRectMake(0, 0, width, height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 }
+

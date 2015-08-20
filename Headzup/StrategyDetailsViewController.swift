@@ -98,14 +98,9 @@ class StrategyDetailsViewController: UIViewController{
         {
             audioButton.hidden = true
             audioButton.superview?.hidden = true
-
         }
         
-        /*let url = theContent?.audioPath
-        let playerItem = AVPlayerItem( URL:NSURL( string:url! ) )
-        audioPlayer = AVPlayer(playerItem:playerItem)
-        */
-    }
+}
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -130,7 +125,7 @@ class StrategyDetailsViewController: UIViewController{
         imageView.clipsToBounds = true
         
         let size: CGSize = imageView.frame.size
-        imageView.image = UIImage(named:filename)!
+        imageView.image = ImageHelpers.resizeToHeight(UIImage(named:filename)!, height: 75.0)
         
     }
     
