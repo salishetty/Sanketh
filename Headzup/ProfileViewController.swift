@@ -15,74 +15,6 @@ class ProfileViewController: UIViewController {
     var serviceMgr:ServiceManager?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        //TO BE REMOVED LATER ON - THIS IS TEMPORARY PLACE
-        
-        // init data manager
-        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        dataMgr = DataManager(objContext: manObjContext)
-        // Do any additional setup after loading the view.
-        serviceMgr = ServiceManager(objContext: manObjContext)
-        
-        var uInfo = AppContext.getUserInfo()
-        var deviceId = uInfo.deviceId
-        var deviceType = uInfo.deviceType
-        var membershipUserID = uInfo.membershipUserID
-        
-        var dict = Dictionary<String, String>()
-        var uaItemsArray = [String:Dictionary<String, String>]()
-        var objectID:String?
-        var gHelpers = GeneralHelper()
-        let userActions:[UserActionLog] = dataMgr!.getUserActionLogs(0)!
-        if userActions.count > 0
-        {
-            var index:Int32 = 0
-            for userAction in userActions
-            {
-                
-                var uaItems = UserActionItems(membershipUserID: membershipUserID, deviceId: deviceId, deviceType: deviceType, actionDate: gHelpers.convertDateToString(userAction.actionDateTime), osVersion: userAction.osVersion, appVersion: userAction.appVersion, actionType: userAction.actionType, comment:userAction.comment)
-                dict = gHelpers.userActionItemsToDictionary(uaItems)
-                uaItemsArray[UserActionKeys.UserActionItem+String(index)] = dict
-                
-                
-                var lastComponent = userAction.objectID.URIRepresentation().absoluteString!.lastPathComponent
-                //Integer part of objectID
-                objectID = lastComponent.substringFromIndex(advance(lastComponent.startIndex, 1))
-                //update index
-                index++
-            }
-        }
-        if NSJSONSerialization.isValidJSONObject(uaItemsArray)
-        {
-            println("UserActionItems is valid JSON")
-        
-            var theURL:String =  AppContext.svcUrl + "TrackUserAction"
-            
-            if(uaItemsArray.count > 0)
-            {
-                serviceMgr?.synchUserActions(uaItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
-                    
-                    if let parseJSON = jsonData {
-                        var status = parseJSON["Status"] as? Int
-                        if(status == 1)
-                        {
-                            self.dataMgr?.saveMetaData("UserActionID", value: objectID!, isSecured: true)
-                            //Delete all synched user Action logs
-                            for (index, userActionLog) in enumerate(userActions)
-                            {
-                                self.dataMgr?.deleteUserActionLogs(userActionLog)
-                            }
-
-                            println("User Action Logs/Items synchronized Successfully")
-                        }
-                    }
-                    
-                })
-                
-            }
-        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -187,6 +119,77 @@ class ProfileViewController: UIViewController {
         }
 
     }
+    
+    @IBAction func SynchUserActionLogs(sender: UIButton) {
+        //TO BE REMOVED LATER ON - THIS IS TEMPORARY PLACE
+        
+        // init data manager
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        // Do any additional setup after loading the view.
+        serviceMgr = ServiceManager(objContext: manObjContext)
+        
+        var uInfo = AppContext.getUserInfo()
+        var deviceId = uInfo.deviceId
+        var deviceType = uInfo.deviceType
+        var membershipUserID = uInfo.membershipUserID
+        
+        var dict = Dictionary<String, String>()
+        var uaItemsArray = [String:Dictionary<String, String>]()
+        var objectID:String?
+        var gHelpers = GeneralHelper()
+        let userActions:[UserActionLog] = dataMgr!.getUserActionLogs(0)!
+        if userActions.count > 0
+        {
+            var index:Int32 = 0
+            for userAction in userActions
+            {
+                
+                var uaItems = UserActionItems(membershipUserID: membershipUserID, deviceId: deviceId, deviceType: deviceType, actionDate: gHelpers.convertDateToString(userAction.actionDateTime), osVersion: userAction.osVersion, appVersion: userAction.appVersion, actionType: userAction.actionType, comment:userAction.comment)
+                dict = gHelpers.userActionItemsToDictionary(uaItems)
+                uaItemsArray[UserActionKeys.UserActionItem+String(index)] = dict
+                
+                
+                var lastComponent = userAction.objectID.URIRepresentation().absoluteString!.lastPathComponent
+                //Integer part of objectID
+                objectID = lastComponent.substringFromIndex(advance(lastComponent.startIndex, 1))
+                //update index
+                index++
+            }
+        }
+        if NSJSONSerialization.isValidJSONObject(uaItemsArray)
+        {
+            println("UserActionItems is valid JSON")
+            
+            var theURL:String =  AppContext.svcUrl + "TrackUserAction"
+            
+            if(uaItemsArray.count > 0)
+            {
+                serviceMgr?.synchUserActions(uaItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+                    
+                    if let parseJSON = jsonData {
+                        var status = parseJSON["Status"] as? Int
+                        if(status == 1)
+                        {
+                            self.dataMgr?.saveMetaData("UserActionID", value: objectID!, isSecured: true)
+                            //Delete all synched user Action logs
+                            for (index, userActionLog) in enumerate(userActions)
+                            {
+                                self.dataMgr?.deleteUserActionLogs(userActionLog)
+                            }
+                            
+                            println("User Action Logs/Items synchronized Successfully")
+                        }
+                    }
+                    
+                })
+                
+            }
+        }
+
+    }
+    
     
     @IBAction func SynchFavorites(sender: UIButton) {
         var uInfo = AppContext.getUserInfo()
