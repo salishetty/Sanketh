@@ -447,7 +447,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="NotificationOff:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="CQl-fg-f5V"/>
+                                    <action selector="StopTracker:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="JMV-3n-GxK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IuM-Lg-ERl">
@@ -465,7 +465,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="NotificationOn:" destination="50W-Pf-3Ev" eventType="touchDown" id="BsJ-sz-e4x"/>
+                                    <action selector="StartTracker:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="mQd-Bu-AZ0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qye-f2-u0S">
@@ -529,18 +529,27 @@
                                 <state key="normal" title="Change Goal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="ChangeGoal:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="4WO-Uf-beN"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUQ-Q2-aNl">
                                 <rect key="frame" x="255" y="232" width="90" height="30"/>
                                 <state key="normal" title="Start Goal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="StartGoal:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="3IO-U9-Bug"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ata-5Z-YZp">
                                 <rect key="frame" x="265" y="308" width="69" height="30"/>
                                 <state key="normal" title="Stop Goal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="StopGoal:" destination="50W-Pf-3Ev" eventType="touchUpInside" id="cMB-77-yUw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -31,7 +31,7 @@ public class NotificationHelper
         trackerNotification.alertBody = "Please update tracker"
         trackerNotification.alertAction = "Daily Tracker"
         trackerNotification.fireDate = datetime
-        trackerNotification.repeatInterval = NSCalendarUnit.CalendarUnitDay
+        trackerNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
         trackerNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         trackerNotification.category = NotificationConstants.TrackerCategory
         trackerNotification.userInfo = ["Name": NotificationConstants.TrackerName]
@@ -84,8 +84,8 @@ public class NotificationHelper
         }
         
         let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
-            .CalendarUnitDay,
-            value: 1,
+            .CalendarUnitMinute,
+            value: 2,
             toDate: datetime,
             options: NSCalendarOptions(0))
         EnableGoalNotifcation(tomorrow!, alertText: alertText)
@@ -143,7 +143,7 @@ public class NotificationHelper
         goalNotification.alertBody = alertText
         goalNotification.alertAction = "Goal"
         goalNotification.fireDate = datetime
-        goalNotification.repeatInterval = NSCalendarUnit.CalendarUnitDay
+        goalNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
         goalNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         goalNotification.category = NotificationConstants.GoalCategory
         goalNotification.userInfo = ["Name": NotificationConstants.GoalName]

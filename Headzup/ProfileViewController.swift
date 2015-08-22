@@ -21,17 +21,36 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func NotificationOn(sender: UIButton) {
+    @IBAction func StartTracker(sender: UIButton) {
         
         let date = NSDate()
         NotificationHelper.EnableTrackerNotifcation(date);
         
     }
-    @IBAction func NotificationOff(sender: UIButton) {
+    @IBAction func StopTracker(sender: UIButton) {
        
         NotificationHelper.DisableNotification(NotificationConstants.TrackerName)
     }
 
+    @IBAction func StartGoal(sender: AnyObject) {
+        let date = NSDate()
+        NotificationHelper.EnableGoalNotifcation(date, alertText: "Please fill your goal: Goal 1");
+    }
+    
+    
+    @IBAction func ChangeGoal(sender: AnyObject) {
+        NotificationHelper.UpdateGoalNotification(NotificationConstants.GoalName, alertText: "Please fill your goal: Goal 2")
+    }
+    
+    @IBAction func StopGoal(sender: AnyObject) {
+        
+         NotificationHelper.DisableNotification(NotificationConstants.GoalName)
+    }
+    
+    
+    
+    
+    
     @IBAction func Logout(sender: UIButton) {
         // update login status
         dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedOut, isSecured: true)
@@ -42,6 +61,16 @@ class ProfileViewController: UIViewController {
         
         self.loadViewController("PinView")
      }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

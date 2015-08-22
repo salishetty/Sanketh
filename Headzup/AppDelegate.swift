@@ -94,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         appInit()
         
-        NotificationHelper.SetupTrackerNotification(application)
+    NotificationHelper.SetupTrackerNotification(application)
         NotificationHelper.SetupGoalNotification(application)
         
         //App Launched from Notification
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 AppContext.currentView = "GoalView"
             }
             if notification.category == NotificationConstants.TrackerCategory {
-                AppContext.currentView = "GoalView"
+                AppContext.currentView = "TrackerView"
             }
         }
         
