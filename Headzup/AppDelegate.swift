@@ -109,29 +109,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Notification Section
     
-    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-        application.applicationIconBadgeNumber = 0
-        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
-        {
-            //opened from a local notification when the app was on background
-            
-            if notification.category! == NotificationConstants.GoalCategory {
-                AppContext.currentView = "GoalView"
-            }
-            if notification.category == NotificationConstants.TrackerCategory {
-                AppContext.currentView = "TrackerView"
-            }
-        }
-        
-    }
+//    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+//        application.applicationIconBadgeNumber = 0
+//        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+//        {
+//            //opened from a local notification when the app was on background
+//            
+//            if notification.category! == NotificationConstants.GoalCategory {
+//                AppContext.currentView = "GoalView"
+//            }
+//            if notification.category == NotificationConstants.TrackerCategory {
+//                AppContext.currentView = "TrackerView"
+//            }
+//        }
+//        
+//    }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         
         switch (identifier!) {
         case NotificationConstants.GoalComplete:
-            println("Error: unexpected notification action identifier!")
+            var rootViewController = self.window!.rootViewController
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeView") as! HomeViewController
+            rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
+
         case NotificationConstants.TrackerComplete:
-            println("Error: unexpected notification action identifier!")
+            var rootViewController = self.window!.rootViewController
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeView") as! HomeViewController
+            rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
+            
         default: // switch statements must be exhaustive - this condition should never be met
             println("Error: unexpected notification action identifier!")
         }

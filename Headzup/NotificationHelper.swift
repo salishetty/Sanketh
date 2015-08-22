@@ -25,22 +25,6 @@ public struct NotificationConstants {
 
 public class NotificationHelper
 {
-    static func EnableTrackerNotifcation(datetime:NSDate)
-    {
-        var trackerNotification: UILocalNotification = UILocalNotification()
-        trackerNotification.alertBody = "Please update tracker"
-        trackerNotification.alertAction = "Daily Tracker"
-        trackerNotification.fireDate = datetime
-        trackerNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
-        trackerNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
-        trackerNotification.category = NotificationConstants.TrackerCategory
-        trackerNotification.userInfo = ["Name": NotificationConstants.TrackerName]
-        trackerNotification.timeZone = NSTimeZone.defaultTimeZone()
-        trackerNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
-        
-        UIApplication.sharedApplication().scheduleLocalNotification(trackerNotification)
-        
-    }
     
     static func DisableNotification(Name : String)
     {
@@ -63,7 +47,7 @@ public class NotificationHelper
     }
     
     
-    static func UpdateGoalNotification(Name : String, alertText: String)
+    static func UpdateGoalNotification(Name : String, goalName: String)
     {
         var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
         var datetime:NSDate = NSDate()
@@ -88,7 +72,7 @@ public class NotificationHelper
             value: 2,
             toDate: datetime,
             options: NSCalendarOptions(0))
-        EnableGoalNotifcation(tomorrow!, alertText: alertText)
+        EnableGoalNotifcation(tomorrow!, goalName: goalName)
 
     }
 
@@ -97,7 +81,7 @@ public class NotificationHelper
     {
         let completeAction = UIMutableUserNotificationAction()
         completeAction.identifier = NotificationConstants.TrackerComplete
-        completeAction.title = "Complete"
+        completeAction.title = "Go"
         completeAction.activationMode = UIUserNotificationActivationMode.Foreground
         completeAction.authenticationRequired = true
         completeAction.destructive = false
@@ -113,7 +97,23 @@ public class NotificationHelper
         application.registerUserNotificationSettings(settings)
         
     }
-    
+    static func EnableTrackerNotifcation(datetime:NSDate)
+    {
+        var trackerNotification: UILocalNotification = UILocalNotification()
+        trackerNotification.alertBody = "Don’t forget to track your headache pain even if you haven’t had a headache."
+        //trackerNotification.alertAction = "Complete"
+        trackerNotification.fireDate = datetime
+        trackerNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
+        trackerNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
+        trackerNotification.category = NotificationConstants.TrackerCategory
+        trackerNotification.userInfo = ["Name": NotificationConstants.TrackerName]
+        trackerNotification.timeZone = NSTimeZone.defaultTimeZone()
+        trackerNotification.applicationIconBadgeNumber = UIApplication.sharedApplication().applicationIconBadgeNumber + 1
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(trackerNotification)
+        
+    }
+
    
     static func SetupGoalNotification(application: UIApplication)
     {
@@ -137,11 +137,11 @@ public class NotificationHelper
    
     }
 
-    static func EnableGoalNotifcation(datetime:NSDate , alertText: String )
+    static func EnableGoalNotifcation(datetime:NSDate , goalName: String )
     {
         var goalNotification: UILocalNotification = UILocalNotification()
-        goalNotification.alertBody = alertText
-        goalNotification.alertAction = "Goal"
+        goalNotification.alertBody = "Your Headzup goal today: " + goalName
+        //goalNotification.alertAction = "Goal"
         goalNotification.fireDate = datetime
         goalNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
         goalNotification.soundName = UILocalNotificationDefaultSoundName // play default sound

@@ -34,12 +34,12 @@ class ProfileViewController: UIViewController {
 
     @IBAction func StartGoal(sender: AnyObject) {
         let date = NSDate()
-        NotificationHelper.EnableGoalNotifcation(date, alertText: "Please fill your goal: Goal 1");
+        NotificationHelper.EnableGoalNotifcation(date, goalName: "Goal 1");
     }
     
     
     @IBAction func ChangeGoal(sender: AnyObject) {
-        NotificationHelper.UpdateGoalNotification(NotificationConstants.GoalName, alertText: "Please fill your goal: Goal 2")
+        NotificationHelper.UpdateGoalNotification(NotificationConstants.GoalName, goalName: "Goal 2")
     }
     
     @IBAction func StopGoal(sender: AnyObject) {
