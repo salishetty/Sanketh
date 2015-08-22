@@ -42,8 +42,12 @@ public extension UIViewController{
 }
 
 
+
+
 public class NavigationHelper
 {
+    
+    
     
     static func AuthanticateAndNavigate(sourceView:UIViewController,tagetView:String = "",targetID:Int = 0)
     {

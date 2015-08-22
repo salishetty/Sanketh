@@ -81,6 +81,7 @@
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
 		57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */; };
+		57E1D07F1B867D73004D67D3 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07E1B867D73004D67D3 /* ProfileTableViewController.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 		6A2CEF801B74FE740083B568 /* StrategyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */; };
 		6A2CEF821B7520C70083B568 /* StrategyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */; };
@@ -179,6 +180,7 @@
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
 		57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXHelpers.swift; sourceTree = "<group>"; };
+		57E1D07E1B867D73004D67D3 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 		6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyListTableViewController.swift; sourceTree = "<group>"; };
 		6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyDetailsViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */,
 				6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */,
 				6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */,
+				57E1D07E1B867D73004D67D3 /* ProfileTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				6AB5BB8F1B710D6B00CF2DAD /* ToolboxViewController.swift in Sources */,
 				14983CED1B557B340059A5CA /* MetaData.swift in Sources */,
 				14983D1A1B5586950059A5CA /* CRC.swift in Sources */,
+				57E1D07F1B867D73004D67D3 /* ProfileTableViewController.swift in Sources */,
 				14983D211B5586950059A5CA /* Operators.swift in Sources */,
 				14983D231B5586950059A5CA /* PKCS7.swift in Sources */,
 				14C1BF2E1B6178D400BE78DA /* Reachability.m in Sources */,

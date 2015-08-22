@@ -99,6 +99,33 @@ class ProfileViewController: UIViewController {
        
         NotificationHelper.DisableNotification(NotificationConstants.TrackerName)
     }
+   
+    @IBAction func StartGoal(sender: AnyObject) {
+        let date = NSDate()
+        NotificationHelper.EnableGoalNotifcation( date, alertText: "Goal One");
+        
+    }
+    
+    @IBAction func ChangeGoal(sender: AnyObject) {
+        NotificationHelper.UpdateGoalNotification(NotificationConstants.GoalName , alertText: "Goal two")
+    }
+    
+    
+    @IBAction func StopGoal(sender: AnyObject) {
+        NotificationHelper.DisableNotification(NotificationConstants.GoalName)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     @IBAction func Logout(sender: UIButton) {
         // update login status

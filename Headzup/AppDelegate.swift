@@ -94,8 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         appInit()
         
+        //setup Notification
         NotificationHelper.SetupTrackerNotification(application)
         NotificationHelper.SetupGoalNotification(application)
+        
+        
         
         //App Launched from Notification
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
@@ -154,21 +157,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         appInit()
         
-        var status = AppContext.loginStatus
-        switch status {
-        case LoginStatus.LoggedOut :
-            println ("user has logged out")
-        case LoginStatus.LoggedIn :
-            println ("user has logged in")
-        default :
-            AppContext.loginStatus = LoginStatus.NeverLoggedIn
-            println ("user has never logged in")
-            // go to home page directly
-            
-        }
+        
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
+        
+        var userDisabled = LogInHelper.isDisabled()
+        if (userDisabled == true)
+        {
+            var rootViewController = self.window!.rootViewController
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+            rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
+        }
+
+        
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
     
