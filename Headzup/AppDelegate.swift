@@ -94,55 +94,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         appInit()
         
-    NotificationHelper.SetupTrackerNotification(application)
+        NotificationHelper.SetupTrackerNotification(application)
         NotificationHelper.SetupGoalNotification(application)
         
         //App Launched from Notification
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
         if (notification != nil) {
-            if notification.category == NotificationConstants.GoalCategory {
-                AppContext.currentView = "GoalView"
-            }
+            NotificationHelper.notificationRedirect(notification)
         }
         return true
     }
     
     //Notification Section
     
-//    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
-//        application.applicationIconBadgeNumber = 0
-//        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
-//        {
-//            //opened from a local notification when the app was on background
-//            
-//            if notification.category! == NotificationConstants.GoalCategory {
-//                AppContext.currentView = "GoalView"
-//            }
-//            if notification.category == NotificationConstants.TrackerCategory {
-//                AppContext.currentView = "TrackerView"
-//            }
-//        }
-//        
-//    }
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        
+        application.applicationIconBadgeNumber = 0
+        
+       // println("application state:\(application.applicationState.rawValue)")
+        
+        if ( application.applicationState == UIApplicationState.Inactive || application.applicationState == UIApplicationState.Background  )
+        {
+           NotificationHelper.notificationRedirect(notification)
+        }
+        
+    }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         
-        switch (identifier!) {
-        case NotificationConstants.GoalComplete:
-            var rootViewController = self.window!.rootViewController
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeView") as! HomeViewController
-            rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
-
-        case NotificationConstants.TrackerComplete:
-            var rootViewController = self.window!.rootViewController
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeView") as! HomeViewController
-            rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
-            
-        default: // switch statements must be exhaustive - this condition should never be met
-            println("Error: unexpected notification action identifier!")
-        }
+        NotificationHelper.notificationRedirect(notification)
+                
         completionHandler() // per developer documentation, app will terminate if we fail to call this
     }
     

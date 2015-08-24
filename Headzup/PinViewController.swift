@@ -29,6 +29,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     
     @IBOutlet weak var UserLB: UILabel!
     
+    internal var TabIndex:Int = 1
     
     
     override func viewDidLoad() {
@@ -135,7 +136,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                         }
                         else
                         {
-                            self.loadViewController("TabView", tabIndex: 1)
+                            self.loadViewController("TabView", tabIndex: self.TabIndex)
                         }
                     }
                     else if(status == "2")

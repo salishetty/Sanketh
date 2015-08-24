@@ -154,6 +154,49 @@ public class NotificationHelper
         
     }
 
+    static func notificationRedirect(notification: UILocalNotification)
+    {
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        var dataMgr = DataManager(objContext: manObjContext)
+        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+        
+        println("[loginStatus = \(AppContext.loginStatus)]")
+   
+        if notification.category == NotificationConstants.GoalCategory
+        {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if (AppContext.loginStatus == LoginStatus.LoggedIn)
+            {
+                var tabVC = mainStoryboard.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController
+                tabVC.selectedIndex = 1
+                theAppDelegate.window!.rootViewController = tabVC
+            }
+            else
+            {
+                var pinVC = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+                pinVC.TabIndex = 2
+                theAppDelegate.window!.rootViewController = pinVC
+            }
+        }
+        else if notification.category == NotificationConstants.TrackerCategory
+        {
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if (AppContext.loginStatus == LoginStatus.LoggedIn)
+            {
+                var tabVC = mainStoryboard.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController
+                tabVC.selectedIndex = 1
+                theAppDelegate.window!.rootViewController = tabVC
+            }
+            else
+            {
+                var pinVC = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+                pinVC.TabIndex = 2
+                theAppDelegate.window!.rootViewController = pinVC
+            }
+        }
+
+    }
     
     
 }

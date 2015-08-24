@@ -11,13 +11,13 @@ import CoreData
 
 class SplashViewController: UIViewController {
 
+    private var foregroundNotification: NSObjectProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadGoalView:",name:"GoalNotificationObserver", object: nil)
-
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterForeground:", name: UIApplicationWillEnterForegroundNotification, object: nil)
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,8 +32,13 @@ class SplashViewController: UIViewController {
     }
 
     
-    func loadGoalView(notification: NSNotification){
-        NavigationHelper.AuthanticateAndNavigate(self,tagetView: "TabView",targetID:0)
+    func willEnterForeground(notification: NSNotification!) {
+       
+    }
+    
+    deinit {
+        // make sure to remove the observer when this view controller is dismissed/deallocated
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: nil, object: nil)
     }
     
     
