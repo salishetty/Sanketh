@@ -15,6 +15,12 @@ class ProfileViewController: UIViewController {
     var serviceMgr:ServiceManager?
     override func viewDidLoad() {
         super.viewDidLoad()
+        // init data manager
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        // Do any additional setup after loading the view.
+        serviceMgr = ServiceManager(objContext: manObjContext)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -151,13 +157,6 @@ class ProfileViewController: UIViewController {
     
     @IBAction func SynchUserActionLogs(sender: UIButton) {
         //TO BE REMOVED LATER ON - THIS IS TEMPORARY PLACE
-        
-        // init data manager
-        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        dataMgr = DataManager(objContext: manObjContext)
-        // Do any additional setup after loading the view.
-        serviceMgr = ServiceManager(objContext: manObjContext)
         
         var uInfo = AppContext.getUserInfo()
         var deviceId = uInfo.deviceId
