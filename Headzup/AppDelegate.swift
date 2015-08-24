@@ -98,6 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationHelper.SetupGoalNotification(application)
         
         //App Launched from Notification
+        application.applicationIconBadgeNumber = 0
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
         if (notification != nil) {
             NotificationHelper.notificationRedirect(notification)
@@ -121,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
-        
+        application.applicationIconBadgeNumber = 0
         NotificationHelper.notificationRedirect(notification)
                 
         completionHandler() // per developer documentation, app will terminate if we fail to call this
@@ -160,14 +161,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        var userDisabled = LogInHelper.isDisabled()
+        /*var userDisabled = LogInHelper.isDisabled()
         if (userDisabled == true)
         {
             var rootViewController = self.window!.rootViewController
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
             rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
-        }
+        }*/
     }
     
     func applicationWillTerminate(application: UIApplication) {
