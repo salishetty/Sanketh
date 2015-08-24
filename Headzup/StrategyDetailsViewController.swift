@@ -54,6 +54,7 @@ class StrategyDetailsViewController: UIViewController{
         else
         {
             addToFavorites.setTitle("Add to Favorites", forState: UIControlState.Normal)
+            addToFavorites.backgroundColor = UIColor(netHex:0x3B89E1)
             addToFavorites.addTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         }
         
