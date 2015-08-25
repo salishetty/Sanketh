@@ -421,7 +421,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyo-oR-PwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="1199"/>
+            <point key="canvasLocation" x="-132" y="1995"/>
+        </scene>
+        <!--FirstAid Page-->
+        <scene sceneID="FJV-AY-4ci">
+            <objects>
+                <viewController storyboardIdentifier="FirstAidView" title="FirstAid Page" id="Q3I-Cm-ETH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n48-F5-BvP"/>
+                        <viewControllerLayoutGuide type="bottom" id="J7d-F2-Fzt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L1i-gj-TDo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-cB-ZTf">
+                                <rect key="frame" x="0.0" y="25" width="600" height="551"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="3" title="FirstAid" image="tab-icon-OMG" id="Juc-so-Lup"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igt-gK-Xtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1984" y="1995"/>
         </scene>
         <!--Profile Page-->
         <scene sceneID="jgx-OS-K3p">
@@ -605,7 +630,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzc-N3-RvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="2654"/>
+            <point key="canvasLocation" x="2680" y="1995"/>
         </scene>
         <!--Tools Page-->
         <scene sceneID="Uqy-xX-pgr">
@@ -726,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JSN-3M-ay8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1772" y="1944"/>
+            <point key="canvasLocation" x="600" y="2768"/>
         </scene>
         <!--Category-->
         <scene sceneID="vmS-ye-eTJ">
@@ -763,7 +788,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6r-La-vPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2480" y="1944"/>
+            <point key="canvasLocation" x="600" y="3540"/>
         </scene>
         <!--Strategy Details View Controller-->
         <scene sceneID="F1o-CH-tKt">
@@ -934,7 +959,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACl-cg-3JI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3186" y="1944"/>
+            <point key="canvasLocation" x="600" y="4292"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="UGp-48-cIg">
@@ -996,17 +1021,19 @@
                     <connections>
                         <segue destination="qf9-7r-FRO" kind="relationship" relationship="viewControllers" id="dpa-r5-X5L"/>
                         <segue destination="3mh-EC-TEQ" kind="relationship" relationship="viewControllers" id="7Qb-gb-EWr"/>
+                        <segue destination="haL-n8-7Oq" kind="relationship" relationship="viewControllers" id="QCW-44-bY5"/>
+                        <segue destination="Q3I-Cm-ETH" kind="relationship" relationship="viewControllers" id="O8k-3T-mAb"/>
                         <segue destination="50W-Pf-3Ev" kind="relationship" relationship="viewControllers" id="7jF-IP-V8s"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cj6-mf-SRX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352" y="1199"/>
+            <point key="canvasLocation" x="1072" y="1239"/>
         </scene>
         <!--Toolbox-->
         <scene sceneID="PCA-dh-f8N">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3mh-EC-TEQ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ToolBoxView" automaticallyAdjustsScrollViewInsets="NO" id="3mh-EC-TEQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Toolbox" image="tab-icon-Tools" id="l5N-OX-I18"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oDh-c5-JSx">
@@ -1020,7 +1047,38 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5W-Ig-8S3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="1944"/>
+            <point key="canvasLocation" x="600" y="1995"/>
+        </scene>
+        <!--Tracker Page-->
+        <scene sceneID="Pe4-9N-sas">
+            <objects>
+                <viewController storyboardIdentifier="TrackerView" title="Tracker Page" id="haL-n8-7Oq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eNs-qJ-lff"/>
+                        <viewControllerLayoutGuide type="bottom" id="JmD-Ii-D2B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0eH-OG-eF7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vvE-y9-sO8" secondAttribute="trailing" constant="-16" id="eDT-BB-GPH"/>
+                            <constraint firstItem="vvE-y9-sO8" firstAttribute="bottom" secondItem="0eH-OG-eF7" secondAttribute="bottomMargin" id="nSQ-Ta-sz8"/>
+                            <constraint firstItem="vvE-y9-sO8" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leadingMargin" constant="-16" id="pI1-eX-3yz"/>
+                            <constraint firstItem="vvE-y9-sO8" firstAttribute="top" secondItem="0eH-OG-eF7" secondAttribute="topMargin" id="veP-9Z-1gY"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="2" title="Tracker" image="tab-icon-Track" id="7Gj-Wg-eki"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SzC-CQ-AWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="1995"/>
         </scene>
     </scenes>
     <resources>
@@ -1028,7 +1086,9 @@
         <image name="background" width="414" height="736"/>
         <image name="tab-icon-Account" width="15" height="15"/>
         <image name="tab-icon-Home" width="15" height="15"/>
+        <image name="tab-icon-OMG" width="15" height="15"/>
         <image name="tab-icon-Tools" width="15" height="15"/>
+        <image name="tab-icon-Track" width="15" height="15"/>
         <image name="u4" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
