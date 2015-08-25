@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -97,6 +98,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationHelper.SetupTrackerNotification(application)
         NotificationHelper.SetupGoalNotification(application)
         
+        
+        //Navigation Bar - Important
+        // Sets background to a blank/empty image and set alpha to 0
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.3, blue: 0.5, alpha: 0.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Arial Rounded MT Bold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+      
+        
         //App Launched from Notification
         application.applicationIconBadgeNumber = 0
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
@@ -105,6 +116,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    
     
     //Notification Section
     
