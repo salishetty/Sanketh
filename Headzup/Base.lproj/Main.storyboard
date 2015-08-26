@@ -479,7 +479,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.47058823529999999" green="0.67450980390000004" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Dea-Ri-HB1" secondAttribute="bottom" id="Anv-B2-j7d"/>
                                             <constraint firstItem="Dea-Ri-HB1" firstAttribute="top" secondItem="Fzn-UW-7Iv" secondAttribute="top" id="YkL-OZ-THs"/>
