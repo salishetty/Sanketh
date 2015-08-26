@@ -18,8 +18,16 @@ extension UIColor {
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
     
+    convenience init(hex:Int, alpha:Float = 1.0) {
+        self.init(red: CGFloat((hex >> 16) & 0xff) / 255.0, green: CGFloat((hex >> 8) & 0xff) / 255.0, blue: CGFloat((hex >> 0) & 0xff) / 255.0, alpha: CGFloat(alpha))
+    }
+
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
+     
+    convenience init(alphaHex:Int) {
+        self.init(red: CGFloat((alphaHex >> 24) & 0xff) / 255.0, green: CGFloat((alphaHex >> 16) & 0xff) / 255.0, blue: CGFloat((alphaHex >> 8) & 0xff) / 255.0, alpha:CGFloat((alphaHex >> 0) & 0xff) / 255.0)
     }
 }
 
@@ -58,7 +66,7 @@ class ViewHelpers
     {
         //Tint for status bar
         let tintViewForStatusBar : UIView = UIView(frame: CGRectMake(0, 0,view.frame.size.width, 20))
-        tintViewForStatusBar.backgroundColor = UIColor(red: 0.0, green: 0.3, blue: 0.5, alpha: 0.1)
+        tintViewForStatusBar.backgroundColor = UIColor(hex:0x5DB8DB,alpha:0.7)
         view.addSubview(tintViewForStatusBar)
     }
     

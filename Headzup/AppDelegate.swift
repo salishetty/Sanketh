@@ -106,7 +106,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sets background to a blank/empty image and set alpha to 0
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.3, blue: 0.5, alpha: 0.1)
+        UINavigationBar.appearance().backgroundColor = UIColor(hex:0x5DB8DB,alpha:0.7)
+        UINavigationBar.appearance().barTintColor = UIColor(hex:0x5DB8DB,alpha:0.7)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Arial Rounded MT Bold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         UINavigationBar.appearance().clipsToBounds = true
                

@@ -26,7 +26,7 @@ class StrategyDetailsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ViewHelpers.setStatusBarTint(self.view)
         // init data manager
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
