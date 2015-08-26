@@ -99,15 +99,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationHelper.SetupGoalNotification(application)
         
         
+        //Status Bar
+        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
+        
         //Navigation Bar - Important
         // Sets background to a blank/empty image and set alpha to 0
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.3, blue: 0.5, alpha: 0.0)
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 0.0, green: 0.3, blue: 0.5, alpha: 0.1)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Arial Rounded MT Bold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
-      
-        
+        UINavigationBar.appearance().clipsToBounds = true
+               
         //App Launched from Notification
         application.applicationIconBadgeNumber = 0
         let notification = launchOptions?[UIApplicationLaunchOptionsLocalNotificationKey] as! UILocalNotification!
@@ -152,6 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
+    
     
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.

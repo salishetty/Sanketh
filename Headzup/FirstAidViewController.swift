@@ -14,6 +14,8 @@ class FirstAidViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        ViewHelpers.setStatusBarTint(self.view)
     }
 
     override func didReceiveMemoryWarning() {

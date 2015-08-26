@@ -51,3 +51,16 @@ class ImageHelpers {
     
 }
 
+
+class ViewHelpers
+{
+    class func setStatusBarTint(view:UIView)
+    {
+        //Tint for status bar
+        let tintViewForStatusBar : UIView = UIView(frame: CGRectMake(0, 0,view.frame.size.width, 20))
+        tintViewForStatusBar.backgroundColor = UIColor(red: 0.0, green: 0.3, blue: 0.5, alpha: 0.1)
+        view.addSubview(tintViewForStatusBar)
+    }
+    
+}
+
