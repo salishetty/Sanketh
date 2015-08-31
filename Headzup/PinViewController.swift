@@ -85,7 +85,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         {
             dispatch_async(dispatch_get_main_queue()) {
                 
-                self.authErrorLB.text = "Check network Connection."
+                self.authErrorLB.text = "Check network connection."
                 self.authErrorView.addSubview(self.authErrorLB)
                 self.authErrorView.hidden = false
                 self.authErrorView.backgroundColor = UIColor.orangeColor()
