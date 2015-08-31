@@ -155,6 +155,41 @@ public class ServiceManager:NSObject, NSURLSessionDelegate, NSURLSessionTaskDele
         
     }
     
+    public func getContent(url : String, postCompleted : (jsonData: NSArray) -> ()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "GET"
+        
+        var err: NSError?
+        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            //println("Message: \(strData)")
+            var err: NSError?
+            if let json:NSArray = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSArray
+            {
+                if NSJSONSerialization.isValidJSONObject(json)
+                {
+                    postCompleted(jsonData: json)
+                    println("JSON is valid")
+                }
+            }
+            else {
+                println(err!.localizedDescription)
+                
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr)'")
+            }
+        })
+        
+        task.resume()
+        
+    }
+
+    
     public func URLSession(session: NSURLSession,didReceiveChallenge challenge:NSURLAuthenticationChallenge,
         completionHandler:(NSURLSessionAuthChallengeDisposition,
         NSURLCredential!) -> Void)
