@@ -16,6 +16,12 @@ class StrategyDetailsViewController: UIViewController{
     @IBOutlet weak var audioButton: CustomButton!
     @IBOutlet weak var imageView: UIImageView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
+    
+    @IBOutlet weak var ContentViewHeight: NSLayoutConstraint!
+    
+    
     var dataMgr: DataManager?
     var strategiesArray:Array<Content> = []
     var selectedStrategy : Content?
@@ -27,6 +33,9 @@ class StrategyDetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         ViewHelpers.setStatusBarTint(self.view)
+       
+       //  scrollView.contentSize =  CGSizeMake(self.view.frame.width, 1000)
+        
         // init data manager
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
@@ -36,6 +45,8 @@ class StrategyDetailsViewController: UIViewController{
         
         self.MultiLineLabel.text = theContent?.contentValue
         self.MultiLineLabel.numberOfLines = 0
+        
+        
         
         
         //UserActionTracking - ViewStrategy
@@ -100,7 +111,7 @@ class StrategyDetailsViewController: UIViewController{
             audioButton.hidden = true
             audioButton.superview?.hidden = true
         }
-        
+        self.view.setNeedsLayout()
 }
     
     override func didReceiveMemoryWarning() {

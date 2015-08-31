@@ -881,7 +881,7 @@
         <!--Strategy Details View Controller-->
         <scene sceneID="F1o-CH-tKt">
             <objects>
-                <viewController id="7WF-Xp-2y5" customClass="StrategyDetailsViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="7WF-Xp-2y5" customClass="StrategyDetailsViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JE6-5Y-nV7"/>
                         <viewControllerLayoutGuide type="bottom" id="j3S-wu-Sae"/>
@@ -894,10 +894,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2P6-bU-Lap" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-SV-vEl" userLabel="Favorite View">
-                                                <rect key="frame" x="39" y="246" width="528" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-SV-vEl" userLabel="Favorite View">
+                                                <rect key="frame" x="40" y="246" width="528" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxj-RE-Cks" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -931,8 +931,8 @@
                                                     <constraint firstAttribute="bottom" secondItem="nxj-RE-Cks" secondAttribute="bottom" id="wWP-1Y-GSo"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-IA-ng5" userLabel="Goal View">
-                                                <rect key="frame" x="40" y="316" width="528" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-IA-ng5" userLabel="Goal View">
+                                                <rect key="frame" x="41" y="316" width="528" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQ2-5B-C0i" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -984,8 +984,8 @@
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-il-CbW" userLabel="Audio View">
-                                                <rect key="frame" x="39" y="176" width="528" height="50"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-il-CbW" userLabel="Audio View">
+                                                <rect key="frame" x="40" y="176" width="528" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4P-cs-EdV" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="528" height="50"/>
@@ -1026,6 +1026,7 @@
                                         <constraints>
                                             <constraint firstItem="2dU-SV-vEl" firstAttribute="top" secondItem="h9b-il-CbW" secondAttribute="bottom" constant="20" id="1ss-r3-ipL"/>
                                             <constraint firstItem="h9b-il-CbW" firstAttribute="top" secondItem="Q11-0O-E9Q" secondAttribute="bottom" constant="20" id="207-r1-FWI"/>
+                                            <constraint firstAttribute="height" constant="700" id="2FD-RB-rmJ"/>
                                             <constraint firstItem="qTO-lW-hfP" firstAttribute="trailing" secondItem="Q11-0O-E9Q" secondAttribute="trailing" id="4T4-5K-puX"/>
                                             <constraint firstItem="Q11-0O-E9Q" firstAttribute="trailing" secondItem="h9b-il-CbW" secondAttribute="trailing" id="Aok-h0-I9b"/>
                                             <constraint firstItem="Q11-0O-E9Q" firstAttribute="leading" secondItem="qTO-lW-hfP" secondAttribute="leading" id="KyH-3F-2fp"/>
@@ -1043,28 +1044,30 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="2P6-bU-Lap" firstAttribute="centerX" secondItem="fZ3-xv-4c8" secondAttribute="centerX" id="2Fa-yh-fXM"/>
-                                    <constraint firstAttribute="bottom" secondItem="2P6-bU-Lap" secondAttribute="bottom" id="6kx-Bd-cdy"/>
-                                    <constraint firstItem="2P6-bU-Lap" firstAttribute="top" secondItem="fZ3-xv-4c8" secondAttribute="top" id="BCk-22-8L4"/>
-                                    <constraint firstAttribute="trailing" secondItem="2P6-bU-Lap" secondAttribute="trailing" id="Ruc-Ks-Se8"/>
-                                    <constraint firstItem="2P6-bU-Lap" firstAttribute="centerY" secondItem="fZ3-xv-4c8" secondAttribute="centerY" id="eBg-p7-gWO"/>
-                                    <constraint firstItem="2P6-bU-Lap" firstAttribute="leading" secondItem="fZ3-xv-4c8" secondAttribute="leading" id="xoI-li-K6P"/>
+                                    <constraint firstItem="2P6-bU-Lap" firstAttribute="leading" secondItem="fZ3-xv-4c8" secondAttribute="leading" id="OEs-hs-Umd"/>
+                                    <constraint firstItem="2P6-bU-Lap" firstAttribute="top" secondItem="fZ3-xv-4c8" secondAttribute="top" id="Rye-GP-RVS"/>
+                                    <constraint firstAttribute="bottom" secondItem="2P6-bU-Lap" secondAttribute="bottom" id="XAm-N2-37b"/>
+                                    <constraint firstAttribute="trailing" secondItem="2P6-bU-Lap" secondAttribute="trailing" id="rx5-Sh-lF2"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fZ3-xv-4c8" firstAttribute="top" secondItem="JE6-5Y-nV7" secondAttribute="bottom" id="2xQ-WN-GDp"/>
-                            <constraint firstAttribute="trailing" secondItem="fZ3-xv-4c8" secondAttribute="trailing" id="Qiz-8j-ikc"/>
-                            <constraint firstItem="fZ3-xv-4c8" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leading" id="niU-4L-3ZI"/>
-                            <constraint firstItem="fZ3-xv-4c8" firstAttribute="bottom" secondItem="j3S-wu-Sae" secondAttribute="top" id="yu6-t3-u2W"/>
+                            <constraint firstItem="j3S-wu-Sae" firstAttribute="top" secondItem="fZ3-xv-4c8" secondAttribute="bottom" id="Rkb-zu-Md6"/>
+                            <constraint firstAttribute="trailing" secondItem="fZ3-xv-4c8" secondAttribute="trailing" id="eKC-7d-YfS"/>
+                            <constraint firstItem="fZ3-xv-4c8" firstAttribute="leading" secondItem="0Vd-CA-uc4" secondAttribute="leading" id="fFu-Ba-Jxx"/>
+                            <constraint firstItem="fZ3-xv-4c8" firstAttribute="top" secondItem="JE6-5Y-nV7" secondAttribute="bottom" id="n2E-IO-2SY"/>
+                            <constraint firstItem="2P6-bU-Lap" firstAttribute="width" secondItem="0Vd-CA-uc4" secondAttribute="width" id="tre-SS-lkC"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ContentViewHeight" destination="2FD-RB-rmJ" id="WeF-oQ-DMk"/>
                         <outlet property="MultiLineLabel" destination="Q11-0O-E9Q" id="odl-tx-IlM"/>
                         <outlet property="addToFavorites" destination="nxj-RE-Cks" id="MrW-Dp-64p"/>
                         <outlet property="audioButton" destination="c4P-cs-EdV" id="kHi-ZZ-Cnz"/>
+                        <outlet property="contentView" destination="2P6-bU-Lap" id="Is8-3u-ibA"/>
                         <outlet property="imageView" destination="qTO-lW-hfP" id="3BW-SV-HcK"/>
+                        <outlet property="scrollView" destination="fZ3-xv-4c8" id="APO-30-fTn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACl-cg-3JI" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -43,85 +43,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppContext.categories = dataMgr.getAllcategories()
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
             
-            var theURL:String =  AppContext.svcUrl + "getContents"
-            var serviceMgr:ServiceManager?
-            // init data manager
-            let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+//            var theURL:String =  AppContext.svcUrl + "getContents"
+//            var serviceMgr:ServiceManager?
+//            // init data manager
+//            let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//            let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+//            
+//            serviceMgr = ServiceManager(objContext: manObjContext)
+//            dataMgr = DataManager(objContext: manObjContext)
+//            serviceMgr?.getContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
+//                
+//                if let parseJSON = jsonData {
+//                    var contentID: String = ""
+//                    
+//                    var contName:String?
+//                    var contValue:String?
+//                    var contDescription:String?
+//                    var categoryID:String?
+//                    var categoryName:String?
+//                    for dataObject : AnyObject in parseJSON
+//                    {
+//                        var contentIDs: String = ""
+//                        if let data = dataObject as? NSDictionary
+//                        {
+//                            for (key, value) in data {
+//                                switch key as! String
+//                                {
+//                                    case ContentKeys.CategoryID:
+//                                        categoryID = value as? String
+//                                    case ContentKeys.CategoryName:
+//                                        categoryName = value as? String
+//                                    case ContentKeys.Contents:
+//                                    for index in 0...value[0].count - 1
+//                                    {
+//                                        var con = value[index] as! NSDictionary
+//                                        
+//                                        for (conKey, conVal) in con
+//                                        {
+//                                            if conKey as! String == ContentKeys.ContentId
+//                                            {
+//                                                contentID = String(conVal.intValue)
+//                                                contentIDs += String(conVal.intValue) + ","
+//                                            }
+//                                            if conKey as! String == ContentKeys.ContentName
+//                                            {
+//                                                contName = conVal as? String
+//                                            }
+//                                            if conKey as! String == ContentKeys.ContentValue
+//                                            {
+//                                                contValue = conVal as? String
+//                                            }
+//                                            if conKey as! String == ContentKeys.Description
+//                                            {
+//                                                contDescription = conVal as? String
+//                                            }
+//                                        }
+//                                        //if not saved in Content table- Save it now!
+//                                        var theContent = dataMgr.getContentByID(contentID.toInt()!)
+//                                        if theContent == nil
+//                                        {
+//                                            dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: "", audioPath: "")
+//                                        }
+//                                    }
+//                                    
+//                                    default:
+//                                    println("There is an error")
+//                                }
+//                                
+//                            }
+//                            //Save to ContentGroup table
+//                            dataMgr.saveContentCategory(categoryID!.toInt()!, categoryName: categoryName!, contentIDs: dropLast(contentIDs))
+//                        }
+//                    }
+//                }
+//                
+//                }
+//            )
+//            AppContext.categories = dataMgr.getAllcategories()
             
-            serviceMgr = ServiceManager(objContext: manObjContext)
-            dataMgr = DataManager(objContext: manObjContext)
-            serviceMgr?.getContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
-                
-                if let parseJSON = jsonData {
-                    var contentID: String = ""
-                    
-                    var contName:String?
-                    var contValue:String?
-                    var contDescription:String?
-                    var categoryID:String?
-                    var categoryName:String?
-                    for dataObject : AnyObject in parseJSON
-                    {
-                        var contentIDs: String = ""
-                        if let data = dataObject as? NSDictionary
-                        {
-                            for (key, value) in data {
-                                switch key as! String
-                                {
-                                    case ContentKeys.CategoryID:
-                                        categoryID = value as? String
-                                    case ContentKeys.CategoryName:
-                                        categoryName = value as? String
-                                    case ContentKeys.Contents:
-                                    for index in 0...value[0].count - 1
-                                    {
-                                        var con = value[index] as! NSDictionary
-                                        
-                                        for (conKey, conVal) in con
-                                        {
-                                            if conKey as! String == ContentKeys.ContentId
-                                            {
-                                                contentID = String(conVal.intValue)
-                                                contentIDs += String(conVal.intValue) + ","
-                                            }
-                                            if conKey as! String == ContentKeys.ContentName
-                                            {
-                                                contName = conVal as? String
-                                            }
-                                            if conKey as! String == ContentKeys.ContentValue
-                                            {
-                                                contValue = conVal as? String
-                                            }
-                                            if conKey as! String == ContentKeys.Description
-                                            {
-                                                contDescription = conVal as? String
-                                            }
-                                        }
-                                        //if not saved in Content table- Save it now!
-                                        var theContent = dataMgr.getContentByID(contentID.toInt()!)
-                                        if theContent == nil
-                                        {
-                                            dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: "", audioPath: "")
-                                        }
-                                    }
-                                    
-                                    default:
-                                    println("There is an error")
-                                }
-                                
-                            }
-                            //Save to ContentGroup table
-                            dataMgr.saveContentCategory(categoryID!.toInt()!, categoryName: categoryName!, contentIDs: dropLast(contentIDs))
-                        }
-                    }
-                }
-                
-                }
-            )
-            AppContext.categories = dataMgr.getAllcategories()
-            
-            /*
             
             //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
             
@@ -149,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             dataMgr.saveContent(114, contentName: "Time and Timer Again", contentDescription: "", contentValue: "Here’s another good way to break up big projects and not go crazy in the process. Use a timer.", contentType: "", imagePath: "Content-Demo", audioPath: "DemoAudio")
             dataMgr.saveContent(115, contentName: "Update Your Water (H20 2.0)", contentDescription: "", contentValue: "Water is…well, it’s pretty plain. It’s good for you, but that doesn’t make it exciting. Try some of these suggestions to give your H20 a boost.", contentType: "", imagePath: "Content-Demo", audioPath: "DemoAudio")
             
-            AppContext.categories = dataMgr.getAllcategories()*/
+            AppContext.categories = dataMgr.getAllcategories()
         }
     }
     func registerDefaultsFromSettingsBundle() {
