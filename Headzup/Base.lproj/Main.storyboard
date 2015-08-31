@@ -894,7 +894,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2P6-bU-Lap" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dU-SV-vEl" userLabel="Favorite View">
                                                 <rect key="frame" x="40" y="246" width="528" height="50"/>
@@ -1022,11 +1022,10 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="2dU-SV-vEl" firstAttribute="top" secondItem="h9b-il-CbW" secondAttribute="bottom" constant="20" id="1ss-r3-ipL"/>
                                             <constraint firstItem="h9b-il-CbW" firstAttribute="top" secondItem="Q11-0O-E9Q" secondAttribute="bottom" constant="20" id="207-r1-FWI"/>
-                                            <constraint firstAttribute="height" constant="700" id="2FD-RB-rmJ"/>
+                                            <constraint firstAttribute="height" constant="487" id="2FD-RB-rmJ"/>
                                             <constraint firstItem="qTO-lW-hfP" firstAttribute="trailing" secondItem="Q11-0O-E9Q" secondAttribute="trailing" id="4T4-5K-puX"/>
                                             <constraint firstItem="Q11-0O-E9Q" firstAttribute="trailing" secondItem="h9b-il-CbW" secondAttribute="trailing" id="Aok-h0-I9b"/>
                                             <constraint firstItem="Q11-0O-E9Q" firstAttribute="leading" secondItem="qTO-lW-hfP" secondAttribute="leading" id="KyH-3F-2fp"/>

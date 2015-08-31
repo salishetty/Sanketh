@@ -33,8 +33,6 @@ class StrategyDetailsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         ViewHelpers.setStatusBarTint(self.view)
-       
-       //  scrollView.contentSize =  CGSizeMake(self.view.frame.width, 1000)
         
         // init data manager
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -46,6 +44,9 @@ class StrategyDetailsViewController: UIViewController{
         self.MultiLineLabel.text = theContent?.contentValue
         self.MultiLineLabel.numberOfLines = 0
         
+        var heightPadding = ViewHelpers.heightForView(self.MultiLineLabel.text!, font: self.MultiLineLabel.font, width: self.MultiLineLabel.frame.width)
+        
+        ContentViewHeight.constant = heightPadding + self.view.frame.height
         
         
         
