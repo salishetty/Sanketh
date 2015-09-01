@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     case ContentKeys.CategoryName:
                                         categoryName = value as? String
                                     case ContentKeys.Contents:
-                                    for index in 0...value[0].count - 1
+                                    for index in 0...value.count - 1
                                     {
                                         var con = value[index] as! NSDictionary
                                         
