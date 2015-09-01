@@ -34,6 +34,8 @@ class StrategyListTableViewController: UITableViewController {
             
             var theContent = dataMgr?.getContentByIDs(theCategory!.contentIDs)
             strategiesArray = theContent!
+            //Sort by ContentName ASC
+            strategiesArray.sort({$0.contentName < $1.contentName})
             //Set Title to name of category
             self.title = theCategory?.categoryName
         }
@@ -48,6 +50,8 @@ class StrategyListTableViewController: UITableViewController {
                     strategiesArray.append(theContent!)
                 }
             }
+            //Sort by ContentName ASC
+            strategiesArray.sort({$0.contentName < $1.contentName})
             self.title = "My Favorites"
         }
         // Uncomment the following line to preserve selection between presentations
@@ -56,7 +60,6 @@ class StrategyListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

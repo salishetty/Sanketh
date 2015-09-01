@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let parseJSON = jsonData {
                     var contentID: String = ""
-                    
+                    var viewAllContentIDs:String = ""
                     var contName:String?
                     var contValue:String?
                     var contDescription:String?
@@ -103,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         if theContent == nil
                                         {
                                             dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: "", audioPath: "")
+                                            viewAllContentIDs += contentID + ","
                                         }
                                     }
                                     
@@ -115,10 +116,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             dataMgr.saveContentCategory(categoryID!.toInt()!, categoryName: categoryName!, contentIDs: dropLast(contentIDs))
                         }
                     }
+                    //Save 'View All' data to Categories
+                    dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: dropLast(viewAllContentIDs))
                 }
                 
                 }
+                
             )
+            
+            
             AppContext.categories = dataMgr.getAllcategories()
             
             /*

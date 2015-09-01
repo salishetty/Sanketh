@@ -25,6 +25,8 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         let fetchRequest = NSFetchRequest(entityName: "Category")
         categoriesArray = manObjContext.executeFetchRequest(fetchRequest, error: nil) as! Array<Category>!
+        //Sort by categoryName ASC
+        categoriesArray.sort({$0.categoryName < $1.categoryName})
         // ---------------------------------
         println("Categories=\(categoriesArray.count)")
 
