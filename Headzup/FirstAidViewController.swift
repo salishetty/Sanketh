@@ -26,7 +26,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate {
         var size =  scrollView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
         var contentwidth = scrollView.frame.size.width
         var screenWidth =  UIScreen.mainScreen().bounds.width
-        var contentHeight = scrollView.bounds.height
+        var contentHeight = UIScreen.mainScreen().bounds.height * 0.745
         
         
        self.scrollView.contentSize = CGSizeMake(7 * screenWidth, contentHeight)
