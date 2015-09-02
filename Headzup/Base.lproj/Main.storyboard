@@ -479,11 +479,47 @@
                     <connections>
                         <outlet property="pageControl" destination="ETd-qd-9Rq" id="HYg-Pj-TgX"/>
                         <outlet property="scrollView" destination="G5p-Kn-s3k" id="3RT-oe-vof"/>
+                        <segue destination="ilz-Rg-CXG" kind="showDetail" identifier="FirstAidDetailSeg" id="fII-wl-7gm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igt-gK-Xtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1970" y="2761"/>
+        </scene>
+        <!--First Aid Details-->
+        <scene sceneID="cip-G2-2sR">
+            <objects>
+                <viewController storyboardIdentifier="FirstAidDetailsView" autoresizesArchivedViewToFullSize="NO" title="First Aid Details" automaticallyAdjustsScrollViewInsets="NO" id="ilz-Rg-CXG" customClass="FirstAidDetailsViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Ok-Vx-XX5"/>
+                        <viewControllerLayoutGuide type="bottom" id="SPo-6S-tOF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nKg-8F-9vS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="P15-zg-MHc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-PN-o1o">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem title="Details" id="btG-fx-zCR"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SPo-6S-tOF" firstAttribute="top" secondItem="P15-zg-MHc" secondAttribute="bottom" id="Aum-3Q-hiq"/>
+                            <constraint firstItem="P15-zg-MHc" firstAttribute="top" secondItem="nKg-8F-9vS" secondAttribute="top" id="WFP-f5-AMd"/>
+                            <constraint firstAttribute="trailing" secondItem="P15-zg-MHc" secondAttribute="trailing" id="fwk-hD-18T"/>
+                            <constraint firstItem="P15-zg-MHc" firstAttribute="leading" secondItem="nKg-8F-9vS" secondAttribute="leading" id="grE-pT-WsE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bza-3t-KeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1970" y="3501"/>
         </scene>
         <!--Profile Page-->
         <scene sceneID="jgx-OS-K3p">
@@ -734,7 +770,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7RY-vX-VUh">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="u4" id="8ew-Gf-4Ab">
@@ -807,7 +843,7 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fo1-0v-B6l">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -930,7 +966,7 @@
                                                     <constraint firstAttribute="height" constant="21" placeholder="YES" id="f9I-Rs-Nsl"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9b-il-CbW" userLabel="Audio View">
@@ -1125,7 +1161,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tracker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMg-M9-AQu">
                                 <rect key="frame" x="29" y="126" width="203" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">

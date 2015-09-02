@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstAidViewController: UIViewController, UIScrollViewDelegate {
+class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
 
@@ -33,7 +33,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate {
         
         for index in 0...6 {
             var newFirstAid = FirstAidView()
-            
+            newFirstAid.firstAidViewDelegate = self
             var offset = (CGFloat(index) * newFirstAid.bounds.width)
             newFirstAid.frame.offset(dx: offset, dy: 0)
             
@@ -56,6 +56,15 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate {
         pageControl.currentPage = page
     }
     
+    func NavigateToDetails(contentId:NSNumber) {
+        
+        dispatch_async(dispatch_get_main_queue()) {
+            let detailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("FirstAidDetailsView") as! FirstAidDetailsViewController
+            detailsVC.ContentId = contentId
+            self.presentViewController(detailsVC, animated: true, completion: nil)
+        }
+        
+    }
     
        /*
     // MARK: - Navigation

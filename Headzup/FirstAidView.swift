@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 import CoreData
 
+protocol FirstAidViewDelegate {
+    func NavigateToDetails(contentId:NSNumber)
+}
+
+
 class FirstAidView: UIView {
     
     var ContentTitle: UILabel = UILabel()
@@ -17,13 +22,17 @@ class FirstAidView: UIView {
     var ReadMoreView:UIView = UIView()
     var ReadMoreButton:CustomButton = CustomButton()
 
+    var firstAidViewDelegate : FirstAidViewDelegate!
+    
+    var ContentId:NSNumber = 0
+    
     init()
     {
         var screenHeight = UIScreen.mainScreen().bounds.height * 0.745
         var screenWidth =  UIScreen.mainScreen().bounds.width 
         super.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         initialize()
-        
+        self.ContentId = 10
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -100,10 +109,11 @@ class FirstAidView: UIView {
         //Read More Button
         ReadMoreButton.ViewButtonColor = UIColor(netHex:0xB1E100)
         ReadMoreButton.ViewShadowColor = UIColor(netHex:0x78AC2D)
+        ReadMoreButton.tag = self.ContentId as Int;
         ReadMoreButton.setTitle("Read More...", forState: UIControlState.Normal)
         ReadMoreButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         ReadMoreButton.titleLabel!.font =  UIFont (name: "Arial Rounded MT Bold", size: 17)
-        //ReadMoreButton.addTarget(self, action: "NavigateReadMore:", forControlEvents: UIControlEvents.TouchUpInside)
+        ReadMoreButton.addTarget(self, action: "NavigateReadMore:", forControlEvents: UIControlEvents.TouchUpInside)
         ReadMoreButton.setTranslatesAutoresizingMaskIntoConstraints(false)
         ReadMoreView.addSubview(ReadMoreButton)
         
@@ -113,6 +123,15 @@ class FirstAidView: UIView {
         let verticalButtonConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[ReadMoreButton]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
         ReadMoreView.addConstraints(verticalButtonConstraints)
         
+    }
+    
+    
+    func NavigateReadMore(sender:CustomButton)
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+            
+           self.firstAidViewDelegate.NavigateToDetails(self.ContentId)
+        }
     }
     
 }
