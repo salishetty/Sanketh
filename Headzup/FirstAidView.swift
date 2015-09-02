@@ -14,16 +14,14 @@ class FirstAidView: UIView {
     
     var ContentTitle: UILabel = UILabel()
     var ContentDescription: UILabel = UILabel()
+    var ReadMoreView:UIView = UIView()
     var ReadMoreButton:CustomButton = CustomButton()
 
     init()
     {
-        var screenHeight = UIScreen.mainScreen().bounds.height - 150
+        var screenHeight = UIScreen.mainScreen().bounds.height * 0.745
         var screenWidth =  UIScreen.mainScreen().bounds.width 
-        println("screen height: \(screenHeight) and screen width :\(screenWidth)")
-        
         super.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-        
         initialize()
         
     }
@@ -35,78 +33,86 @@ class FirstAidView: UIView {
     
     private func initialize(){
         
-         var contentWidth =  UIScreen.mainScreen().bounds.width - 60
-        
-        let newView =  UIView()
-        newView.backgroundColor = UIColor.whiteColor()
-        newView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        let contentView =  UIView()
+        contentView.backgroundColor = UIColor.whiteColor()
+        contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         //Rounded Corner
-        newView.layer.cornerRadius = 15.0
-        newView.layer.borderColor = UIColor.grayColor().CGColor
-        newView.layer.borderWidth = 0.5
-        newView.clipsToBounds = true
+        contentView.layer.cornerRadius = 12.0
+        contentView.layer.borderColor = UIColor(netHex:0x2387CD).CGColor
+        contentView.layer.borderWidth = 0.5
+        contentView.clipsToBounds = true
         
+        self.addSubview(contentView)
         
+        let horizontalCenterConstraint = NSLayoutConstraint(item: contentView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
+        self.addConstraint(horizontalCenterConstraint)
+        
+        let verticalCenterConstraint = NSLayoutConstraint(item: contentView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
+        self.addConstraint(verticalCenterConstraint)
+        
+        let views = ["contentView": contentView ,"ContentTitle":ContentTitle,"ContentDescription":ContentDescription,"ReadMoreView":ReadMoreView,"ReadMoreButton":ReadMoreButton]
+
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[contentView]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        self.addConstraints(horizontalConstraints)
+        
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[contentView]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        self.addConstraints(verticalConstraints)
+
         // Title label
-        ContentTitle.frame = CGRectMake(10, 20, contentWidth, 30)
-        ContentTitle.numberOfLines = 1
-        ContentTitle.adjustsFontSizeToFitWidth = true
+        ContentTitle.numberOfLines = 0
         ContentTitle.textColor = UIColor(netHex:0x2387CD)
         ContentTitle.textAlignment = NSTextAlignment.Center
-        ContentTitle.font = UIFont (name: "Arial Rounded MT Bold", size: 30)
-        ContentTitle.text = "Content Title"
-        newView.addSubview(ContentTitle)
-
-        // Content Label
-        ContentDescription.frame = CGRectMake(10, 75, contentWidth, 30)
+        ContentTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ContentTitle.font = UIFont (name: "Arial Rounded MT Bold", size: 25)
+        ContentTitle.text = "30 x 3 = Fewer Headaches"
+        contentView.addSubview(ContentTitle)
+        
+        //Content Label
         ContentDescription.numberOfLines = 0
         ContentDescription.textAlignment = NSTextAlignment.Justified
-        ContentDescription.text = "Content description"
-        newView.addSubview(ContentDescription)
+        ContentDescription.font = UIFont (name: "HelveticaNeue", size: 20)
+        ContentDescription.textColor = UIColor(netHex:0x606060)
+        ContentDescription.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ContentDescription.text = "Research is showing that regular exercise can help reduce the frequency of headaches. Just start a new exercise plan slowly."
+         contentView.addSubview(ContentDescription)
+        
+        //Button View
+        ReadMoreView.backgroundColor = UIColor(netHex:0x78AC2D)
+        ReadMoreView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        contentView.addSubview(ReadMoreView)
+        
+        //View level constraints
+        let horizontalTitleConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[ContentTitle]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        contentView.addConstraints(horizontalTitleConstraints)
+        
+        let horizontalDescConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[ContentDescription]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        contentView.addConstraints(horizontalDescConstraints)
 
-        //content button
-        var buttonY = UIScreen.mainScreen().bounds.height - 270
-        let buttonView =  UIView(frame: CGRectMake(10, buttonY, contentWidth, 50))
-        buttonView.backgroundColor = UIColor(netHex:0x78AC2D)
-        ReadMoreButton.frame = CGRectMake(0, 0, contentWidth, 50)
+        
+        let horizontalBtnViewConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[ReadMoreView]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        contentView.addConstraints(horizontalBtnViewConstraints)
+        
+        let verticalLabelConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[ContentTitle]-20-[ContentDescription]-20-[ReadMoreView(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        contentView.addConstraints(verticalLabelConstraints)
+
+        
+        //Read More Button
         ReadMoreButton.ViewButtonColor = UIColor(netHex:0xB1E100)
         ReadMoreButton.ViewShadowColor = UIColor(netHex:0x78AC2D)
         ReadMoreButton.setTitle("Read More...", forState: UIControlState.Normal)
         ReadMoreButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        buttonView.addSubview(ReadMoreButton)
         ReadMoreButton.titleLabel!.font =  UIFont (name: "Arial Rounded MT Bold", size: 17)
+        //ReadMoreButton.addTarget(self, action: "NavigateReadMore:", forControlEvents: UIControlEvents.TouchUpInside)
+        ReadMoreButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ReadMoreView.addSubview(ReadMoreButton)
         
-        //button.addTarget(self, action: "delAction:", forControlEvents: UIControlEvents.TouchUpInside)
-        
-        newView.addSubview(buttonView)
-        
-        self.addSubview(newView)
-        
-        let horizontalCenterConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
-        self.addConstraint(horizontalCenterConstraint)
-        
-        let verticalCenterConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-        self.addConstraint(verticalCenterConstraint)
-        
-        let views = ["newView": newView]
-
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[newView]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-        self.addConstraints(horizontalConstraints)
-        
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[newView]-20-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-        self.addConstraints(verticalConstraints)
-
+        //Button Constraints
+        let horizontalButtonConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[ReadMoreButton]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        ReadMoreView.addConstraints(horizontalButtonConstraints)
+        let verticalButtonConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[ReadMoreButton]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+        ReadMoreView.addConstraints(verticalButtonConstraints)
         
     }
-    
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
     
 }
