@@ -44,8 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
             
             var theURL:String =  AppContext.svcUrl + "getContents"
-
-            
+      
             serviceMgr = ServiceManager(objContext: manObjContext)
             dataMgr = DataManager(objContext: manObjContext)
             serviceMgr?.getContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
