@@ -1,21 +1,22 @@
 //
-//  TrackViewController.swift
+//  FirstAidDetailsViewController.swift
 //  Headzup
 //
-//  Created by Sandeep Menon Ayyappankutty on 8/25/15.
+//  Created by Sandeep Menon Ayyappankutty on 9/2/15.
 //  Copyright (c) 2015 Inflexxion. All rights reserved.
 //
 
 import UIKit
 
-class TrackViewController: UIViewController {
+class FirstAidDetailsViewController: UIViewController {
 
+    internal var ContentId:NSNumber = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
         ViewHelpers.setStatusBarTint(self.view)
-        
+        println("Details View Content ID\(ContentId)")
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,7 +24,7 @@ class TrackViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 

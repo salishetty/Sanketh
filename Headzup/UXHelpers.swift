@@ -18,8 +18,16 @@ extension UIColor {
         self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
     }
     
+    convenience init(hex:Int, alpha:Float = 1.0) {
+        self.init(red: CGFloat((hex >> 16) & 0xff) / 255.0, green: CGFloat((hex >> 8) & 0xff) / 255.0, blue: CGFloat((hex >> 0) & 0xff) / 255.0, alpha: CGFloat(alpha))
+    }
+
     convenience init(netHex:Int) {
         self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+    }
+     
+    convenience init(alphaHex:Int) {
+        self.init(red: CGFloat((alphaHex >> 24) & 0xff) / 255.0, green: CGFloat((alphaHex >> 16) & 0xff) / 255.0, blue: CGFloat((alphaHex >> 8) & 0xff) / 255.0, alpha:CGFloat((alphaHex >> 0) & 0xff) / 255.0)
     }
 }
 
@@ -49,5 +57,27 @@ class ImageHelpers {
         return newImage
     }
     
+}
+
+
+class ViewHelpers
+{
+    class func setStatusBarTint(view:UIView)
+    {
+        //Tint for status bar
+        let tintViewForStatusBar : UIView = UIView(frame: CGRectMake(0, 0,view.frame.size.width, 20))
+        tintViewForStatusBar.backgroundColor = UIColor(hex:0x5DB8DB,alpha:0.7)
+        view.addSubview(tintViewForStatusBar)
+    }
+    
+    class func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return label.frame.height
+    }
 }
 

@@ -80,10 +80,12 @@
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
+		57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */; };
 		57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
 		57FEAB8C1B8CFE6B0093AFEE /* TrackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEAB8B1B8CFE6B0093AFEE /* TrackViewController.swift */; };
 		57FEAB8E1B8CFEC80093AFEE /* FirstAidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEAB8D1B8CFEC80093AFEE /* FirstAidViewController.swift */; };
+		57FEAB901B8E54E20093AFEE /* FirstAidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEAB8F1B8E54E20093AFEE /* FirstAidView.swift */; };
 		6A2CEF801B74FE740083B568 /* StrategyListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */; };
 		6A2CEF821B7520C70083B568 /* StrategyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */; };
 		6A2CEF851B7A86530083B568 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF841B7A86530083B568 /* CustomButton.swift */; };
@@ -180,10 +182,12 @@
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidDetailsViewController.swift; sourceTree = "<group>"; };
 		57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXHelpers.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
 		57FEAB8B1B8CFE6B0093AFEE /* TrackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackViewController.swift; sourceTree = "<group>"; };
 		57FEAB8D1B8CFEC80093AFEE /* FirstAidViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidViewController.swift; sourceTree = "<group>"; };
+		57FEAB8F1B8E54E20093AFEE /* FirstAidView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidView.swift; sourceTree = "<group>"; };
 		6A2CEF7F1B74FE740083B568 /* StrategyListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyListTableViewController.swift; sourceTree = "<group>"; };
 		6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyDetailsViewController.swift; sourceTree = "<group>"; };
 		6A2CEF841B7A86530083B568 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				5747DE521B66DFAD0054AC96 /* Controllers */,
 				14983CF41B557CF40059A5CA /* Cryptography */,
 				6A2CEF831B7A85EE0083B568 /* Custom Objects */,
+				57FEAB911B8E54F40093AFEE /* Views */,
 				14983CEB1B557A8E0059A5CA /* HeadzupData */,
 				14983CC81B557A170059A5CA /* AppDelegate.swift */,
 				579182961B6EBE27004ACFDD /* Helpers */,
@@ -405,6 +410,7 @@
 				6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */,
 				57FEAB8B1B8CFE6B0093AFEE /* TrackViewController.swift */,
 				57FEAB8D1B8CFEC80093AFEE /* FirstAidViewController.swift */,
+				57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -419,6 +425,14 @@
 				57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		57FEAB911B8E54F40093AFEE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57FEAB8F1B8E54E20093AFEE /* FirstAidView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		6A2CEF831B7A85EE0083B568 /* Custom Objects */ = {
@@ -580,6 +594,7 @@
 				57FEAB8C1B8CFE6B0093AFEE /* TrackViewController.swift in Sources */,
 				14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */,
 				140DED291B69CED6001F6A3F /* Category.swift in Sources */,
+				57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				14983D1F1B5586950059A5CA /* MD5.swift in Sources */,
 				57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */,
@@ -594,6 +609,7 @@
 				14983D231B5586950059A5CA /* PKCS7.swift in Sources */,
 				14C1BF2E1B6178D400BE78DA /* Reachability.m in Sources */,
 				14CDA5501B727BB000FB040F /* TechnicalLog.swift in Sources */,
+				57FEAB901B8E54E20093AFEE /* FirstAidView.swift in Sources */,
 				14CDA5521B727BCF00FB040F /* UserActionLog.swift in Sources */,
 				14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */,
 				5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */,

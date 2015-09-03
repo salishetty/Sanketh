@@ -20,6 +20,7 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
     var dataMgr: DataManager?  // initialized in viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        ViewHelpers.setStatusBarTint(self.view)
         // Get Categories from Category object in CoreData
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
