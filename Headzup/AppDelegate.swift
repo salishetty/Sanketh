@@ -59,8 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     var contName:String?
                     var contValue:String?
                     var contDescription:String?
+                    var contAudioPath:String?
+                    var contImagePath:String?
                     var categoryID:String?
                     var categoryName:String?
+                    //Declare array of ContentIDs which are of Intervention Type
+                    var arrayOfContentIDs: [String] = []
+                    
                     for dataObject : AnyObject in parseJSON
                     {
                         var contentIDs: String = ""
@@ -97,12 +102,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             {
                                                 contDescription = conVal as? String
                                             }
+                                            if conKey as! String == "ContentProperties"
+                                            {
+                                                for indexContProp in 0...conVal.count - 1
+                                                {
+                                                    var conProp = conVal[indexContProp] as! NSDictionary
+                                                        var propertyID:String = String(stringInterpolationSegment: conProp["PropertyID"]!.intValue)
+                                                        
+                                                        if (propertyID == ICMSProperty.HeadzupContentType && conProp["PropertyValue"] as! String == "Intervention")
+                                                        {
+                                                            var contID:String = String(conProp["ContentID"]!.intValue)
+                                                            arrayOfContentIDs.append(contID)
+                                                        }
+                                                        if propertyID == ICMSProperty.HeadzupImagePath
+                                                        {
+                                                            contImagePath = conProp["PropertyValue"] as? String
+                                                        }
+                                                        if propertyID == ICMSProperty.HeadzupAudioPath
+                                                        {
+                                                            contAudioPath = conProp["PropertyValue"] as? String
+                                                        }
+                                                }
+                                            }
                                         }
                                         //if not saved in Content table- Save it now!
                                         var theContent = dataMgr.getContentByID(contentID.toInt()!)
                                         if theContent == nil
                                         {
-                                            dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: "", audioPath: "")
+                                            dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: contImagePath!, audioPath: contAudioPath!)
                                             viewAllContentIDs += contentID + ","
                                         }
                                     }
@@ -118,6 +145,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                     //Save 'View All' data to Categories
                     dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: dropLast(viewAllContentIDs))
+                    //Save those contents with type = Intervention to 'ContentGroup'
+                    for contID in arrayOfContentIDs
+                    {
+                        let formatter = NSNumberFormatter()
+                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+                        var groupType = formatter.numberFromString(GroupType.OMG)
+                        var contentID = formatter.numberFromString(contID)
+                        dataMgr.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentID!, isActive: true)
+                    }
                 }
                 
                 }
@@ -356,4 +392,10 @@ public struct ContentKeys
     public static let ContentValue = "ContentValue"
     public static let Description = "Description"
 }
+public struct ICMSProperty
+{
+    public static let HeadzupContentType = "21"
+    public static let HeadzupImagePath = "22"
+    public static let HeadzupAudioPath = "23"
 
+}
