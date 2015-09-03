@@ -62,7 +62,8 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         if segue.identifier == "FirstAidSegue"{
             let vc = segue.destinationViewController as! FirstAidDetailsViewController
             vc.navigationItem.title = "Details"
-            navigationItem.title = "First Aid"
+            vc.ContentId = 1381
+            navigationItem.title = "Back"
         }
     }
     

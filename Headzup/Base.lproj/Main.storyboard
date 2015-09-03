@@ -546,6 +546,9 @@
                                                                         <real key="value" value="4"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="willTryButton:" destination="ilz-Rg-CXG" eventType="touchUpInside" id="vAs-WM-UbL"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -581,6 +584,9 @@
                                                                         <real key="value" value="4"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="removeThis:" destination="ilz-Rg-CXG" eventType="touchUpInside" id="BA1-2e-gRq"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -595,15 +601,16 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="WUZ-DB-IPM" firstAttribute="width" secondItem="mks-dJ-9hP" secondAttribute="width" id="47p-hY-zYc"/>
+                                                    <constraint firstAttribute="height" constant="452" id="6pH-sg-xJD"/>
                                                     <constraint firstItem="WUZ-DB-IPM" firstAttribute="top" secondItem="mks-dJ-9hP" secondAttribute="bottom" constant="20" id="AOh-3j-UNo"/>
                                                     <constraint firstItem="Zof-Sg-Hy1" firstAttribute="top" secondItem="nho-W6-kjg" secondAttribute="bottom" constant="20" id="CIS-DF-YU6"/>
                                                     <constraint firstItem="Zof-Sg-Hy1" firstAttribute="leading" secondItem="y8o-AI-km8" secondAttribute="leading" constant="20" id="Nb5-xV-55H"/>
                                                     <constraint firstAttribute="centerX" secondItem="WUZ-DB-IPM" secondAttribute="centerX" id="Of5-f8-fpU"/>
-                                                    <constraint firstItem="WUZ-DB-IPM" firstAttribute="height" secondItem="mks-dJ-9hP" secondAttribute="height" id="W3N-zq-Xzt"/>
                                                     <constraint firstItem="mks-dJ-9hP" firstAttribute="top" secondItem="Zof-Sg-Hy1" secondAttribute="bottom" constant="20" id="ejz-mV-XQj"/>
                                                     <constraint firstItem="nho-W6-kjg" firstAttribute="centerX" secondItem="y8o-AI-km8" secondAttribute="centerX" id="kdo-37-4Xs"/>
                                                     <constraint firstItem="nho-W6-kjg" firstAttribute="top" secondItem="y8o-AI-km8" secondAttribute="top" constant="10" id="mKu-DA-5XY"/>
                                                     <constraint firstAttribute="trailing" secondItem="Zof-Sg-Hy1" secondAttribute="trailing" constant="20" id="qYP-PV-Jv0"/>
+                                                    <constraint firstItem="WUZ-DB-IPM" firstAttribute="height" secondItem="mks-dJ-9hP" secondAttribute="height" id="rkS-4c-0a5"/>
                                                     <constraint firstItem="nho-W6-kjg" firstAttribute="leading" secondItem="y8o-AI-km8" secondAttribute="leading" constant="20" id="vcc-mt-tvi"/>
                                                     <constraint firstAttribute="trailing" secondItem="mks-dJ-9hP" secondAttribute="trailing" constant="20" id="wGM-tQ-Vnl"/>
                                                     <constraint firstItem="mks-dJ-9hP" firstAttribute="leading" secondItem="y8o-AI-km8" secondAttribute="leading" constant="20" id="zSd-D2-Ebc"/>
@@ -624,7 +631,6 @@
                                     <constraint firstAttribute="width" secondItem="y8o-AI-km8" secondAttribute="width" id="3PG-cI-Wth"/>
                                     <constraint firstAttribute="trailing" secondItem="8fT-89-3hk" secondAttribute="trailing" id="EEg-wM-Jb0"/>
                                     <constraint firstAttribute="bottom" secondItem="8fT-89-3hk" secondAttribute="bottom" id="PLt-kO-Rka"/>
-                                    <constraint firstAttribute="height" secondItem="y8o-AI-km8" secondAttribute="height" id="Yqy-4t-UPc"/>
                                     <constraint firstItem="8fT-89-3hk" firstAttribute="top" secondItem="Qc9-Go-j8s" secondAttribute="top" id="boc-g3-cNh"/>
                                 </constraints>
                             </view>
@@ -644,6 +650,12 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Details" id="Jv6-A2-JCe"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="ContentViewHeigth" destination="6pH-sg-xJD" id="Hyc-4j-xDz"/>
+                        <outlet property="MultiLineLabel" destination="Zof-Sg-Hy1" id="SqB-r0-qtV"/>
+                        <outlet property="ScrollView" destination="8fT-89-3hk" id="ZLI-KU-dCW"/>
+                        <outlet property="imageView" destination="nho-W6-kjg" id="NFC-kQ-AVP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bza-3t-KeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
