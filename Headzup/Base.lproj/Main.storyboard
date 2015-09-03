@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9NA-DE-ZJ6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -1298,22 +1299,21 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tracker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMg-M9-AQu">
-                                <rect key="frame" x="29" y="126" width="203" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="track_header" translatesAutoresizingMaskIntoConstraints="NO" id="w43-fa-wnn">
+                                <rect key="frame" x="0.0" y="72" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="w43-fa-wnn" secondAttribute="height" multiplier="12:1" id="bhR-R5-zNN"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="vvE-y9-sO8" secondAttribute="trailing" constant="-16" id="eDT-BB-GPH"/>
-                            <constraint firstItem="vvE-y9-sO8" firstAttribute="bottom" secondItem="0eH-OG-eF7" secondAttribute="bottomMargin" id="nSQ-Ta-sz8"/>
-                            <constraint firstItem="vvE-y9-sO8" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leadingMargin" constant="-16" id="pI1-eX-3yz"/>
-                            <constraint firstItem="vvE-y9-sO8" firstAttribute="top" secondItem="0eH-OG-eF7" secondAttribute="topMargin" id="veP-9Z-1gY"/>
+                            <constraint firstItem="w43-fa-wnn" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" id="BqW-eH-kNQ"/>
+                            <constraint firstItem="w43-fa-wnn" firstAttribute="top" secondItem="eNs-qJ-lff" secondAttribute="bottom" constant="8" id="oUH-5H-8tQ"/>
+                            <constraint firstAttribute="trailing" secondItem="w43-fa-wnn" secondAttribute="trailing" id="tkn-SJ-6Ne"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Track" id="cXk-IU-IcX"/>
@@ -1370,6 +1370,7 @@
         <image name="tab-icon-OMG" width="15" height="15"/>
         <image name="tab-icon-Tools" width="15" height="15"/>
         <image name="tab-icon-Track" width="15" height="15"/>
+        <image name="track_header" width="321" height="28"/>
         <image name="u4" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
