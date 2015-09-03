@@ -121,6 +121,121 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            )
 //            AppContext.categories = dataMgr.getAllcategories()
             
+            serviceMgr = ServiceManager(objContext: manObjContext)
+            dataMgr = DataManager(objContext: manObjContext)
+            serviceMgr?.getContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
+                
+                if let parseJSON = jsonData {
+                    var contentID: String = ""
+                    var viewAllContentIDs:String = ""
+                    var contName:String?
+                    var contValue:String?
+                    var contDescription:String?
+                    var contAudioPath:String?
+                    var contImagePath:String?
+                    var categoryID:String?
+                    var categoryName:String?
+                    //Declare array of ContentIDs which are of Intervention Type
+                    var arrayOfContentIDs: [String] = []
+                    
+                    for dataObject : AnyObject in parseJSON
+                    {
+                        var contentIDs: String = ""
+                        if let data = dataObject as? NSDictionary
+                        {
+                            for (key, value) in data {
+                                switch key as! String
+                                {
+                                    case ContentKeys.CategoryID:
+                                        categoryID = value as? String
+                                    case ContentKeys.CategoryName:
+                                        categoryName = value as? String
+                                    case ContentKeys.Contents:
+                                    for index in 0...value.count - 1
+                                    {
+                                        var con = value[index] as! NSDictionary
+                                        
+                                        for (conKey, conVal) in con
+                                        {
+                                            if conKey as! String == ContentKeys.ContentId
+                                            {
+                                                contentID = String(conVal.intValue)
+                                                contentIDs += String(conVal.intValue) + ","
+                                            }
+                                            if conKey as! String == ContentKeys.ContentName
+                                            {
+                                                contName = conVal as? String
+                                            }
+                                            if conKey as! String == ContentKeys.ContentValue
+                                            {
+                                                contValue = conVal as? String
+                                            }
+                                            if conKey as! String == ContentKeys.Description
+                                            {
+                                                contDescription = conVal as? String
+                                            }
+                                            if conKey as! String == "ContentProperties"
+                                            {
+                                                for indexContProp in 0...conVal.count - 1
+                                                {
+                                                    var conProp = conVal[indexContProp] as! NSDictionary
+                                                        var propertyID:String = String(stringInterpolationSegment: conProp["PropertyID"]!.intValue)
+                                                        
+                                                        if (propertyID == ICMSProperty.HeadzupContentType && conProp["PropertyValue"] as! String == "Intervention")
+                                                        {
+                                                            var contID:String = String(conProp["ContentID"]!.intValue)
+                                                            arrayOfContentIDs.append(contID)
+                                                        }
+                                                        if propertyID == ICMSProperty.HeadzupImagePath
+                                                        {
+                                                            contImagePath = conProp["PropertyValue"] as? String
+                                                        }
+                                                        if propertyID == ICMSProperty.HeadzupAudioPath
+                                                        {
+                                                            contAudioPath = conProp["PropertyValue"] as? String
+                                                        }
+                                                }
+                                            }
+                                        }
+                                        //if not saved in Content table- Save it now!
+                                        var theContent = dataMgr.getContentByID(contentID.toInt()!)
+                                        if theContent == nil
+                                        {
+                                            dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: contImagePath!, audioPath: contAudioPath!)
+                                            viewAllContentIDs += contentID + ","
+                                        }
+                                    }
+                                    
+                                    default:
+                                    println("There is an error")
+                                }
+                                
+                            }
+                            //Save to ContentGroup table
+                            dataMgr.saveContentCategory(categoryID!.toInt()!, categoryName: categoryName!, contentIDs: dropLast(contentIDs))
+                        }
+                    }
+                    //Save 'View All' data to Categories
+                    dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: dropLast(viewAllContentIDs))
+                    //Save those contents with type = Intervention to 'ContentGroup'
+                    for contID in arrayOfContentIDs
+                    {
+                        let formatter = NSNumberFormatter()
+                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+                        var groupType = formatter.numberFromString(GroupType.OMG)
+                        var contentID = formatter.numberFromString(contID)
+                        dataMgr.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentID!, isActive: true)
+                    }
+                }
+                
+                }
+                
+            )
+            
+            
+            AppContext.categories = dataMgr.getAllcategories()
+            
+            /*
             
             //Save Content and Category to CoreData - To be replaced later by data coming from Headzup Service
             
@@ -353,4 +468,10 @@ public struct ContentKeys
     public static let ContentValue = "ContentValue"
     public static let Description = "Description"
 }
+public struct ICMSProperty
+{
+    public static let HeadzupContentType = "21"
+    public static let HeadzupImagePath = "22"
+    public static let HeadzupAudioPath = "23"
 
+}
