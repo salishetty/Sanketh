@@ -26,14 +26,21 @@ class FirstAidView: UIView {
     
     var ContentId:NSNumber = 0
     
-    init()
+    var contentName: String?
+    var contentValue: String?
+    init(firstAid: Content)
     {
         var screenHeight = UIScreen.mainScreen().bounds.height * 0.745
         var screenWidth =  UIScreen.mainScreen().bounds.width 
         super.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+        self.contentName = firstAid.contentName
+        self.contentValue = firstAid.contentValue
         initialize()
-        self.ContentId = 10
+        self.ContentId = firstAid.contentID
     }
+    
+    
+
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -74,7 +81,7 @@ class FirstAidView: UIView {
         ContentTitle.textAlignment = NSTextAlignment.Center
         ContentTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
         ContentTitle.font = UIFont (name: "Arial Rounded MT Bold", size: 25)
-        ContentTitle.text = "30 x 3 = Fewer Headaches"
+        ContentTitle.text = contentName; //"30 x 3 = Fewer Headaches"
         contentView.addSubview(ContentTitle)
         
         //Content Label
@@ -83,7 +90,7 @@ class FirstAidView: UIView {
         ContentDescription.font = UIFont (name: "HelveticaNeue", size: 20)
         ContentDescription.textColor = UIColor(netHex:0x606060)
         ContentDescription.setTranslatesAutoresizingMaskIntoConstraints(false)
-        ContentDescription.text = "Research is showing that regular exercise can help reduce the frequency of headaches. Just start a new exercise plan slowly."
+        ContentDescription.text = contentValue;// "Research is showing that regular exercise can help reduce the frequency of headaches. Just start a new exercise plan slowly."
          contentView.addSubview(ContentDescription)
         
         //Button View

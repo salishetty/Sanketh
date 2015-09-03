@@ -494,6 +494,21 @@ public class DataManager
         
         return r
     }
+    //Returns FirstAid Contents
+    public func getFirstAidContents() -> [String]
+    {
+        var contentGroup:[ContentGroup] = getContentGroups(0)!
+        var contentIds = [String]()
+        
+        for conGroup in contentGroup
+        {
+            if conGroup.groupType.stringValue == GroupType.OMG
+            {
+                contentIds.append(conGroup.contentID.stringValue)
+            }
+        }
+        return contentIds
+    }
     
     public func getFavoritedContents() -> [ContentGroup]?
     {

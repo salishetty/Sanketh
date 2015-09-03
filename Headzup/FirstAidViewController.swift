@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
 
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    var dataMgr: DataManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +34,24 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         
        self.scrollView.contentSize = CGSizeMake(7 * screenWidth, contentHeight)
         
-        for index in 0...6 {
-            var newFirstAid = FirstAidView()
+        // init data manager
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        var firstAidContents = dataMgr?.getFirstAidContents()
+        
+        var index:Int32 = 0
+        for firstAidContent in firstAidContents!
+        {
+            var theContent = dataMgr?.getContentByID(firstAidContent.toInt()!)
+            var newFirstAid = FirstAidView(firstAid: theContent!)
             newFirstAid.firstAidViewDelegate = self
             var offset = (CGFloat(index) * newFirstAid.bounds.width)
             newFirstAid.frame.offset(dx: offset, dy: 0)
             
             self.scrollView.addSubview(newFirstAid)
-         }
+            index++
+        }
     }
 
     override func didReceiveMemoryWarning() {
