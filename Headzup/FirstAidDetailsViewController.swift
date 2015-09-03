@@ -14,7 +14,7 @@ class FirstAidDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ViewHelpers.setStatusBarTint(self.view)
         println("Details View Content ID\(ContentId)")
         // Do any additional setup after loading the view.
     }
@@ -24,7 +24,7 @@ class FirstAidDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
 

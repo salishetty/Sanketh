@@ -58,22 +58,16 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
     
     func NavigateToDetails(contentId:NSNumber) {
         
-        dispatch_async(dispatch_get_main_queue()) {
-            let detailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("FirstAidDetailsView") as! FirstAidDetailsViewController
-            detailsVC.ContentId = contentId
-            self.presentViewController(detailsVC, animated: true, completion: nil)
+        self.performSegueWithIdentifier("FirstAidSegue", sender: self)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "FirstAidSegue"{
+            let vc = segue.destinationViewController as! FirstAidDetailsViewController
+            vc.navigationItem.title = "Details"
+            navigationItem.title = "First Aid"
         }
-        
     }
     
-       /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

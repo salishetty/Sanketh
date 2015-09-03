@@ -479,12 +479,12 @@
                     <connections>
                         <outlet property="pageControl" destination="ETd-qd-9Rq" id="HYg-Pj-TgX"/>
                         <outlet property="scrollView" destination="G5p-Kn-s3k" id="3RT-oe-vof"/>
-                        <segue destination="ilz-Rg-CXG" kind="showDetail" identifier="FirstAidDetailSeg" id="fII-wl-7gm"/>
+                        <segue destination="ilz-Rg-CXG" kind="show" identifier="FirstAidSegue" id="kDu-5Z-Sb6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igt-gK-Xtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="2761"/>
+            <point key="canvasLocation" x="1970" y="2744"/>
         </scene>
         <!--First Aid Details-->
         <scene sceneID="cip-G2-2sR">
@@ -498,24 +498,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="P15-zg-MHc">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="6Rn-4V-XPZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qe-PN-o1o">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Details" id="btG-fx-zCR"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SPo-6S-tOF" firstAttribute="top" secondItem="P15-zg-MHc" secondAttribute="bottom" id="Aum-3Q-hiq"/>
-                            <constraint firstItem="P15-zg-MHc" firstAttribute="top" secondItem="nKg-8F-9vS" secondAttribute="top" id="WFP-f5-AMd"/>
-                            <constraint firstAttribute="trailing" secondItem="P15-zg-MHc" secondAttribute="trailing" id="fwk-hD-18T"/>
-                            <constraint firstItem="P15-zg-MHc" firstAttribute="leading" secondItem="nKg-8F-9vS" secondAttribute="leading" id="grE-pT-WsE"/>
+                            <constraint firstAttribute="trailing" secondItem="6Rn-4V-XPZ" secondAttribute="trailing" id="R5b-dG-aHQ"/>
+                            <constraint firstAttribute="bottom" secondItem="6Rn-4V-XPZ" secondAttribute="bottom" id="W44-rV-ZHk"/>
+                            <constraint firstItem="6Rn-4V-XPZ" firstAttribute="top" secondItem="nKg-8F-9vS" secondAttribute="top" id="Xk2-s6-xUj"/>
+                            <constraint firstItem="6Rn-4V-XPZ" firstAttribute="leading" secondItem="nKg-8F-9vS" secondAttribute="leading" id="xRh-px-BfZ"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Details" id="Jv6-A2-JCe"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bza-3t-KeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
