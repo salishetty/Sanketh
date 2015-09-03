@@ -39,9 +39,6 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
             
             self.scrollView.addSubview(newFirstAid)
          }
-
-        
-
     }
 
     override func didReceiveMemoryWarning() {

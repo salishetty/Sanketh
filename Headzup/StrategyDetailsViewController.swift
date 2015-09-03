@@ -112,6 +112,7 @@ class StrategyDetailsViewController: UIViewController{
             audioButton.hidden = true
             audioButton.superview?.hidden = true
         }
+        contentView.sizeToFit()
         self.view.setNeedsLayout()
 }
     
