@@ -86,9 +86,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "FirstAidSegue"{
             let vc = segue.destinationViewController as! FirstAidDetailsViewController
-            vc.navigationItem.title = "Details"
             vc.ContentId = self.transferID
-            navigationItem.title = "Back"
         }
     }
     
