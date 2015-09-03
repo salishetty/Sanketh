@@ -158,6 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             
             AppContext.categories = dataMgr.getAllcategories()
+            
 
         }
     }
