@@ -17,6 +17,11 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
     
     var dataMgr: DataManager?
     
+    var firstAidContents:Array<Int>= []
+    
+    var transferID:Int = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,19 +36,24 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         var screenWidth =  UIScreen.mainScreen().bounds.width
         var contentHeight = UIScreen.mainScreen().bounds.height * 0.745
         
-        
-       self.scrollView.contentSize = CGSizeMake(7 * screenWidth, contentHeight)
+        //Add call to update core data.
         
         // init data manager
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        var firstAidContents = dataMgr?.getFirstAidContents()
+        self.firstAidContents = dataMgr!.getFirstAidContents()
+        
+        if self.firstAidContents.count > 0
+        {
+        self.scrollView.contentSize = CGSizeMake(CGFloat(self.firstAidContents.count) * screenWidth, contentHeight)
+        pageControl.numberOfPages = self.firstAidContents.count
+        
         
         var index:Int32 = 0
-        for firstAidContent in firstAidContents!
+        for firstAidContent in self.firstAidContents
         {
-            var theContent = dataMgr?.getContentByID(firstAidContent.toInt()!)
+            var theContent = dataMgr?.getContentByID(firstAidContent)
             var newFirstAid = FirstAidView(firstAid: theContent!)
             newFirstAid.firstAidViewDelegate = self
             var offset = (CGFloat(index) * newFirstAid.bounds.width)
@@ -51,6 +61,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
             
             self.scrollView.addSubview(newFirstAid)
             index++
+        }
         }
     }
 
@@ -66,17 +77,16 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         pageControl.currentPage = page
     }
     
-    func NavigateToDetails(contentId:NSNumber) {
-        
+    func NavigateToDetails(contentId:Int) {
+        self.transferID = contentId
         self.performSegueWithIdentifier("FirstAidSegue", sender: self)
+        
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "FirstAidSegue"{
             let vc = segue.destinationViewController as! FirstAidDetailsViewController
-            vc.navigationItem.title = "Details"
-            vc.ContentId = 1381
-            navigationItem.title = "Back"
+            vc.ContentId = self.transferID
         }
     }
     

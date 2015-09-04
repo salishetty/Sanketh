@@ -495,16 +495,16 @@ public class DataManager
         return r
     }
     //Returns FirstAid Contents
-    public func getFirstAidContents() -> [String]
+    public func getFirstAidContents() -> [Int]
     {
         var contentGroup:[ContentGroup] = getContentGroups(0)!
-        var contentIds = [String]()
+        var contentIds = [Int]()
         
         for conGroup in contentGroup
         {
             if conGroup.groupType.stringValue == GroupType.OMG
             {
-                contentIds.append(conGroup.contentID.stringValue)
+                contentIds.append(conGroup.contentID.integerValue)
             }
         }
         return contentIds

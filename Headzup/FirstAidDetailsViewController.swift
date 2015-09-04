@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Foundation
 import CoreData
+import AVFoundation
 
 class FirstAidDetailsViewController: UIViewController {
 
@@ -22,7 +22,13 @@ class FirstAidDetailsViewController: UIViewController {
     
     @IBOutlet weak var ContentViewHeigth: NSLayoutConstraint!
     
+    @IBOutlet weak var audioButton: CustomButton!
+    @IBOutlet weak var imageViewHeigth: NSLayoutConstraint!
+    @IBOutlet weak var audioViewHeigth: NSLayoutConstraint!
+    
     var dataMgr: DataManager?
+
+    var audioPlayer: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,27 +49,25 @@ class FirstAidDetailsViewController: UIViewController {
         ContentViewHeigth.constant = heightPadding + self.view.frame.height
         
         //Content Image
+        imageViewHeigth.constant = 0
         if let imagePath = theContent?.imagePath
         {
             if (!imagePath.isEmpty)
             {
+                imageViewHeigth.constant = 75
                 prepareToShow(imagePath)
             }
-            else
-            {
-                let height: CGFloat = 0.0
-                imageView.frame.size.height = height
-                imageView.hidden = true
-            }
-        }
-        else
-        {
-            let height: CGFloat = 0.0
-            imageView.frame.size.height = height
-            imageView.hidden = true
         }
 
-        
+        //Audio
+        audioViewHeigth.constant = 0
+        if let audioPath = theContent?.audioPath
+        {
+            if (!audioPath.isEmpty)
+            {
+                prepareToPlay(audioPath)
+            }
+        }
         
         self.view.setNeedsLayout()
 
@@ -76,17 +80,44 @@ class FirstAidDetailsViewController: UIViewController {
     
     func prepareToShow(filename:String)
     {
-        imageView.frame.size.height = 75
-        imageView.frame = CGRectMake(imageView.frame.origin.x ,imageView.frame.origin.y, imageView.frame.width, 75)
+        let trimmedFileName:String = filename.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         imageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.clipsToBounds = true
-        
-        let size: CGSize = imageView.frame.size
-        imageView.image = ImageHelpers.resizeToHeight(UIImage(named:filename)!, height: 75.0)
+        imageView.image = ImageHelpers.resizeToHeight(UIImage(named: trimmedFileName)!,height: 75.0)
         
     }
 
+    func prepareToPlay(filename:String)
+    {
+        audioViewHeigth.constant = 50
+        var path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
+        audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!), error: nil)
+        audioPlayer!.prepareToPlay()
+        
+    }
+
+    @IBAction func PlayNow(sender: AnyObject) {
+        if let player = audioPlayer {
+            if (player.playing == false) {
+                player.play()
+                audioButton.setTitle("Pause", forState: UIControlState.Normal)
+                audioButton.backgroundColor = UIColor(netHex:0xF6771A)
+                audioButton.ViewButtonColor = UIColor(netHex:0xF6771A)
+                audioButton.ViewShadowColor = UIColor(netHex:0xC23D02)
+                
+            } else {
+                player.pause()
+                audioButton.setTitle("Play Now", forState: UIControlState.Normal)
+                audioButton.backgroundColor = UIColor(netHex:0xB1E100)
+                audioButton.ViewButtonColor = UIColor(netHex:0xB1E100)
+                audioButton.ViewShadowColor = UIColor(netHex:0x78AC2D)
+                
+            }
+            
+        }
+
+    }
     
     @IBAction func willTryButton(sender: CustomButton) {
         println("willtryButton")
