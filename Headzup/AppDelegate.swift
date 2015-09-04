@@ -98,25 +98,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             {
                                                 contDescription = conVal as? String
                                             }
-                                            if conKey as! String == "ContentProperties"
+                                            if conKey as! String == ContentKeys.ContentProperties
                                             {
                                                 for indexContProp in 0...conVal.count - 1
                                                 {
                                                     var conProp = conVal[indexContProp] as! NSDictionary
-                                                        var propertyID:String = String(stringInterpolationSegment: conProp["PropertyID"]!.intValue)
+                                                        var propertyID:String = String(stringInterpolationSegment: conProp[ContentKeys.PropertyID]!.intValue)
                                                         
-                                                        if (propertyID == ICMSProperty.HeadzupContentType && conProp["PropertyValue"] as! String == "Intervention")
+                                                        if (propertyID == ICMSProperty.HeadzupContentType && conProp[ContentKeys.PropertyValue] as! String == ContentKeys.Intervention)
                                                         {
-                                                            var contID:String = String(conProp["ContentID"]!.intValue)
+                                                            var contID:String = String(conProp[ContentKeys.ContentID]!.intValue)
                                                             arrayOfContentIDs.append(contID)
                                                         }
                                                         if propertyID == ICMSProperty.HeadzupImagePath
                                                         {
-                                                            contImagePath = conProp["PropertyValue"] as? String
+                                                            contImagePath = conProp[ContentKeys.PropertyValue] as? String
                                                         }
                                                         if propertyID == ICMSProperty.HeadzupAudioPath
                                                         {
-                                                            contAudioPath = conProp["PropertyValue"] as? String
+                                                            contAudioPath = conProp[ContentKeys.PropertyValue] as? String
                                                         }
                                                 }
                                             }
@@ -354,20 +354,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
 }
-public struct ContentKeys
-{
-    public static let CategoryID = "CategoryID"
-    public static let CategoryName = "CategoryName"
-    public static let Contents = "Contents"
-    public static let ContentId = "ContentId"
-    public static let ContentName = "ContentName"
-    public static let ContentValue = "ContentValue"
-    public static let Description = "Description"
-}
-public struct ICMSProperty
-{
-    public static let HeadzupContentType = "21"
-    public static let HeadzupImagePath = "22"
-    public static let HeadzupAudioPath = "23"
 
-}
