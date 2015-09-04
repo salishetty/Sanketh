@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9NA-DE-ZJ6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -1347,33 +1349,32 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="track_header" translatesAutoresizingMaskIntoConstraints="NO" id="w43-fa-wnn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="track_header" translatesAutoresizingMaskIntoConstraints="NO" id="w43-fa-wnn">
                                 <rect key="frame" x="0.0" y="72" width="600" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="w43-fa-wnn" secondAttribute="height" multiplier="12:1" id="bhR-R5-zNN"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwO-po-KBs">
-                                <rect key="frame" x="0.0" y="122" width="600" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="K7I-i2-8Tc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="21"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgg-u8-wAF">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xgg-u8-wAF" userLabel="Menu View" customClass="CVCalendarMenuView" customModule="Headzup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="172" width="600" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Acl-Nz-UHQ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="menuViewDelegate" destination="haL-n8-7Oq" id="Aeh-b4-RCL"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrm-v3-D2J">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qrm-v3-D2J" userLabel="Calendar View" customClass="CVCalendarView" customModule="Headzup" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="213" width="600" height="248"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="calendarAppearanceDelegate" destination="haL-n8-7Oq" id="IEU-F5-LeS"/>
+                                    <outlet property="calendarDelegate" destination="haL-n8-7Oq" id="9BU-Bm-n5h"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCc-mB-IoQ">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCc-mB-IoQ" userLabel="Track View">
                                 <rect key="frame" x="50" y="481" width="500" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zfm-rs-cP4" customClass="CustomButton" customModule="Headzup" customModuleProvider="target">
@@ -1397,6 +1398,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="TrackTodayClicked:" destination="haL-n8-7Oq" eventType="touchUpInside" id="xjp-cj-jkw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1408,29 +1412,70 @@
                                     <constraint firstAttribute="height" constant="50" id="WQU-5Q-Nph"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tOd-PS-RJy">
+                                <rect key="frame" x="16" y="130" width="46" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="2B5-yO-1Pz"/>
+                                    <constraint firstAttribute="width" constant="46" id="jyt-zl-Wmb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadPrevious:" destination="haL-n8-7Oq" eventType="touchUpInside" id="uYk-Z3-nrk"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September, 2015" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwO-po-KBs">
+                                <rect key="frame" x="0.0" y="122" width="600" height="50"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkp-HJ-BW5">
+                                <rect key="frame" x="538" y="130" width="46" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="v1s-VR-ewm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                <state key="normal" title="&gt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loadNext:" destination="haL-n8-7Oq" eventType="touchUpInside" id="kxB-UV-DHm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zwO-po-KBs" firstAttribute="top" secondItem="w43-fa-wnn" secondAttribute="bottom" id="6Ko-hE-FVY"/>
                             <constraint firstAttribute="trailing" secondItem="dCc-mB-IoQ" secondAttribute="trailing" constant="50" id="6iO-OQ-l1M"/>
-                            <constraint firstAttribute="trailing" secondItem="zwO-po-KBs" secondAttribute="trailing" id="8Ou-ne-IKs"/>
-                            <constraint firstItem="JmD-Ii-D2B" firstAttribute="top" secondItem="dCc-mB-IoQ" secondAttribute="bottom" constant="20" id="9hO-xY-fPT"/>
+                            <constraint firstItem="tOd-PS-RJy" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leadingMargin" id="8Mn-5r-GJw"/>
+                            <constraint firstItem="JmD-Ii-D2B" firstAttribute="top" secondItem="dCc-mB-IoQ" secondAttribute="bottom" priority="750" constant="20" id="9hO-xY-fPT"/>
+                            <constraint firstItem="zwO-po-KBs" firstAttribute="top" secondItem="w43-fa-wnn" secondAttribute="bottom" id="A4v-cL-KUC"/>
                             <constraint firstItem="w43-fa-wnn" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" id="BqW-eH-kNQ"/>
                             <constraint firstAttribute="trailing" secondItem="Qrm-v3-D2J" secondAttribute="trailing" id="Kcd-rA-2Q7"/>
                             <constraint firstItem="Qrm-v3-D2J" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" id="LOG-1S-IkO"/>
                             <constraint firstItem="vvE-y9-sO8" firstAttribute="top" secondItem="0eH-OG-eF7" secondAttribute="top" constant="2" id="Qb9-7f-WCg"/>
                             <constraint firstItem="dCc-mB-IoQ" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" constant="50" id="Qt8-eh-qg4"/>
-                            <constraint firstItem="Xgg-u8-wAF" firstAttribute="top" secondItem="zwO-po-KBs" secondAttribute="bottom" id="RPc-QS-SXn"/>
                             <constraint firstItem="Qrm-v3-D2J" firstAttribute="top" secondItem="Xgg-u8-wAF" secondAttribute="bottom" constant="1" id="SQl-JQ-qUV"/>
+                            <constraint firstItem="zwO-po-KBs" firstAttribute="trailing" secondItem="Xgg-u8-wAF" secondAttribute="trailing" id="UUo-vF-U6r"/>
+                            <constraint firstItem="rkp-HJ-BW5" firstAttribute="top" secondItem="tOd-PS-RJy" secondAttribute="top" id="WRp-cO-MrO"/>
+                            <constraint firstItem="Xgg-u8-wAF" firstAttribute="top" secondItem="zwO-po-KBs" secondAttribute="bottom" id="cEj-gt-1tX"/>
+                            <constraint firstItem="rkp-HJ-BW5" firstAttribute="baseline" secondItem="tOd-PS-RJy" secondAttribute="firstBaseline" id="dDT-sh-wwr"/>
+                            <constraint firstItem="rkp-HJ-BW5" firstAttribute="trailing" secondItem="0eH-OG-eF7" secondAttribute="trailingMargin" id="dFg-p0-sLF"/>
+                            <constraint firstItem="zwO-po-KBs" firstAttribute="leading" secondItem="Xgg-u8-wAF" secondAttribute="leading" id="dJS-7Q-E9z"/>
+                            <constraint firstItem="tOd-PS-RJy" firstAttribute="top" secondItem="w43-fa-wnn" secondAttribute="bottom" constant="8" symbolic="YES" id="ffE-3J-hEf"/>
                             <constraint firstItem="dCc-mB-IoQ" firstAttribute="top" secondItem="Qrm-v3-D2J" secondAttribute="bottom" constant="20" id="fgU-vo-g4s"/>
                             <constraint firstAttribute="trailing" secondItem="Xgg-u8-wAF" secondAttribute="trailing" id="hlq-po-tsu"/>
-                            <constraint firstItem="dCc-mB-IoQ" firstAttribute="top" secondItem="Qrm-v3-D2J" secondAttribute="bottom" constant="20" id="lIU-RN-Rkb"/>
                             <constraint firstItem="w43-fa-wnn" firstAttribute="top" secondItem="eNs-qJ-lff" secondAttribute="bottom" constant="8" id="oUH-5H-8tQ"/>
+                            <constraint firstItem="Xgg-u8-wAF" firstAttribute="top" secondItem="tOd-PS-RJy" secondAttribute="bottom" constant="10" id="ozW-pf-bf9"/>
                             <constraint firstAttribute="trailing" secondItem="w43-fa-wnn" secondAttribute="trailing" id="tkn-SJ-6Ne"/>
                             <constraint firstItem="vvE-y9-sO8" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" id="vAf-9e-eg4"/>
                             <constraint firstAttribute="trailing" secondItem="vvE-y9-sO8" secondAttribute="trailing" id="xXk-j3-5XT"/>
                             <constraint firstItem="Xgg-u8-wAF" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" id="y11-ek-gkk"/>
-                            <constraint firstItem="zwO-po-KBs" firstAttribute="leading" secondItem="0eH-OG-eF7" secondAttribute="leading" id="zcg-vu-mcC"/>
+                            <constraint firstItem="tOd-PS-RJy" firstAttribute="baseline" secondItem="rkp-HJ-BW5" secondAttribute="firstBaseline" id="y6x-MF-4Da"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Track" id="cXk-IU-IcX">
@@ -1439,6 +1484,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="calendarView" destination="Qrm-v3-D2J" id="LZl-3L-qRz"/>
+                        <outlet property="menuView" destination="Xgg-u8-wAF" id="Bfv-1T-k6d"/>
+                        <outlet property="monthLabel" destination="zwO-po-KBs" id="up5-8p-k1d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SzC-CQ-AWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
