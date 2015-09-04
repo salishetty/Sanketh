@@ -61,3 +61,26 @@ public struct GroupType
     public static let Favorite = "1"
     public static let OMG = "2"
 }
+public struct ContentKeys
+{
+    public static let CategoryID = "CategoryID"
+    public static let CategoryName = "CategoryName"
+    public static let Contents = "Contents"
+    public static let ContentId = "ContentId"
+    public static let ContentName = "ContentName"
+    public static let ContentValue = "ContentValue"
+    public static let Description = "Description"
+    public static let ContentProperties = "ContentProperties"
+    public static let PropertyID = "PropertyID"
+    public static let PropertyValue = "PropertyValue"
+    public static let Intervention = "Intervention"
+    public static let ContentID = "ContentID"
+    
+}
+public struct ICMSProperty
+{
+    public static let HeadzupContentType = "21"
+    public static let HeadzupImagePath = "22"
+    public static let HeadzupAudioPath = "23"
+    
+}
