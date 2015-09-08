@@ -30,12 +30,29 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        phoneNumberTF.delegate = self
+        phoneNumberTF.text = "000-000-0000"
+        phoneNumberTF.textColor =  UIColor.lightGrayColor()
+        
         //Adding notification to
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "baseLoad", name:UIApplicationWillEnterForegroundNotification, object: nil)
         baseLoad()
     }
 
-    
+    func textFieldDidBeginEditing(textField: UITextField) {
+           if phoneNumberTF.textColor == UIColor.lightGrayColor() {
+            phoneNumberTF.text = nil
+            phoneNumberTF.textColor = UIColor.blackColor()
+        }
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+             if phoneNumberTF.text.isEmpty {
+                phoneNumberTF.text = "000-000-0000"
+                phoneNumberTF.textColor =  UIColor.lightGrayColor()
+
+        }
+    }
     func baseLoad()
     {
         
@@ -75,7 +92,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         {
             dispatch_async(dispatch_get_main_queue()) {
                 
-                self.authErrorLB.text = "Check network Connection."
+                self.authErrorLB.text = "Check network connection."
                 self.authErrorView.addSubview(self.authErrorLB)
                 self.authErrorView.hidden = false
                 self.authErrorView.backgroundColor = UIColor.orangeColor()

@@ -101,6 +101,8 @@
 		577146601B99426100BBD8E4 /* CVSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146461B99426100BBD8E4 /* CVSelectionType.swift */; };
 		577146611B99426100BBD8E4 /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146471B99426100BBD8E4 /* CVSet.swift */; };
 		577146621B99426100BBD8E4 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146481B99426100BBD8E4 /* CVShape.swift */; };
+		5771466B1B9F648200BBD8E4 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */; };
+		5771466F1B9F862300BBD8E4 /* PersonalizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
@@ -229,6 +231,8 @@
 		577146461B99426100BBD8E4 /* CVSelectionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSelectionType.swift; sourceTree = "<group>"; };
 		577146471B99426100BBD8E4 /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSet.swift; sourceTree = "<group>"; };
 		577146481B99426100BBD8E4 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
+		5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
+		5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeTableViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
@@ -464,6 +468,8 @@
 				57FEAB8B1B8CFE6B0093AFEE /* TrackViewController.swift */,
 				57FEAB8D1B8CFEC80093AFEE /* FirstAidViewController.swift */,
 				57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */,
+				5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */,
+				5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -697,6 +703,7 @@
 				14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				577146611B99426100BBD8E4 /* CVSet.swift in Sources */,
+				5771466B1B9F648200BBD8E4 /* PersonalizeViewController.swift in Sources */,
 				5771465B1B99426100BBD8E4 /* CVCalendarWeekday.swift in Sources */,
 				14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */,
 				14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */,
@@ -711,6 +718,7 @@
 				140DED1E1B67CFE6001F6A3F /* PinRule.swift in Sources */,
 				14983D181B5586950059A5CA /* Cipher.swift in Sources */,
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
+				5771466F1B9F862300BBD8E4 /* PersonalizeTableViewController.swift in Sources */,
 				5771465E1B99426100BBD8E4 /* CVRange.swift in Sources */,
 				14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */,
 				5771464D1B99426100BBD8E4 /* CVCalendarManager.swift in Sources */,

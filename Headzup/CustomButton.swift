@@ -14,6 +14,8 @@ class CustomButton: UIButton {
     @IBInspectable var ViewButtonColor: UIColor?
     @IBInspectable var ViewShadowColor: UIColor = UIColor(red: 135/255, green: 36/255, blue: 240/255, alpha: 1.0)
     @IBInspectable var ViewShadowHeight: CGFloat = 4
+    @IBInspectable var BorderColor:UIColor?
+    @IBInspectable var BorderWidth: CGFloat = 0
     
     required init(coder decoder: NSCoder) {
         super.init(coder: decoder)
@@ -32,6 +34,8 @@ class CustomButton: UIButton {
         layer.masksToBounds = true
         layer.cornerRadius = cornerRadius
         layer.backgroundColor = ViewButtonColor?.CGColor
+        layer.borderColor = BorderColor?.CGColor
+        layer.borderWidth = BorderWidth
         
         //superview is your optional embedding UIView
         if let superview = superview {
