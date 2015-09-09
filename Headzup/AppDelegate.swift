@@ -113,10 +113,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                         if propertyID == ICMSProperty.HeadzupImagePath
                                                         {
                                                             contImagePath = conProp[ContentKeys.PropertyValue] as? String
+                                                            
                                                         }
                                                         if propertyID == ICMSProperty.HeadzupAudioPath
                                                         {
                                                             contAudioPath = conProp[ContentKeys.PropertyValue] as? String
+                                                            
                                                         }
                                                 }
                                             }
@@ -125,6 +127,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         var theContent = dataMgr.getContentByID(contentID.toInt()!)
                                         if theContent == nil
                                         {
+                                            if contImagePath == nil
+                                            {
+                                                contImagePath = ""
+                                            }
+                                            if contAudioPath == nil
+                                            {
+                                                contAudioPath = ""
+                                            }
                                             dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: contImagePath!, audioPath: contAudioPath!)
                                             viewAllContentIDs += contentID + ","
                                         }
