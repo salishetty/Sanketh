@@ -61,10 +61,12 @@ class FirstAidDetailsViewController: UIViewController {
 
         //Audio
         audioViewHeigth.constant = 0
+        audioButton.hidden = true
         if let audioPath = theContent?.audioPath
         {
             if (!audioPath.isEmpty)
             {
+                audioButton.hidden = false
                 prepareToPlay(audioPath)
             }
         }
