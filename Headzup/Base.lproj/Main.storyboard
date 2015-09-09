@@ -615,6 +615,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                                 <connections>
                                                                     <action selector="willTryButton:" destination="ilz-Rg-CXG" eventType="touchUpInside" id="vAs-WM-UbL"/>
+                                                                    <segue destination="RWN-hr-4pb" kind="unwind" unwindAction="closeFirstAidDetails:" id="GRa-to-4GA"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -729,8 +730,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bza-3t-KeV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="RWN-hr-4pb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="3501"/>
+            <point key="canvasLocation" x="1970" y="3493"/>
         </scene>
         <!--Personalize Table View Controller-->
         <scene sceneID="NGq-a9-Dv9">
@@ -1824,8 +1826,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="vvE-y9-sO8">
+                                <rect key="frame" x="0.0" y="2" width="600" height="736"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="track_header" translatesAutoresizingMaskIntoConstraints="NO" id="w43-fa-wnn">
                                 <rect key="frame" x="0.0" y="72" width="600" height="50"/>

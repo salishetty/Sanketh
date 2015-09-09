@@ -90,5 +90,10 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         }
     }
     
+    @IBAction func closeFirstAidDetails(segue:UIStoryboardSegue)
+    {
+        
+    }
+    
 
 }
