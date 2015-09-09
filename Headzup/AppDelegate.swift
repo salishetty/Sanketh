@@ -139,7 +139,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             dataMgr.saveContentCategory(categoryID!.toInt()!, categoryName: categoryName!, contentIDs: dropLast(contentIDs))
                         }
                     }
-                    //Save 'View All' data to Categories
+                    //Save 'View All' data to Categories - Given a categoryID of "0" - DO NOT CHANGE T. This value is used in ToolBoxViewController
                     dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: dropLast(viewAllContentIDs))
                     //Save those contents with type = Intervention to 'ContentGroup'
                     for contID in arrayOfContentIDs

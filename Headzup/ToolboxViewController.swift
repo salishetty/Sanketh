@@ -24,12 +24,19 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Get Categories from Category object in CoreData
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
         let fetchRequest = NSFetchRequest(entityName: "Category")
         categoriesArray = manObjContext.executeFetchRequest(fetchRequest, error: nil) as! Array<Category>!
+        
+        //get the "View All" category 
+        var category = dataMgr!.getCategoryByID(0)
+        //Filter the "View All" category
+        categoriesArray = categoriesArray.filter() {$0 != category!}
+        
         //Sort by categoryName ASC
         categoriesArray.sort({$0.categoryName < $1.categoryName})
-        // ---------------------------------
-        println("Categories=\(categoriesArray.count)")
+        //Add back the "View All" category at index 0
+        categoriesArray.insert(category!, atIndex: 0)
 
         // Do any additional setup after loading the view.
     }
