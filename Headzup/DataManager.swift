@@ -523,7 +523,7 @@ public class DataManager
         var r = [ContentGroup]()
         for var i = 0; i < c; i++ {
             m = fetchResults?[i]
-            if m.isActive == 1
+            if m.isActive == 1 && m.groupType == GroupType.Favorite
             {
                 r.append(m)
             }
