@@ -31,7 +31,6 @@ class PersonalizeTableViewController: UITableViewController {
     }
     
     
-    
     /*
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -46,16 +45,12 @@ class PersonalizeTableViewController: UITableViewController {
         return 0
     }
     */
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-
-        // Configure the cell...
-
+/*
+      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
         return cell
     }
-    */
+  */
 
     /*
     // Override to support conditional editing of the table view.
