@@ -53,7 +53,7 @@ class StrategyDetailsViewController: UIViewController{
         //UserActionTracking - ViewStrategy
         self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
         // Do any additional setup after loading the view.
-        var theContentGroup = dataMgr?.getContentGroup(selectedStrategy!.contentID)
+        var theContentGroup = dataMgr?.getFavoritedContent(selectedStrategy!.contentID)
         
         if (theContentGroup?.isActive == 1)
         {

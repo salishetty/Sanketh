@@ -416,7 +416,7 @@ public class DataManager
     {
         // check if given ContentGroup exists
         let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\" AND groupType == \"\(groupType)\"")
         
         let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
         
@@ -427,6 +427,7 @@ public class DataManager
         } else {
             println("Creating new ContentGroup: \(contentID)")
             theContentGroup = NSEntityDescription.insertNewObjectForEntityForName("ContentGroup", inManagedObjectContext: dbContext) as! ContentGroup
+            
         }
         theContentGroup.groupType = groupType
         theContentGroup.contentID = contentID
@@ -448,6 +449,24 @@ public class DataManager
         // check if given meta exists
         let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
         fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        
+        var theContentGroup:ContentGroup!
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            println("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            println("No ContentGroup Found with a matching record for ContentID:\(contentID)")
+        }
+        
+        return theContentGroup
+    }
+    public func getFavoritedContent(contentID:NSNumber)->ContentGroup?
+    {
+        
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "isActive == 1 AND contentID == \"\(contentID)\"")
         let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
         
         var theContentGroup:ContentGroup!
@@ -523,7 +542,8 @@ public class DataManager
         var r = [ContentGroup]()
         for var i = 0; i < c; i++ {
             m = fetchResults?[i]
-            if m.isActive == 1 && m.groupType == GroupType.Favorite
+            println("IsActive: \(m.isActive), ContentID: \(m.contentID), ContentGroup: \(m.groupType)")
+            if m.isActive == 1 && m.groupType.stringValue == GroupType.Favorite
             {
                 r.append(m)
             }
