@@ -61,10 +61,12 @@ class FirstAidDetailsViewController: UIViewController {
 
         //Audio
         audioViewHeigth.constant = 0
+        audioButton.hidden = true
         if let audioPath = theContent?.audioPath
         {
             if (!audioPath.isEmpty)
             {
+                audioButton.hidden = false
                 prepareToPlay(audioPath)
             }
         }
@@ -120,14 +122,11 @@ class FirstAidDetailsViewController: UIViewController {
     }
     
     @IBAction func willTryButton(sender: CustomButton) {
-        println("willtryButton")
+      
     }
   
-    @IBAction func removeThis(sender: CustomButton) {
-        println("removeThis")
-
-    }
-    
+ 
+      
     /*
     // MARK: - Navigation
 
