@@ -550,5 +550,48 @@ public class DataManager
         }
         return r
     }
+    
+    public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
+    {
+        // check if given UserResponse exists
+        let fetchRequest = NSFetchRequest(entityName: "UserResponse")
+        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var theUserResponse:AboutMeResponse!
+        if (fetchResults?.count>0){
+            theUserResponse = fetchResults?[0]
+            println("Found UserResponse with QuestionID: \(theUserResponse.questionID)")
+        } else {
+            println("Creating new UserResponse with QuestionID : \(questionID)")
+            theUserResponse = NSEntityDescription.insertNewObjectForEntityForName("UserResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
+        }
+        theUserResponse.questionID = questionID
+        theUserResponse.dateAdded = dateAdded
+        theUserResponse.responseValue = responseValue
+        //save to coredata
+        dbContext.save(nil)
+        println("UserResponse saved")
+    }
+    
+    public func getAboutMeResponse(questionID:String)->AboutMeResponse?
+    {
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "UserResponse")
+        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var theUserResponse:AboutMeResponse!
+        if (fetchResults?.count>0){
+            theUserResponse = fetchResults?[0]
+            println("Found UserResponse with QuestionID: \(theUserResponse.questionID)")
+        } else {
+            println("No UserResponse Found with a matching record for questionID:\(questionID)")
+        }
+        
+        return theUserResponse
+    }
+
 
 }

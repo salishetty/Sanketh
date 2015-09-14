@@ -24,6 +24,7 @@
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
+		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
 		14983CCC1B557A170059A5CA /* Headzup.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */; };
 		14983CCE1B557A170059A5CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CCD1B557A170059A5CA /* ViewController.swift */; };
@@ -147,6 +148,7 @@
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
+		148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14983CC71B557A170059A5CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14983CC81B557A170059A5CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		14983CEB1B557A8E0059A5CA /* HeadzupData */ = {
 			isa = PBXGroup;
 			children = (
+				148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */,
 				14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */,
 				14CDA5511B727BCF00FB040F /* UserActionLog.swift */,
 				14CDA54F1B727BB000FB040F /* TechnicalLog.swift */,
@@ -710,6 +713,7 @@
 				6A2CEF821B7520C70083B568 /* StrategyDetailsViewController.swift in Sources */,
 				140DED121B67C693001F6A3F /* Rule.swift in Sources */,
 				14983D161B5586950059A5CA /* BitExtension.swift in Sources */,
+				148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */,
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
 				14DAF7541B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift in Sources */,
 				5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */,
