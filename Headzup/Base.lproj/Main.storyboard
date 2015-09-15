@@ -739,7 +739,7 @@
             <objects>
                 <tableViewController id="mYK-7G-zjh" customClass="PersonalizeTableViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="BBI-kK-Pfi">
-                        <rect key="frame" x="0.0" y="0.0" width="584" height="520"/>
+                        <rect key="frame" x="0.0" y="0.0" width="584" height="2000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -1153,13 +1153,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="2Gt-sM-JoW">
+                                    <tableViewCell tag="11" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SubTable" rowHeight="694" id="2Gt-sM-JoW">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2Gt-sM-JoW" id="wZ9-n7-KG2">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="m60-n2-4Gj">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="72" id="m60-n2-4Gj">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m60-n2-4Gj" id="Ozh-vP-f9O">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -1173,10 +1173,12 @@
                             <outlet property="delegate" destination="mYK-7G-zjh" id="udp-et-1YW"/>
                         </connections>
                     </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="584" height="2000"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RCk-fJ-hKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2626" y="3493"/>
+            <point key="canvasLocation" x="2620" y="4187"/>
         </scene>
         <!--Profile Page-->
         <scene sceneID="jgx-OS-K3p">

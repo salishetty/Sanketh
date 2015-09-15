@@ -103,6 +103,7 @@
 		577146621B99426100BBD8E4 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146481B99426100BBD8E4 /* CVShape.swift */; };
 		5771466B1B9F648200BBD8E4 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */; };
 		5771466F1B9F862300BBD8E4 /* PersonalizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */; };
+		577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146701BA0DD2500BBD8E4 /* SubTableCell.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
@@ -233,6 +234,7 @@
 		577146481B99426100BBD8E4 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
 		5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
 		5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeTableViewController.swift; sourceTree = "<group>"; };
+		577146701BA0DD2500BBD8E4 /* SubTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTableCell.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				6A2CEF841B7A86530083B568 /* CustomButton.swift */,
+				577146701BA0DD2500BBD8E4 /* SubTableCell.swift */,
 			);
 			name = "Custom Objects";
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,
 				140710A51B7A8DD900F731EB /* DateExtensions.swift in Sources */,
+				577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */,
 				577146601B99426100BBD8E4 /* CVSelectionType.swift in Sources */,
 				14983D141B5586950059A5CA /* ArrayExtension.swift in Sources */,
 				6AB5BB8F1B710D6B00CF2DAD /* ToolboxViewController.swift in Sources */,

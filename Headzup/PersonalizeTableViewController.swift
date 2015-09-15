@@ -45,12 +45,27 @@ class PersonalizeTableViewController: UITableViewController {
         return 0
     }
     */
-/*
       override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-       let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! UITableViewCell
-        return cell
+//       let cell = tableView.dequeueReusableCellWithIdentifier("SubTable", forIndexPath: indexPath) as! UITableViewCell
+//       return cell
+        if (indexPath.row == 10)
+        {
+        var cell:SubTableCell? = tableView.dequeueReusableCellWithIdentifier("SubTable") as?  SubTableCell
+        if(cell == nil)
+        {
+            cell = SubTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: "SubTable")
+        }
+        cell?.dataArr = ["subMenu->1","subMenu->2","subMenu->3","subMenu->4","subMenu->5"]
+        return cell!
+        }
+        else
+        {
+            var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+            return cell
+        }
+        
     }
-  */
+ 
 
     /*
     // Override to support conditional editing of the table view.
