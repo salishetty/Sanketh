@@ -158,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
                         var groupType = formatter.numberFromString(GroupType.OMG)
                         var contentID = formatter.numberFromString(contID)
-                        dataMgr.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentID!, isActive: true)
+                        dataMgr.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentID!, isActive: false)
                     }
                 }
                 

@@ -416,7 +416,7 @@ public class DataManager
     {
         // check if given ContentGroup exists
         let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\" AND groupType == \"\(groupType)\"")
         
         let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
         
@@ -427,6 +427,7 @@ public class DataManager
         } else {
             println("Creating new ContentGroup: \(contentID)")
             theContentGroup = NSEntityDescription.insertNewObjectForEntityForName("ContentGroup", inManagedObjectContext: dbContext) as! ContentGroup
+            
         }
         theContentGroup.groupType = groupType
         theContentGroup.contentID = contentID
@@ -448,6 +449,24 @@ public class DataManager
         // check if given meta exists
         let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
         fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
+        
+        var theContentGroup:ContentGroup!
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            println("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            println("No ContentGroup Found with a matching record for ContentID:\(contentID)")
+        }
+        
+        return theContentGroup
+    }
+    public func getFavoritedContent(contentID:NSNumber)->ContentGroup?
+    {
+        
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "isActive == 1 AND contentID == \"\(contentID)\"")
         let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
         
         var theContentGroup:ContentGroup!
@@ -523,12 +542,56 @@ public class DataManager
         var r = [ContentGroup]()
         for var i = 0; i < c; i++ {
             m = fetchResults?[i]
-            if m.isActive == 1 && m.groupType == GroupType.Favorite
+            println("IsActive: \(m.isActive), ContentID: \(m.contentID), ContentGroup: \(m.groupType)")
+            if m.isActive == 1 && m.groupType.stringValue == GroupType.Favorite
             {
                 r.append(m)
             }
         }
         return r
     }
+    
+    public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
+    {
+        // check if given UserResponse exists
+        let fetchRequest = NSFetchRequest(entityName: "UserResponse")
+        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var theUserResponse:AboutMeResponse!
+        if (fetchResults?.count>0){
+            theUserResponse = fetchResults?[0]
+            println("Found UserResponse with QuestionID: \(theUserResponse.questionID)")
+        } else {
+            println("Creating new UserResponse with QuestionID : \(questionID)")
+            theUserResponse = NSEntityDescription.insertNewObjectForEntityForName("UserResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
+        }
+        theUserResponse.questionID = questionID
+        theUserResponse.dateAdded = dateAdded
+        theUserResponse.responseValue = responseValue
+        //save to coredata
+        dbContext.save(nil)
+        println("UserResponse saved")
+    }
+    
+    public func getAboutMeResponse(questionID:String)->AboutMeResponse?
+    {
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "UserResponse")
+        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var theUserResponse:AboutMeResponse!
+        if (fetchResults?.count>0){
+            theUserResponse = fetchResults?[0]
+            println("Found UserResponse with QuestionID: \(theUserResponse.questionID)")
+        } else {
+            println("No UserResponse Found with a matching record for questionID:\(questionID)")
+        }
+        
+        return theUserResponse
+    }
+
 
 }

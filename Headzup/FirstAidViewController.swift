@@ -16,6 +16,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
     @IBOutlet weak var pageControl: UIPageControl!
     
     var dataMgr: DataManager?
+    var serviceMgr:ServiceManager?
     
     var firstAidContents:Array<Int>= []
     
@@ -42,6 +43,30 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
+        serviceMgr = ServiceManager(objContext: manObjContext)
+        //If there is network connectivity - Get FirstAid Contents and add/update the contents in ContentGroup
+        if AppContext.hasConnectivity()
+        {
+            var theURL:String =  AppContext.svcUrl + "getFirstAidContents"
+            
+            serviceMgr?.getFirstAidContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
+                //Declare array of ContentIDs which are of Intervention Type
+                var ContentIDArray: [NSNumber] = []
+                if let parseJSON = jsonData {
+                    ContentIDArray = parseJSON as! [NSNumber]
+                    //Save those contents with type = Intervention to 'ContentGroup'
+                    for contID in ContentIDArray
+                    {
+                        let formatter = NSNumberFormatter()
+                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+                        var groupType = formatter.numberFromString(GroupType.OMG)
+                        self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contID, isActive: false)
+                    }
+                    
+                }
+            })
+        }
+        
         self.firstAidContents = dataMgr!.getFirstAidContents()
         
         if self.firstAidContents.count > 0
