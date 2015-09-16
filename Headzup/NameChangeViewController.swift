@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import CoreData
 
-class NameChangeViewController: UIViewController {
+class NameChangeViewController: UIViewController, ValidationDelegate {
 
     @IBOutlet weak var errorLB: UILabel!
     
     @IBOutlet weak var nameTF: UITextField!
+    var dataMgr: DataManager?
+    let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        baseLoad()
         // Do any additional setup after loading the view.
     }
 
@@ -26,10 +29,57 @@ class NameChangeViewController: UIViewController {
     }
     
     @IBAction func DoneBarButton(sender: AnyObject) {
-        
+        println("Validating Pin...")
+        validator.validate(self)
         
     }
- 
+    
+    func baseLoad()
+    {
+        // init data and service managers
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        
+        
+        //Show user Name on screen
+        let firstName =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
+        AppContext.firstName = firstName
+        nameTF.text = firstName
+        // Do any additional setup after loading the view.
+        //Error Validation
+        validator.styleTransformers(success:{ (validationRule) -> Void in
+            println("here")
+            // clear error label
+            validationRule.errorLabel?.hidden = true
+            validationRule.errorLabel?.text = ""
+            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
+            validationRule.textField.layer.borderWidth = 0.5
+            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
+            validationRule.textField.layer.cornerRadius = 5.0
+            
+            }, error:{ (validationError) -> Void in
+                println("error")
+                validationError.errorLabel?.hidden = false
+                validationError.errorLabel?.text = validationError.errorMessage
+                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
+                validationError.textField.layer.borderWidth = 1.0
+                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
+                validationError.textField.layer.cornerRadius = 5.0
+        })
+        validator.registerField(nameTF, errorLabel: errorLB, rules: [RequiredRule(), RequiredRule()])
+     }
+    
+    func validationSuccessful() {
+            println("Validation Success!")
+            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.nameTF.text, isSecured: true)
+        }
+
+
+    func validationFailed(errors:[UITextField:ValidationError]) {
+        println("Validation FAILED!")
+    }
+
 
     /*
     // MARK: - Navigation
