@@ -14,5 +14,7 @@ public class AboutMeResponse: NSManagedObject {
     @NSManaged var dateAdded: NSDate
     @NSManaged var questionID: String
     @NSManaged var responseValue: String
-
+    public func toString() -> String {
+        return "AboutMeResponse: \(questionID): \(responseValue) \n [\(dateAdded)]"
+    }
 }

@@ -553,26 +553,13 @@ public class DataManager
     
     public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
     {
-        // check if given UserResponse exists
-        let fetchRequest = NSFetchRequest(entityName: "UserResponse")
-        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)")
-        
-        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
-        
-        var theUserResponse:AboutMeResponse!
-        if (fetchResults?.count>0){
-            theUserResponse = fetchResults?[0]
-            println("Found UserResponse with QuestionID: \(theUserResponse.questionID)")
-        } else {
-            println("Creating new UserResponse with QuestionID : \(questionID)")
-            theUserResponse = NSEntityDescription.insertNewObjectForEntityForName("UserResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
-        }
+        var theUserResponse:AboutMeResponse = NSEntityDescription.insertNewObjectForEntityForName("AboutMeResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
         theUserResponse.questionID = questionID
         theUserResponse.dateAdded = dateAdded
         theUserResponse.responseValue = responseValue
         //save to coredata
         dbContext.save(nil)
-        println("UserResponse saved")
+        println("AboutMeResponse saved")
     }
     
     public func getAboutMeResponse(questionID:String)->AboutMeResponse?
@@ -591,6 +578,24 @@ public class DataManager
         }
         
         return theUserResponse
+    }
+
+    public func getAllAboutMeResponses() -> [AboutMeResponse]?
+    {
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var c: Int! = fetchResults?.count
+        
+        var s = "found \(c) About me responses: \n"
+        var m:AboutMeResponse!
+        
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            s += m.toString() + "\n"
+        }
+        println("\(s)")
+        return fetchResults
     }
 
 

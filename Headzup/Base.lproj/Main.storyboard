@@ -1259,6 +1259,7 @@
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
+                                                        <action selector="AMQ_1SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="NWd-uG-vRh"/>
                                                         <action selector="SeclectionChange:" destination="mYK-7G-zjh" eventType="valueChanged" id="sjb-r2-5vN"/>
                                                     </connections>
                                                 </segmentedControl>
@@ -1305,6 +1306,9 @@
                                                             <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="AMQ_2SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="T52-M8-E8H"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1338,6 +1342,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_3SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="fZe-gP-8BG"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. Do you get at least 60 minutes of physical activity every day?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfs-8y-4et">
                                                     <rect key="frame" x="20" y="10" width="544" height="52"/>
@@ -1387,6 +1394,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_4SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="LKD-ez-2OO"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1422,6 +1432,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_5SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="MWm-lb-HKz"/>
+                                                    </connections>
                                                 </segmentedControl>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5. Do you drink at least 8 glasses of water every day?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVY-u2-BAK">
                                                     <rect key="frame" x="20" y="10" width="544" height="52"/>
@@ -1469,6 +1482,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_6SSCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="Wdb-jn-67g"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1510,6 +1526,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_7SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="TIp-D7-HKa"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1551,6 +1570,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_8SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="6qQ-Nc-Nxj"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1592,6 +1614,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_9SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="QVo-oO-kdT"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1633,6 +1658,9 @@
                                                         <segment title="No"/>
                                                     </segments>
                                                     <color key="tintColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="AMQ_10SCIndexChanged:" destination="mYK-7G-zjh" eventType="valueChanged" id="vHw-0I-tvT"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>
@@ -1714,6 +1742,16 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="584" height="2000"/>
                     <connections>
+                        <outlet property="AMQ_10SC" destination="s9j-5I-1lE" id="mVJ-bJ-Z8g"/>
+                        <outlet property="AMQ_1SC" destination="2sz-iM-dXk" id="XDV-HR-PXO"/>
+                        <outlet property="AMQ_2SC" destination="d7q-1Y-DUw" id="Tb6-BV-SPH"/>
+                        <outlet property="AMQ_3SC" destination="uND-u3-7SH" id="nqz-Vu-Uqv"/>
+                        <outlet property="AMQ_4SC" destination="NfB-HG-QPE" id="Cr4-M7-7mq"/>
+                        <outlet property="AMQ_5SC" destination="b2c-YN-vl1" id="CYn-aQ-nS0"/>
+                        <outlet property="AMQ_6SC" destination="PaJ-MF-ezV" id="l18-B9-YQe"/>
+                        <outlet property="AMQ_7SC" destination="8d1-Ht-aXB" id="gqH-sc-BfU"/>
+                        <outlet property="AMQ_8SC" destination="sdX-0c-UTt" id="UH0-Qh-Y1u"/>
+                        <outlet property="AMQ_9SC" destination="Xf7-ia-SOU" id="68c-D8-HtX"/>
                         <outlet property="PreventionSubView" destination="kVQ-Yg-Mhj" id="att-BM-rMU"/>
                     </connections>
                 </tableViewController>
