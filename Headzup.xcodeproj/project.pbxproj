@@ -105,6 +105,9 @@
 		5771466B1B9F648200BBD8E4 /* PersonalizeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */; };
 		5771466F1B9F862300BBD8E4 /* PersonalizeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */; };
 		577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146701BA0DD2500BBD8E4 /* SubTableCell.swift */; };
+		577146731BA7C97300BBD8E4 /* AboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146721BA7C97300BBD8E4 /* AboutTableViewController.swift */; };
+		577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */; };
+		577146771BA8AE2100BBD8E4 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146761BA8AE2100BBD8E4 /* AboutViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
@@ -237,6 +240,9 @@
 		5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeViewController.swift; sourceTree = "<group>"; };
 		5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalizeTableViewController.swift; sourceTree = "<group>"; };
 		577146701BA0DD2500BBD8E4 /* SubTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTableCell.swift; sourceTree = "<group>"; };
+		577146721BA7C97300BBD8E4 /* AboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewController.swift; sourceTree = "<group>"; };
+		577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameChangeViewController.swift; sourceTree = "<group>"; };
+		577146761BA8AE2100BBD8E4 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
@@ -475,6 +481,9 @@
 				57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */,
 				5771466A1B9F648200BBD8E4 /* PersonalizeViewController.swift */,
 				5771466E1B9F862300BBD8E4 /* PersonalizeTableViewController.swift */,
+				577146721BA7C97300BBD8E4 /* AboutTableViewController.swift */,
+				577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */,
+				577146761BA8AE2100BBD8E4 /* AboutViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -727,6 +736,7 @@
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
 				5771466F1B9F862300BBD8E4 /* PersonalizeTableViewController.swift in Sources */,
 				5771465E1B99426100BBD8E4 /* CVRange.swift in Sources */,
+				577146731BA7C97300BBD8E4 /* AboutTableViewController.swift in Sources */,
 				14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */,
 				5771464D1B99426100BBD8E4 /* CVCalendarManager.swift in Sources */,
 				14983D1B1B5586950059A5CA /* Hash.swift in Sources */,
@@ -747,6 +757,7 @@
 				14983D291B5586950059A5CA /* UInt16Extension.swift in Sources */,
 				14983CF61B557ECB0059A5CA /* CryptoUtility.swift in Sources */,
 				14983D171B5586950059A5CA /* ChaCha20.swift in Sources */,
+				577146771BA8AE2100BBD8E4 /* AboutViewController.swift in Sources */,
 				577146501B99426100BBD8E4 /* CVCalendarMonthContentViewController.swift in Sources */,
 				14983D271B5586950059A5CA /* StringExtension.swift in Sources */,
 				14983CF31B557CA60059A5CA /* ApplicationData.swift in Sources */,
@@ -776,6 +787,7 @@
 				14983D1F1B5586950059A5CA /* MD5.swift in Sources */,
 				57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */,
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
+				577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,
 				140710A51B7A8DD900F731EB /* DateExtensions.swift in Sources */,
 				577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */,
