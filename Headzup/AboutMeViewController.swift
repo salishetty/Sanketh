@@ -1,5 +1,5 @@
 //
-//  PersonalizeViewController.swift
+//  AboutMeViewController.swift
 //  Headzup
 //
 //  Created by Sandeep Menon Ayyappankutty on 9/8/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PersonalizeViewController: UIViewController {
+class AboutMeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

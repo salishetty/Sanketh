@@ -1,5 +1,5 @@
 //
-//  AboutViewController.swift
+//  AccountViewController.swift
 //  Headzup
 //
 //  Created by Sandeep Menon Ayyappankutty on 9/15/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class AccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,5 +1,5 @@
 //
-//  AboutTableViewController.swift
+//  AccountTableViewController.swift
 //  Headzup
 //
 //  Created by Sandeep Menon Ayyappankutty on 9/14/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutTableViewController: UITableViewController {
+class AccountTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

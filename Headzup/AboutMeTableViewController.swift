@@ -1,5 +1,5 @@
 //
-//  PersonalizeTableViewController.swift
+//  AboutMeTableViewController.swift
 //  Headzup
 //
 //  Created by Sandeep Menon Ayyappankutty on 9/8/15.
@@ -8,11 +8,19 @@
 
 import UIKit
 
-class PersonalizeTableViewController: UITableViewController {
+class AboutMeTableViewController: UITableViewController {
 
+    @IBOutlet weak var PreventionSubView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        PreventionSubView.layer.cornerRadius = 12.0
+        PreventionSubView.layer.borderColor = UIColor(netHex:0x2387CD).CGColor
+        PreventionSubView.layer.borderWidth = 0.5
+        PreventionSubView.clipsToBounds = true
+
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -25,6 +33,8 @@ class PersonalizeTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func SeclectionChange(sender: AnyObject) {
+    }
     
     override func  tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     return false
@@ -45,26 +55,26 @@ class PersonalizeTableViewController: UITableViewController {
         return 0
     }
     */
-      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//       let cell = tableView.dequeueReusableCellWithIdentifier("SubTable", forIndexPath: indexPath) as! UITableViewCell
-//       return cell
-        if (indexPath.row == 10)
-        {
-        var cell:SubTableCell? = tableView.dequeueReusableCellWithIdentifier("SubTable") as?  SubTableCell
-        if(cell == nil)
-        {
-            cell = SubTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: "SubTable")
-        }
-        cell?.dataArr = ["subMenu->1","subMenu->2","subMenu->3","subMenu->4","subMenu->5"]
-        return cell!
-        }
-        else
-        {
-            var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-            return cell
-        }
-        
-    }
+//      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+////       let cell = tableView.dequeueReusableCellWithIdentifier("SubTable", forIndexPath: indexPath) as! UITableViewCell
+////       return cell
+//        if (indexPath.row == 10)
+//        {
+//        var cell:SubTableCell? = tableView.dequeueReusableCellWithIdentifier("SubTable") as?  SubTableCell
+//        if(cell == nil)
+//        {
+//            cell = SubTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: "SubTable")
+//        }
+//        cell?.dataArr = ["subMenu->1","subMenu->2","subMenu->3","subMenu->4","subMenu->5"]
+//        return cell!
+//        }
+//        else
+//        {
+//            var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+//            return cell
+//        }
+//        
+//    }
  
 
     /*
