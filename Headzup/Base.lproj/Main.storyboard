@@ -1284,8 +1284,8 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="d7q-1Y-DUw" customClass="RadioSegmentedControl" customModule="Headzup" customModuleProvider="target">
-                                                    <rect key="frame" x="28" y="50" width="200" height="31"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="d7q-1Y-DUw">
+                                                    <rect key="frame" x="29" y="50" width="200" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="0sg-xt-Pty"/>
                                                         <constraint firstAttribute="width" constant="200" id="B1q-c2-Gxf"/>
