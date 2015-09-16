@@ -530,13 +530,25 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJ6-bj-gGL">
+                                        <rect key="frame" x="20" y="102" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="9Sf-hf-O4D"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="sJ6-bj-gGL" firstAttribute="top" secondItem="g5p-ef-t1Y" secondAttribute="bottom" constant="5" id="ArH-Nn-XyE"/>
+                                    <constraint firstItem="sJ6-bj-gGL" firstAttribute="leading" secondItem="GFQ-De-HOn" secondAttribute="leading" constant="20" id="B7J-6c-gC5"/>
                                     <constraint firstItem="g5p-ef-t1Y" firstAttribute="top" secondItem="eBT-1Z-FCg" secondAttribute="bottom" constant="10" id="Haa-S7-d7A"/>
                                     <constraint firstItem="eBT-1Z-FCg" firstAttribute="leading" secondItem="GFQ-De-HOn" secondAttribute="leading" constant="20" id="Npw-ec-nmK"/>
                                     <constraint firstItem="g5p-ef-t1Y" firstAttribute="leading" secondItem="GFQ-De-HOn" secondAttribute="leading" constant="20" id="PSK-lb-W9D"/>
                                     <constraint firstItem="eBT-1Z-FCg" firstAttribute="top" secondItem="GFQ-De-HOn" secondAttribute="top" constant="40" id="QLo-Ad-4WW"/>
+                                    <constraint firstAttribute="trailing" secondItem="sJ6-bj-gGL" secondAttribute="trailing" constant="20" id="Vkd-9N-sCB"/>
                                     <constraint firstAttribute="trailing" secondItem="g5p-ef-t1Y" secondAttribute="trailing" constant="20" id="g4q-y0-JLf"/>
                                     <constraint firstAttribute="trailing" secondItem="eBT-1Z-FCg" secondAttribute="trailing" constant="20" id="pqA-L7-fHA"/>
                                 </constraints>
@@ -559,6 +571,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="errorLB" destination="sJ6-bj-gGL" id="wxg-vJ-G8c"/>
+                        <outlet property="nameTF" destination="g5p-ef-t1Y" id="62G-ps-Uu2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wT-PP-xAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

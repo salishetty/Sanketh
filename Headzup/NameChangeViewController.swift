@@ -10,6 +10,10 @@ import UIKit
 
 class NameChangeViewController: UIViewController {
 
+    @IBOutlet weak var errorLB: UILabel!
+    
+    @IBOutlet weak var nameTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
