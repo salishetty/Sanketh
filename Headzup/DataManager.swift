@@ -565,21 +565,40 @@ public class DataManager
     public func getAboutMeResponse(questionID:String)->AboutMeResponse?
     {
         // check if given meta exists
-        let fetchRequest = NSFetchRequest(entityName: "UserResponse")
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
         fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+        
+        //get the latest record
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
+        fetchRequest.fetchLimit = 1
+        
         let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
         
-        var theUserResponse:AboutMeResponse!
+        var theAboutMeResponse:AboutMeResponse!
         if (fetchResults?.count>0){
-            theUserResponse = fetchResults?[0]
-            println("Found UserResponse with QuestionID: \(theUserResponse.questionID)")
+            theAboutMeResponse = fetchResults?[0]
+            println("Found AboutMeResponse with QuestionID: \(theAboutMeResponse.questionID)")
         } else {
-            println("No UserResponse Found with a matching record for questionID:\(questionID)")
+            println("No AboutMeResponse Found with a matching record for questionID:\(questionID)")
         }
         
-        return theUserResponse
+        return theAboutMeResponse
     }
 
+    public func getMostRecentAboutMeResponses() -> [AboutMeResponse]?
+    {
+        var QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10"]
+        var abtMeResponseArray = [AboutMeResponse]()
+        for questionID in QuestionIDArray
+        {
+            var abtMeResponse = self.getAboutMeResponse(questionID)
+            if abtMeResponse != nil
+            {
+                abtMeResponseArray.append(abtMeResponse!)
+            }
+        }
+        return abtMeResponseArray
+    }
     public func getAllAboutMeResponses() -> [AboutMeResponse]?
     {
         let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
