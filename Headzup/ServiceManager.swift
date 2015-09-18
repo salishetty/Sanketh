@@ -222,6 +222,41 @@ public class ServiceManager:NSObject, NSURLSessionDelegate, NSURLSessionTaskDele
         task.resume()
     }
     
+    public func synchAboutMeResponse(params : Dictionary<String,Dictionary<String, String>>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
+        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+        var session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        
+        var err: NSError?
+        var json:NSDictionary?
+        
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
+        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            println("Response: \(response)")
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            println("Message: \(strData)")
+            var err: NSError?
+            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
+            
+            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+            if(err != nil) {
+                println(err!.localizedDescription)
+                
+                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println("Error could not parse JSON: '\(jsonStr)'")
+            }
+            else { //if no error
+                postCompleted(jsonData: json!)
+            }
+        })
+        
+        task.resume()
+        
+    }
+
     public func URLSession(session: NSURLSession,didReceiveChallenge challenge:NSURLAuthenticationChallenge,
         completionHandler:(NSURLSessionAuthChallengeDisposition,
         NSURLCredential!) -> Void)

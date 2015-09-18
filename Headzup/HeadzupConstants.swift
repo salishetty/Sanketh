@@ -56,6 +56,13 @@ public struct FavoriteKeys
     public static let ContentID = "ContentID"
     public static let IsActive = "IsActive"
 }
+public struct AboutMeResponseKeys
+{
+    public static let MembershipUserID = "MembershipUserID"
+    public static let QuestionID = "QuestionID"
+    public static let ResponseValue = "ResponseValue"
+    public static let DateAdded = "LastModifiedDate"
+}
 public struct GroupType
 {
     public static let Favorite = "1"
