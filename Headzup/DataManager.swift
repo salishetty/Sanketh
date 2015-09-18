@@ -616,6 +616,11 @@ public class DataManager
         println("\(s)")
         return fetchResults
     }
-
+    
+    public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
+    {
+        //Delete TechnicalLog object from CoreData
+        dbContext.deleteObject(aboutMeResponse)
+    }
 
 }
