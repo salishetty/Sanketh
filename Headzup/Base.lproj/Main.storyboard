@@ -730,11 +730,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="iaq-1p-exX">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qO-0L-EFK">
+                                <rect key="frame" x="20" y="84" width="560" height="496"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Reminder :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXA-x3-slh">
+                                        <rect key="frame" x="20" y="40" width="114.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-9O-qyA">
+                                        <rect key="frame" x="491" y="35" width="51" height="31"/>
+                                    </switch>
+                                    <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-GS-y2y">
+                                        <rect key="frame" x="20" y="100" width="500" height="162"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="H2u-64-RRL"/>
+                                        </constraints>
+                                        <date key="date" timeIntervalSinceReferenceDate="464285477.78769302">
+                                            <!--2015-09-18 16:11:17 +0000-->
+                                        </date>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bMP-GS-y2y" secondAttribute="trailing" constant="40" id="DZ9-5O-nyZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bkd-9O-qyA" secondAttribute="trailing" constant="20" id="FHf-Km-JwI"/>
+                                    <constraint firstItem="FXA-x3-slh" firstAttribute="top" secondItem="2qO-0L-EFK" secondAttribute="top" constant="40" id="J1C-Jl-3dH"/>
+                                    <constraint firstItem="FXA-x3-slh" firstAttribute="leading" secondItem="2qO-0L-EFK" secondAttribute="leading" constant="20" id="LX8-dO-hs4"/>
+                                    <constraint firstItem="bMP-GS-y2y" firstAttribute="leading" secondItem="2qO-0L-EFK" secondAttribute="leading" constant="20" id="Qad-w1-I2m"/>
+                                    <constraint firstItem="bMP-GS-y2y" firstAttribute="top" secondItem="bkd-9O-qyA" secondAttribute="bottom" constant="40" id="bSk-LC-fuo"/>
+                                    <constraint firstItem="bkd-9O-qyA" firstAttribute="centerY" secondItem="FXA-x3-slh" secondAttribute="centerY" id="nnR-6d-RHq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2qO-0L-EFK" firstAttribute="top" secondItem="xfT-ri-SHj" secondAttribute="bottom" constant="20" id="0GS-Ug-hLU"/>
+                            <constraint firstItem="2qO-0L-EFK" firstAttribute="leading" secondItem="drV-bv-OTY" secondAttribute="leading" constant="20" id="BrE-SJ-aeI"/>
+                            <constraint firstAttribute="trailing" secondItem="2qO-0L-EFK" secondAttribute="trailing" constant="20" id="jAc-qm-WLI"/>
+                            <constraint firstItem="bkM-ZZ-bm0" firstAttribute="top" secondItem="2qO-0L-EFK" secondAttribute="bottom" constant="20" id="zf3-2X-ME6"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Goal reminder" id="kkC-so-hW4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="g89-sH-sJh"/>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlv-6g-c7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
