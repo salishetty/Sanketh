@@ -56,7 +56,16 @@ class AccountTableViewController: UITableViewController {
             }
 
         }
-        
+        else if(indexPath.section == 3)
+        {
+            if(indexPath.row == 0)
+            {
+                var VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+                self.presentViewController(VC1, animated:true, completion: nil)
+
+                //self.loadViewController("PinView")
+            }
+        }
     }
     
     @IBAction func NameChange(sender: AnyObject) {
