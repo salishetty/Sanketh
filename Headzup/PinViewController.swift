@@ -45,6 +45,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     }
     
     
+    
     func baseLoad()
     {
         // init data and service managers
@@ -52,6 +53,12 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
         serviceMgr = ServiceManager(objContext:manObjContext)
+        
+        //log out user
+        self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedOut, isSecured: true)
+        AppContext.loginStatus = LoginStatus.LoggedOut
+
+        
         
         //Show user Name on screen
         let username =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
