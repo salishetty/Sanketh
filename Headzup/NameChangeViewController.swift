@@ -73,6 +73,8 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
     func validationSuccessful() {
             println("Validation Success!")
             self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.nameTF.text, isSecured: true)
+            //navigate back to Account tab
+            self.loadViewController("TabView",tabIndex:4)
         }
 
 

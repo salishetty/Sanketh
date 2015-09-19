@@ -63,6 +63,21 @@ public struct AboutMeResponseKeys
     public static let ResponseValue = "ResponseValue"
     public static let DateAdded = "LastModifiedDate"
 }
+public struct AboutMeResponseQuestions
+{
+    public static let AMQText_1 = "Relaxation, Meditation, Deep Breathing, etc"
+    public static let AMQText_2 = "Managing your time better"
+    public static let AMQText_3 = "Eating healthy"
+    public static let AMQText_4 = "Sleeping better"
+    public static let AMQText_5 = "Reducing Caffeine intake"
+    public static let AMQText_6 = "Drinking more water"
+    public static let AMQText_7 = "Getting more physical activity"
+    public static let AMQText_8 = "Tips for talking to teachers, parents or friends about headache pain"
+    public static let AMQText_9 = "Figuring out if your headaches follow a pattern"
+    public static let AMQText_10 = "Distracting yourself when you have a headache"
+    
+    
+}
 public struct GroupType
 {
     public static let Favorite = "1"
