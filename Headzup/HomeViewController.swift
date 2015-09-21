@@ -13,6 +13,9 @@ class HomeViewController: UIViewController {
 
     var dataMgr: DataManager?
     var serviceMgr:ServiceManager?
+    
+    
+    @IBOutlet weak var greetingLB: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +25,9 @@ class HomeViewController: UIViewController {
         dataMgr = DataManager(objContext: manObjContext)
         serviceMgr = ServiceManager(objContext:manObjContext)
         // Do any additional setup after loading the view.
+        //Display greeting message
+        let firstName =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
+        greetingLB.text = "Hi, " + firstName
     }
 
     override func didReceiveMemoryWarning() {

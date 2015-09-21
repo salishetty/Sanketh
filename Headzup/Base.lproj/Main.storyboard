@@ -423,10 +423,18 @@
                                     <action selector="SynchTailoringQuestions:" destination="qf9-7r-FRO" eventType="touchUpInside" id="FiU-Lb-sHd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-T8-eTr">
+                                <rect key="frame" x="211" y="190" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="SYU-T8-eTr" secondAttribute="centerY" constant="40" id="1lt-hr-NCM"/>
                             <constraint firstAttribute="trailing" secondItem="L0B-Lt-8I3" secondAttribute="trailing" constant="40" id="2pc-Zm-NeK"/>
+                            <constraint firstAttribute="centerX" secondItem="SYU-T8-eTr" secondAttribute="centerX" id="HG1-lZ-OxK"/>
                             <constraint firstAttribute="centerY" secondItem="CuU-df-Sbj" secondAttribute="centerY" id="KuI-XH-5JT"/>
                             <constraint firstItem="L0B-Lt-8I3" firstAttribute="leading" secondItem="rO0-O5-gvx" secondAttribute="leading" constant="40" id="McJ-Iv-alw"/>
                             <constraint firstAttribute="trailing" secondItem="Gcx-ba-mUT" secondAttribute="trailing" id="PTY-Ck-a73"/>
@@ -438,6 +446,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="HOME" image="tab-icon-Home" id="J4Z-Gg-iot"/>
+                    <connections>
+                        <outlet property="greetingLB" destination="SYU-T8-eTr" id="lDz-Rc-8NC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cyo-oR-PwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
