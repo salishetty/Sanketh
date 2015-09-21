@@ -553,10 +553,23 @@ public class DataManager
     
     public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
     {
-        var theUserResponse:AboutMeResponse = NSEntityDescription.insertNewObjectForEntityForName("AboutMeResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
-        theUserResponse.questionID = questionID
-        theUserResponse.dateAdded = dateAdded
-        theUserResponse.responseValue = responseValue
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+        
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var theResponse:AboutMeResponse!
+        if (fetchResults?.count>0){
+            theResponse = fetchResults?[0]
+            println("Found AboutMe Response with QuestionID: \(theResponse.questionID)")
+        } else {
+            println("Creating new AboutMeResponse with questionID: \(questionID)")
+            theResponse = NSEntityDescription.insertNewObjectForEntityForName("AboutMeResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
+            
+        }
+        theResponse.questionID = questionID
+        theResponse.dateAdded = dateAdded
+        theResponse.responseValue = responseValue
         //save to coredata
         dbContext.save(nil)
         println("AboutMeResponse saved")
@@ -569,8 +582,8 @@ public class DataManager
         fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
         
         //get the latest record
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
-        fetchRequest.fetchLimit = 1
+        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
+        //fetchRequest.fetchLimit = 1
         
         let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
         

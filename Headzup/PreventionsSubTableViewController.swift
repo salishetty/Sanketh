@@ -26,6 +26,8 @@ class PreventionsSubTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PreventionCell")
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -94,38 +96,6 @@ class PreventionsSubTableViewController: UITableViewController {
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
-    /*override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        var abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
-        var responseValue:String?
-        if abtMeResponse != nil
-        {
-            responseValue = abtMeResponse!.responseValue
-        }
-        var responseValueArray:[String] = responseValue!.componentsSeparatedByString(",")
-        
-        var selectedResponseValue = toString(indexPath.row)
-        responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
-        
-        var newResponseValue: String = ""
-        for var i = 0; i < responseValueArray.count; i++ {
-            newResponseValue += responseValueArray[i] + ","
-        }
-        
-        dataMgr?.saveAboutMeReponse("AMQ_11", dateAdded: NSDate(), responseValue: newResponseValue)
-        
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
-        if cell!.selected == true
-        {
-            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-        }
-        else
-        {
-            cell!.accessoryType = UITableViewCellAccessoryType.None
-        }
-    }*/
-    
     func notEqual<T: Equatable> (that:T) -> ((this:T) -> Bool) {
         return { (this:T) -> Bool in return this != that }
     }
@@ -151,7 +121,14 @@ class PreventionsSubTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PreventionCell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = QuestionTextArray[indexPath.row]
-        //let cell = tableView.cellForRowAtIndexPath(,indexPath)
+        cell.textLabel?.textColor = UIColor(netHex:0x2387CD)
+        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell.textLabel?.numberOfLines = 0
+        cell.textLabel?.textAlignment = NSTextAlignment.Left;
+        cell.textLabel?.font = UIFont.systemFontOfSize(15.0);
+        cell.textLabel?.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
+        
+        
         var abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
         var responseValue:String?
         var responseValueArray:[String]=[]
@@ -172,18 +149,6 @@ class PreventionsSubTableViewController: UITableViewController {
         {
             cell.accessoryType = UITableViewCellAccessoryType.None
         }
-        
-        /*for var i = 0; i < responseValueArray.count; i++ {
-        if indexPath.row == responseValueArray[i].toInt()
-        {
-        cell.accessoryType =  UITableViewCellAccessoryType.Checkmark
-        }
-        else
-        {
-        cell.accessoryType = UITableViewCellAccessoryType.None
-        }
-        }*/
-        // Configure the cell...
         
         return cell
     }
