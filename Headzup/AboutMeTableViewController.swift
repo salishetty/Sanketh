@@ -29,8 +29,6 @@ class AboutMeTableViewController: UITableViewController {
         serviceMgr = ServiceManager(objContext:manObjContext)
         //Load Responses to Yes-No Questions
         LoadYesNoQuestions()
-        SynchFAboutMeResponse()
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -244,67 +242,7 @@ class AboutMeTableViewController: UITableViewController {
         }
     }
     
-    //TEMPORARY - SYNCHING About Me Response
     
-    func SynchFAboutMeResponse() {
-        var uInfo = AppContext.getUserInfo()
-        var membershipUserID = uInfo.membershipUserID
-        //Synch Favorites - Strategies
-        var dict = Dictionary<String, String>()
-        var responseItemsArray = [String:Dictionary<String, String>]()
-        var objectID:String?
-        var gHelper = GeneralHelper()
-        let responses:[AboutMeResponse] = dataMgr!.getAllAboutMeResponses()!
-        let mostRecentResponse:[AboutMeResponse] = dataMgr!.getMostRecentAboutMeResponses()!
-        if responses.count > 0
-        {
-            var index:Int32 = 0
-            for responseItem in responses
-            {
-                println("AboutMeResponse Items: \(responseItem.questionID): \(responseItem.responseValue):\((responseItem.dateAdded))")
-                
-                var responseItems = ResponseItems(membershipUserId: membershipUserID, questionID: responseItem.questionID, responseValue: responseItem.responseValue, dateAdded: gHelper.convertDateToString(responseItem.dateAdded))
-                
-                dict = gHelper.responseItemsToDictionary(responseItems)
-                responseItemsArray["ResponseItem"+String(index)] = dict
-                var lastComponent = responseItem.objectID.URIRepresentation().absoluteString!.lastPathComponent
-                //Integer part of objectID
-                objectID = lastComponent.substringFromIndex(advance(lastComponent.startIndex, 1))
-                //update index
-                index++
-            }
-        }
-        var theURL:String =  AppContext.svcUrl + "SynchAboutMeResponse"
-        
-        if(responseItemsArray.count > 0)
-        {
-            serviceMgr?.synchAboutMeResponse(responseItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
-                
-                if let parseJSON = jsonData {
-                    var status = parseJSON["Status"] as? Int
-                    if(status == 1)
-                    {
-                        //if successful, save the last objectID to MetaData
-                        self.dataMgr?.saveMetaData("AboutMeResponseID", value: objectID!, isSecured: true)
-                        var responseToBeDeleted = Array(Set(responses).subtract(mostRecentResponse))
-                        //Delete all synched AboutMe responses
-                        for (index, response) in enumerate(responseToBeDeleted)
-                        {
-                            println("AboutMe reponses: \(response.questionID): \(response.responseValue):,\(response.dateAdded)")
-                            self.dataMgr?.deleteAboutMeResponse(response)
-                        }
-
-                        println("About Me Response synchronized Successfully")
-                    }
-                }
-                
-                }
-            )
-            // Do any additional setup after loading the view.
-        }
-        
-    }
-
     /*
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

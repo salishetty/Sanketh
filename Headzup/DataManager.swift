@@ -616,7 +616,64 @@ public class DataManager
         println("\(s)")
         return fetchResults
     }
-    
+    public func getResponsesToBeSynched() -> [AboutMeResponse]?
+    {
+        var gHelpers = GeneralHelper()
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+        let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
+        
+        var c: Int! = fetchResults?.count
+        let synchDate = getMetaDataValue("SynchResponseDate")
+        
+        var s = "found \(c) About me responses: \n"
+        var m:AboutMeResponse!
+        var responses = [AboutMeResponse]()
+        if synchDate != ""
+        {
+            for var i = 0; i < c; i++ {
+                m = fetchResults?[i]
+                if m.dateAdded.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
+                {
+                    responses.append(m)
+                }
+                s += m.toString() + "\n"
+            }
+            println("\(s)")
+        }
+        else
+        {
+            responses = fetchResults!
+        }
+        return responses
+    }
+    public func getResponsesToBeDeleted() -> [AboutMeResponse]?
+    {
+        var QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10", "AMQ_11"]
+        var gHelpers = GeneralHelper()
+        
+        var abtMeResponseArray = [AboutMeResponse]()
+        for questionID in QuestionIDArray
+        {
+            // check if given meta exists
+            let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+            fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+            
+            
+            var fetchResults:Array<AboutMeResponse> = (dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse])!
+            var c: Int! = fetchResults.count
+            var theAboutMeResponse:AboutMeResponse!
+            if (c > 1){
+                fetchResults.sort({gHelpers.convertDateToString($0.dateAdded) < gHelpers.convertDateToString($1.dateAdded)})
+                for var i = 0; i < c - 1; i++ {
+                    theAboutMeResponse = fetchResults[i]
+                    abtMeResponseArray.append(theAboutMeResponse!)
+                }
+            }
+
+        }
+        return abtMeResponseArray
+    }
+
     public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
     {
         //Delete TechnicalLog object from CoreData

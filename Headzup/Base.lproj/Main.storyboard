@@ -393,7 +393,7 @@
         <!--Home Page-->
         <scene sceneID="TzH-3L-saQ">
             <objects>
-                <viewController storyboardIdentifier="HomePageView" title="Home Page" id="qf9-7r-FRO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomePageView" title="Home Page" id="qf9-7r-FRO" customClass="HomeViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nhl-ZD-uBE"/>
                         <viewControllerLayoutGuide type="bottom" id="oMb-ui-ouE"/>
@@ -414,13 +414,24 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuU-df-Sbj">
+                                <rect key="frame" x="211" y="244" width="178" height="30"/>
+                                <state key="normal" title="Synch Tailoring Questions">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="SynchTailoringQuestions:" destination="qf9-7r-FRO" eventType="touchUpInside" id="FiU-Lb-sHd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="L0B-Lt-8I3" secondAttribute="trailing" constant="40" id="2pc-Zm-NeK"/>
+                            <constraint firstAttribute="centerY" secondItem="CuU-df-Sbj" secondAttribute="centerY" id="KuI-XH-5JT"/>
                             <constraint firstItem="L0B-Lt-8I3" firstAttribute="leading" secondItem="rO0-O5-gvx" secondAttribute="leading" constant="40" id="McJ-Iv-alw"/>
                             <constraint firstAttribute="trailing" secondItem="Gcx-ba-mUT" secondAttribute="trailing" id="PTY-Ck-a73"/>
                             <constraint firstItem="L0B-Lt-8I3" firstAttribute="top" secondItem="nhl-ZD-uBE" secondAttribute="bottom" constant="100" id="UKe-7P-jqi"/>
+                            <constraint firstAttribute="centerX" secondItem="CuU-df-Sbj" secondAttribute="centerX" id="Xot-Nc-ypY"/>
                             <constraint firstItem="oMb-ui-ouE" firstAttribute="top" secondItem="Gcx-ba-mUT" secondAttribute="bottom" id="hAc-yb-KhW"/>
                             <constraint firstItem="Gcx-ba-mUT" firstAttribute="leading" secondItem="rO0-O5-gvx" secondAttribute="leading" id="mrU-zZ-xDS"/>
                             <constraint firstItem="Gcx-ba-mUT" firstAttribute="top" secondItem="rO0-O5-gvx" secondAttribute="top" id="vzZ-Lg-seK"/>
