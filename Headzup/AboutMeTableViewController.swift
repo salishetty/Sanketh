@@ -62,7 +62,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_1SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_1"
+        let questionID:String = "AMQ_1"
         switch AMQ_1SC.selectedSegmentIndex
         {
         case 0:
@@ -77,7 +77,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_2SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_2"
+        let questionID:String = "AMQ_2"
         switch AMQ_2SC.selectedSegmentIndex
         {
         case 0:
@@ -92,7 +92,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_3SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_3"
+        let questionID:String = "AMQ_3"
         switch AMQ_3SC.selectedSegmentIndex
         {
         case 0:
@@ -107,7 +107,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_4SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_4"
+        let questionID:String = "AMQ_4"
         switch AMQ_4SC.selectedSegmentIndex
         {
         case 0:
@@ -122,7 +122,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_5SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_5"
+        let questionID:String = "AMQ_5"
         switch AMQ_5SC.selectedSegmentIndex
         {
         case 0:
@@ -137,7 +137,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_6SSCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_6"
+        let questionID:String = "AMQ_6"
         switch AMQ_6SC.selectedSegmentIndex
         {
         case 0:
@@ -152,7 +152,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_7SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_7"
+        let questionID:String = "AMQ_7"
         switch AMQ_7SC.selectedSegmentIndex
         {
         case 0:
@@ -167,7 +167,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_8SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_8"
+        let questionID:String = "AMQ_8"
         switch AMQ_8SC.selectedSegmentIndex
         {
         case 0:
@@ -182,7 +182,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_9SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_9"
+        let questionID:String = "AMQ_9"
         switch AMQ_9SC.selectedSegmentIndex
         {
         case 0:
@@ -197,7 +197,7 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_10SCIndexChanged(sender: UISegmentedControl) {
         var responseValue:String = "0"
-        var questionID:String = "AMQ_10"
+        let questionID:String = "AMQ_10"
         switch AMQ_10SC.selectedSegmentIndex
         {
         case 0:
@@ -211,31 +211,31 @@ class AboutMeTableViewController: UITableViewController {
     }
     func LoadYesNoQuestions()
     {
-        var responses:[AboutMeResponse] = dataMgr!.getMostRecentAboutMeResponses()!
+        let responses:[AboutMeResponse] = dataMgr!.getMostRecentAboutMeResponses()!
         for response : AboutMeResponse in responses
         {
             switch(response.questionID)
             {
                 case "AMQ_1":
-                    AMQ_1SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_1SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_2":
-                    AMQ_2SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_2SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_3":
-                    AMQ_3SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_3SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_4":
-                    AMQ_4SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_4SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_5":
-                    AMQ_5SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_5SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_6":
-                    AMQ_6SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_6SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_7":
-                    AMQ_7SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_7SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_8":
-                    AMQ_8SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_8SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_9":
-                    AMQ_9SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_9SC.selectedSegmentIndex = Int(response.responseValue)!
                 case "AMQ_10":
-                    AMQ_10SC.selectedSegmentIndex = response.responseValue.toInt()!
+                    AMQ_10SC.selectedSegmentIndex = Int(response.responseValue)!
                 default:
                     break;
             }

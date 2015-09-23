@@ -68,7 +68,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         // Do any additional setup after loading the view.
         //Error Validation
         validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
+            print("here")
             // clear error label
             validationRule.errorLabel?.hidden = true
             validationRule.errorLabel?.text = ""
@@ -78,7 +78,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
             validationRule.textField.layer.cornerRadius = 5.0
             
             }, error:{ (validationError) -> Void in
-                println("error")
+                print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
                 validationError.textField.layer.borderColor = UIColor.redColor().CGColor
@@ -113,17 +113,17 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         // Dispose of any resources that can be recreated.
     }
     @IBAction func Login(sender: UIButton) {
-        println("Validating Pin...")
+        print("Validating Pin...")
         validator.validate(self)
     }
     
     func validationSuccessful() {
-        println("Validation Success!")
-        let pin = pinTF.text.uppercaseString
+        print("Validation Success!")
+        let pin = pinTF.text!.uppercaseString
         let token:String = CryptoUtility().generateSecurityToken() as String
         
         //Get login Url
-        var theURL:String = AppContext.svcUrl + "Login"
+        let theURL:String = AppContext.svcUrl + "Login"
         
         if AppContext.hasConnectivity() {
             
@@ -131,7 +131,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                 
                 if let parseJSON = jsonData
                 {
-                    var status = parseJSON["Status"] as? String
+                    let status = parseJSON["Status"] as? String
                     if(status == "1")
                     {
                         self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
@@ -174,7 +174,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         }
         else
         {
-            println("Check network connection")
+            print("Check network connection")
             self.authErrorLB.text = "Check network connection"
             self.authErrorView.addSubview(self.authErrorLB)
             self.authErrorView.hidden = false
@@ -183,7 +183,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     }
     
     func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+        print("Validation FAILED!")
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {

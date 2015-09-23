@@ -34,8 +34,8 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         
         var size =  scrollView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
         var contentwidth = scrollView.frame.size.width
-        var screenWidth =  UIScreen.mainScreen().bounds.width
-        var contentHeight = UIScreen.mainScreen().bounds.height * 0.745
+        let screenWidth =  UIScreen.mainScreen().bounds.width
+        let contentHeight = UIScreen.mainScreen().bounds.height * 0.745
         
         //Add call to update core data.
         
@@ -47,7 +47,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         //If there is network connectivity - Get FirstAid Contents and add/update the contents in ContentGroup
         if AppContext.hasConnectivity()
         {
-            var theURL:String =  AppContext.svcUrl + "getFirstAidContents"
+            let theURL:String =  AppContext.svcUrl + "getFirstAidContents"
             
             serviceMgr?.getFirstAidContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
                 //Declare array of ContentIDs which are of Intervention Type
@@ -59,7 +59,7 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
                     {
                         let formatter = NSNumberFormatter()
                         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-                        var groupType = formatter.numberFromString(GroupType.OMG)
+                        let groupType = formatter.numberFromString(GroupType.OMG)
                         self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contID, isActive: false)
                     }
                     
@@ -78,11 +78,11 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         var index:Int32 = 0
         for firstAidContent in self.firstAidContents
         {
-            var theContent = dataMgr?.getContentByID(firstAidContent)
-            var newFirstAid = FirstAidView(firstAid: theContent!)
+            let theContent = dataMgr?.getContentByID(firstAidContent)
+            let newFirstAid = FirstAidView(firstAid: theContent!)
             newFirstAid.firstAidViewDelegate = self
-            var offset = (CGFloat(index) * newFirstAid.bounds.width)
-            newFirstAid.frame.offset(dx: offset, dy: 0)
+            let offset = (CGFloat(index) * newFirstAid.bounds.width)
+            newFirstAid.frame.offsetInPlace(dx: offset, dy: 0)
             
             self.scrollView.addSubview(newFirstAid)
             index++

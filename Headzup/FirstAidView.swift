@@ -32,8 +32,8 @@ class FirstAidView: UIView {
     
     init(firstAid: Content)
     {
-        var screenHeight = UIScreen.mainScreen().bounds.height * 0.745
-        var screenWidth =  UIScreen.mainScreen().bounds.width
+        let screenHeight = UIScreen.mainScreen().bounds.height * 0.745
+        let screenWidth =  UIScreen.mainScreen().bounds.width
         //Content With Audio
         self.buttonText =  "Tap to read more"
         if let audioPath = firstAid.audioPath as String?
@@ -55,7 +55,7 @@ class FirstAidView: UIView {
     
 
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         self.buttonText =  "Read more"
         super.init(coder: aDecoder)
         initialize()
@@ -65,7 +65,7 @@ class FirstAidView: UIView {
         
         let contentView =  UIView()
         contentView.backgroundColor = UIColor.whiteColor()
-        contentView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
         
         //Rounded Corner
         contentView.layer.cornerRadius = 12.0
@@ -93,7 +93,7 @@ class FirstAidView: UIView {
         ContentTitle.numberOfLines = 0
         ContentTitle.textColor = UIColor(netHex:0x2387CD)
         ContentTitle.textAlignment = NSTextAlignment.Center
-        ContentTitle.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ContentTitle.translatesAutoresizingMaskIntoConstraints = false
         ContentTitle.font = UIFont (name: "Arial Rounded MT Bold", size: 25)
         ContentTitle.text = contentName; 
         contentView.addSubview(ContentTitle)
@@ -103,13 +103,13 @@ class FirstAidView: UIView {
         ContentDescription.textAlignment = NSTextAlignment.Justified
         ContentDescription.font = UIFont (name: "HelveticaNeue", size: 20)
         ContentDescription.textColor = UIColor(netHex:0x606060)
-        ContentDescription.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ContentDescription.translatesAutoresizingMaskIntoConstraints = false
         ContentDescription.text = contentValue;
          contentView.addSubview(ContentDescription)
         
         //Button View
         ReadMoreView.backgroundColor = UIColor(netHex:0x78AC2D)
-        ReadMoreView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ReadMoreView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(ReadMoreView)
         
         //View level constraints
@@ -135,7 +135,7 @@ class FirstAidView: UIView {
         ReadMoreButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         ReadMoreButton.titleLabel!.font =  UIFont (name: "Arial Rounded MT Bold", size: 17)
         ReadMoreButton.addTarget(self, action: "NavigateReadMore:", forControlEvents: UIControlEvents.TouchUpInside)
-        ReadMoreButton.setTranslatesAutoresizingMaskIntoConstraints(false)
+        ReadMoreButton.translatesAutoresizingMaskIntoConstraints = false
         ReadMoreView.addSubview(ReadMoreButton)
         
         //Button Constraints

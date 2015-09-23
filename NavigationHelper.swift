@@ -49,7 +49,7 @@ public class NavigationHelper
     {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        var dataMgr = DataManager(objContext: manObjContext)
+        let dataMgr = DataManager(objContext: manObjContext)
         AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
         AppContext.membershipUserID = dataMgr.getMetaDataValue(MetaDataKeys.MembershipUserID)
         if(AppContext.loginStatus ==  LoginStatus.LoggedIn)

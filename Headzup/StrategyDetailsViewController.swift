@@ -38,13 +38,13 @@ class StrategyDetailsViewController: UIViewController{
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        var theContent = dataMgr?.getContentByID(selectedStrategy!.contentID as! Int)
+        let theContent = dataMgr?.getContentByID(selectedStrategy!.contentID as Int)
         self.title = theContent?.contentName //"[Strategy Name]"
         
         self.MultiLineLabel.text = theContent?.contentValue
         self.MultiLineLabel.numberOfLines = 0
         
-        var heightPadding = ViewHelpers.heightForView(self.MultiLineLabel.text!, font: self.MultiLineLabel.font, width: self.MultiLineLabel.frame.width)
+        let heightPadding = ViewHelpers.heightForView(self.MultiLineLabel.text!, font: self.MultiLineLabel.font, width: self.MultiLineLabel.frame.width)
         
         ContentViewHeight.constant = heightPadding + self.view.frame.height
         
@@ -53,7 +53,7 @@ class StrategyDetailsViewController: UIViewController{
         //UserActionTracking - ViewStrategy
         self.dataMgr?.saveUserActionLog(UserActions.ViewStrategy, actionDateTime: NSDate(), contentID: "", comment: "ViewStrategy", isSynched: false)
         // Do any additional setup after loading the view.
-        var theContentGroup = dataMgr?.getFavoritedContent(selectedStrategy!.contentID)
+        let theContentGroup = dataMgr?.getFavoritedContent(selectedStrategy!.contentID)
         
         if (theContentGroup?.isActive == 1)
         {
@@ -134,11 +134,11 @@ class StrategyDetailsViewController: UIViewController{
     {
         imageView.frame.size.height = 75
         imageView.frame = CGRectMake(imageView.frame.origin.x ,imageView.frame.origin.y, imageView.frame.width, 75)
-        imageView.autoresizingMask = UIViewAutoresizing.FlexibleBottomMargin | UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleRightMargin | UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleWidth
+        imageView.autoresizingMask = [UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleWidth]
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         imageView.clipsToBounds = true
         
-        let size: CGSize = imageView.frame.size
+        //: CGSize = imageView.frame.size
         imageView.image = ImageHelpers.resizeToHeight(UIImage(named:filename)!, height: 75.0)
         
     }
@@ -147,15 +147,15 @@ class StrategyDetailsViewController: UIViewController{
     
     func prepareToPlay(filename:String)
     {
-        var path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
-        audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!), error: nil)
+        let path = NSBundle.mainBundle().pathForResource(filename, ofType: "mp3")
+        audioPlayer = try? AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: path!))
         audioPlayer!.prepareToPlay()
         
     }
     
     @IBAction func AudioHandler(sender: CustomButton) {
         
-        println("Clicked")
+        print("Clicked")
         if let player = audioPlayer {
           if (player.playing == false) {
                 player.play()
@@ -180,8 +180,8 @@ class StrategyDetailsViewController: UIViewController{
     func AddToFavorites(sender:UIButton!) {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        var groupType = formatter.numberFromString(GroupType.Favorite)
-        var todayDate = NSDate()
+        let groupType = formatter.numberFromString(GroupType.Favorite)
+        let todayDate = NSDate()
         dataMgr?.saveContentGroup(groupType!, dateModified: todayDate, contentID: selectedStrategy!.contentID, isActive: true)
         addToFavorites.removeTarget(self, action: "AddToFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         self.viewDidLoad()
@@ -190,8 +190,8 @@ class StrategyDetailsViewController: UIViewController{
     func RemoveFavorites(sender:UIButton!) {
         let formatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        var groupType = formatter.numberFromString(GroupType.Favorite)
-        var todayDate = NSDate()
+        let groupType = formatter.numberFromString(GroupType.Favorite)
+        let todayDate = NSDate()
         dataMgr?.saveContentGroup(groupType!, dateModified: todayDate, contentID: selectedStrategy!.contentID, isActive: false)
         addToFavorites.removeTarget(self, action: "RemoveFavorites:", forControlEvents: UIControlEvents.TouchUpInside)
         self.viewDidLoad()

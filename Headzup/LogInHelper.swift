@@ -32,7 +32,7 @@ public  class LogInHelper
                 (jsonData: NSDictionary?)->() in
             if let parseJSON = jsonData
                 {
-                    var status = parseJSON["Status"] as? String
+                    let status = parseJSON["Status"] as? String
                     if(status == "2")
                     {
                         dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedOut, isSecured: true)

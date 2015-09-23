@@ -82,8 +82,8 @@ extension TrackViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func didSelectDayView(dayView: CVCalendarDayView) {
-        let date = dayView.date
-        println("\(calendarView.presentedDate.commonDescription) is selected!")
+       // let date = dayView.date
+        print("\(calendarView.presentedDate.commonDescription) is selected!")
     }
     
     func presentedDateUpdated(date: CVDate) {
@@ -139,7 +139,7 @@ extension TrackViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
     }
     
     func dotMarker(colorOnDayView dayView: CVCalendarDayView) -> [UIColor] {
-        let day = dayView.date.day
+        //let day = dayView.date.day
         
         let red = CGFloat(arc4random_uniform(600) / 255)
         let green = CGFloat(arc4random_uniform(600) / 255)
@@ -165,7 +165,7 @@ extension TrackViewController: CVCalendarViewDelegate, CVCalendarMenuViewDelegat
 
 // MARK: - CVCalendarViewDelegate
 
-extension TrackViewController: CVCalendarViewDelegate {
+extension TrackViewController {
     
     func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
         let circleView = CVAuxiliaryView(dayView: dayView, rect: dayView.bounds, shape: CVShape.Circle)
@@ -190,7 +190,7 @@ extension TrackViewController: CVCalendarViewDelegate {
         let ringLineWidth: CGFloat = 2.0 //changed
         let ringLineColour: UIColor = UIColor(netHex: 0xD4A6FF) //.blueColor()
         
-        var newView = UIView(frame: dayView.bounds)
+        let newView = UIView(frame: dayView.bounds)
         
         let diameter: CGFloat = (newView.bounds.width) - ringSpacing
         let radius: CGFloat = diameter / 2.0
@@ -204,7 +204,7 @@ extension TrackViewController: CVCalendarViewDelegate {
         ringLayer.lineWidth = ringLineWidth
         ringLayer.strokeColor = ringLineColour.CGColor
         
-        var ringLineWidthInset: CGFloat = CGFloat(ringLineWidth/2.0) + ringInsetWidth
+        let ringLineWidthInset: CGFloat = CGFloat(ringLineWidth/2.0) + ringInsetWidth
         let ringRect: CGRect = CGRectInset(rect, ringLineWidthInset, ringLineWidthInset)
         let centrePoint: CGPoint = CGPointMake(ringRect.midX, ringRect.midY)
         let startAngle: CGFloat = CGFloat(-π/2.0)
@@ -279,7 +279,7 @@ extension TrackViewController {
 extension TrackViewController {
     func toggleMonthViewWithMonthOffset(offset: Int) {
         let calendar = NSCalendar.currentCalendar()
-        let calendarManager = calendarView.manager
+      //  let calendarManager = calendarView.manager
         let components = Manager.componentsForDate(NSDate()) // from today
         
         components.month += offset

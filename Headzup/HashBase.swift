@@ -22,8 +22,8 @@ internal class HashBase {
     }
     
     /** Common part for hash calculation. Prepare header data. */
-    internal func prepare(_ len:Int = 64) -> NSMutableData {
-        var tmpMessage: NSMutableData = NSMutableData(data: self.message)
+    internal func prepare(len:Int = 64) -> NSMutableData {
+        let tmpMessage: NSMutableData = NSMutableData(data: self.message)
         
         // Step 1. Append Padding Bits
         tmpMessage.appendBytes([0x80]) // append one bit (UInt8 with one bit) to message
@@ -37,7 +37,7 @@ internal class HashBase {
             msgLength++
         }
         
-        var bufZeros = UnsafeMutablePointer<UInt8>(calloc(counter, sizeof(UInt8)))
+        let bufZeros = UnsafeMutablePointer<UInt8>(calloc(counter, sizeof(UInt8)))
         
         tmpMessage.appendBytes(bufZeros, length: counter)
         

@@ -33,66 +33,66 @@ class PreventionsSubTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        
-        var abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
-        println("response value; \(abtMeResponse?.responseValue)")
-        var responseValue:String?
-        var newResponseValue: String = ""
-        if abtMeResponse != nil
-        {
-            responseValue = abtMeResponse!.responseValue
-        }
-        if cell!.selected == true
-        {
-            //cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            println("label: \(indexPath.row)")
-            if (responseValue != nil && responseValue != "")
-            {
-                //Put the values in Array
-                var responseValueArray:[String] = responseValue!.componentsSeparatedByString(",")
-                //get the value of selected Response
-                var selectedResponseValue = toString(indexPath.row)
-                //If the selected response is in the array - remove it - Deselect!
-                if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
-                    responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
-                    
-                    //var newResponseValue: String?
-                    for var i = 0; i < responseValueArray.count; i++ {
-                        if i < responseValueArray.count - 1
-                        {
-                            newResponseValue += responseValueArray[i] + ","
-                        }
-                        else
-                        {
-                            newResponseValue += responseValueArray[i]
-                        }
-                    }
-                    cell!.accessoryType = UITableViewCellAccessoryType.None
-                }
-                else
-                {
-                
-                    newResponseValue = responseValue! + "," + toString(indexPath.row)
-                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-                }
-            }
-            else
-            {
-                newResponseValue = toString(indexPath.row)
-                cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            }
-            dataMgr?.saveAboutMeReponse("AMQ_11", dateAdded: NSDate(), responseValue: newResponseValue)
-        }
-        else
-        {
-            cell!.accessoryType = UITableViewCellAccessoryType.None
-        }
-        //Remove the gray selection
-        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        let cell = tableView.cellForRowAtIndexPath(indexPath)
+//        
+//        let abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
+//        print("response value; \(abtMeResponse?.responseValue)")
+//        var responseValue:String?
+//        var newResponseValue: String = ""
+//        if abtMeResponse != nil
+//        {
+//            responseValue = abtMeResponse!.responseValue
+//        }
+//        if cell!.selected == true
+//        {
+//            //cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+//            print("label: \(indexPath.row)")
+//            if (responseValue != nil && responseValue != "")
+//            {
+//                //Put the values in Array
+//                var responseValueArray:[String] = responseValue!.componentsSeparatedByString(",")
+//                //get the value of selected Response
+//                let selectedResponseValue = String(indexPath.row)
+//                //If the selected response is in the array - remove it - Deselect!
+//                if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
+//                    responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
+//                    
+//                    //var newResponseValue: String?
+//                    for var i = 0; i < responseValueArray.count; i++ {
+//                        if i < responseValueArray.count - 1
+//                        {
+//                            newResponseValue += responseValueArray[i] + ","
+//                        }
+//                        else
+//                        {
+//                            newResponseValue += responseValueArray[i]
+//                        }
+//                    }
+//                    cell!.accessoryType = UITableViewCellAccessoryType.None
+//                }
+//                else
+//                {
+//                
+//                    newResponseValue = responseValue! + "," + String(indexPath.row)
+//                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+//                }
+//            }
+//            else
+//            {
+//                newResponseValue = String(indexPath.row)
+//                cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+//            }
+//            dataMgr?.saveAboutMeReponse("AMQ_11", dateAdded: NSDate(), responseValue: newResponseValue)
+//        }
+//        else
+//        {
+//            cell!.accessoryType = UITableViewCellAccessoryType.None
+//        }
+//        //Remove the gray selection
+//        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+//    }
     
     /*override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -148,46 +148,46 @@ class PreventionsSubTableViewController: UITableViewController {
     */
     var QuestionTextArray: [String] = [AboutMeResponseQuestions.AMQText_1, AboutMeResponseQuestions.AMQText_2, AboutMeResponseQuestions.AMQText_3, AboutMeResponseQuestions.AMQText_4, AboutMeResponseQuestions.AMQText_5, AboutMeResponseQuestions.AMQText_6, AboutMeResponseQuestions.AMQText_7, AboutMeResponseQuestions.AMQText_8, AboutMeResponseQuestions.AMQText_9, AboutMeResponseQuestions.AMQText_10]
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PreventionCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = QuestionTextArray[indexPath.row]
-        //let cell = tableView.cellForRowAtIndexPath(,indexPath)
-        var abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
-        var responseValue:String?
-        var responseValueArray:[String]=[]
-        if abtMeResponse != nil
-        {
-            responseValue = abtMeResponse!.responseValue
-            responseValueArray = responseValue!.componentsSeparatedByString(",")
-        }
-        
-        
-        println("Index: \(indexPath.row)")
-        
-        if contains(responseValueArray, toString(indexPath.row))
-        {
-            cell.accessoryType =  UITableViewCellAccessoryType.Checkmark
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryType.None
-        }
-        
-        /*for var i = 0; i < responseValueArray.count; i++ {
-        if indexPath.row == responseValueArray[i].toInt()
-        {
-        cell.accessoryType =  UITableViewCellAccessoryType.Checkmark
-        }
-        else
-        {
-        cell.accessoryType = UITableViewCellAccessoryType.None
-        }
-        }*/
-        // Configure the cell...
-        
-        return cell
-    }
-    
+//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("PreventionCell", forIndexPath: indexPath) 
+//        cell.textLabel?.text = QuestionTextArray[indexPath.row]
+//        //let cell = tableView.cellForRowAtIndexPath(,indexPath)
+//        let abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
+//        var responseValue:String?
+//        var responseValueArray:[String]=[]
+//        if abtMeResponse != nil
+//        {
+//            responseValue = abtMeResponse!.responseValue
+//            responseValueArray = responseValue!.componentsSeparatedByString(",")
+//        }
+//        
+//        
+//        print("Index: \(indexPath.row)")
+//        
+//        if responseValueArray.contains(String(indexPath.row))
+//        {
+//            cell.accessoryType =  UITableViewCellAccessoryType.Checkmark
+//        }
+//        else
+//        {
+//            cell.accessoryType = UITableViewCellAccessoryType.None
+//        }
+//        
+//        /*for var i = 0; i < responseValueArray.count; i++ {
+//        if indexPath.row == responseValueArray[i].toInt()
+//        {
+//        cell.accessoryType =  UITableViewCellAccessoryType.Checkmark
+//        }
+//        else
+//        {
+//        cell.accessoryType = UITableViewCellAccessoryType.None
+//        }
+//        }*/
+//        // Configure the cell...
+//        
+//        return cell
+//    }
+//    
     
     /*
     // Override to support conditional editing of the table view.

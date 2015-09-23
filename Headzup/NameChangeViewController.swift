@@ -29,7 +29,7 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
     }
     
     @IBAction func DoneBarButton(sender: AnyObject) {
-        println("Validating Pin...")
+        print("Validating Pin...")
         validator.validate(self)
         
     }
@@ -49,7 +49,7 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
         // Do any additional setup after loading the view.
         //Error Validation
         validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
+            print("here")
             // clear error label
             validationRule.errorLabel?.hidden = true
             validationRule.errorLabel?.text = ""
@@ -59,7 +59,7 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
             validationRule.textField.layer.cornerRadius = 5.0
             
             }, error:{ (validationError) -> Void in
-                println("error")
+                print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
                 validationError.textField.layer.borderColor = UIColor.redColor().CGColor
@@ -71,15 +71,15 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
      }
     
     func validationSuccessful() {
-            println("Validation Success!")
-            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.nameTF.text, isSecured: true)
+            print("Validation Success!")
+            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.nameTF.text!, isSecured: true)
             //navigate back to Account tab
             self.loadViewController("TabView",tabIndex:4)
         }
 
 
     func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+        print("Validation FAILED!")
     }
 
 

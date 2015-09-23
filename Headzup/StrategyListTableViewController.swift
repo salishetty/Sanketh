@@ -30,12 +30,12 @@ class StrategyListTableViewController: UITableViewController {
         
         if (selectedCategory != nil)
         {
-            var theCategory = dataMgr?.getCategoryByID(selectedCategory!.categoryID as! Int)
+            let theCategory = dataMgr?.getCategoryByID(selectedCategory!.categoryID as Int)
             
-            var theContent = dataMgr?.getContentByIDs(theCategory!.contentIDs)
+            let theContent = dataMgr?.getContentByIDs(theCategory!.contentIDs)
             strategiesArray = theContent!
             //Sort by ContentName ASC
-            strategiesArray.sort({$0.contentName < $1.contentName})
+            strategiesArray.sortInPlace({$0.contentName < $1.contentName})
             //Set Title to name of category
             self.title = theCategory?.categoryName
         }
@@ -46,12 +46,12 @@ class StrategyListTableViewController: UITableViewController {
             {
                 for favoriteItem in favorites
                 {
-                    var theContent = dataMgr?.getContentByID(favoriteItem.contentID as! Int)
+                    let theContent = dataMgr?.getContentByID(favoriteItem.contentID as Int)
                     strategiesArray.append(theContent!)
                 }
             }
             //Sort by ContentName ASC
-            strategiesArray.sort({$0.contentName < $1.contentName})
+            strategiesArray.sortInPlace({$0.contentName < $1.contentName})
             self.title = "My Favorites"
         }
         // Uncomment the following line to preserve selection between presentations
@@ -82,7 +82,7 @@ class StrategyListTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("strategyCell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("strategyCell", forIndexPath: indexPath) 
 
         cell.textLabel?.text = self.strategiesArray[indexPath.row].contentName
 
@@ -138,7 +138,7 @@ class StrategyListTableViewController: UITableViewController {
         }
         let detailsScreen = segue.destinationViewController as! StrategyDetailsViewController
         detailsScreen.selectedStrategy = (strategiesArray[indexOfSelectedStrategy] as Content)
-        println("Selected Category:\(detailsScreen.selectedStrategy!.contentID)")
+        print("Selected Category:\(detailsScreen.selectedStrategy!.contentID)")
     }
     
 

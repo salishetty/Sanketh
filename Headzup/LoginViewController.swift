@@ -47,7 +47,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         }
     }
     func textFieldDidEndEditing(textField: UITextField) {
-             if phoneNumberTF.text.isEmpty {
+             if phoneNumberTF.text!.isEmpty {
                 phoneNumberTF.text = "000-000-0000"
                 phoneNumberTF.textColor =  UIColor.lightGrayColor()
 
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         // Do any additional setup after loading the view.
         //Error Validation
         validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
+            print("here")
             // clear error label
             validationRule.errorLabel?.hidden = true
             validationRule.errorLabel?.text = ""
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
             validationRule.textField.layer.cornerRadius = 5.0
             
             }, error:{ (validationError) -> Void in
-                println("error")
+                print("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
                 validationError.textField.layer.borderColor = UIColor.redColor().CGColor
@@ -126,36 +126,36 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     }
     */
     @IBAction func Login(sender: UIButton) {
-        println("Validating...")
+        print("Validating...")
         validator.validate(self)
     }
     //ValidationDelegate Methods
     
     func validationSuccessful() {
-        println("Validation Success!")
-        let pin = pinTF.text.uppercaseString
-        var phoneNumber:String = phoneNumberTF.text
+        print("Validation Success!")
+        let pin = pinTF.text!.uppercaseString
+        var phoneNumber:String = phoneNumberTF.text!
         let token:String = CryptoUtility().generateSecurityToken() as String
-        phoneNumber = phoneNumberTF.text
+        phoneNumber = phoneNumberTF.text!
         //Get login Url
-        var theURL:String = AppContext.svcUrl + "Login"
+        let theURL:String = AppContext.svcUrl + "Login"
         
         if AppContext.hasConnectivity() {
             
             serviceMgr?.Login(["username":phoneNumber, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
                 
                 if let parseJSON = jsonData {
-                    var status = parseJSON["Status"] as? String
+                    let status = parseJSON["Status"] as? String
                     if(status == "1")
                     {
-                        var memberhipUserID = parseJSON["MembershipUserID"] as? String
+                        let memberhipUserID = parseJSON["MembershipUserID"] as? String
                         // update cache and local db
                         //Commented below if by sandeep since it leads dead Lock of information
                         //if AppContext.loginStatus == "" {
                             
-                            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text, isSecured: true)
+                            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text!, isSecured: true)
                             
-                            AppContext.firstName = self.firstNameTF.text
+                            AppContext.firstName = self.firstNameTF.text!
                             self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
                             
                             AppContext.loginStatus = LoginStatus.LoggedIn
@@ -196,17 +196,19 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         }
         else
         {
-            println("Check network connection")
+            print("Check network connection")
             self.authErrorLB.text = "Check network connection"
             self.authErrorView.addSubview(self.authErrorLB)
             self.authErrorView.hidden = false
         }
         
     }
-    func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+    
+   
+    func validationFailed(errors: [UITextField : ValidationError]) {
+        print("Validation failed")
     }
-
+    
 
     @IBAction func dismissKeyboard(sender: AnyObject) {
         self.view.endEditing(true)

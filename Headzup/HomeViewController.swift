@@ -40,13 +40,13 @@ class HomeViewController: UIViewController {
     }
 
     func SynchTailoringQuestions() {
-        var uInfo = AppContext.getUserInfo()
-        var membershipUserID = uInfo.membershipUserID
+        let uInfo = AppContext.getUserInfo()
+        let membershipUserID = uInfo.membershipUserID
         //Synch Favorites - Strategies
         var dict = Dictionary<String, String>()
         var responseItemsArray = [String:Dictionary<String, String>]()
         var objectID:String?
-        var gHelper = GeneralHelper()
+        let gHelper = GeneralHelper()
         let responsesTobeSynched:[AboutMeResponse] = dataMgr!.getResponsesToBeSynched()!
         let responsesTobeDeleted:[AboutMeResponse] = dataMgr!.getResponsesToBeDeleted()!
         if responsesTobeSynched.count > 0
@@ -54,42 +54,44 @@ class HomeViewController: UIViewController {
             var index:Int32 = 0
             for responseItem in responsesTobeSynched
             {
-                println("AboutMeResponse Items: \(responseItem.questionID): \(responseItem.responseValue):\((responseItem.dateAdded))")
+                print("AboutMeResponse Items: \(responseItem.questionID): \(responseItem.responseValue):\((responseItem.dateAdded))")
                 
-                var responseItems = ResponseItems(membershipUserId: membershipUserID, questionID: responseItem.questionID, responseValue: responseItem.responseValue, dateAdded: gHelper.convertDateToString(responseItem.dateAdded))
+                let responseItems = ResponseItems(membershipUserId: membershipUserID, questionID: responseItem.questionID, responseValue: responseItem.responseValue, dateAdded: gHelper.convertDateToString(responseItem.dateAdded))
                 
                 dict = gHelper.responseItemsToDictionary(responseItems)
                 responseItemsArray["ResponseItem"+String(index)] = dict
-                var lastComponent = responseItem.objectID.URIRepresentation().absoluteString!.lastPathComponent
+                //Abebe have a look
+                //let lastComponent = responseItem.objectID.URIRepresentation().absoluteString.lastPathComponent
+                let lastComponent = responseItem.objectID.URIRepresentation().absoluteString
                 //Integer part of objectID
-                objectID = lastComponent.substringFromIndex(advance(lastComponent.startIndex, 1))
+                objectID = lastComponent.substringFromIndex(lastComponent.startIndex.advancedBy(1))
                 //update index
                 index++
             }
         }
-        var theURL:String =  AppContext.svcUrl + "SynchAboutMeResponse"
+        let theURL:String =  AppContext.svcUrl + "SynchAboutMeResponse"
         
         if(responseItemsArray.count > 0)
         {
             serviceMgr?.synchAboutMeResponse(responseItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
                 
                 if let parseJSON = jsonData {
-                    var status = parseJSON["Status"] as? Int
+                    let status = parseJSON["Status"] as? Int
                     if(status == 1)
                     {
-                        var synchDate = NSDate()
+                        let synchDate = NSDate()
                         //if successful, save the last objectID to MetaData
                         //self.dataMgr?.saveMetaData("AboutMeResponseID", value: objectID!, isSecured: true)
                         self.dataMgr?.saveMetaData("SynchResponseDate", value: gHelper.convertDateToString(synchDate), isSecured: true)
                         //var responseToBeDeleted = Array(Set(responses).subtract(mostRecentResponse))
                         //Delete all synched AboutMe responses
-                        for (index, response) in enumerate(responsesTobeDeleted)
+                        for (_, response) in responsesTobeDeleted.enumerate()
                         {
-                            println("AboutMe reponses: \(response.questionID): \(response.responseValue):,\(response.dateAdded)")
+                            print("AboutMe reponses: \(response.questionID): \(response.responseValue):,\(response.dateAdded)")
                             self.dataMgr?.deleteAboutMeResponse(response)
                         }
                         
-                        println("About Me Response synchronized Successfully")
+                        print("About Me Response synchronized Successfully")
                     }
                 }
                 

@@ -16,295 +16,325 @@ public class ServiceManager:NSObject, NSURLSessionDelegate, NSURLSessionTaskDele
         self.dbContext = objContext
     }
     public func Login(params : Dictionary<String, String>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        var session = NSURLSession(configuration: configuration, delegate: self, delegateQueue:NSOperationQueue.mainQueue())
-        //var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var err: NSError?
-        var json:NSDictionary?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Message: \(strData)")
-            var err: NSError?
-            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else { //if no error
-                postCompleted(jsonData: json!)
-            }
-        })
-        
-        task.resume()
+//        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+//        let session = NSURLSession(configuration: configuration, delegate: self, delegateQueue:NSOperationQueue.mainQueue())
+//        //var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "POST"
+//        
+//        var err: NSError?
+//        var json:NSDictionary?
+//        
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+//        } catch let error as NSError {
+//            err = error
+//            request.HTTPBody = nil
+//        }
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("Message: \(strData)")
+//            let err: NSError?
+//            json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//            if(err != nil) {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//            else { //if no error
+//                postCompleted(jsonData: json!)
+//            }
+//        })
+//        
+//        task.resume()
         
     }
-    public func synchUserActions(params : Dictionary<String,Dictionary<String, String>>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var err: NSError?
-        var json:NSDictionary?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Message: \(strData)")
-            var err: NSError?
-            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else { //if no error
-                postCompleted(jsonData: json!)
-            }
-        })
-        
-        task.resume()
+    public func synchUserActions(params : Dictionary<String,Dictionary<String, String>>, url : String, swif : (jsonData: NSDictionary?) -> ()) {
+//        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "POST"
+//        
+//        var err: NSError?
+//        var json:NSDictionary?
+//        
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+//        } catch var error as NSError {
+//            err = error
+//            request.HTTPBody = nil
+//        }
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            var strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("Message: \(strData)")
+//            var err: NSError?
+//            json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//            if(err != nil) {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//            else { //if no error
+//                postCompleted(jsonData: json!)
+//            }
+//        })
+//        
+//        task.resume()
         
     }
     
     public func synchTechnicalLog(params : Dictionary<String,Dictionary<String, String>>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
+//        let request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        let session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "POST"
+//        
+//        var err: NSError?
+//        var json:NSDictionary?
+//        
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+//        } catch let error as NSError {
+//            err = error
+//            request.HTTPBody = nil
+//        }
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            let strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("Message: \(strData)")
+//            let err: NSError?
+//            json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//            if(err != nil) {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//            else { //if no error
+//                postCompleted(jsonData: json!)
+//            }
+//        })
         
-        var err: NSError?
-        var json:NSDictionary?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Message: \(strData)")
-            var err: NSError?
-            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else { //if no error
-                postCompleted(jsonData: json!)
-            }
-        })
-        
-        task.resume()
+//        task.resume()
         
     }
     public func synchFavorites(params : Dictionary<String,Dictionary<String, String>>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
+//        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "POST"
+//        
+//        var err: NSError?
+//        var json:NSDictionary?
+//        
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+//        } catch var error as NSError {
+//            err = error
+//            request.HTTPBody = nil
+//        }
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            var strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("Message: \(strData)")
+//            var err: NSError?
+//            json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//            if(err != nil) {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//            else { //if no error
+//                postCompleted(jsonData: json!)
+//            }
+//        })
         
-        var err: NSError?
-        var json:NSDictionary?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Message: \(strData)")
-            var err: NSError?
-            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else { //if no error
-                postCompleted(jsonData: json!)
-            }
-        })
-        
-        task.resume()
+//        task.resume()
         
     }
     
     public func getContent(url : String, postCompleted : (jsonData: NSArray) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
+//        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "GET"
+//        
+//        var err: NSError?
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            var strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            //println("Message: \(strData)")
+//            var err: NSError?
+//            if let json:NSArray = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSArray
+//            {
+//                if NSJSONSerialization.isValidJSONObject(json)
+//                {
+//                    postCompleted(jsonData: json)
+//                    print("JSON is valid")
+//                }
+//            }
+//            else {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//        })
         
-        var err: NSError?
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //println("Message: \(strData)")
-            var err: NSError?
-            if let json:NSArray = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSArray
-            {
-                if NSJSONSerialization.isValidJSONObject(json)
-                {
-                    postCompleted(jsonData: json)
-                    println("JSON is valid")
-                }
-            }
-            else {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-        })
-        
-        task.resume()
+//        task.resume()
         
     }
 
     public func getFirstAidContent(url : String, postCompleted : (jsonData: NSArray) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "GET"
-        
-        var err: NSError?
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            //println("Message: \(strData)")
-            var err: NSError?
-            if let json:NSArray = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSArray
-            {
-                if NSJSONSerialization.isValidJSONObject(json)
-                {
-                    postCompleted(jsonData: json)
-                    println("JSON is valid")
-                }
-            }
-            else {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-        })
-        
-        task.resume()
+//        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "GET"
+//        
+//        var err: NSError?
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            var strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            //println("Message: \(strData)")
+//            var err: NSError?
+//            if let json:NSArray = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSArray
+//            {
+//                if NSJSONSerialization.isValidJSONObject(json)
+//                {
+//                    postCompleted(jsonData: json)
+//                    print("JSON is valid")
+//                }
+//            }
+//            else {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//        })
+//        
+//        task.resume()
     }
     
     public func synchAboutMeResponse(params : Dictionary<String,Dictionary<String, String>>, url : String, postCompleted : (jsonData: NSDictionary?) -> ()) {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var err: NSError?
-        var json:NSDictionary?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Message: \(strData)")
-            var err: NSError?
-            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else { //if no error
-                postCompleted(jsonData: json!)
-            }
-        })
-        
-        task.resume()
-        
+//        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "POST"
+//        
+//        var err: NSError?
+//        var json:NSDictionary?
+//        
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+//        } catch var error as NSError {
+//            err = error
+//            request.HTTPBody = nil
+//        }
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            var strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("Message: \(strData)")
+//            var err: NSError?
+//            json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//            if(err != nil) {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//            else { //if no error
+//                postCompleted(jsonData: json!)
+//            }
+//        })
+//        
+//        task.resume()
+//        
     }
 
     public func URLSession(session: NSURLSession,didReceiveChallenge challenge:NSURLAuthenticationChallenge,
         completionHandler:(NSURLSessionAuthChallengeDisposition,
-        NSURLCredential!) -> Void)
+        NSURLCredential?) -> Void)
     {
         completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,
-            NSURLCredential(forTrust:challenge.protectionSpace.serverTrust))
+            NSURLCredential(forTrust:challenge.protectionSpace.serverTrust!))
     }
     
-    public func URLSession(session: NSURLSession, task: NSURLSessionTask, willPerformHTTPRedirection response: NSHTTPURLResponse, newRequest request: NSURLRequest, completionHandler: (NSURLRequest!) -> Void)
+    public func URLSession(session: NSURLSession, task: NSURLSessionTask, willPerformHTTPRedirection response: NSHTTPURLResponse, newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -> Void)
     {
-        var newRequest : NSURLRequest? = request
-        println(newRequest?.description);
+        let newRequest : NSURLRequest? = request
+        print(newRequest?.description);
         completionHandler(newRequest)
     }
     
     //Helper Methods
     private func doSynchronize(params:Dictionary<String, Dictionary<String, String>>, url : String, postCompleted : (jsonData: NSDictionary?) -> ())
     {
-        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
-        var session = NSURLSession.sharedSession()
-        request.HTTPMethod = "POST"
-        
-        var err: NSError?
-        var json:NSDictionary?
-        
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(params, options: nil, error: &err)
-        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
-        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
-        
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            println("Response: \(response)")
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-            println("Message: \(strData)")
-            var err: NSError?
-            json = NSJSONSerialization.JSONObjectWithData(data, options: .MutableLeaves, error: &err) as? NSDictionary
-            
-            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
-            if(err != nil) {
-                println(err!.localizedDescription)
-                
-                let jsonStr = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println("Error could not parse JSON: '\(jsonStr)'")
-            }
-            else { //if no error
-                postCompleted(jsonData: json!)
-            }
-        })
-        
-        task.resume()
+//        var request = NSMutableURLRequest(URL: NSURL(string: url)!)
+//        var session = NSURLSession.sharedSession()
+//        request.HTTPMethod = "POST"
+//        
+//        var err: NSError?
+//        var json:NSDictionary?
+//        
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(params, options: [])
+//        } catch var error as NSError {
+//            err = error
+//            request.HTTPBody = nil
+//        }
+//        request.addValue("text/javascript", forHTTPHeaderField: "Content-Type")
+//        request.addValue("text/javascript", forHTTPHeaderField: "Accept")
+//        
+//        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+//            print("Response: \(response)")
+//            var strData = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print("Message: \(strData)")
+//            var err: NSError?
+//            json = NSJSONSerialization.JSONObjectWithData(data!, options: .MutableLeaves) as? NSDictionary
+//            
+//            // Did the JSONObjectWithData constructor return an error? If so, log the error to the console
+//            if(err != nil) {
+//                print(err!.localizedDescription)
+//                
+//                let jsonStr = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Error could not parse JSON: '\(jsonStr)'")
+//            }
+//            else { //if no error
+//                postCompleted(jsonData: json!)
+//            }
+//        })
+//        
+//        task.resume()
 }
 }

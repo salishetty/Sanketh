@@ -26,7 +26,7 @@ class AccountTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("index path is \(indexPath.section)")
+        print("index path is \(indexPath.section)")
         
         if (indexPath.section == 0)
         {
@@ -60,7 +60,7 @@ class AccountTableViewController: UITableViewController {
         {
             if(indexPath.row == 0)
             {
-                var VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+                let VC1 = self.storyboard!.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
                 self.presentViewController(VC1, animated:true, completion: nil)
 
                 //self.loadViewController("PinView")

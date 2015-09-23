@@ -31,16 +31,16 @@ public class GeneralHelper
     }
     func convertDateToString(date:NSDate)->String
     {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var dateString = dateFormatter.stringFromDate(date)
+        let dateString = dateFormatter.stringFromDate(date)
         return dateString
     }
     func convertStringToDate(dateString:String)->NSDate
     {
-        var dateFormatter = NSDateFormatter()
+        let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        var date = dateFormatter.dateFromString(dateString)
+        let date = dateFormatter.dateFromString(dateString)
         return date!
     }
     public func getPListProperty(plistProperty: String) -> String {

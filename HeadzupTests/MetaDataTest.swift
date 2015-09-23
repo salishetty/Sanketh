@@ -35,7 +35,7 @@ class MetaDataTestCase: CoreDataTestCase {
         
         fetchRequest.predicate = NSPredicate(format: "name == \"\(name)\"")
         
-        let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [MetaData]
+        let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [MetaData]
         
         var theMetaData:MetaData!
         
@@ -43,7 +43,7 @@ class MetaDataTestCase: CoreDataTestCase {
             
             // newMetaData
             
-            println("metadata exists before saving: \(fetchResults?[0])")
+            print("metadata exists before saving: \(fetchResults?[0])")
             
             theMetaData = fetchResults?[0]
             
@@ -70,9 +70,12 @@ class MetaDataTestCase: CoreDataTestCase {
             
             var error: NSError?
             
-            if !managedObjectContext!.save(&error){
+            do {
+                try managedObjectContext!.save()
+            } catch let error1 as NSError {
+                error = error1
                 
-                println("Could not save \(error), \(error?.userInfo)")
+                print("Could not save \(error), \(error?.userInfo)")
                 
             }
             

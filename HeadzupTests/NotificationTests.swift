@@ -24,7 +24,7 @@ class NotificationTests: XCTestCase {
     
     func testNotification() {
         
-        var notification = UILocalNotification()
+        let notification = UILocalNotification()
         notification.alertBody = "your goal is overdue" // text that will be displayed in the notification
         notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
         let date = NSDate()

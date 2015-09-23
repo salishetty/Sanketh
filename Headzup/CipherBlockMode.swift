@@ -36,11 +36,11 @@ public enum CipherBlockMode {
     /**
     Process input blocks with given block cipher mode. With fallback to plain mode.
     
-    :param: blocks cipher block size blocks
-    :param: iv     IV
-    :param: cipher single block encryption closure
+    - parameter blocks: cipher block size blocks
+    - parameter iv:     IV
+    - parameter cipher: single block encryption closure
     
-    :returns: encrypted bytes
+    - returns: encrypted bytes
     */
     func encryptBlocks(blocks:[[UInt8]], iv:[UInt8]?, cipherOperation:CipherOperationOnBlock) -> [UInt8]? {
         
@@ -82,8 +82,8 @@ private struct CBCMode: BlockMode {
         out.reserveCapacity(blocks.count * blocks[0].count)
         var prevCiphertext = iv! // for the first time prevCiphertext = iv
         for plaintext in blocks {
-            if let encrypted = cipherOperation(block: xor(prevCiphertext, plaintext)) {
-                out.extend(encrypted)
+            if let encrypted = cipherOperation(block: xor(prevCiphertext, b: plaintext)) {
+                out.appendContentsOf(encrypted)
                 prevCiphertext = encrypted
             }
         }
@@ -102,7 +102,7 @@ private struct CBCMode: BlockMode {
         var prevCiphertext = iv! // for the first time prevCiphertext = iv
         for ciphertext in blocks {
             if let decrypted = cipherOperation(block: ciphertext) { // decrypt
-                out.extend(xor(prevCiphertext, decrypted))
+                out.appendContentsOf(xor(prevCiphertext, b: decrypted))
             }
             prevCiphertext = ciphertext
         }
@@ -129,8 +129,8 @@ private struct CFBMode: BlockMode {
         var lastCiphertext = iv!
         for plaintext in blocks {
             if let encrypted = cipherOperation(block: lastCiphertext) {
-                lastCiphertext = xor(plaintext,encrypted)
-                out.extend(lastCiphertext)
+                lastCiphertext = xor(plaintext,b: encrypted)
+                out.appendContentsOf(lastCiphertext)
             }
         }
         return out;
@@ -152,7 +152,7 @@ private struct ECBMode: BlockMode {
         out.reserveCapacity(blocks.count * blocks[0].count)
         for plaintext in blocks {
             if let encrypted = cipherOperation(block: plaintext) {
-                out.extend(encrypted)
+                out.appendContentsOf(encrypted)
             }
         }
         return out
