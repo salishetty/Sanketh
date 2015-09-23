@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var serviceMgr:ServiceManager?
     func appInit() {
+        
+       AppContext.svcUrl = "http://10.200.20.87/api/mobileservice/"
+        
 //        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 //        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
 //        var dataMgr = DataManager(objContext: manObjContext)
