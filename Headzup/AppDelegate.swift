@@ -16,31 +16,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var serviceMgr:ServiceManager?
     func appInit() {
-        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        var dataMgr = DataManager(objContext: manObjContext)
-        var env = ""
-        var standardUserDefaults = NSUserDefaults.standardUserDefaults()
-        var us: AnyObject? = standardUserDefaults.objectForKey("st_env")
-        if us == nil {
-            self.registerDefaultsFromSettingsBundle();
-            us = standardUserDefaults.objectForKey("st_env")
-        }
-        env = us as! String
-        
-        // check env
-        AppContext.svcUrl = dataMgr.getMetaDataValue(MetaDataKeys.SvcUrl)
-        if AppContext.svcUrl != "" && AppContext.svcUrl != env {
-            dataMgr.deleteAllData("MetaData")
-        }
-        dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
-        AppContext.svcUrl = env
-        
-        // Set login Status from Database
-        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
-        
-        
-        AppContext.categories = dataMgr.getAllcategories()
+//        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+//        var dataMgr = DataManager(objContext: manObjContext)
+//        var env = ""
+//        var standardUserDefaults = NSUserDefaults.standardUserDefaults()
+//        var us: AnyObject? = standardUserDefaults.objectForKey("st_env")
+//        if us == nil {
+//            self.registerDefaultsFromSettingsBundle();
+//            us = standardUserDefaults.objectForKey("st_env")
+//        }
+//        env = us as! String
+//        
+//        // check env
+//        AppContext.svcUrl = dataMgr.getMetaDataValue(MetaDataKeys.SvcUrl)
+//        if AppContext.svcUrl != "" && AppContext.svcUrl != env {
+//            dataMgr.deleteAllData("MetaData")
+//        }
+//        dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
+//        AppContext.svcUrl = env
+//        
+//        // Set login Status from Database
+//        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+//        
+//        
+//        AppContext.categories = dataMgr.getAllcategories()
 //        if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
 //            
 //            var theURL:String =  AppContext.svcUrl + "getContents"
