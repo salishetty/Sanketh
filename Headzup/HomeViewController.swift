@@ -48,7 +48,6 @@ class HomeViewController: UIViewController {
         var objectID:String?
         var gHelper = GeneralHelper()
         let responsesTobeSynched:[AboutMeResponse] = dataMgr!.getResponsesToBeSynched()!
-        let responsesTobeDeleted:[AboutMeResponse] = dataMgr!.getResponsesToBeDeleted()!
         if responsesTobeSynched.count > 0
         {
             var index:Int32 = 0
@@ -60,9 +59,6 @@ class HomeViewController: UIViewController {
                 
                 dict = gHelper.responseItemsToDictionary(responseItems)
                 responseItemsArray["ResponseItem"+String(index)] = dict
-                var lastComponent = responseItem.objectID.URIRepresentation().absoluteString!.lastPathComponent
-                //Integer part of objectID
-                objectID = lastComponent.substringFromIndex(advance(lastComponent.startIndex, 1))
                 //update index
                 index++
             }
@@ -78,18 +74,8 @@ class HomeViewController: UIViewController {
                     if(status == 1)
                     {
                         var synchDate = NSDate()
-                        //if successful, save the last objectID to MetaData
-                        //self.dataMgr?.saveMetaData("AboutMeResponseID", value: objectID!, isSecured: true)
                         self.dataMgr?.saveMetaData("SynchResponseDate", value: gHelper.convertDateToString(synchDate), isSecured: true)
-                        //var responseToBeDeleted = Array(Set(responses).subtract(mostRecentResponse))
-                        //Delete all synched AboutMe responses
-                        for (index, response) in enumerate(responsesTobeDeleted)
-                        {
-                            println("AboutMe reponses: \(response.questionID): \(response.responseValue):,\(response.dateAdded)")
-                            self.dataMgr?.deleteAboutMeResponse(response)
-                        }
-                        
-                        println("About Me Response synchronized Successfully")
+                         println("About Me Response synchronized Successfully")
                     }
                 }
                 
