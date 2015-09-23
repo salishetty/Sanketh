@@ -23,13 +23,10 @@ public  class LogInHelper
         dataMgr = DataManager(objContext: manObjContext)
         serviceMgr = ServiceManager(objContext:manObjContext)
         
-        let serviceUrl:String = AppContext.svcUrl + "Login" as String
-        let membershipId:String = AppContext.membershipUserID
-        let token:String = CryptoUtility().generateSecurityToken() as String
-
-        serviceMgr?.Login(["username":membershipId,"token":token], url: serviceUrl, postCompleted:
+     let membershipId:String = AppContext.membershipUserID
+     serviceMgr?.Login(["username":membershipId], completion:
             {
-                (jsonData: NSDictionary?)->() in
+            (jsonData: NSDictionary?)->() in
             if let parseJSON = jsonData
                 {
                     let status = parseJSON["Status"] as? String
