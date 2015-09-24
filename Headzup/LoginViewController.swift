@@ -133,38 +133,30 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     
     func validationSuccessful() {
         print("Validation Success!")
-        let pin = pinTF.text!.uppercaseString
-        var phoneNumber:String = phoneNumberTF.text!
-        let token:String = CryptoUtility().generateSecurityToken() as String
-        phoneNumber = phoneNumberTF.text!
-        //Get login Url
-        let theURL:String = AppContext.svcUrl + "Login"
         
+        self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text!, isSecured: true)
+
+        let pin = pinTF.text!.uppercaseString
+        let phoneNumber:String = phoneNumberTF.text!
         if AppContext.hasConnectivity() {
             
-            serviceMgr?.Login(["username":phoneNumber, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
-                
+               serviceMgr?.Login(["username":phoneNumber, "pin":pin],completion: { (jsonData: NSDictionary?)->() in
                 if let parseJSON = jsonData {
                     let status = parseJSON["Status"] as? String
                     if(status == "1")
                     {
-                        let memberhipUserID = parseJSON["MembershipUserID"] as? String
-                        // update cache and local db
-                        //Commented below if by sandeep since it leads dead Lock of information
-                        //if AppContext.loginStatus == "" {
-                            
-                            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.firstNameTF.text!, isSecured: true)
-                            
                             AppContext.firstName = self.firstNameTF.text!
                             self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
                             
                             AppContext.loginStatus = LoginStatus.LoggedIn
-                            
+                        
+                            let memberhipUserID = parseJSON["MembershipUserID"] as? String
                             self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID!, isSecured: true)
                             AppContext.membershipUserID = memberhipUserID!
+                        
                             self.dataMgr?.saveUserActionLog(UserActions.Login, actionDateTime: NSDate(), contentID: "", comment: "Login", isSynched: false)
-                       // }
-                        self.loadViewController("TabView",tabIndex:0)
+                        
+                          self.loadViewController("TabView",tabIndex:0)
                     }
                     else if(status == "2")
                     {

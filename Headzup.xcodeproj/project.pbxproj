@@ -79,6 +79,7 @@
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
+		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		577146491B99426100BBD8E4 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771462F1B99426100BBD8E4 /* CVAuxiliaryView.swift */; };
 		5771464A1B99426100BBD8E4 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146301B99426100BBD8E4 /* CVCalendarContentViewController.swift */; };
 		5771464B1B99426100BBD8E4 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146311B99426100BBD8E4 /* CVCalendarDayView.swift */; };
@@ -218,6 +219,7 @@
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		5753D85A1BB1F76700378332 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
+		5753D85C1BB33ACC00378332 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
 		5771462F1B99426100BBD8E4 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		577146301B99426100BBD8E4 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		577146311B99426100BBD8E4 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				14C1BF2D1B6178D400BE78DA /* Reachability.m */,
 				14C1BF2C1B6178D300BE78DA /* Headzup-Bridging-Header.h */,
 				14C1BF2F1B61793000BE78DA /* Reachability.h */,
+				5753D85C1BB33ACC00378332 /* NetworkOperation.swift */,
 			);
 			path = Headzup;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				5771464D1B99426100BBD8E4 /* CVCalendarManager.swift in Sources */,
 				14983D1B1B5586950059A5CA /* Hash.swift in Sources */,
 				14983D151B5586950059A5CA /* Authenticator.swift in Sources */,
+				5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */,
 				140DED141B67C6C0001F6A3F /* RequiredRule.swift in Sources */,
 				140DED201B67D380001F6A3F /* MinLengthRule.swift in Sources */,
 				140DED161B67C703001F6A3F /* RegexRule.swift in Sources */,

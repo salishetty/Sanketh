@@ -36,8 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
         AppContext.svcUrl = env
         
-        // Set login Status from Database
-        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
+       AppContext.svcUrl = "http://10.200.20.87/api/mobileservice/"
         
         
         AppContext.categories = dataMgr.getAllcategories()

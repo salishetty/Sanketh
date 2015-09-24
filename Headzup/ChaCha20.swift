@@ -94,12 +94,21 @@ final public class ChaCha20 {
         
         for i in 0..<16 {
             x[i] = x[i] &+ input[i]
+           
+            //Added by sandeep to reduce complexity of below commented line
+            let byte1val = UInt8((x[i] & 0xFF) >> 0)
+            let byte2val = UInt8((x[i] & 0xFFFF) >> 8)
+            let byte3val = UInt8((x[i] & 0xFFFFFF) >> 16)
+            let byte4val = UInt8((x[i] & 0xFFFFFFFF) >> 24)
+            output += [byte4val,byte3val,byte2val,byte1val]
             
-            //Commented for Abebe to refactor
+            //commented for xcode7
 //            output += [UInt8((x[i] & 0xFFFFFFFF) >> 24),
 //                UInt8((x[i] & 0xFFFFFF) >> 16),
 //                UInt8((x[i] & 0xFFFF) >> 8),
 //                UInt8((x[i] & 0xFF) >> 0)]
+            
+            
         }
         
         return output;

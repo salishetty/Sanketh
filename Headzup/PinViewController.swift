@@ -120,14 +120,9 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     func validationSuccessful() {
         print("Validation Success!")
         let pin = pinTF.text!.uppercaseString
-        let token:String = CryptoUtility().generateSecurityToken() as String
-        
-        //Get login Url
-        let theURL:String = AppContext.svcUrl + "Login"
         
         if AppContext.hasConnectivity() {
-            
-            serviceMgr?.Login(["username":AppContext.membershipUserID, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+            serviceMgr?.Login(["username":AppContext.membershipUserID, "pin":pin], completion: { (jsonData: NSDictionary?)->() in
                 
                 if let parseJSON = jsonData
                 {
