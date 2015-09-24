@@ -24,6 +24,7 @@
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
+		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		148F17FF1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
@@ -155,6 +156,7 @@
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
+		14896B8A1BB3412100AC693D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponseItemsDTO.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				140710A41B7A8DD900F731EB /* DateExtensions.swift */,
+				14896B8A1BB3412100AC693D /* StringExtensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */,
 				140DED291B69CED6001F6A3F /* Category.swift in Sources */,
 				57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */,
+				14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */,
 				5771465C1B99426100BBD8E4 /* CVCalendarWeekView.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				577146541B99426100BBD8E4 /* CVCalendarViewAnimator.swift in Sources */,
