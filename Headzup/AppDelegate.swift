@@ -35,10 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
         AppContext.svcUrl = env
-        
-       AppContext.svcUrl = "http://10.200.20.87/api/mobileservice/"
-        
-        
+         
         AppContext.categories = dataMgr.getAllcategories()
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
             
