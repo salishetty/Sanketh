@@ -14,10 +14,40 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var serviceMgr:ServiceManager?
+    
     func appInit() {
         
        AppContext.svcUrl = "http://10.200.20.87/api/mobileservice/"
+        let serviceManager:ServiceManager = ServiceManager()
+         serviceManager.getContent { (jsonData) -> () in
+            if let parseJSON:JSON = jsonData {
+                
+                for (_, category) in parseJSON
+                {
+                    let categoryID = category["CategoryID"].stringValue
+                    let categoryName = category["CategoryName"].stringValue
+                    
+                    print("Category ID:\(categoryID) with name \(categoryName)")
+                    let contents = category["Contents"]
+                    for (_, content) in contents
+                    {
+                        let contentID = content["ContentId"].stringValue
+                        let contentName = content["ContentName"].stringValue
+                        let contentValue = content["ContentValue"].stringValue
+                        let contentDescription = content["Description"].stringValue
+                        print("content ID:\(contentID) with name \(contentName) : \(contentValue) :\(contentDescription)")
+                        let properties = content["ContentProperties"]
+                        for (_, property) in properties
+                        {
+                            let propertyId = property["PropertyID"].stringValue
+                            let propertyValue = property["PropertyValue"].stringValue
+                            print("property ID:\(propertyId) with value \(propertyValue)")
+                        }
+                    }
+                    
+                }
+            }
+        }
         
 //        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 //        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!

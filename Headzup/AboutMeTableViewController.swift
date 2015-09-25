@@ -13,7 +13,7 @@ class AboutMeTableViewController: UITableViewController {
 
     @IBOutlet weak var PreventionSubView: UIView!
     var dataMgr: DataManager?
-    var serviceMgr:ServiceManager?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +26,7 @@ class AboutMeTableViewController: UITableViewController {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
+      
         //Load Responses to Yes-No Questions
         LoadYesNoQuestions()
         // Uncomment the following line to preserve selection between presentations

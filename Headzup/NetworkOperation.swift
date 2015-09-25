@@ -14,13 +14,13 @@ class NetworkOperation : NSURLSession
     lazy var session: NSURLSession = NSURLSession(configuration: self.config)
     let queryURL: NSURL
     
-    typealias JSONDictionaryCompletion = ([String:AnyObject]?) -> Void
+    typealias JSONCompletion = (JSON) -> Void
     
     init(url: NSURL) {
         self.queryURL = url
     }
     
-    func Get(completion: JSONDictionaryCompletion) {
+    func Get(completion: JSONCompletion) {
         let request = NSURLRequest(URL: queryURL)
         
         let dataTask = session.dataTaskWithRequest(request) {
@@ -36,17 +36,12 @@ class NetworkOperation : NSURLSession
             switch (httpResponse.statusCode) {
             case 200:
                 // 2: Create JSON object with data
-                do {
-                    let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.AllowFragments)
-                        as? [String:AnyObject]
-                    
-                     // 3: Pass the json back to the completion handler
-                    completion(jsonDictionary)
-                    print("JSON is valid")
-                    
-                } catch {
-                    print("error parsing json data")
-                }
+                let json = JSON(data:receivedData)
+                
+                // 3: Pass the json back to the completion handler
+                completion(json)
+                print("JSON is valid")
+                
             default:
                 print("GET request got response \(httpResponse.statusCode)")
             }
@@ -56,7 +51,7 @@ class NetworkOperation : NSURLSession
     
     
     
-    func Post(var body: [String: AnyObject],completion: JSONDictionaryCompletion) {
+    func Post(var body: [String: AnyObject],completion: JSONCompletion) {
         
         let token:String = CryptoUtility().generateSecurityToken() as String
         body.updateValue(token, forKey: "token")
@@ -84,15 +79,11 @@ class NetworkOperation : NSURLSession
             switch (httpResponse.statusCode) {
             case 200:
                 // 2: Create JSON object with data
-                do {
-                    let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.AllowFragments)
-                        as? [String:AnyObject]
-                    
-                    // 3: Pass the json back to the completion handler
-                    completion(jsonDictionary)
-                } catch {
-                    print("error parsing json data")
-                }
+                let json = JSON(data: receivedData)
+                
+                // 3: Pass the json back to the completion handler
+                completion(json)
+                print("JSON is valid")
             default:
                 print("POST request got response \(httpResponse.statusCode)")
             }

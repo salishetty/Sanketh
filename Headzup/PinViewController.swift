@@ -18,7 +18,6 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     
     @IBOutlet weak var pinTF: UITextField!
     var dataMgr: DataManager?  // initialized in viewDidLoad
-    var serviceMgr: ServiceManager?
     let validator = Validator()
     
     @IBOutlet weak var authErrorView: UIView!
@@ -52,7 +51,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
+        
         
         //log out user
         self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedOut, isSecured: true)
@@ -122,11 +121,12 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         let pin = pinTF.text!.uppercaseString
         
         if AppContext.hasConnectivity() {
-            serviceMgr?.Login(["username":AppContext.membershipUserID, "pin":pin], completion: { (jsonData: NSDictionary?)->() in
+            let serviceManager = ServiceManager()
+            serviceManager.Login(["username":AppContext.membershipUserID, "pin":pin], completion: { (jsonData: JSON?)->() in
                 
                 if let parseJSON = jsonData
                 {
-                    let status = parseJSON["Status"] as? String
+                    let status = parseJSON["Status"]
                     if(status == "1")
                     {
                         self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)

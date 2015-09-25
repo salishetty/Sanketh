@@ -79,6 +79,7 @@
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
 		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; settings = {ASSET_TAGS = (); }; };
+		575F4F791BB5989800C1F768 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575F4F781BB5989800C1F768 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		577146491B99426100BBD8E4 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771462F1B99426100BBD8E4 /* CVAuxiliaryView.swift */; };
 		5771464A1B99426100BBD8E4 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146301B99426100BBD8E4 /* CVCalendarContentViewController.swift */; };
 		5771464B1B99426100BBD8E4 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146311B99426100BBD8E4 /* CVCalendarDayView.swift */; };
@@ -218,6 +219,7 @@
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		5753D85A1BB1F76700378332 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		5753D85C1BB33ACC00378332 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
+		575F4F781BB5989800C1F768 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5771462F1B99426100BBD8E4 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		577146301B99426100BBD8E4 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		577146311B99426100BBD8E4 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 		14983CC51B557A170059A5CA /* Headzup */ = {
 			isa = PBXGroup;
 			children = (
+				575F4F771BB5984F00C1F768 /* Services */,
 				5771462E1B99416F00BBD8E4 /* CVCalendar */,
 				140710A31B7A8DC200F731EB /* Extensions */,
 				14CDA54A1B72788400FB040F /* DTO */,
@@ -359,7 +362,6 @@
 				14983CC81B557A170059A5CA /* AppDelegate.swift */,
 				579182961B6EBE27004ACFDD /* Helpers */,
 				14983CCF1B557A170059A5CA /* Main.storyboard */,
-				14983CF01B557C2D0059A5CA /* ServiceManager.swift */,
 				14983CF51B557ECB0059A5CA /* CryptoUtility.swift */,
 				14983CD21B557A170059A5CA /* Images.xcassets */,
 				14983CD41B557A170059A5CA /* LaunchScreen.xib */,
@@ -369,7 +371,6 @@
 				14C1BF2D1B6178D400BE78DA /* Reachability.m */,
 				14C1BF2C1B6178D300BE78DA /* Headzup-Bridging-Header.h */,
 				14C1BF2F1B61793000BE78DA /* Reachability.h */,
-				5753D85C1BB33ACC00378332 /* NetworkOperation.swift */,
 			);
 			path = Headzup;
 			sourceTree = "<group>";
@@ -498,6 +499,16 @@
 				577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		575F4F771BB5984F00C1F768 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				575F4F781BB5989800C1F768 /* SwiftyJSON.swift */,
+				14983CF01B557C2D0059A5CA /* ServiceManager.swift */,
+				5753D85C1BB33ACC00378332 /* NetworkOperation.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		5771462E1B99416F00BBD8E4 /* CVCalendar */ = {
@@ -726,6 +737,7 @@
 				14983D281B5586950059A5CA /* UInt8Extension.swift in Sources */,
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
 				577146571B99426100BBD8E4 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
+				575F4F791BB5989800C1F768 /* SwiftyJSON.swift in Sources */,
 				5771464F1B99426100BBD8E4 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				577146521B99426100BBD8E4 /* CVCalendarTouchController.swift in Sources */,
 				577146621B99426100BBD8E4 /* CVShape.swift in Sources */,

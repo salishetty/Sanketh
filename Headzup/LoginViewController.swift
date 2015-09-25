@@ -24,7 +24,6 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
     @IBOutlet weak var authErrorView: UIView!
     @IBOutlet weak var authErrorLB: UILabel!
     var dataMgr: DataManager?  // initialized in viewDidLoad
-    var serviceMgr: ServiceManager?
     let validator = Validator()
 
     
@@ -60,7 +59,6 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
         
         // Do any additional setup after loading the view.
         //Error Validation
@@ -140,9 +138,17 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         let phoneNumber:String = phoneNumberTF.text!
         if AppContext.hasConnectivity() {
             
-               serviceMgr?.Login(["username":phoneNumber, "pin":pin],completion: { (jsonData: NSDictionary?)->() in
-                if let parseJSON = jsonData {
-                    let status = parseJSON["Status"] as? String
+            let serviceManager = ServiceManager()
+            
+        
+            
+            
+           serviceManager.Login(["username":phoneNumber, "pin":pin],completion: { (jsonData: JSON?)->() in
+                print(jsonData?.string)
+                if let parseJSON:JSON = jsonData {
+                    let status = parseJSON["Status"].stringValue
+                    print("staus of login is\(status)")
+                    
                     if(status == "1")
                     {
                             AppContext.firstName = self.firstNameTF.text!
@@ -150,10 +156,9 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                             
                             AppContext.loginStatus = LoginStatus.LoggedIn
                         
-                            let memberhipUserID = parseJSON["MembershipUserID"] as? String
-                            self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID!, isSecured: true)
-                            AppContext.membershipUserID = memberhipUserID!
-                        
+                            let memberhipUserID = parseJSON["MembershipUserID"].stringValue
+                            self.dataMgr?.saveMetaData(MetaDataKeys.MembershipUserID, value: memberhipUserID, isSecured: true)
+                            AppContext.membershipUserID = memberhipUserID                        
                             self.dataMgr?.saveUserActionLog(UserActions.Login, actionDateTime: NSDate(), contentID: "", comment: "Login", isSynched: false)
                         
                           self.loadViewController("TabView",tabIndex:0)

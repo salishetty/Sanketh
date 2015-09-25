@@ -12,7 +12,6 @@ import CoreData
 class HomeViewController: UIViewController {
 
     var dataMgr: DataManager?
-    var serviceMgr:ServiceManager?
     
     
     @IBOutlet weak var greetingLB: UILabel!
@@ -23,7 +22,7 @@ class HomeViewController: UIViewController {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
+
         // Do any additional setup after loading the view.
         //Display greeting message
         let firstName =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
@@ -36,7 +35,16 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func SynchTailoringQuestions(sender: UIButton) {
-        SynchTailoringQuestions()
+        let serviceManager = ServiceManager()
+        serviceManager.getFirstAidContent { (jsonData) -> () in
+            if let parseJSON:JSON = jsonData {
+               print("")
+                }
+            }
+
+
+        
+        //SynchTailoringQuestions()
     }
 
     func SynchTailoringQuestions() {
@@ -69,14 +77,14 @@ class HomeViewController: UIViewController {
                 index++
             }
         }
-        let theURL:String =  AppContext.svcUrl + "SynchAboutMeResponse"
         
         if(responseItemsArray.count > 0)
         {
-            serviceMgr?.synchAboutMeResponse(responseItemsArray , url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+            let serviceManager = ServiceManager()
+            serviceManager.synchAboutMeResponse(responseItemsArray , completion: { (jsonData: JSON?)->() in
                 
                 if let parseJSON = jsonData {
-                    let status = parseJSON["Status"] as? Int
+                    let status = parseJSON["Status"]
                     if(status == 1)
                     {
                         let synchDate = NSDate()
