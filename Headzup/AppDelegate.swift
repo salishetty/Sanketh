@@ -45,37 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             let serviceManager = ServiceManager()
             serviceManager.getContent { (jsonData) -> () in
-                if let parseJSON:JSON = jsonData {
-                    for (_, category) in parseJSON
-                    {
-                        let categoryID = category["CategoryID"].stringValue
-                        let categoryName = category["CategoryName"].stringValue
-                        var contentIDs: String = ""
-                        print("Category ID:\(categoryID) with name \(categoryName)")
-                        let contents = category["Contents"]
-                        for (_, content) in contents
-                        {
-                            let contentID = content["ContentId"].stringValue
-                            contentIDs += contentID + ","
-                            
-                            let contentName = content["ContentName"].stringValue
-                            let contentValue = content["ContentValue"].stringValue
-                            let contentDescription = content["Description"].stringValue
-                            print("content ID:\(contentID) with name \(contentName) : \(contentValue) :\(contentDescription)")
-                            let properties = content["ContentProperties"]
-                            for (_, property) in properties
-                            {
-                                let propertyId = property["PropertyID"].stringValue
-                                let propertyValue = property["PropertyValue"].stringValue
-                                print("property ID:\(propertyId) with value \(propertyValue)")
-                            }
-                        }
-                    }
-                }
+                //Call ICMShelper to process the data
+                ICMSHelper.processContent(jsonData, dataMgr: dataMgr)
             }
             AppContext.categories = dataMgr.getAllcategories()
-            
-
         }
     }
     func registerDefaultsFromSettingsBundle() {

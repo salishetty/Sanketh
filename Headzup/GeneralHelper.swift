@@ -50,4 +50,8 @@ public class GeneralHelper
         }
         return "no Plist Property info"
     }
+    public static func convertStringToNSNumber(stringVal:String) ->NSNumber
+    {
+        return NSNumberFormatter().numberFromString(stringVal)!
+    }
 }
