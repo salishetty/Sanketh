@@ -30,7 +30,7 @@ public class DataManager
             fetchRequest.predicate = NSPredicate(format: "name == \"\(name)\"")
             // let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [MetaData]
             
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
+            var fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
             var theMetaData:MetaData!
             if (fetchResults.count>0){
                 theMetaData = fetchResults[0]
@@ -60,11 +60,10 @@ public class DataManager
             try dbContext.save()
             print("meta saved: \(theMetaData.toString())")
         }
-        catch
+        catch let error as NSError
         {
-            print("errored")
+            print("Error saving metadata: \(error.localizedDescription)")
         }
-        
     }
     
     // Return meta data string value. Empty string will be return if such meta data doesn't exist
@@ -100,10 +99,9 @@ public class DataManager
             }
             
         }
-        catch
+        catch let error as NSError
         {
-            print("errored")
-            
+            print("Error fetching Metadata Value: \(error.localizedDescription)")
         }
         return retVal
         
@@ -117,7 +115,7 @@ public class DataManager
             
             let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
             
-            var c: Int! = fetchResults.count
+            let c: Int! = fetchResults.count
             
             var s = "found \(c) metedata "
             var m:MetaData!
@@ -129,9 +127,9 @@ public class DataManager
             print("\(s)")
             return fetchResults
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Error fetching all Metadata: \(error.localizedDescription)")
         }
         return nil
     }
@@ -142,7 +140,7 @@ public class DataManager
             let fetchRequest = NSFetchRequest(entityName: "MetaData")
             let fetchResults =  try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
             
-            var c: Int! = fetchResults.count
+            let c: Int! = fetchResults.count
             var m:MetaData!
             
             for var i = 0; i < c; i++ {
@@ -151,11 +149,10 @@ public class DataManager
             }
             try dbContext.save()
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Failed deleting all Metadata: \(error.localizedDescription)")
         }
-        
     }
     
     public func deleteAllData(entity: String) {
@@ -164,7 +161,7 @@ public class DataManager
             let fetchRequest = NSFetchRequest(entityName: entity)
             let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [NSManagedObject]
             
-            var c: Int! = fetchResults.count
+            let c: Int! = fetchResults.count
             var m:NSManagedObject!
             
             for var i = 0; i < c; i++ {
@@ -173,9 +170,9 @@ public class DataManager
             }
             try dbContext.save()
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Failed deleting entity :\(entity) with error: \(error.localizedDescription)")
         }
     }
     
@@ -205,9 +202,9 @@ public class DataManager
             try dbContext.save()
             print("Content Saved: \(theContent.toString())")
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Error saving Content: \(error.localizedDescription)")
         }
     }
     
@@ -219,7 +216,7 @@ public class DataManager
             let fetchRequest = NSFetchRequest(entityName: "Content")
             let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [Content]
             
-            var c: Int! = fetchResults.count
+            let c: Int! = fetchResults.count
             
             var s = "found \(c) strategies: \n"
             var m:Content!
@@ -231,9 +228,9 @@ public class DataManager
             print("\(s)")
             return fetchResults
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Error fetching all Contents: \(error.localizedDescription)")
         }
         return nil
     }
@@ -263,13 +260,11 @@ public class DataManager
             
             return theContent
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Error getting content by ContentID: \(error.localizedDescription)")
         }
         return nil
-        
-        
     }
     
     public func getContentByIDs(contentIDs:String) ->[Content]?
@@ -306,319 +301,368 @@ public class DataManager
             }
             return theContentArray
         }
-        catch
+        catch let error as NSError
         {
-            print("error")
+            print("Error returning Content by ContentIDS: \(error.localizedDescription)")
         }
         return nil
     }
     
     public func getCategoryByID(categoryID:Int)->Category?
     {
-//        do
-//        {
-//            var retVal = ""
-//            // check if given Content exists
-//            let fetchRequest = NSFetchRequest(entityName: "Category")
-//            fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
-//            
-//            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
-//            
-//            var theCategory:Category!
-//            
-//            if (fetchResults?.count>0)
-//            {
-//                theCategory = fetchResults?[0]
-//                
-//                retVal = theCategory.categoryName
-//                print("found Category with Category Name: \(theCategory?.categoryName)->\(retVal)")
-//            }
-//            else
-//            {
-//                print("Cannot find matching Content for \(categoryID)")
-//            }
-//            return theCategory
-//        }
-//        catch
-//        {
-//            print("error")
-//        }
+        do
+        {
+            var retVal = ""
+            // check if given Content exists
+            let fetchRequest = NSFetchRequest(entityName: "Category")
+            fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
+            
+            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
+            
+            var theCategory:Category!
+            
+            if (fetchResults?.count>0)
+            {
+                theCategory = fetchResults?[0]
+                
+                retVal = theCategory.categoryName
+                print("found Category with Category Name: \(theCategory?.categoryName)->\(retVal)")
+            }
+            else
+            {
+                print("Cannot find matching Content for \(categoryID)")
+            }
+            return theCategory
+        }
+        catch let error as NSError
+        {
+            print("Error getting Category by ID : \(error.localizedDescription)")
+        }
         return nil
      }
     
     public func saveContentCategory(categoryID:Int, categoryName:String, contentIDs:String)
     {
-//        do
-//        {
-//        // check if given strategy exists
-//        let fetchRequest = NSFetchRequest(entityName: "Category")
-//        fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
-//        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
-//        var theCategory:Category!
-//        if (fetchResults?.count>0){
-//            theCategory = fetchResults?[0]
-//            print("found \(theCategory.categoryName)")
-//        } else {
-//            print("creating new Category: \(categoryID) : \(categoryName)")
-//            theCategory = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: dbContext) as! Category
-//        }
-//        theCategory.categoryID = categoryID
-//        theCategory.categoryName = categoryName
-//        theCategory.contentIDs = contentIDs
-//            
-//        //save data to coreData
-//        try  dbContext.save()
-//        print("Category Saved: \(theCategory.toString())")
-//    }
-//    catch
-//    {
-//        print("error")
-//    }
+        do
+        {
+        // check if given strategy exists
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
+        var theCategory:Category!
+        if (fetchResults?.count>0){
+            theCategory = fetchResults?[0]
+            print("found \(theCategory.categoryName)")
+        } else {
+            print("creating new Category: \(categoryID) : \(categoryName)")
+            theCategory = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: dbContext) as! Category
+        }
+        theCategory.categoryID = categoryID
+        theCategory.categoryName = categoryName
+        theCategory.contentIDs = contentIDs
+            
+        //save data to coreData
+        try  dbContext.save()
+        print("Category Saved: \(theCategory.toString())")
+    }
+    catch let error as NSError
+    {
+        print("Error saving to ContentCategory: \(error.localizedDescription)")
+    }
        
 }
 public func getAllcategories() -> [Category]?
 {
-//    let fetchRequest = NSFetchRequest(entityName: "Category")
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [Category]
-//    
-//    var c: Int! = fetchResults?.count
-//    
-//    var s = "found \(c) Categories: \n"
-//    var m:Category!
-//    
-//    for var i = 0; i < c; i++ {
-//        m = fetchResults?[i]
-//        s += m.toString() + "\n"
-//    }
-//    print("\(s)")
-//    return fetchResults
+    do
+    {
+        let fetchRequest = NSFetchRequest(entityName: "Category")
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
+        
+        let c: Int! = fetchResults?.count
+        
+        var s = "found \(c) Categories: \n"
+        var m:Category!
+        
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            s += m.toString() + "\n"
+        }
+        print("\(s)")
+        return fetchResults
+    }
+    catch let error as NSError
+    {
+        print("Failed to fetch all Categories: \(error.localizedDescription)")
+    }
     return nil
-
 }
 //Methods for UserAction Entity
 
 public func saveUserActionLog(actionType:String, actionDateTime:NSDate,contentID:String, comment:String, isSynched:Bool)
 {
-//    var theData = NSEntityDescription.insertNewObjectForEntityForName("UserActionLog", inManagedObjectContext: dbContext) as! UserActionLog
-//    theData.osVersion = UIDevice.currentDevice().systemVersion
-//    theData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
-//    theData.actionType = actionType
-//    theData.actionDateTime = actionDateTime
-//    theData.contentID = contentID
-//    theData.comment = comment
-//    theData.isSynched = isSynched
-//    //save to coredata
-//    dbContext.save(nil)
-//    print("UserActionLog saved)")
+    do
+    {
+        let theData = NSEntityDescription.insertNewObjectForEntityForName("UserActionLog", inManagedObjectContext: dbContext) as! UserActionLog
+        theData.osVersion = UIDevice.currentDevice().systemVersion
+        theData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+        theData.actionType = actionType
+        theData.actionDateTime = actionDateTime
+        theData.contentID = contentID
+        theData.comment = comment
+        theData.isSynched = isSynched
+        //save to coredata
+        try dbContext.save()
+        print("UserActionLog saved)")
+    }
+    catch let error as NSError
+    {
+        print("Error saving to UserActionLog: \(error.localizedDescription)")
+    }
 }
 
 public func getUserActionLogs(max: Int) -> [UserActionLog]? {
     
-//    let fetchRequest = NSFetchRequest(entityName: "UserActionLog")
-//    let oldOID = getMetaDataValue("UserActionID").toInt()
-//    
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [UserActionLog]
-//    
-//    var c: Int! = fetchResults?.count
-//    
-//    var s = "found \(c) user action logs: \n"
-//    var m:UserActionLog!
-//    
-//    var r = [UserActionLog]()
-//    for var i = 0; i < c; i++ {
-//        m = fetchResults?[i]
-//        var lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString?.lastPathComponent
-//        //get the integer component of objectID
-//        let currentOID = lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)).toInt()
-//        println("ObjectID:\(lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)))")
-//        if(currentOID > oldOID)
-//        {
-//            r.append(m)
-//        }
-//        s += m.toString() + "\n"
-//    }
-//    print("\(s)")
-//    
-//    return r
+    do
+    {
+        let fetchRequest = NSFetchRequest(entityName: "UserActionLog")
+        
+        let oldOID = Int(getMetaDataValue("UserActionID"))
+        
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [UserActionLog]
+        
+        let c: Int! = fetchResults?.count
+        
+        var s = "found \(c) user action logs: \n"
+        var m:UserActionLog!
+        
+        var r = [UserActionLog]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            let lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString.lastPathComponent
+            //get the integer component of objectID
+            let currentOID = Int(lastComponent!.substringFromIndex(lastComponent!.startIndex.advancedBy(1)))
+            print("ObjectID:\(lastComponent?.substringFromIndex(lastComponent!.startIndex.advancedBy(1)))")
+            if(currentOID > oldOID)
+            {
+                r.append(m)
+            }
+            s += m.toString() + "\n"
+        }
+        print("\(s)")
+        
+        return r
+    }
+    catch let error as NSError
+    {
+        print("Failed to fetch UserActionLogs: \(error.localizedDescription)")
+    }
     return nil
-
 }
 
 public func saveTechnicalLog(message:String, exception:String, moduleName:String, eventDate:String, appVersion:String, osversion:String, logLevel:String, isSynched:Bool)
 {
     do
-        {
-    let theTechLogData = NSEntityDescription.insertNewObjectForEntityForName("TechnicalLog", inManagedObjectContext: dbContext) as! TechnicalLog
-    theTechLogData.message = message
-    theTechLogData.exception = exception
-    theTechLogData.moduleName = moduleName
-    theTechLogData.eventDate = eventDate
-    theTechLogData.osVersion = UIDevice.currentDevice().systemVersion
-    theTechLogData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
-    theTechLogData.logLevel = logLevel
+    {
     
-    
-    
-    theTechLogData.isSynched = isSynched
-    //save to coredata
-    try dbContext.save()
-    print("TechnicalLog saved)")
+        let theTechLogData = NSEntityDescription.insertNewObjectForEntityForName("TechnicalLog", inManagedObjectContext: dbContext) as! TechnicalLog
+        theTechLogData.message = message
+        theTechLogData.exception = exception
+        theTechLogData.moduleName = moduleName
+        theTechLogData.eventDate = eventDate
+        theTechLogData.osVersion = UIDevice.currentDevice().systemVersion
+        theTechLogData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+        theTechLogData.logLevel = logLevel
+        theTechLogData.isSynched = isSynched
+        //save to coredata
+        try dbContext.save()
+        print("TechnicalLog saved)")
             
     }
-            catch
-            {
-                print("error")
-            }
+    catch let error as NSError
+    {
+        print("Error saving to TechnicalLog: \(error.localizedDescription)")
+    }
 }
 public func getTechnicalLogs(max:Int)-> [TechnicalLog]?
 {
-//    let fetchRequest = NSFetchRequest(entityName: "TechnicalLog")
-//    //let oldOID = NSUserDefaults.standardUserDefaults().stringForKey("ObjectID")
-//    let oldOID = getMetaDataValue("TechnicalLogID").toInt()
-//    
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [TechnicalLog]
-//    
-//    var c: Int! = fetchResults?.count
-//    
-//    var s = "found \(c) technical Logs: \n"
-//    var m:TechnicalLog!
-//    
-//    var r = [TechnicalLog]()
-//    for var i = 0; i < c; i++ {
-//        m = fetchResults?[i]
-//        var lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString?.lastPathComponent
-//        //get the integer component of objectID
-//        let currentOID = lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)).toInt()
-//        println("ObjectID:\(lastComponent?.substringFromIndex(advance(lastComponent!.startIndex, 1)))")
-//        if(currentOID > oldOID)
-//        {
-//            r.append(m)
-//        }
-//        s += m.toString() + "\n"
-//    }
-//    print("\(s)")
-//    
-//    return r
-    return nil
+    do
+    {
+        
+        let fetchRequest = NSFetchRequest(entityName: "TechnicalLog")
+        //let oldOID = NSUserDefaults.standardUserDefaults().stringForKey("ObjectID")
+        let oldOID = Int(getMetaDataValue("TechnicalLogID"))
+        
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [TechnicalLog]
+        
+        let c: Int! = fetchResults?.count
+        
+        var s = "found \(c) technical Logs: \n"
+        var m:TechnicalLog!
+        
+        var r = [TechnicalLog]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            let lastComponent = fetchResults?[i].objectID.URIRepresentation().absoluteString.lastPathComponent
+            //get the integer component of objectID
+            let currentOID = Int(lastComponent!.substringFromIndex(lastComponent!.startIndex.advancedBy(1)))
+            print("ObjectID:\(lastComponent?.substringFromIndex(lastComponent!.startIndex.advancedBy(1)))")
+            if(currentOID > oldOID)
+            {
+                r.append(m)
+            }
+            s += m.toString() + "\n"
+        }
+        print("\(s)")
+        
+        return r
 
+    }
+    catch let error as NSError
+    {
+        print("Error saving to TechnicalLog: \(error.localizedDescription)")
+    }
+    return nil
 }
 public func deleteTechnicalLog(technicalLog:TechnicalLog)
 {
-//    //Delete TechnicalLog object from CoreData
-//    dbContext.deleteObject(technicalLog)
+    //Delete TechnicalLog object from CoreData
+    dbContext.deleteObject(technicalLog)
 }
 public func deleteUserActionLogs(userActionLog:UserActionLog)
 {
     //Delete UserActionLog object from CoreData
-//    dbContext.deleteObject(userActionLog)
+    dbContext.deleteObject(userActionLog)
 }
 
 public func saveContentGroup(groupType:NSNumber, dateModified:NSDate, contentID:NSNumber, isActive:Bool)
 {
-//    // check if given ContentGroup exists
-//    let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-//    fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\" AND groupType == \"\(groupType)\"")
-//    
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
-//    
-//    var theContentGroup:ContentGroup!
-//    if (fetchResults?.count>0){
-//        theContentGroup = fetchResults?[0]
-//        print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
-//    } else {
-//        print("Creating new ContentGroup: \(contentID)")
-//        theContentGroup = NSEntityDescription.insertNewObjectForEntityForName("ContentGroup", inManagedObjectContext: dbContext) as! ContentGroup
-//        
-//    }
-//    theContentGroup.groupType = groupType
-//    theContentGroup.contentID = contentID
-//    theContentGroup.isActive = isActive
-//    theContentGroup.dateModified = dateModified
-//    //save to coredata
-//    dbContext.save(nil)
-//    print("ContentGroup saved)")
+    do
+    {
+        // check if given ContentGroup exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\" AND groupType == \"\(groupType)\"")
+        
+        var fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
+        
+        var theContentGroup:ContentGroup!
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            print("Creating new ContentGroup: \(contentID)")
+            theContentGroup = NSEntityDescription.insertNewObjectForEntityForName("ContentGroup", inManagedObjectContext: dbContext) as! ContentGroup
+            
+        }
+        theContentGroup.groupType = groupType
+        theContentGroup.contentID = contentID
+        theContentGroup.isActive = isActive
+        theContentGroup.dateModified = dateModified
+        //save to coredata
+        try dbContext.save()
+        print("ContentGroup saved)")
+
+    }
+    catch let error as NSError
+    {
+        print("Error saving to ContentGroup: \(error.localizedDescription)")
+    }
 }
 public func deleteContentGroup(contentID:NSNumber)
 {
-//    let contentGroup:NSManagedObject = getContentGroup(contentID)!
-//    //Delete from contentGroup object
-//    dbContext.deleteObject(contentGroup)
+    let contentGroup:NSManagedObject = getContentGroup(contentID)!
+    //Delete from contentGroup object
+    dbContext.deleteObject(contentGroup)
 }
 public func getContentGroup(contentID:NSNumber)->ContentGroup?
 {
-//    
-//    // check if given meta exists
-//    let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-//    fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
-//    
-//    var theContentGroup:ContentGroup!
-//    if (fetchResults?.count>0){
-//        theContentGroup = fetchResults?[0]
-//        print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
-//    } else {
-//        print("No ContentGroup Found with a matching record for ContentID:\(contentID)")
-//    }
-//    
-//    return theContentGroup
-    return nil
-
+    var theContentGroup:ContentGroup!
+    do
+    {
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
+        
+        
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            print("No ContentGroup Found with a matching record for ContentID:\(contentID)")
+        }
+    }
+    catch let error as NSError
+    {
+        print("Error saving to ContentGroup: \(error.localizedDescription)")
+    }
+    return theContentGroup
 }
 public func getFavoritedContent(contentID:NSNumber)->ContentGroup?
 {
-    
-//    // check if given meta exists
-//    let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-//    fetchRequest.predicate = NSPredicate(format: "isActive == 1 AND contentID == \"\(contentID)\"")
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
-//    
-//    var theContentGroup:ContentGroup!
-//    if (fetchResults?.count>0){
-//        theContentGroup = fetchResults?[0]
-//        print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
-//    } else {
-//        print("No ContentGroup Found with a matching record for ContentID:\(contentID)")
-//    }
-//    
-//    return theContentGroup
+    do
+    {
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        fetchRequest.predicate = NSPredicate(format: "isActive == 1 AND contentID == \"\(contentID)\"")
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
+        
+        var theContentGroup:ContentGroup!
+        if (fetchResults?.count>0){
+            theContentGroup = fetchResults?[0]
+            print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
+        } else {
+            print("No ContentGroup Found with a matching record for ContentID:\(contentID)")
+        }
+        
+        return theContentGroup
+    }
+    catch let error as NSError
+    {
+        print("Fetch failed for ContentGroup: \(error.localizedDescription)")
+    }
     return nil
-
 }
 public func getContentGroups(max: Int) -> [ContentGroup]? {
-//    var gHelpers = GeneralHelper()
-//    let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-//    
-//    let synchDate = getMetaDataValue("SynchDate")
-//    
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
-//    
-//    var c: Int! = fetchResults?.count
-//    
-//    var s = "found \(c) content groups: \n"
-//    var m:ContentGroup!
-//    
-//    var r = [ContentGroup]()
-//    if synchDate != ""
-//    {
-//        for var i = 0; i < c; i++ {
-//            m = fetchResults?[i]
-//            //Do comparison using extension methods
-//            if m.dateModified.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
-//            {
-//                r.append(m)
-//            }
-//            s += m.toString() + "\n"
-//        }
-//    }
-//    else
-//    {
-//        r = fetchResults!
-//    }
-//    print("\(s)")
-//    
-//    return r
+    do
+    {
+        let gHelpers = GeneralHelper()
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        
+        let synchDate = getMetaDataValue("SynchDate")
+        
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
+        
+        let c: Int! = fetchResults?.count
+        
+        var s = "found \(c) content groups: \n"
+        var m:ContentGroup!
+        
+        var r = [ContentGroup]()
+        if synchDate != ""
+        {
+            for var i = 0; i < c; i++ {
+                m = fetchResults?[i]
+                //Do comparison using extension methods
+                if m.dateModified.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
+                {
+                    r.append(m)
+                }
+                s += m.toString() + "\n"
+            }
+        }
+        else
+        {
+            r = fetchResults!
+        }
+        print("\(s)")
+        
+        return r
+    }
+    catch let error as NSError
+    {
+        print("Fetch failed for ContentGroup: \(error.localizedDescription)")
+    }
     return nil
-
 }
 //Returns FirstAid Contents
 public func getFirstAidContents() -> [Int]
@@ -626,180 +670,211 @@ public func getFirstAidContents() -> [Int]
     let contentGroup:[ContentGroup] = getContentGroups(0)!
     var contentIds = [Int]()
     
-//    for conGroup in contentGroup
-//    {
-//        if conGroup.groupType.stringValue == GroupType.OMG
-//        {
-//            contentIds.append(conGroup.contentID.integerValue)
-//        }
-//    }
+    for conGroup in contentGroup
+    {
+        if conGroup.groupType.stringValue == GroupType.OMG
+        {
+            contentIds.append(conGroup.contentID.integerValue)
+        }
+    }
     return contentIds
 }
 
 public func getFavoritedContents() -> [ContentGroup]?
 {
-//    var gHelpers = GeneralHelper()
-//    let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-//    
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [ContentGroup]
-//    var c: Int! = fetchResults?.count
-//    
-//    var s = "found \(c) Favorited contents: \n"
-//    var m:ContentGroup!
-//    var r = [ContentGroup]()
-//    for var i = 0; i < c; i++ {
-//        m = fetchResults?[i]
-//        print("IsActive: \(m.isActive), ContentID: \(m.contentID), ContentGroup: \(m.groupType)")
-//        if m.isActive == 1 && m.groupType.stringValue == GroupType.Favorite
-//        {
-//            r.append(m)
-//        }
-//    }
-//    return r
+    do
+    {
+        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
+        
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
+        let c: Int! = fetchResults?.count
+        var m:ContentGroup!
+        var r = [ContentGroup]()
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            print("IsActive: \(m.isActive), ContentID: \(m.contentID), ContentGroup: \(m.groupType)")
+            if m.isActive == 1 && m.groupType.stringValue == GroupType.Favorite
+            {
+                r.append(m)
+            }
+        }
+        return r
+    }
+    catch let error as NSError
+    {
+        print("Fetch failed: \(error.localizedDescription)")
+    }
     return nil
-
 }
 
 public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
 {
-//    var theUserResponse:AboutMeResponse = NSEntityDescription.insertNewObjectForEntityForName("AboutMeResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
-//    theUserResponse.questionID = questionID
-//    theUserResponse.dateAdded = dateAdded
-//    theUserResponse.responseValue = responseValue
-//    //save to coredata
-//    dbContext.save(nil)
-//    print("AboutMeResponse saved")
+    do
+    {
+        let theUserResponse:AboutMeResponse = NSEntityDescription.insertNewObjectForEntityForName("AboutMeResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
+        theUserResponse.questionID = questionID
+        theUserResponse.dateAdded = dateAdded
+        theUserResponse.responseValue = responseValue
+        //save to coredata
+        try dbContext.save()
+        print("AboutMeResponse saved")
+    }
+    catch let error as NSError
+    {
+        print("Save AboutMe Response failed: \(error.localizedDescription)")
+    }
 }
 
 public func getAboutMeResponse(questionID:String)->AboutMeResponse?
 {
-//    // check if given meta exists
-//    let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
-//    fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
-//    
-//    //get the latest record
-//    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
-//    fetchRequest.fetchLimit = 1
-//    
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
-//    
-//    var theAboutMeResponse:AboutMeResponse!
-//    if (fetchResults?.count>0){
-//        theAboutMeResponse = fetchResults?[0]
-//        print("Found AboutMeResponse with QuestionID: \(theAboutMeResponse.questionID)")
-//    } else {
-//        print("No AboutMeResponse Found with a matching record for questionID:\(questionID)")
-//    }
-//    
-//    return theAboutMeResponse
-    
+    do
+    {
+        // check if given meta exists
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+        
+        //get the latest record
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
+        fetchRequest.fetchLimit = 1
+        
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
+        
+        var theAboutMeResponse:AboutMeResponse!
+        if (fetchResults?.count>0){
+            theAboutMeResponse = fetchResults?[0]
+            print("Found AboutMeResponse with QuestionID: \(theAboutMeResponse.questionID)")
+        } else {
+            print("No AboutMeResponse Found with a matching record for questionID:\(questionID)")
+        }
+        
+        return theAboutMeResponse
+    }
+    catch let error as NSError
+    {
+        print("fetch failed for AboutMeResponse: \(error.localizedDescription)")
+    }
     return nil
-
 }
 
 public func getMostRecentAboutMeResponses() -> [AboutMeResponse]?
 {
-//    let QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10"]
-//    var abtMeResponseArray = [AboutMeResponse]()
-//    for questionID in QuestionIDArray
-//    {
-//        let abtMeResponse = self.getAboutMeResponse(questionID)
-//        if abtMeResponse != nil
-//        {
-//            abtMeResponseArray.append(abtMeResponse!)
-//        }
-//    }
-//    return abtMeResponseArray
-    return nil
+    let QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10"]
+    var abtMeResponseArray = [AboutMeResponse]()
+    for questionID in QuestionIDArray
+    {
+        let abtMeResponse = self.getAboutMeResponse(questionID)
+        if abtMeResponse != nil
+        {
+            abtMeResponseArray.append(abtMeResponse!)
+        }
+    }
+    return abtMeResponseArray
 }
 public func getAllAboutMeResponses() -> [AboutMeResponse]?
 {
-    //let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
-//    
-//    var c: Int! = fetchResults?.count
-//    
-//    var s = "found \(c) About me responses: \n"
-//    var m:AboutMeResponse!
-//    
-//    for var i = 0; i < c; i++ {
-//        m = fetchResults?[i]
-//        s += m.toString() + "\n"
-//    }
-//    print("\(s)")
-    //return fetchResults
-    
-    return nil
+    do
+    {
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
+        
+        let c: Int! = fetchResults?.count
+        
+        var s = "found \(c) About me responses: \n"
+        var m:AboutMeResponse!
+        
+        for var i = 0; i < c; i++ {
+            m = fetchResults?[i]
+            s += m.toString() + "\n"
+        }
+        print("\(s)")
+        return fetchResults
 
+    }
+    catch let error as NSError
+    {
+        print("fetch failed to get  all AboutMeResponse: \(error.localizedDescription)")
+    }
+    return nil
 }
 public func getResponsesToBeSynched() -> [AboutMeResponse]?
 {
-//    var gHelpers = GeneralHelper()
-//    let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
-//    let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse]
-//    
-//    var c: Int! = fetchResults?.count
-//    let synchDate = getMetaDataValue("SynchResponseDate")
-//    
-//    var s = "found \(c) About me responses: \n"
-//    var m:AboutMeResponse!
-//    var responses = [AboutMeResponse]()
-//    if synchDate != ""
-//    {
-//        for var i = 0; i < c; i++ {
-//            m = fetchResults?[i]
-//            if m.dateAdded.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
-//            {
-//                responses.append(m)
-//            }
-//            s += m.toString() + "\n"
-//        }
-//        print("\(s)")
-//    }
-//    else
-//    {
-//        responses = fetchResults!
-//    }
-//    return responses
-    
+    do
+    {
+        let gHelpers = GeneralHelper()
+        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
+        
+        let c: Int! = fetchResults?.count
+        let synchDate = getMetaDataValue("SynchResponseDate")
+        
+        var s = "found \(c) About me responses: \n"
+        var m:AboutMeResponse!
+        var responses = [AboutMeResponse]()
+        if synchDate != ""
+        {
+            for var i = 0; i < c; i++ {
+                m = fetchResults?[i]
+                if m.dateAdded.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
+                {
+                    responses.append(m)
+                }
+                s += m.toString() + "\n"
+            }
+            print("\(s)")
+        }
+        else
+        {
+            responses = fetchResults!
+        }
+        return responses
+    }
+    catch let error as NSError
+    {
+        print("fetch failed to get  all AboutMeResponse to be Synched: \(error.localizedDescription)")
+    }
     return nil
-
 }
 
 public func getResponsesToBeDeleted() -> [AboutMeResponse]?
 {
-//    var QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10", "AMQ_11"]
-//    var gHelpers = GeneralHelper()
-//    
-//    var abtMeResponseArray = [AboutMeResponse]()
-//    for questionID in QuestionIDArray
-//    {
-//        // check if given meta exists
-//        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
-//        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
-//        
-//        
-//        var fetchResults:Array<AboutMeResponse> = (dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [AboutMeResponse])!
-//        var c: Int! = fetchResults.count
-//        var theAboutMeResponse:AboutMeResponse!
-//        if (c > 1){
-//            fetchResults.sortInPlace({gHelpers.convertDateToString($0.dateAdded) < gHelpers.convertDateToString($1.dateAdded)})
-//            for var i = 0; i < c - 1; i++ {
-//                theAboutMeResponse = fetchResults[i]
-//                abtMeResponseArray.append(theAboutMeResponse!)
-//            }
-//        }
-//        
-//    }
-//    return abtMeResponseArray
-    
+    do
+    {
+        let QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10", "AMQ_11"]
+        let gHelpers = GeneralHelper()
+        
+        var abtMeResponseArray = [AboutMeResponse]()
+        for questionID in QuestionIDArray
+        {
+            // check if given meta exists
+            let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
+            fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
+            
+            
+            var fetchResults:Array<AboutMeResponse> = try (dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse])!
+            let c: Int! = fetchResults.count
+            var theAboutMeResponse:AboutMeResponse!
+            if (c > 1){
+                fetchResults.sortInPlace({gHelpers.convertDateToString($0.dateAdded) < gHelpers.convertDateToString($1.dateAdded)})
+                for var i = 0; i < c - 1; i++ {
+                    theAboutMeResponse = fetchResults[i]
+                    abtMeResponseArray.append(theAboutMeResponse!)
+                }
+            }
+            
+        }
+        return abtMeResponseArray
+    }
+    catch let error as NSError
+    {
+        print("fetch failed to get AboutMeResponse to be deleted: \(error.localizedDescription)")
+    }
     return nil
 }
 
 public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
 {
-//    //Delete TechnicalLog object from CoreData
-//    dbContext.deleteObject(aboutMeResponse)
+    //Delete TechnicalLog object from CoreData
+    dbContext.deleteObject(aboutMeResponse)
 }
 
 }

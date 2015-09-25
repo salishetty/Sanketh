@@ -16,6 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func appInit() {
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        var dataMgr = DataManager(objContext: manObjContext)
+        var env = ""
+        let standardUserDefaults = NSUserDefaults.standardUserDefaults()
+        var us: AnyObject? = standardUserDefaults.objectForKey("st_env")
+        if us == nil {
+            self.registerDefaultsFromSettingsBundle();
+            us = standardUserDefaults.objectForKey("st_env")
+        }
+        env = us as! String
         
        AppContext.svcUrl = "http://10.200.20.87/api/mobileservice/"
         let serviceManager:ServiceManager = ServiceManager()
@@ -209,22 +220,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func registerDefaultsFromSettingsBundle() {
         // this function writes default settings as settings
-//        let settingsBundle = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")
-//        if settingsBundle == nil {
-//            NSLog("Could not find Settings.bundle");
-//            return
-//        }
-//        let settings = NSDictionary(contentsOfFile:settingsBundle!.stringByAppendingPathComponent("Root.plist"))!
-//        let preferences: [NSDictionary] = settings.objectForKey("PreferenceSpecifiers") as! [NSDictionary];
-//        let defaultsToRegister = NSMutableDictionary(capacity:(preferences.count));
-//        
-//        for prefSpecification:NSDictionary in preferences {
-//            let key: NSCopying? = prefSpecification.objectForKey("Key") as! NSCopying?
-//            if key != nil {
-//                defaultsToRegister.setObject(prefSpecification.objectForKey("DefaultValue")!, forKey: key!)
-//            }
-//        }
-//        NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister as [NSObject : AnyObject]);
+        let settingsBundle = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")
+        if settingsBundle == nil {
+            NSLog("Could not find Settings.bundle");
+            return
+        }
+        let settings = NSDictionary(contentsOfFile:(settingsBundle! as NSString).stringByAppendingPathComponent("Root.plist"))!
+        let preferences: [NSDictionary] = settings.valueForKey("PreferenceSpecifiers") as! [NSDictionary];
+        //let defaultsToRegister = NSMutableDictionary(capacity:(preferences.count));
+        var defaultsToRegister: [String:AnyObject] = [:]
+        
+        for prefSpecification:NSDictionary in preferences {
+            let key: String? = prefSpecification.objectForKey("Key") as! String?
+            if key != nil {
+                //defaultsToRegister.setObject(prefSpecification.objectForKey("DefaultValue")!, forKey: key!)
+                defaultsToRegister[key!] = prefSpecification.valueForKey("DefaultValue")
+            }
+        }
+        NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister);
     }
     
     
@@ -241,6 +254,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Status Bar
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
+        //UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
         //Navigation Bar - Important
         // Sets background to a blank/empty image and set alpha to 0
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
