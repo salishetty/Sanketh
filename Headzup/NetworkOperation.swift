@@ -40,8 +40,10 @@ class NetworkOperation : NSURLSession
                     let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(receivedData, options: NSJSONReadingOptions.AllowFragments)
                         as? [String:AnyObject]
                     
-                    // 3: Pass the json back to the completion handler
+                     // 3: Pass the json back to the completion handler
                     completion(jsonDictionary)
+                    print("JSON is valid")
+                    
                 } catch {
                     print("error parsing json data")
                 }
@@ -51,6 +53,8 @@ class NetworkOperation : NSURLSession
         }
         dataTask.resume()
     }
+    
+    
     
     func Post(var body: [String: AnyObject],completion: JSONDictionaryCompletion) {
         
