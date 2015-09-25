@@ -14,6 +14,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+  
     
     func appInit() {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -28,195 +29,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         env = us as! String
         
-       AppContext.svcUrl = "http://10.200.20.87/api/mobileservice/"
-        let serviceManager:ServiceManager = ServiceManager()
-         serviceManager.getContent { (jsonData) -> () in
-            if let parseJSON:JSON = jsonData {
-                
-                for (_, category) in parseJSON
-                {
-                    let categoryID = category["CategoryID"].stringValue
-                    let categoryName = category["CategoryName"].stringValue
-                    
-                    print("Category ID:\(categoryID) with name \(categoryName)")
-                    let contents = category["Contents"]
-                    for (_, content) in contents
+        // check env
+        AppContext.svcUrl = dataMgr.getMetaDataValue(MetaDataKeys.SvcUrl)
+        if AppContext.svcUrl != "" && AppContext.svcUrl != env {
+            dataMgr.deleteAllData("MetaData")
+        }
+        dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
+        AppContext.svcUrl = env
+         
+        AppContext.categories = dataMgr.getAllcategories()
+        if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
+            
+            
+            dataMgr = DataManager(objContext: manObjContext)
+
+            let serviceManager = ServiceManager()
+            serviceManager.getContent { (jsonData) -> () in
+                if let parseJSON:JSON = jsonData {
+                    for (_, category) in parseJSON
                     {
-                        let contentID = content["ContentId"].stringValue
-                        let contentName = content["ContentName"].stringValue
-                        let contentValue = content["ContentValue"].stringValue
-                        let contentDescription = content["Description"].stringValue
-                        print("content ID:\(contentID) with name \(contentName) : \(contentValue) :\(contentDescription)")
-                        let properties = content["ContentProperties"]
-                        for (_, property) in properties
+                        let categoryID = category["CategoryID"].stringValue
+                        let categoryName = category["CategoryName"].stringValue
+                        var contentIDs: String = ""
+                        print("Category ID:\(categoryID) with name \(categoryName)")
+                        let contents = category["Contents"]
+                        for (_, content) in contents
                         {
-                            let propertyId = property["PropertyID"].stringValue
-                            let propertyValue = property["PropertyValue"].stringValue
-                            print("property ID:\(propertyId) with value \(propertyValue)")
+                            let contentID = content["ContentId"].stringValue
+                            contentIDs += contentID + ","
+                            
+                            let contentName = content["ContentName"].stringValue
+                            let contentValue = content["ContentValue"].stringValue
+                            let contentDescription = content["Description"].stringValue
+                            print("content ID:\(contentID) with name \(contentName) : \(contentValue) :\(contentDescription)")
+                            let properties = content["ContentProperties"]
+                            for (_, property) in properties
+                            {
+                                let propertyId = property["PropertyID"].stringValue
+                                let propertyValue = property["PropertyValue"].stringValue
+                                print("property ID:\(propertyId) with value \(propertyValue)")
+                            }
                         }
                     }
-                    
                 }
             }
+            AppContext.categories = dataMgr.getAllcategories()
+            
+
         }
-        
-//        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-//        var dataMgr = DataManager(objContext: manObjContext)
-//        var env = ""
-//        var standardUserDefaults = NSUserDefaults.standardUserDefaults()
-//        var us: AnyObject? = standardUserDefaults.objectForKey("st_env")
-//        if us == nil {
-//            self.registerDefaultsFromSettingsBundle();
-//            us = standardUserDefaults.objectForKey("st_env")
-//        }
-//        env = us as! String
-//        
-//        // check env
-//        AppContext.svcUrl = dataMgr.getMetaDataValue(MetaDataKeys.SvcUrl)
-//        if AppContext.svcUrl != "" && AppContext.svcUrl != env {
-//            dataMgr.deleteAllData("MetaData")
-//        }
-//        dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
-//        AppContext.svcUrl = env
-//        
-//        // Set login Status from Database
-//        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
-//        
-//        
-//        AppContext.categories = dataMgr.getAllcategories()
-//        if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
-//            
-//            var theURL:String =  AppContext.svcUrl + "getContents"
-//      
-//            serviceMgr = ServiceManager(objContext: manObjContext)
-//            dataMgr = DataManager(objContext: manObjContext)
-//            serviceMgr?.getContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
-//                
-//                if let parseJSON = jsonData {
-//                    var contentID: String = ""
-//                    var viewAllContentIDs:String = ""
-//                    var contName:String?
-//                    var contValue:String?
-//                    var contDescription:String?
-//                    var contAudioPath:String?
-//                    var contImagePath:String?
-//                    var categoryID:String?
-//                    var categoryName:String?
-//                    //Declare array of ContentIDs which are of Intervention Type
-//                    var arrayOfContentIDs: [String] = []
-//                    
-//                    for dataObject : AnyObject in parseJSON
-//                    {
-//                        var contentIDs: String = ""
-//                        if let data = dataObject as? NSDictionary
-//                        {
-//                            for (key, value) in data {
-//                                switch key as! String
-//                                {
-//                                  
-//                                    case ContentKeys.CategoryID:
-//                                        categoryID = value as? String
-//                                    case ContentKeys.CategoryName:
-//                                        categoryName = value as? String
-//                                    case ContentKeys.Contents:
-//                                        
-//                                    for index in 0...value.count - 1
-//                                    {
-//                                        var con = value[index] as? NSDictionary
-//                                        
-//                                        for (conKey, conVal) in con
-//                                        {
-//                                            if conKey as! String == ContentKeys.ContentId
-//                                            {
-//                                                contentID = String(conVal.intValue)
-//                                                contentIDs += String(conVal.intValue) + ","
-//                                            }
-//                                            if conKey as! String == ContentKeys.ContentName
-//                                            {
-//                                                contName = conVal as? String
-//                                            }
-//                                            if conKey as! String == ContentKeys.ContentValue
-//                                            {
-//                                                contValue = conVal as? String
-//                                            }
-//                                            if conKey as! String == ContentKeys.Description
-//                                            {
-//                                                contDescription = conVal as? String
-//                                            }
-//                                            if conKey as! String == ContentKeys.ContentProperties
-//                                            {
-//                                                for indexContProp in 0...conVal.count - 1
-//                                                {
-//                                                    var conProp = conVal[indexContProp] as! NSDictionary
-//                                                        var propertyID:String = String(stringInterpolationSegment: conProp[ContentKeys.PropertyID]!.intValue)
-//                                                        
-//                                                        if (propertyID == ICMSProperty.HeadzupContentType && conProp[ContentKeys.PropertyValue] as! String == ContentKeys.Intervention)
-//                                                        {
-//                                                            var contID:String = String(conProp[ContentKeys.ContentID]!.intValue)
-//                                                            arrayOfContentIDs.append(contID)
-//                                                        }
-//                                                        if propertyID == ICMSProperty.HeadzupImagePath
-//                                                        {
-//                                                            contImagePath = conProp[ContentKeys.PropertyValue] as? String
-//                                                            
-//                                                        }
-//                                                        if propertyID == ICMSProperty.HeadzupAudioPath
-//                                                        {
-//                                                            contAudioPath = conProp[ContentKeys.PropertyValue] as? String
-//                                                            
-//                                                        }
-//                                                }
-//                                            }
-//                                        }
-//                                        //if not saved in Content table- Save it now!
-//                                        var theContent = dataMgr.getContentByID(Int(contentID)!)
-//                                        if theContent == nil
-//                                        {
-//                                            if contImagePath == nil
-//                                            {
-//                                                contImagePath = ""
-//                                            }
-//                                            if contAudioPath == nil
-//                                            {
-//                                                contAudioPath = ""
-//                                            }
-//                                            dataMgr.saveContent(Int(contentID)!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: contImagePath!, audioPath: contAudioPath!)
-//                                            viewAllContentIDs += contentID + ","
-//                                        }
-//                                    }
-//                                    
-//                                    default:
-//                                    print("There is an error")
-//                                }
-//                                
-//                            }
-//                            //Save to ContentGroup table
-//                            dataMgr.saveContentCategory(Int(categoryID!)!, categoryName: categoryName!, contentIDs: String(contentIDs.characters.dropLast()))
-//                        }
-//                    }
-//                    //Save 'View All' data to Categories - Given a categoryID of "0" - DO NOT CHANGE T. This value is used in ToolBoxViewController
-//                    dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: String(viewAllContentIDs.characters.dropLast()))
-//                    //Save those contents with type = Intervention to 'ContentGroup'
-//                    for contID in arrayOfContentIDs
-//                    {
-//                        let formatter = NSNumberFormatter()
-//                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-//                        var groupType = formatter.numberFromString(GroupType.OMG)
-//                        var contentID = formatter.numberFromString(contID)
-//                        dataMgr.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentID!, isActive: false)
-//                    }
-//                }
-//                
-//                }
-//                
-//            )
-//            
-//            
-//            AppContext.categories = dataMgr.getAllcategories()
-//            
-//
-//        }
     }
     func registerDefaultsFromSettingsBundle() {
         // this function writes default settings as settings
