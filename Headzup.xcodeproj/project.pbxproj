@@ -26,6 +26,7 @@
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
 		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		148F17FF1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
@@ -161,6 +162,7 @@
 		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
 		14896B8A1BB3412100AC693D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		14896B8E1BB5D81000AC693D /* ICMSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICMSHelper.swift; sourceTree = "<group>"; };
+		14896B901BB6134F00AC693D /* ValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponseItemsDTO.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -614,6 +616,7 @@
 				14CDA5531B728C6100FB040F /* GeneralHelper.swift */,
 				57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */,
 				14896B8E1BB5D81000AC693D /* ICMSHelper.swift */,
+				14896B901BB6134F00AC693D /* ValidationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -798,6 +801,7 @@
 				14983D1D1B5586950059A5CA /* HMAC.swift in Sources */,
 				577146551B99426100BBD8E4 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				14983D1E1B5586950059A5CA /* IntExtension.swift in Sources */,
+				14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */,
 				140DED181B67CBE0001F6A3F /* Validator.swift in Sources */,
 				5771465A1B99426100BBD8E4 /* CVCalendarWeekContentViewController.swift in Sources */,
 				57FEAB8E1B8CFEC80093AFEE /* FirstAidViewController.swift in Sources */,

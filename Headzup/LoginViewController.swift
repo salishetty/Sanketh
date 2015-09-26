@@ -60,32 +60,10 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
         
+        //Validate User Credentials
+        let validationHelper = ValidationHelper(validator: validator)
+        validationHelper.validateLoginCredential(firstNameTF, firstNameError: firstNameErrorLB, pin: pinTF, pinError: pinErrorLB, phoneNumber: phoneNumberTF, phoneNumberError: phoneNumberLB)
         // Do any additional setup after loading the view.
-        //Error Validation
-        validator.styleTransformers(success:{ (validationRule) -> Void in
-            print("here")
-            // clear error label
-            validationRule.errorLabel?.hidden = true
-            validationRule.errorLabel?.text = ""
-            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
-            validationRule.textField.layer.borderWidth = 0.5
-            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
-            validationRule.textField.layer.cornerRadius = 5.0
-            
-            }, error:{ (validationError) -> Void in
-                print("error")
-                validationError.errorLabel?.hidden = false
-                validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
-                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
-                validationError.textField.layer.cornerRadius = 5.0
-        })
-        
-        validator.registerField(firstNameTF, errorLabel: firstNameErrorLB , rules: [RequiredRule(), RequiredRule()])
-        validator.registerField(pinTF, errorLabel: pinErrorLB, rules: [RequiredRule(), PinRule()])
-        validator.registerField(phoneNumberTF, errorLabel: phoneNumberLB, rules: [RequiredRule(), MinLengthRule(length: 10,message:"Phone Number must be 10 digits long") ,PhoneRule()])
-        
         if(AppContext.hasConnectivity() == false)
         {
             dispatch_async(dispatch_get_main_queue()) {
