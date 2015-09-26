@@ -27,6 +27,7 @@
 		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B921BB7258900AC693D /* QuestionHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		148F17FF1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
@@ -163,6 +164,7 @@
 		14896B8A1BB3412100AC693D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		14896B8E1BB5D81000AC693D /* ICMSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICMSHelper.swift; sourceTree = "<group>"; };
 		14896B901BB6134F00AC693D /* ValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
+		14896B921BB7258900AC693D /* QuestionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionHelper.swift; sourceTree = "<group>"; };
 		148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponseItemsDTO.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -617,6 +619,7 @@
 				57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */,
 				14896B8E1BB5D81000AC693D /* ICMSHelper.swift */,
 				14896B901BB6134F00AC693D /* ValidationHelper.swift */,
+				14896B921BB7258900AC693D /* QuestionHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -763,6 +766,7 @@
 				148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */,
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
 				14DAF7541B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift in Sources */,
+				14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */,
 				5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */,
 				14983D201B5586950059A5CA /* NSDataExtension.swift in Sources */,
 				579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */,

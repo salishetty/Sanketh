@@ -61,153 +61,53 @@ class AboutMeTableViewController: UITableViewController {
     @IBOutlet weak var AMQ_10SC: UISegmentedControl!
     
     @IBAction func AMQ_1SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_1"
-        switch AMQ_1SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break; 
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_1
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_1SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_2SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_2"
-        switch AMQ_2SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_2
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_2SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_3SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_3"
-        switch AMQ_3SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_3
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_3SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_4SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_4"
-        switch AMQ_4SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_4
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_4SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_5SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_5"
-        switch AMQ_5SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_5
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_5SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_6SSCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_6"
-        switch AMQ_6SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_6
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_6SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_7SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_7"
-        switch AMQ_7SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_7
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_7SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_8SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_8"
-        switch AMQ_8SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_8
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_8SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_9SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_9"
-        switch AMQ_9SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_9
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_9SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_10SCIndexChanged(sender: UISegmentedControl) {
-        var responseValue:String = "0"
-        let questionID:String = "AMQ_10"
-        switch AMQ_10SC.selectedSegmentIndex
-        {
-        case 0:
-            responseValue = "0"
-        case 1:
-            responseValue = "1"
-        default:
-            break;
-        }
-        dataMgr?.saveAboutMeReponse(questionID, dateAdded: NSDate(), responseValue: responseValue)
+        let questionID:String = AboutMeResponseQuestionCode.AMQ_10
+        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_10SC, dataMgr: dataMgr!)
     }
     func LoadYesNoQuestions()
     {
@@ -216,25 +116,25 @@ class AboutMeTableViewController: UITableViewController {
         {
             switch(response.questionID)
             {
-                case "AMQ_1":
+                case AboutMeResponseQuestionCode.AMQ_1:
                     AMQ_1SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_2":
+                case AboutMeResponseQuestionCode.AMQ_2:
                     AMQ_2SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_3":
+                case AboutMeResponseQuestionCode.AMQ_3:
                     AMQ_3SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_4":
+                case AboutMeResponseQuestionCode.AMQ_4:
                     AMQ_4SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_5":
+                case AboutMeResponseQuestionCode.AMQ_5:
                     AMQ_5SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_6":
+                case AboutMeResponseQuestionCode.AMQ_6:
                     AMQ_6SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_7":
+                case AboutMeResponseQuestionCode.AMQ_7:
                     AMQ_7SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_8":
+                case AboutMeResponseQuestionCode.AMQ_8:
                     AMQ_8SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_9":
+                case AboutMeResponseQuestionCode.AMQ_9:
                     AMQ_9SC.selectedSegmentIndex = Int(response.responseValue)!
-                case "AMQ_10":
+                case AboutMeResponseQuestionCode.AMQ_10:
                     AMQ_10SC.selectedSegmentIndex = Int(response.responseValue)!
                 default:
                     break;
@@ -257,28 +157,6 @@ class AboutMeTableViewController: UITableViewController {
         return 0
     }
     */
-//      override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-////       let cell = tableView.dequeueReusableCellWithIdentifier("SubTable", forIndexPath: indexPath) as! UITableViewCell
-////       return cell
-//        if (indexPath.row == 10)
-//        {
-//        var cell:SubTableCell? = tableView.dequeueReusableCellWithIdentifier("SubTable") as?  SubTableCell
-//        if(cell == nil)
-//        {
-//            cell = SubTableCell(style: UITableViewCellStyle.Default, reuseIdentifier: "SubTable")
-//        }
-//        cell?.dataArr = ["subMenu->1","subMenu->2","subMenu->3","subMenu->4","subMenu->5"]
-//        return cell!
-//        }
-//        else
-//        {
-//            var cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
-//            return cell
-//        }
-//        
-//    }
- 
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
