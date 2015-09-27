@@ -62,52 +62,52 @@ class AboutMeTableViewController: UITableViewController {
     
     @IBAction func AMQ_1SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_1
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_1SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_1SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_2SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_2
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_2SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_2SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_3SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_3
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_3SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_3SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_4SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_4
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_4SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_4SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_5SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_5
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_5SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_5SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_6SSCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_6
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_6SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_6SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_7SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_7
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_7SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_7SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_8SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_8
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_8SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_8SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_9SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_9
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_9SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_9SC, dataMgr: dataMgr!)
     }
     
     @IBAction func AMQ_10SCIndexChanged(sender: UISegmentedControl) {
         let questionID:String = AboutMeResponseQuestionCode.AMQ_10
-        QuestionHelper.SaveResponse(questionID, uiSC: AMQ_10SC, dataMgr: dataMgr!)
+        QuestionHelper.SaveSingleSelectResponse(questionID, uiSC: AMQ_10SC, dataMgr: dataMgr!)
     }
     func LoadYesNoQuestions()
     {
