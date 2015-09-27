@@ -176,7 +176,7 @@ public class DataManager
         }
     }
     
-    public func saveContent(contentID:Int, contentName:String, contentDescription:String, contentValue:String, contentType:String, imagePath:String, audioPath:String)
+    public func saveContent(contentID:NSNumber, contentName:String, contentDescription:String, contentValue:String, contentType:String, imagePath:String, audioPath:String)
     {
         do
         {

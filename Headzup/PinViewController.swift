@@ -65,27 +65,9 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         AppContext.firstName = username
         
         // Do any additional setup after loading the view.
-        //Error Validation
-        validator.styleTransformers(success:{ (validationRule) -> Void in
-            print("here")
-            // clear error label
-            validationRule.errorLabel?.hidden = true
-            validationRule.errorLabel?.text = ""
-            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
-            validationRule.textField.layer.borderWidth = 0.5
-            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
-            validationRule.textField.layer.cornerRadius = 5.0
-            
-            }, error:{ (validationError) -> Void in
-                print("error")
-                validationError.errorLabel?.hidden = false
-                validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
-                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
-                validationError.textField.layer.cornerRadius = 5.0
-        })
-        validator.registerField(pinTF, errorLabel: PinErrorLB, rules: [RequiredRule(), PinRule()])
+        //Validate User Pin
+        let validationHelper = ValidationHelper(validator: validator)
+        validationHelper.validatePin(pinTF, pinError: PinErrorLB)
         
         if(AppContext.hasConnectivity() == false)
         {

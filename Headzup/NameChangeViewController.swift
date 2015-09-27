@@ -46,28 +46,11 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
         let firstName =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
         AppContext.firstName = firstName
         nameTF.text = firstName
+       
         // Do any additional setup after loading the view.
-        //Error Validation
-        validator.styleTransformers(success:{ (validationRule) -> Void in
-            print("here")
-            // clear error label
-            validationRule.errorLabel?.hidden = true
-            validationRule.errorLabel?.text = ""
-            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
-            validationRule.textField.layer.borderWidth = 0.5
-            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
-            validationRule.textField.layer.cornerRadius = 5.0
-            
-            }, error:{ (validationError) -> Void in
-                print("error")
-                validationError.errorLabel?.hidden = false
-                validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
-                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
-                validationError.textField.layer.cornerRadius = 5.0
-        })
-        validator.registerField(nameTF, errorLabel: errorLB, rules: [RequiredRule(), RequiredRule()])
+        //Validate if Name/nickname is provided
+        let validationHelper = ValidationHelper(validator: validator)
+        validationHelper.validateName(nameTF, errorLB: errorLB)
      }
     
     func validationSuccessful() {
