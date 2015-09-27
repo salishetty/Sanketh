@@ -30,8 +30,8 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         
         self.scrollView.delegate = self
         
-        var size =  scrollView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
-        var contentwidth = scrollView.frame.size.width
+//        var size =  scrollView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
+//        var contentwidth = scrollView.frame.size.width
         let screenWidth =  UIScreen.mainScreen().bounds.width
         let contentHeight = UIScreen.mainScreen().bounds.height * 0.745
         
@@ -50,15 +50,13 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
                 //Declare array of ContentIDs which are of Intervention Type
                
                 if let parseJSON = jsonData {
-                    
-                    
-                    for contID in parseJSON.arrayValue
+                     for contentIdJSON in parseJSON
                     {
-                        print("Conetent id for firstaid \(contID)")
-//                        let formatter = NSNumberFormatter()
-//                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-//                        let groupType = formatter.numberFromString(GroupType.OMG)
-//                        self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contID, isActive: false)
+                        print("Conetent id for firstaid \(contentIdJSON.1.intValue)")
+                        let formatter = NSNumberFormatter()
+                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
+                        let groupType = formatter.numberFromString(GroupType.OMG)
+                        self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentIdJSON.1.intValue, isActive: false)
                     }
                     
                 }
