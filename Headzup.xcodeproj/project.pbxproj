@@ -367,19 +367,19 @@
 				14983CF41B557CF40059A5CA /* Cryptography */,
 				6A2CEF831B7A85EE0083B568 /* Custom Objects */,
 				57FEAB911B8E54F40093AFEE /* Views */,
+				579182961B6EBE27004ACFDD /* Helpers */,
 				14983CEB1B557A8E0059A5CA /* HeadzupData */,
 				14983CC81B557A170059A5CA /* AppDelegate.swift */,
-				579182961B6EBE27004ACFDD /* Helpers */,
 				14983CCF1B557A170059A5CA /* Main.storyboard */,
 				14983CF51B557ECB0059A5CA /* CryptoUtility.swift */,
 				14983CD21B557A170059A5CA /* Images.xcassets */,
 				14983CD41B557A170059A5CA /* LaunchScreen.xib */,
 				14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */,
 				140DED0A1B62C6CB001F6A3F /* Settings.bundle */,
-				14983CC61B557A170059A5CA /* Supporting Files */,
 				14C1BF2D1B6178D400BE78DA /* Reachability.m */,
 				14C1BF2C1B6178D300BE78DA /* Headzup-Bridging-Header.h */,
 				14C1BF2F1B61793000BE78DA /* Reachability.h */,
+				14983CC61B557A170059A5CA /* Supporting Files */,
 			);
 			path = Headzup;
 			sourceTree = "<group>";
