@@ -68,7 +68,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         {
             dispatch_async(dispatch_get_main_queue()) {
                 
-                self.authErrorLB.text = "Check network connection."
+                self.authErrorLB.text = ValidationMessage.NETWORK_CONNECTION_ERROR_MESSAGE
                 self.authErrorView.addSubview(self.authErrorLB)
                 self.authErrorView.hidden = false
                 self.authErrorView.backgroundColor = UIColor.orangeColor()
@@ -143,7 +143,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "There has been a change with your access to the Headzup app. Please call us at <xxx-xxxxxxx> or email us at <xxxxxxxxxxx@xxx.com>."
+                            self.authErrorLB.text = ValidationMessage.DISABLED_USER_MESSAGE
                             self.authErrorLB.numberOfLines = 0
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
@@ -155,7 +155,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "The PIN and/or Phone Number entered doesn't match records."
+                            self.authErrorLB.text = ValidationMessage.INVALID_CREDENTIAL_MESSAGE
                             self.authErrorLB.numberOfLines = 0
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
@@ -170,7 +170,7 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         else
         {
             print("Check network connection")
-            self.authErrorLB.text = "Check network connection"
+            self.authErrorLB.text = ValidationMessage.NETWORK_CONNECTION_ERROR_MESSAGE
             self.authErrorView.addSubview(self.authErrorLB)
             self.authErrorView.hidden = false
         }

@@ -46,7 +46,7 @@ public class ValidationHelper
         ApplyStyle()
         validator.registerField(firstName, errorLabel: firstNameError , rules: [RequiredRule(), RequiredRule()])
         validator.registerField(pin, errorLabel: pinError, rules: [RequiredRule(), PinRule()])
-        validator.registerField(phoneNumber, errorLabel: phoneNumberError, rules: [RequiredRule(), MinLengthRule(length: 10,message:"Phone Number must be 10 digits long") ,PhoneRule()])
+        validator.registerField(phoneNumber, errorLabel: phoneNumberError, rules: [RequiredRule(), MinLengthRule(length: 10,message:ValidationMessage.PHONE_NUMBER_VALIDATOR_MESSAGE) ,PhoneRule()])
     }
     public func validatePin(pin:UITextField, pinError:UILabel)
     {
@@ -58,4 +58,12 @@ public class ValidationHelper
         ApplyStyle()
         validator.registerField(name, errorLabel: errorLB, rules: [RequiredRule(), RequiredRule()])
     }
+}
+public struct ValidationMessage
+{
+    public static let NETWORK_CONNECTION_ERROR_MESSAGE = "Check network connection."
+    public static let DISABLED_USER_MESSAGE = "There has been a change with your access to the Headzup app. Please call us at <xxx-xxxxxxx> or email us at <xxxxxxxxxxx@xxx.com>."
+    public static let INVALID_CREDENTIAL_MESSAGE = "The PIN and/or Phone Number entered doesn't match records."
+    public static let INVALID_PIN_MESSAGE = "PIN doesn't match this phone number."
+    public static let PHONE_NUMBER_VALIDATOR_MESSAGE = "Phone Number must be 10 digits long"
 }

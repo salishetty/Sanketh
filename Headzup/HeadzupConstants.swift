@@ -90,7 +90,7 @@ public struct AboutMeResponseQuestionCode
     public static let AMQ_8 = "AMQ_8"
     public static let AMQ_9 = "AMQ_9"
     public static let AMQ_10 = "AMQ_10"
-    
+    public static let AMQ_11 = "AMQ_11"
     
 }
 public struct GroupType

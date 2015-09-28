@@ -127,7 +127,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "There has been a change with your access to the Headzup app. Please call us at <xxx-xxxxxxx> or email us at <xxxxxxxxxxx@xxx.com>."
+                            self.authErrorLB.text = ValidationMessage.DISABLED_USER_MESSAGE
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
                             self.authErrorView.backgroundColor = UIColor.redColor()
@@ -138,7 +138,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "PIN doesn't match this phone number."
+                            self.authErrorLB.text = ValidationMessage.INVALID_PIN_MESSAGE
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
                             self.authErrorView.backgroundColor = UIColor.redColor()
@@ -152,7 +152,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         else
         {
             print("Check network connection")
-            self.authErrorLB.text = "Check network connection"
+            self.authErrorLB.text = ValidationMessage.NETWORK_CONNECTION_ERROR_MESSAGE
             self.authErrorView.addSubview(self.authErrorLB)
             self.authErrorView.hidden = false
         }
