@@ -118,8 +118,6 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
             
             let serviceManager = ServiceManager()
             
-        
-            
             
            serviceManager.Login(["username":phoneNumber, "pin":pin],completion: { (jsonData: JSON?)->() in
                 print(jsonData?.string)

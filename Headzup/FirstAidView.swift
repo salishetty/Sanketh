@@ -36,17 +36,17 @@ class FirstAidView: UIView {
         let screenWidth =  UIScreen.mainScreen().bounds.width
         //Content With Audio
         self.buttonText =  "Tap to read more"
-        if let audioPath = firstAid.audioPath as String?
-        {
-            if (!audioPath.isEmpty)
-            {
-                self.buttonText =  "Tap to listen"
-            }
-        }
+//        if let audioPath = firstAid.audioPath as String?
+//        {
+//            if (!audioPath.isEmpty)
+//            {
+//                self.buttonText =  "Tap to listen"
+//            }
+//        }
 
         super.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         self.contentName = firstAid.contentName
-        self.contentValue = firstAid.contentValue
+        self.contentValue = firstAid.contentDescription
         initialize()
         self.ContentId = firstAid.contentID.integerValue
      
