@@ -28,6 +28,7 @@
 		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B921BB7258900AC693D /* QuestionHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B971BB8984600AC693D /* DataManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B961BB8984600AC693D /* DataManagerBase.swift */; settings = {ASSET_TAGS = (); }; };
 		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		148F17FF1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
@@ -165,6 +166,7 @@
 		14896B8E1BB5D81000AC693D /* ICMSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICMSHelper.swift; sourceTree = "<group>"; };
 		14896B901BB6134F00AC693D /* ValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
 		14896B921BB7258900AC693D /* QuestionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionHelper.swift; sourceTree = "<group>"; };
+		14896B961BB8984600AC693D /* DataManagerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerBase.swift; sourceTree = "<group>"; };
 		148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponseItemsDTO.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +429,7 @@
 				14983CF21B557CA60059A5CA /* ApplicationData.swift */,
 				14C1BF2A1B61754400BE78DA /* HeadzupConstants.swift */,
 				5753D85A1BB1F76700378332 /* ContextManager.swift */,
+				14896B961BB8984600AC693D /* DataManagerBase.swift */,
 			);
 			name = HeadzupData;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				577146501B99426100BBD8E4 /* CVCalendarMonthContentViewController.swift in Sources */,
 				14983D271B5586950059A5CA /* StringExtension.swift in Sources */,
 				14983CF31B557CA60059A5CA /* ApplicationData.swift in Sources */,
+				14896B971BB8984600AC693D /* DataManagerBase.swift in Sources */,
 				14983D1D1B5586950059A5CA /* HMAC.swift in Sources */,
 				577146551B99426100BBD8E4 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				14983D1E1B5586950059A5CA /* IntExtension.swift in Sources */,

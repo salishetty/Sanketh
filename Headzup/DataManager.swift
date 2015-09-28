@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
-public class DataManager
+public class DataManager:DataManagerBase
 {
     var dbContext: NSManagedObjectContext!
     //Set IV and Key
@@ -20,50 +20,38 @@ public class DataManager
     
     public init(objContext: NSManagedObjectContext) {
         self.dbContext = objContext
+        super.init(context: self.dbContext!)
     }
     
+    
     /// Meta Data
-    public func saveMetaData(name: String, value: String, isSecured :Bool ){
-        do{
-            // check if given meta exists
-            let fetchRequest = NSFetchRequest(entityName: "MetaData")
-            fetchRequest.predicate = NSPredicate(format: "name == \"\(name)\"")
-            // let fetchResults = dbContext!.executeFetchRequest(fetchRequest, error: nil) as? [MetaData]
-            
-            var fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
-            var theMetaData:MetaData!
-            if (fetchResults.count>0){
-                theMetaData = fetchResults[0]
-                print("found metadata \(theMetaData.toString())")
-            } else {
-                print("creating new metadata: \(name) : \(value)")
-                theMetaData = NSEntityDescription.insertNewObjectForEntityForName("MetaData", inManagedObjectContext: dbContext) as! MetaData
-            }
-            
-            theMetaData.name = name
-            
-            //if Security is enabled, encrypt the value
+    public func saveMetaData(name: String, value: String, isSecured :Bool )
+    {
+        var theProperties: [String: AnyObject] = [:]
+        var theMetaData:MetaData!
+        if let fetchResults = super.fetchEntity("MetaData", key: "name", value: name)
+        {
+            var metaData:[MetaData] = fetchResults as! [MetaData]
+            theMetaData = metaData[0]
+            print("found metadata \(theMetaData.toString())")
+        }
+        else {
+            print("creating new metadata: \(name) : \(value)")
+            theProperties["name"] = name
             if(isSecured == true && AppContext.enc)
             {
                 //encrypt value
                 let encryptedValue = CryptoUtility().getEncryptedData(value, iv: iv, key: key)
-                
-                theMetaData.value = encryptedValue
+                theProperties["value"] = encryptedValue
             }
             else
             {
-                theMetaData.value = value
+                theProperties["value"] = value
             }
-            //theMetaData.value = value
-            theMetaData.isSecured = isSecured
-            
-            try dbContext.save()
-            print("meta saved: \(theMetaData.toString())")
+            theProperties["isSecured"] = isSecured
+            theMetaData = super.saveEntity("MetaData", properties: theProperties) as! MetaData
         }
-        catch let error as NSError
-        {
-            print("Error saving metadata: \(error.localizedDescription)")
-        }
+        print("meta saved: \(theMetaData.toString())")
     }
     
     // Return meta data string value. Empty string will be return if such meta data doesn't exist
@@ -178,34 +166,25 @@ public class DataManager
     
     public func saveContent(contentID:NSNumber, contentName:String, contentDescription:String, contentValue:String, contentType:String, imagePath:String, audioPath:String)
     {
-        do
+        var theProperties: [String: AnyObject] = [:]
+        var theContent:Content!
+        if let fetchResults = super.fetchEntity("Content", key: "contentID", value: contentID.stringValue)
         {
-            // check if given strategy exists
-            let fetchRequest = NSFetchRequest(entityName: "Content")
-            fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [Content]
-            var theContent:Content!
-            if (fetchResults.count>0){
-                theContent = fetchResults[0]
-                print("found \(theContent.contentName)")
-            } else {
-                print("creating new Content: \(contentID) : \(contentName)")
-                theContent = NSEntityDescription.insertNewObjectForEntityForName("Content", inManagedObjectContext: dbContext) as! Content
-            }
-            theContent.contentID = contentID
-            theContent.contentName = contentName
-            theContent.contentValue = contentValue
-            theContent.contentDescription = contentDescription
-            theContent.imagePath = imagePath
-            theContent.audioPath = audioPath
-            //save data to coreData
-            try dbContext.save()
-            print("Content Saved: \(theContent.toString())")
+            var content:[Content] = fetchResults as! [Content]
+            theContent = content[0]
+            print("found Content \(theContent.toString())")
         }
-        catch let error as NSError
-        {
-            print("Error saving Content: \(error.localizedDescription)")
+        else {
+            print("creating new Content: \(contentID) : \(contentName)")
+            theProperties["contentID"] = contentID
+            theProperties["contentName"] = contentName
+            theProperties["contentValue"] = contentValue
+            theProperties["contentDescription"] = contentDescription
+            theProperties["imagePath"] = imagePath
+            theProperties["audioPath"] = audioPath
+            theContent = super.saveEntity("Content", properties: theProperties) as! Content
         }
+        print("Content Saved: \(theContent.toString())")
     }
     
     public func getAllContents() -> [Content]?
