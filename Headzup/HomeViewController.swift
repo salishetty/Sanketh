@@ -38,7 +38,7 @@ class HomeViewController: UIViewController {
         let serviceManager = ServiceManager()
         serviceManager.getFirstAidContent { (jsonData) -> () in
             if let parseJSON:JSON = jsonData {
-               print("")
+               print(parseJSON.description)
                 }
             }
 
