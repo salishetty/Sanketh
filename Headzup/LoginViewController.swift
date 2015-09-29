@@ -169,10 +169,12 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
         }
         else
         {
+            dispatch_async(dispatch_get_main_queue()) {
             print("Check network connection")
             self.authErrorLB.text = ValidationMessage.NETWORK_CONNECTION_ERROR_MESSAGE
             self.authErrorView.addSubview(self.authErrorLB)
             self.authErrorView.hidden = false
+            }
         }
         
     }
