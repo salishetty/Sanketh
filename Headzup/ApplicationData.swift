@@ -35,7 +35,7 @@ public class AppContext {
         print("[membershipUserID = \(membershipUserID)]")
         print("[firstName = \(firstName)]")
         
-        var info = getUserInfo()
+        let info = getUserInfo()
         print("[deviceId = \(info.deviceId)]")
         print("[deviceType = \(info.deviceType)]")
         print("[svcUrl = \(svcUrl)]")

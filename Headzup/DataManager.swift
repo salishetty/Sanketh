@@ -322,34 +322,27 @@ public class DataManager:DataManagerBase
     
     public func saveContentCategory(categoryID:Int, categoryName:String, contentIDs:String)
     {
-        do
-        {
-        // check if given strategy exists
-        let fetchRequest = NSFetchRequest(entityName: "Category")
-        fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
+        var theProperties: [String: AnyObject] = [:]
         var theCategory:Category!
-        if (fetchResults?.count>0){
-            theCategory = fetchResults?[0]
-            print("found \(theCategory.categoryName)")
-        } else {
+        if let fetchResults = super.fetchEntity("Category", key: "categoryID", value: String(categoryID))
+        {
+            var category:[Category] = fetchResults as! [Category]
+            theCategory = category[0]
+            print("found Category \(theCategory.toString())")
+        }
+        else
+        {
             print("creating new Category: \(categoryID) : \(categoryName)")
-            theCategory = NSEntityDescription.insertNewObjectForEntityForName("Category", inManagedObjectContext: dbContext) as! Category
+            theProperties["categoryID"] = categoryID
+            theProperties["categoryName"] = categoryName
+            theProperties["contentIDs"] = contentIDs
+            theCategory = super.saveEntity("Category", properties: theProperties) as! Category
         }
         theCategory.categoryID = categoryID
         theCategory.categoryName = categoryName
         theCategory.contentIDs = contentIDs
-            
-        //save data to coreData
-        try  dbContext.save()
         print("Category Saved: \(theCategory.toString())")
     }
-    catch let error as NSError
-    {
-        print("Error saving to ContentCategory: \(error.localizedDescription)")
-    }
-       
-}
 public func getAllcategories() -> [Category]?
 {
     do
@@ -555,24 +548,15 @@ public func deleteContentGroup(contentID:NSNumber)
 public func getContentGroup(contentID:NSNumber)->ContentGroup?
 {
     var theContentGroup:ContentGroup!
-    do
+    if let fetchResults = super.fetchEntity("ContentGroup", key: "contentID", value: String(contentID))
     {
-        // check if given meta exists
-        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-        fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
-        
-        
-        if (fetchResults?.count>0){
-            theContentGroup = fetchResults?[0]
-            print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
-        } else {
-            print("No ContentGroup Found with a matching record for ContentID:\(contentID)")
-        }
+        var contentGroup:[ContentGroup] = fetchResults as! [ContentGroup]
+        theContentGroup = contentGroup[0]
+        print("Found ContentGroup with ContentID: \(theContentGroup.contentID)")
     }
-    catch let error as NSError
+    else
     {
-        print("Error saving to ContentGroup: \(error.localizedDescription)")
+        print("No ContentGroup Found with a matching record for ContentID:\(contentID)")
     }
     return theContentGroup
 }
@@ -601,47 +585,39 @@ public func getFavoritedContent(contentID:NSNumber)->ContentGroup?
     }
     return nil
 }
-public func getContentGroups(max: Int) -> [ContentGroup]? {
-    do
+public func getContentGroups(max: Int) -> [ContentGroup]?
+{
+    let synchDate = getMetaDataValue("SynchDate")
+    var contentGroup = [ContentGroup]()
+    var theContentGroup:ContentGroup!
+    if let fetchResults = super.fetchEntity("ContentGroup")
     {
-        let gHelpers = GeneralHelper()
-        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-        
-        let synchDate = getMetaDataValue("SynchDate")
-        
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
-        
-        let c: Int! = fetchResults?.count
-        
+        let c: Int! = fetchResults.count
+        contentGroup = fetchResults as! [ContentGroup]
         var s = "found \(c) content groups: \n"
-        var m:ContentGroup!
-        
-        var r = [ContentGroup]()
         if synchDate != ""
         {
             for var i = 0; i < c; i++ {
-                m = fetchResults?[i]
+                theContentGroup = fetchResults[i] as! ContentGroup
                 //Do comparison using extension methods
-                if m.dateModified.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
+                if theContentGroup.dateModified.isGreaterThanDate(GeneralHelper.convertStringToDate(synchDate))
                 {
-                    r.append(m)
+                    contentGroup.append(theContentGroup)
                 }
-                s += m.toString() + "\n"
+                s += theContentGroup.toString() + "\n"
             }
         }
         else
         {
-            r = fetchResults!
+            contentGroup = fetchResults as! [ContentGroup]
         }
         print("\(s)")
-        
-        return r
     }
-    catch let error as NSError
+    else
     {
-        print("Fetch failed for ContentGroup: \(error.localizedDescription)")
+        print("No ContentGroup found")
     }
-    return nil
+    return contentGroup
 }
 //Returns FirstAid Contents
 public func getFirstAidContents() -> [Int]
@@ -661,29 +637,26 @@ public func getFirstAidContents() -> [Int]
 
 public func getFavoritedContents() -> [ContentGroup]?
 {
-    do
+    var contentGroup = [ContentGroup]()
+    var theContentGroup:ContentGroup!
+    if let fetchResults = super.fetchEntity("ContentGroup")
     {
-        let fetchRequest = NSFetchRequest(entityName: "ContentGroup")
-        
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [ContentGroup]
-        let c: Int! = fetchResults?.count
-        var m:ContentGroup!
-        var r = [ContentGroup]()
+        let c: Int! = fetchResults.count
+        print("found \(c) content groups: \n")
         for var i = 0; i < c; i++ {
-            m = fetchResults?[i]
-            print("IsActive: \(m.isActive), ContentID: \(m.contentID), ContentGroup: \(m.groupType)")
-            if m.isActive == 1 && m.groupType.stringValue == GroupType.Favorite
+            theContentGroup = fetchResults[i] as! ContentGroup
+            print("isActive: \(theContentGroup.isActive) => GroupType: \(theContentGroup.groupType.stringValue) => Favorite: \(GroupType.Favorite)")
+            if (theContentGroup.isActive.stringValue == "1" && (theContentGroup.groupType.stringValue == GroupType.Favorite))
             {
-                r.append(m)
+                contentGroup.append(theContentGroup)
             }
         }
-        return r
     }
-    catch let error as NSError
+    else
     {
-        print("Fetch failed: \(error.localizedDescription)")
+        print("No ContentGroup found")
     }
-    return nil
+    return contentGroup
 }
 
 public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
@@ -779,7 +752,6 @@ public func getResponsesToBeSynched() -> [AboutMeResponse]?
 {
     do
     {
-        let gHelpers = GeneralHelper()
         let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
         let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
         
@@ -793,7 +765,7 @@ public func getResponsesToBeSynched() -> [AboutMeResponse]?
         {
             for var i = 0; i < c; i++ {
                 m = fetchResults?[i]
-                if m.dateAdded.isGreaterThanDate(gHelpers.convertStringToDate(synchDate))
+                if m.dateAdded.isGreaterThanDate(GeneralHelper.convertStringToDate(synchDate))
                 {
                     responses.append(m)
                 }

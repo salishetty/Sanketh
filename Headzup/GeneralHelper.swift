@@ -36,7 +36,7 @@ public class GeneralHelper
         let dateString = dateFormatter.stringFromDate(date)
         return dateString
     }
-    func convertStringToDate(dateString:String)->NSDate
+    public static func convertStringToDate(dateString:String)->NSDate
     {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
