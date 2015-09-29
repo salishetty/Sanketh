@@ -87,6 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Status Bar
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
         
+        
         //UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
         //Navigation Bar - Important
         // Sets background to a blank/empty image and set alpha to 0
