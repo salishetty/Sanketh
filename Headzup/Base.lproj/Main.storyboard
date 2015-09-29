@@ -747,7 +747,7 @@
         <!--Goal Reminder-->
         <scene sceneID="SaQ-CU-bYb">
             <objects>
-                <viewController title="Goal Reminder" id="dih-Mm-Cx8" sceneMemberID="viewController">
+                <viewController title="Goal Reminder" id="dih-Mm-Cx8" customClass="GoalReminderSettingViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xfT-ri-SHj"/>
                         <viewControllerLayoutGuide type="bottom" id="bkM-ZZ-bm0"/>
@@ -763,18 +763,20 @@
                                 <rect key="frame" x="20" y="84" width="560" height="496"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set reminder :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXA-x3-slh">
-                                        <rect key="frame" x="20" y="40" width="108" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <rect key="frame" x="20" y="40" width="117" height="20"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bkd-9O-qyA">
-                                        <rect key="frame" x="491" y="35" width="51" height="31"/>
+                                        <rect key="frame" x="491" y="34" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.69411764710000001" green="0.88235294119999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
-                                    <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-GS-y2y">
-                                        <rect key="frame" x="20" y="106" width="500" height="150"/>
+                                    <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-GS-y2y" customClass="CustomDatePicker" customModule="Headzup" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="105" width="520" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="H2u-64-RRL"/>
+                                            <constraint firstAttribute="height" constant="200" id="H2u-64-RRL"/>
                                         </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="464285477.78769302">
                                             <!--2015-09-18 16:11:17 +0000-->
@@ -783,7 +785,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="bMP-GS-y2y" secondAttribute="trailing" constant="40" id="DZ9-5O-nyZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="bMP-GS-y2y" secondAttribute="trailing" constant="20" id="DZ9-5O-nyZ"/>
                                     <constraint firstAttribute="trailing" secondItem="bkd-9O-qyA" secondAttribute="trailing" constant="20" id="FHf-Km-JwI"/>
                                     <constraint firstItem="FXA-x3-slh" firstAttribute="top" secondItem="2qO-0L-EFK" secondAttribute="top" constant="40" id="J1C-Jl-3dH"/>
                                     <constraint firstItem="FXA-x3-slh" firstAttribute="leading" secondItem="2qO-0L-EFK" secondAttribute="leading" constant="20" id="LX8-dO-hs4"/>
@@ -802,9 +804,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Goal reminder" id="kkC-so-hW4">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="g89-sH-sJh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="g89-sH-sJh">
+                            <connections>
+                                <action selector="Save:" destination="dih-Mm-Cx8" id="uhC-AG-v99"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="DatePicker" destination="bMP-GS-y2y" id="Oe3-jJ-PuX"/>
+                        <outlet property="Switch" destination="bkd-9O-qyA" id="26I-6g-FAf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlv-6g-c7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
