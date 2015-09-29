@@ -65,7 +65,13 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
         print("Validation FAILED!")
     }
 
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
     /*
     // MARK: - Navigation
 

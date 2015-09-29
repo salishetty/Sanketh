@@ -143,7 +143,13 @@ class StrategyDetailsViewController: UIViewController{
         
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
     
     func prepareToPlay(filename:String)
     {

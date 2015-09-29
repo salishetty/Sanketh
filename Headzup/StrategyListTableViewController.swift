@@ -141,5 +141,12 @@ class StrategyListTableViewController: UITableViewController {
         print("Selected Category:\(detailsScreen.selectedStrategy!.contentID)")
     }
     
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
 }

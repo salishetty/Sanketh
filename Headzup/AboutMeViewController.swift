@@ -25,7 +25,13 @@ class AboutMeViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
         
     }
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
     /*
     // MARK: - Navigation
 

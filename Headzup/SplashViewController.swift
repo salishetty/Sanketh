@@ -41,6 +41,13 @@ class SplashViewController: UIViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: nil, object: nil)
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
     
     /*
     // MARK: - Navigation

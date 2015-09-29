@@ -84,17 +84,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NotificationHelper.SetupGoalNotification(application)
         
         
-        //Status Bar
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-        
-        
-        //UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent;
         //Navigation Bar - Important
         // Sets background to a blank/empty image and set alpha to 0
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = UIColor(hex:0x5DB8DB,alpha:0.7)
-        UINavigationBar.appearance().barTintColor = UIColor(hex:0x5DB8DB,alpha:0.7)
+        UINavigationBar.appearance().backgroundColor = UIColor(hex:0x5DB8DB,alpha:1)
+        UINavigationBar.appearance().barTintColor = UIColor(hex:0x5DB8DB,alpha:1)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Arial Rounded MT Bold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         UINavigationBar.appearance().clipsToBounds = true
                

@@ -106,5 +106,12 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
 
 }

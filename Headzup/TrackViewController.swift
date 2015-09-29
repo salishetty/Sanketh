@@ -45,6 +45,14 @@ class TrackViewController: UIViewController {
         
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -123,6 +123,7 @@
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
+		57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */; };
 		57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
@@ -268,6 +269,7 @@
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
 		57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidDetailsViewController.swift; sourceTree = "<group>"; };
 		57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXHelpers.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				140710A41B7A8DD900F731EB /* DateExtensions.swift */,
 				14896B8A1BB3412100AC693D /* StringExtensions.swift */,
+				57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 				140DED291B69CED6001F6A3F /* Category.swift in Sources */,
 				57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */,
 				14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */,
+				57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */,
 				5771465C1B99426100BBD8E4 /* CVCalendarWeekView.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				577146541B99426100BBD8E4 /* CVCalendarViewAnimator.swift in Sources */,

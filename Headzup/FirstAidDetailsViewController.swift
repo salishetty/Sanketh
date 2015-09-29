@@ -98,7 +98,14 @@ class FirstAidDetailsViewController: UIViewController {
         audioPlayer!.prepareToPlay()
         
     }
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
     @IBAction func PlayNow(sender: AnyObject) {
         if let player = audioPlayer {
             if (player.playing == false) {
