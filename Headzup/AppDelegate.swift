@@ -14,13 +14,14 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    var serviceMgr:ServiceManager?
+  
+    
     func appInit() {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         var dataMgr = DataManager(objContext: manObjContext)
         var env = ""
-        var standardUserDefaults = NSUserDefaults.standardUserDefaults()
+        let standardUserDefaults = NSUserDefaults.standardUserDefaults()
         var us: AnyObject? = standardUserDefaults.objectForKey("st_env")
         if us == nil {
             self.registerDefaultsFromSettingsBundle();
@@ -35,181 +36,62 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         dataMgr.saveMetaData(MetaDataKeys.SvcUrl, value: env, isSecured: false)
         AppContext.svcUrl = env
-        
-        // Set login Status from Database
-        AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
-        
-        
+         
         AppContext.categories = dataMgr.getAllcategories()
         if ( AppContext.categories == nil || AppContext.categories?.count == 0) {
             
-            var theURL:String =  AppContext.svcUrl + "getContents"
-      
-            serviceMgr = ServiceManager(objContext: manObjContext)
+            
             dataMgr = DataManager(objContext: manObjContext)
-            serviceMgr?.getContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
-                
-                if let parseJSON = jsonData {
-                    var contentID: String = ""
-                    var viewAllContentIDs:String = ""
-                    var contName:String?
-                    var contValue:String?
-                    var contDescription:String?
-                    var contAudioPath:String?
-                    var contImagePath:String?
-                    var categoryID:String?
-                    var categoryName:String?
-                    //Declare array of ContentIDs which are of Intervention Type
-                    var arrayOfContentIDs: [String] = []
-                    
-                    for dataObject : AnyObject in parseJSON
-                    {
-                        var contentIDs: String = ""
-                        if let data = dataObject as? NSDictionary
-                        {
-                            for (key, value) in data {
-                                switch key as! String
-                                {
-                                    case ContentKeys.CategoryID:
-                                        categoryID = value as? String
-                                    case ContentKeys.CategoryName:
-                                        categoryName = value as? String
-                                    case ContentKeys.Contents:
-                                    for index in 0...value.count - 1
-                                    {
-                                        var con = value[index] as! NSDictionary
-                                        
-                                        for (conKey, conVal) in con
-                                        {
-                                            if conKey as! String == ContentKeys.ContentId
-                                            {
-                                                contentID = String(conVal.intValue)
-                                                contentIDs += String(conVal.intValue) + ","
-                                            }
-                                            if conKey as! String == ContentKeys.ContentName
-                                            {
-                                                contName = conVal as? String
-                                            }
-                                            if conKey as! String == ContentKeys.ContentValue
-                                            {
-                                                contValue = conVal as? String
-                                            }
-                                            if conKey as! String == ContentKeys.Description
-                                            {
-                                                contDescription = conVal as? String
-                                            }
-                                            if conKey as! String == ContentKeys.ContentProperties
-                                            {
-                                                for indexContProp in 0...conVal.count - 1
-                                                {
-                                                    var conProp = conVal[indexContProp] as! NSDictionary
-                                                        var propertyID:String = String(stringInterpolationSegment: conProp[ContentKeys.PropertyID]!.intValue)
-                                                        
-                                                        if (propertyID == ICMSProperty.HeadzupContentType && conProp[ContentKeys.PropertyValue] as! String == ContentKeys.Intervention)
-                                                        {
-                                                            var contID:String = String(conProp[ContentKeys.ContentID]!.intValue)
-                                                            arrayOfContentIDs.append(contID)
-                                                        }
-                                                        if propertyID == ICMSProperty.HeadzupImagePath
-                                                        {
-                                                            contImagePath = conProp[ContentKeys.PropertyValue] as? String
-                                                            
-                                                        }
-                                                        if propertyID == ICMSProperty.HeadzupAudioPath
-                                                        {
-                                                            contAudioPath = conProp[ContentKeys.PropertyValue] as? String
-                                                            
-                                                        }
-                                                }
-                                            }
-                                        }
-                                        //if not saved in Content table- Save it now!
-                                        var theContent = dataMgr.getContentByID(contentID.toInt()!)
-                                        if theContent == nil
-                                        {
-                                            if contImagePath == nil
-                                            {
-                                                contImagePath = ""
-                                            }
-                                            if contAudioPath == nil
-                                            {
-                                                contAudioPath = ""
-                                            }
-                                            dataMgr.saveContent(contentID.toInt()!, contentName: contName!, contentDescription: contDescription!, contentValue: contValue!, contentType: "", imagePath: contImagePath!, audioPath: contAudioPath!)
-                                            viewAllContentIDs += contentID + ","
-                                        }
-                                    }
-                                    
-                                    default:
-                                    println("There is an error")
-                                }
-                                
-                            }
-                            //Save to ContentGroup table
-                            dataMgr.saveContentCategory(categoryID!.toInt()!, categoryName: categoryName!, contentIDs: dropLast(contentIDs))
-                        }
-                    }
-                    //Save 'View All' data to Categories - Given a categoryID of "0" - DO NOT CHANGE T. This value is used in ToolBoxViewController
-                    dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: dropLast(viewAllContentIDs))
-                    //Save those contents with type = Intervention to 'ContentGroup'
-                    for contID in arrayOfContentIDs
-                    {
-                        let formatter = NSNumberFormatter()
-                        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-                        var groupType = formatter.numberFromString(GroupType.OMG)
-                        var contentID = formatter.numberFromString(contID)
-                        dataMgr.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentID!, isActive: false)
-                    }
-                }
-                
-                }
-                
-            )
-            
-            
-            AppContext.categories = dataMgr.getAllcategories()
-            
 
+            let serviceManager = ServiceManager()
+            serviceManager.getContent { (jsonData) -> () in
+                //Call ICMShelper to process the data
+                ICMSHelper.processContent(jsonData, dataMgr: dataMgr)
+            }
+            AppContext.categories = dataMgr.getAllcategories()
         }
     }
     func registerDefaultsFromSettingsBundle() {
         // this function writes default settings as settings
-        var settingsBundle = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")
+        let settingsBundle = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle")
         if settingsBundle == nil {
             NSLog("Could not find Settings.bundle");
             return
         }
-        var settings = NSDictionary(contentsOfFile:settingsBundle!.stringByAppendingPathComponent("Root.plist"))!
-        var preferences: [NSDictionary] = settings.objectForKey("PreferenceSpecifiers") as! [NSDictionary];
-        var defaultsToRegister = NSMutableDictionary(capacity:(preferences.count));
+        let settings = NSDictionary(contentsOfFile:(settingsBundle! as NSString).stringByAppendingPathComponent("Root.plist"))!
+        let preferences: [NSDictionary] = settings.valueForKey("PreferenceSpecifiers") as! [NSDictionary];
+        //let defaultsToRegister = NSMutableDictionary(capacity:(preferences.count));
+        var defaultsToRegister: [String:AnyObject] = [:]
         
         for prefSpecification:NSDictionary in preferences {
-            var key: NSCopying? = prefSpecification.objectForKey("Key") as! NSCopying?
+            let key: String? = prefSpecification.objectForKey("Key") as! String?
             if key != nil {
-                defaultsToRegister.setObject(prefSpecification.objectForKey("DefaultValue")!, forKey: key!)
+                //defaultsToRegister.setObject(prefSpecification.objectForKey("DefaultValue")!, forKey: key!)
+                defaultsToRegister[key!] = prefSpecification.valueForKey("DefaultValue")
             }
         }
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister as [NSObject : AnyObject]);
+        NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister);
     }
     
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        ContextManager.initialize(self.managedObjectContext!)
         appInit()
         
         NotificationHelper.SetupTrackerNotification(application)
         NotificationHelper.SetupGoalNotification(application)
         
         
-        //Status Bar
-        UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
-        
         //Navigation Bar - Important
         // Sets background to a blank/empty image and set alpha to 0
+        UINavigationBar.appearance().barStyle = .Black
         UINavigationBar.appearance().setBackgroundImage(UIImage(), forBarMetrics: .Default)
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().backgroundColor = UIColor(hex:0x5DB8DB,alpha:0.7)
-        UINavigationBar.appearance().barTintColor = UIColor(hex:0x5DB8DB,alpha:0.7)
+        UINavigationBar.appearance().backgroundColor = UIColor(hex:0x5DB8EB,alpha:1)
+        UINavigationBar.appearance().barTintColor = UIColor.whiteColor() //UIColor(hex:0x5DB8EB,alpha:1)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "Arial Rounded MT Bold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         UINavigationBar.appearance().clipsToBounds = true
                
@@ -263,15 +145,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         appInit()
         
-        var status = AppContext.loginStatus
+        let status = AppContext.loginStatus
         switch status {
         case LoginStatus.LoggedOut :
-            println ("user has logged out")
+            print ("user has logged out")
         case LoginStatus.LoggedIn :
-            println ("user has logged in")
+            print ("user has logged in")
         default :
             AppContext.loginStatus = LoginStatus.NeverLoggedIn
-            println ("user has never logged in")
+            print ("user has never logged in")
             // go to home page directly
             
         }
@@ -280,12 +162,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        var userDisabled = LogInHelper.isDisabled()
+        let userDisabled = LogInHelper.isDisabled()
         if (userDisabled == true)
         {
-            var rootViewController = self.window!.rootViewController
+            let rootViewController = self.window!.rootViewController
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+            let setViewController = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
             rootViewController!.navigationController!.popToViewController(setViewController, animated: false)
         }
     }
@@ -305,7 +187,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as! NSURL
+        return urls[urls.count-1] 
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -321,7 +203,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("Headzup.sqlite")
         var error: NSError? = nil
         var failureReason = "There was an error creating or loading the application's saved data."
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        do {
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch var error1 as NSError {
+            error = error1
             coordinator = nil
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -333,6 +218,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")
             abort()
+        } catch {
+            fatalError()
         }
         
         return coordinator
@@ -354,11 +241,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }

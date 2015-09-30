@@ -29,8 +29,8 @@ public class NotificationHelper
     static func DisableNotification(Name : String)
     {
         
-        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-        for notifyCancel in notifyArray as! [UILocalNotification]{
+        let notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications!
+        for notifyCancel in notifyArray as [UILocalNotification]{
             
             let info: [String: String] = notifyCancel.userInfo as! [String: String]
             
@@ -41,41 +41,78 @@ public class NotificationHelper
             }
             else
             {
-                println("No Local Notification Found!")
+                print("No Local Notification Found!")
             }
         }
     }
     
     
-    static func UpdateGoalNotification(Name : String, goalName: String)
+    static func UpdateNotification(Name : String, notifDate:NSDate? ,notifText: String?)
     {
-        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-        var datetime:NSDate = NSDate()
-        for notifyCancel in notifyArray as! [UILocalNotification]{
+        let notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications!
+        var alertTime:NSDate = NSDate()
+        var alertBody:String = ""
+        for notifyCancel in notifyArray {
             
             let info: [String: String] = notifyCancel.userInfo as! [String: String]
             
             if info["Name"] == Name
             {
-                datetime = notifyCancel.fireDate!
+                alertTime = notifyCancel.fireDate!
+                alertBody = notifyCancel.alertBody!
                 UIApplication.sharedApplication().cancelLocalNotification(notifyCancel)
                 
             }
             else
             {
-                println("No Local Notification Found!")
+                print("No Local Notification Found!")
             }
         }
         
-        let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
-            .CalendarUnitMinute,
-            value: 2,
-            toDate: datetime,
-            options: NSCalendarOptions(0))
-        EnableGoalNotifcation(tomorrow!, goalName: goalName)
+        if notifDate != nil
+        {
+            alertTime = notifDate!
+            
+        }
+        else
+        {
+            alertTime = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: 1,
+                toDate: alertTime,
+                options: NSCalendarOptions(rawValue: 0))!
+        }
+       
+        if notifText != nil
+        {
+           alertBody = notifText!
+        }
+        
+       
+        if Name == NotificationConstants.GoalName
+        {
+        EnableGoalNotifcation(alertTime, goalText: alertBody)
+        }
+        else
+        {
+            EnableTrackerNotifcation(alertTime)
+        }
 
     }
 
+    static func getNotification(Name : String) -> UILocalNotification?
+    {
+        let notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications!
+        for notification in notifyArray {
+            let info: [String: String] = notification.userInfo as! [String: String]
+            if info["Name"] == Name
+            {
+               return notification
+
+            }
+        }
+        return nil
+    }
     
     static func SetupTrackerNotification(application: UIApplication)
     {
@@ -91,19 +128,19 @@ public class NotificationHelper
         trackerCategory.setActions([completeAction], forContext: .Default)
         trackerCategory.setActions([completeAction], forContext: .Minimal)
         
-        let notificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let notificationType: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         let categories = NSSet(array: [trackerCategory])
-        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories as Set<NSObject>)
+        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories as? Set<UIUserNotificationCategory>)
         application.registerUserNotificationSettings(settings)
         
     }
     static func EnableTrackerNotifcation(datetime:NSDate)
     {
-        var trackerNotification: UILocalNotification = UILocalNotification()
+        let trackerNotification: UILocalNotification = UILocalNotification()
         trackerNotification.alertBody = "Don’t forget to track your headache pain even if you haven’t had a headache."
         //trackerNotification.alertAction = "Complete"
         trackerNotification.fireDate = datetime
-        trackerNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
+        trackerNotification.repeatInterval = NSCalendarUnit.Minute
         trackerNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         trackerNotification.category = NotificationConstants.TrackerCategory
         trackerNotification.userInfo = ["Name": NotificationConstants.TrackerName]
@@ -130,20 +167,20 @@ public class NotificationHelper
         goalCategory.setActions([completeGoal], forContext: .Default)
         goalCategory.setActions([completeGoal], forContext: .Minimal)
         
-        let notificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
+        let notificationType: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
         let categories = NSSet(array: [goalCategory])
-        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories as Set<NSObject>)
+        let settings = UIUserNotificationSettings(forTypes: notificationType, categories: categories as? Set<UIUserNotificationCategory>)
         application.registerUserNotificationSettings(settings)
    
     }
 
-    static func EnableGoalNotifcation(datetime:NSDate , goalName: String )
+    static func EnableGoalNotifcation(datetime:NSDate , goalText: String )
     {
-        var goalNotification: UILocalNotification = UILocalNotification()
-        goalNotification.alertBody = "Your Headzup goal today: " + goalName
+        let goalNotification: UILocalNotification = UILocalNotification()
+        goalNotification.alertBody = goalText
         //goalNotification.alertAction = "Goal"
         goalNotification.fireDate = datetime
-        goalNotification.repeatInterval = NSCalendarUnit.CalendarUnitMinute
+        goalNotification.repeatInterval = NSCalendarUnit.Minute
         goalNotification.soundName = UILocalNotificationDefaultSoundName // play default sound
         goalNotification.category = NotificationConstants.GoalCategory
         goalNotification.userInfo = ["Name": NotificationConstants.GoalName]
@@ -158,23 +195,23 @@ public class NotificationHelper
     {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        var dataMgr = DataManager(objContext: manObjContext)
+        let dataMgr = DataManager(objContext: manObjContext)
         AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
         
-        println("[loginStatus = \(AppContext.loginStatus)]")
+        print("[loginStatus = \(AppContext.loginStatus)]")
    
         if notification.category == NotificationConstants.GoalCategory
         {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             if (AppContext.loginStatus == LoginStatus.LoggedIn)
             {
-                var tabVC = mainStoryboard.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController
+                let tabVC = mainStoryboard.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController
                 tabVC.selectedIndex = 1
                 theAppDelegate.window!.rootViewController = tabVC
             }
             else
             {
-                var pinVC = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+                let pinVC = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
                 pinVC.TabIndex = 2
                 theAppDelegate.window!.rootViewController = pinVC
             }
@@ -184,13 +221,13 @@ public class NotificationHelper
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             if (AppContext.loginStatus == LoginStatus.LoggedIn)
             {
-                var tabVC = mainStoryboard.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController
+                let tabVC = mainStoryboard.instantiateViewControllerWithIdentifier("TabView") as! UITabBarController
                 tabVC.selectedIndex = 1
                 theAppDelegate.window!.rootViewController = tabVC
             }
             else
             {
-                var pinVC = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
+                let pinVC = mainStoryboard.instantiateViewControllerWithIdentifier("PinView") as! PinViewController
                 pinVC.TabIndex = 2
                 theAppDelegate.window!.rootViewController = pinVC
             }

@@ -26,15 +26,15 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
         let fetchRequest = NSFetchRequest(entityName: "Category")
-        categoriesArray = manObjContext.executeFetchRequest(fetchRequest, error: nil) as! Array<Category>!
+        categoriesArray = (try? manObjContext.executeFetchRequest(fetchRequest)) as! Array<Category>!
         
         //get the "View All" category 
-        var category = dataMgr!.getCategoryByID(0)
+        let category = dataMgr!.getCategoryByID(0)
         //Filter the "View All" category
         categoriesArray = categoriesArray.filter() {$0 != category!}
         
         //Sort by categoryName ASC
-        categoriesArray.sort({$0.categoryName < $1.categoryName})
+        categoriesArray.sortInPlace({$0.categoryName < $1.categoryName})
         //Add back the "View All" category at index 0
         categoriesArray.insert(category!, atIndex: 0)
 
@@ -66,7 +66,7 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(tableView == self.categoryTableView)
         {
-            var cell:UITableViewCell = self.categoryTableView.dequeueReusableCellWithIdentifier("categoryCell") as! UITableViewCell
+            let cell:UITableViewCell = self.categoryTableView.dequeueReusableCellWithIdentifier("categoryCell") as UITableViewCell!
             
             cell.textLabel?.text = self.categoriesArray[indexPath.row].categoryName
             
@@ -76,7 +76,7 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
         {
    
             
-            var cell:UITableViewCell = self.favoriteTableView.dequeueReusableCellWithIdentifier("favoriteCell") as! UITableViewCell
+            let cell:UITableViewCell = self.favoriteTableView.dequeueReusableCellWithIdentifier("favoriteCell") as UITableViewCell!
             
             cell.textLabel?.text = self.favoritesArray[indexPath.row]// self.categoriesArray[indexPath.row].categoryName
             
@@ -102,9 +102,16 @@ class ToolboxViewController: UIViewController, UITableViewDelegate, UITableViewD
             // Pass the selected object to the new view controller.
             let detailsScreen = segue.destinationViewController as! StrategyListTableViewController
             detailsScreen.selectedCategory = (categoriesArray[indexOfSelectedCategory] as Category)
-            println("Selected Category:\(detailsScreen.selectedCategory?.categoryID)")
+            print("Selected Category:\(detailsScreen.selectedCategory?.categoryID)")
         }
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
 
 }

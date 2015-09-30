@@ -1,3 +1,18 @@
+/// Swift Migrator:
+///
+/// This file contains one or more places using either an index
+/// or a range with ArraySlice. While in Swift 1.2 ArraySlice
+/// indices were 0-based, in Swift 2.0 they changed to match the
+/// the indices of the original array.
+///
+/// The Migrator wrapped the places it found in a call to the
+/// following function, please review all call sites and fix
+/// incides if necessary.
+@available(*, deprecated=2.0, message="Swift 2.0 migration: Review possible 0-based index")
+private func __reviewIndex__<T>(value: T) -> T {
+    return value
+}
+
 //
 //  ChaCha20.swift
 //  HeadzupPOC
@@ -79,17 +94,28 @@ final public class ChaCha20 {
         
         for i in 0..<16 {
             x[i] = x[i] &+ input[i]
-            output += [UInt8((x[i] & 0xFFFFFFFF) >> 24),
-                UInt8((x[i] & 0xFFFFFF) >> 16),
-                UInt8((x[i] & 0xFFFF) >> 8),
-                UInt8((x[i] & 0xFF) >> 0)]
+           
+            //Added by sandeep to reduce complexity of below commented line
+            let byte1val = UInt8((x[i] & 0xFF) >> 0)
+            let byte2val = UInt8((x[i] & 0xFFFF) >> 8)
+            let byte3val = UInt8((x[i] & 0xFFFFFF) >> 16)
+            let byte4val = UInt8((x[i] & 0xFFFFFFFF) >> 24)
+            output += [byte4val,byte3val,byte2val,byte1val]
+            
+            //commented for xcode7
+//            output += [UInt8((x[i] & 0xFFFFFFFF) >> 24),
+//                UInt8((x[i] & 0xFFFFFF) >> 16),
+//                UInt8((x[i] & 0xFFFF) >> 8),
+//                UInt8((x[i] & 0xFF) >> 0)]
+            
+            
         }
         
         return output;
     }
     
-    private func contextSetup(# iv:[UInt8], key:[UInt8]) -> Context? {
-        var ctx = Context()
+    private func contextSetup(iv  iv:[UInt8], key:[UInt8]) -> Context? {
+        let ctx = Context()
         let kbits = key.count * 8
         
         if (kbits != 128 && kbits != 256) {
@@ -173,16 +199,16 @@ final public class ChaCha20 {
     
     private final func quarterround(inout a:UInt32, inout _ b:UInt32, inout _ c:UInt32, inout _ d:UInt32) {
         a = a &+ b
-        d = rotateLeft((d ^ a), 16)
+        d = rotateLeft((d ^ a), n: 16)
         
         c = c &+ d
-        b = rotateLeft((b ^ c), 12);
+        b = rotateLeft((b ^ c), n: 12);
         
         a = a &+ b
-        d = rotateLeft((d ^ a), 8);
+        d = rotateLeft((d ^ a), n: 8);
         
         c = c &+ d
-        b = rotateLeft((b ^ c), 7);
+        b = rotateLeft((b ^ c), n: 7);
     }
 }
 
@@ -192,7 +218,7 @@ final public class ChaCha20 {
 private func wordNumber(bytes:ArraySlice<UInt8>) -> UInt32 {
     var value:UInt32 = 0
     for (var i:UInt32 = 0, j = 0; i < 4; i++, j++) {
-        value = value | UInt32(bytes[j]) << (8 * i)
+        value = value | UInt32(bytes[__reviewIndex__(j)]) << (8 * i)
     }
     return value
 }

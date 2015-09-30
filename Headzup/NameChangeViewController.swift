@@ -29,7 +29,7 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
     }
     
     @IBAction func DoneBarButton(sender: AnyObject) {
-        println("Validating Pin...")
+        print("Validating Pin...")
         validator.validate(self)
         
     }
@@ -46,43 +46,32 @@ class NameChangeViewController: UIViewController, ValidationDelegate {
         let firstName =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
         AppContext.firstName = firstName
         nameTF.text = firstName
+       
         // Do any additional setup after loading the view.
-        //Error Validation
-        validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
-            // clear error label
-            validationRule.errorLabel?.hidden = true
-            validationRule.errorLabel?.text = ""
-            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
-            validationRule.textField.layer.borderWidth = 0.5
-            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
-            validationRule.textField.layer.cornerRadius = 5.0
-            
-            }, error:{ (validationError) -> Void in
-                println("error")
-                validationError.errorLabel?.hidden = false
-                validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
-                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
-                validationError.textField.layer.cornerRadius = 5.0
-        })
-        validator.registerField(nameTF, errorLabel: errorLB, rules: [RequiredRule(), RequiredRule()])
+        //Validate if Name/nickname is provided
+        let validationHelper = ValidationHelper(validator: validator)
+        validationHelper.validateName(nameTF, errorLB: errorLB)
      }
     
     func validationSuccessful() {
-            println("Validation Success!")
-            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.nameTF.text, isSecured: true)
+            print("Validation Success!")
+            self.dataMgr?.saveMetaData(MetaDataKeys.FirstName, value: self.nameTF.text!, isSecured: true)
             //navigate back to Account tab
             self.loadViewController("TabView",tabIndex:4)
         }
 
 
     func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+        print("Validation FAILED!")
     }
 
-
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
     /*
     // MARK: - Navigation
 

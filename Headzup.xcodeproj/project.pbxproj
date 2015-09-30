@@ -24,6 +24,11 @@
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
+		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B921BB7258900AC693D /* QuestionHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		14896B971BB8984600AC693D /* DataManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B961BB8984600AC693D /* DataManagerBase.swift */; settings = {ASSET_TAGS = (); }; };
 		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		148F17FF1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
@@ -77,6 +82,9 @@
 		5700DB271B839A23004796AE /* DemoAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5700DB261B839A23004796AE /* DemoAudio.mp3 */; };
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
+		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
+		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; settings = {ASSET_TAGS = (); }; };
+		575F4F791BB5989800C1F768 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575F4F781BB5989800C1F768 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		577146491B99426100BBD8E4 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771462F1B99426100BBD8E4 /* CVAuxiliaryView.swift */; };
 		5771464A1B99426100BBD8E4 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146301B99426100BBD8E4 /* CVCalendarContentViewController.swift */; };
 		5771464B1B99426100BBD8E4 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146311B99426100BBD8E4 /* CVCalendarDayView.swift */; };
@@ -115,6 +123,10 @@
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
+		57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		57CD83081BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		57CD830A1BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83091BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		57CD830C1BBB1056009CEB72 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD830B1BBB1056009CEB72 /* CustomDatePicker.swift */; settings = {ASSET_TAGS = (); }; };
 		57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */; };
 		57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
@@ -154,6 +166,11 @@
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
+		14896B8A1BB3412100AC693D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		14896B8E1BB5D81000AC693D /* ICMSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICMSHelper.swift; sourceTree = "<group>"; };
+		14896B901BB6134F00AC693D /* ValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
+		14896B921BB7258900AC693D /* QuestionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionHelper.swift; sourceTree = "<group>"; };
+		14896B961BB8984600AC693D /* DataManagerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerBase.swift; sourceTree = "<group>"; };
 		148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponse.swift; sourceTree = "<group>"; };
 		148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeResponseItemsDTO.swift; sourceTree = "<group>"; };
 		14983CC31B557A170059A5CA /* Headzup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Headzup.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +231,9 @@
 		5700DB261B839A23004796AE /* DemoAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DemoAudio.mp3; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
+		5753D85A1BB1F76700378332 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
+		5753D85C1BB33ACC00378332 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
+		575F4F781BB5989800C1F768 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5771462F1B99426100BBD8E4 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		577146301B99426100BBD8E4 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
 		577146311B99426100BBD8E4 /* CVCalendarDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarDayView.swift; sourceTree = "<group>"; };
@@ -252,6 +272,10 @@
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
+		57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationControllerExtension.swift; sourceTree = "<group>"; };
+		57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalReminderSettingViewController.swift; sourceTree = "<group>"; };
+		57CD83091BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrackerReminderSettingViewController.swift; path = ../TrackerReminderSettingViewController.swift; sourceTree = "<group>"; };
+		57CD830B1BBB1056009CEB72 /* CustomDatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstAidDetailsViewController.swift; sourceTree = "<group>"; };
 		57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXHelpers.swift; sourceTree = "<group>"; };
 		57E6529A1B5DA6320057803C /* NavigationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationHelper.swift; path = ../NavigationHelper.swift; sourceTree = "<group>"; };
@@ -286,6 +310,8 @@
 			isa = PBXGroup;
 			children = (
 				140710A41B7A8DD900F731EB /* DateExtensions.swift */,
+				14896B8A1BB3412100AC693D /* StringExtensions.swift */,
+				57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +369,7 @@
 		14983CC51B557A170059A5CA /* Headzup */ = {
 			isa = PBXGroup;
 			children = (
+				575F4F771BB5984F00C1F768 /* Services */,
 				5771462E1B99416F00BBD8E4 /* CVCalendar */,
 				140710A31B7A8DC200F731EB /* Extensions */,
 				14CDA54A1B72788400FB040F /* DTO */,
@@ -351,20 +378,19 @@
 				14983CF41B557CF40059A5CA /* Cryptography */,
 				6A2CEF831B7A85EE0083B568 /* Custom Objects */,
 				57FEAB911B8E54F40093AFEE /* Views */,
+				579182961B6EBE27004ACFDD /* Helpers */,
 				14983CEB1B557A8E0059A5CA /* HeadzupData */,
 				14983CC81B557A170059A5CA /* AppDelegate.swift */,
-				579182961B6EBE27004ACFDD /* Helpers */,
 				14983CCF1B557A170059A5CA /* Main.storyboard */,
-				14983CF01B557C2D0059A5CA /* ServiceManager.swift */,
 				14983CF51B557ECB0059A5CA /* CryptoUtility.swift */,
 				14983CD21B557A170059A5CA /* Images.xcassets */,
 				14983CD41B557A170059A5CA /* LaunchScreen.xib */,
 				14983CCA1B557A170059A5CA /* Headzup.xcdatamodeld */,
 				140DED0A1B62C6CB001F6A3F /* Settings.bundle */,
-				14983CC61B557A170059A5CA /* Supporting Files */,
 				14C1BF2D1B6178D400BE78DA /* Reachability.m */,
 				14C1BF2C1B6178D300BE78DA /* Headzup-Bridging-Header.h */,
 				14C1BF2F1B61793000BE78DA /* Reachability.h */,
+				14983CC61B557A170059A5CA /* Supporting Files */,
 			);
 			path = Headzup;
 			sourceTree = "<group>";
@@ -411,6 +437,8 @@
 				14983CEE1B557B910059A5CA /* DataManager.swift */,
 				14983CF21B557CA60059A5CA /* ApplicationData.swift */,
 				14C1BF2A1B61754400BE78DA /* HeadzupConstants.swift */,
+				5753D85A1BB1F76700378332 /* ContextManager.swift */,
+				14896B961BB8984600AC693D /* DataManagerBase.swift */,
 			);
 			name = HeadzupData;
 			sourceTree = "<group>";
@@ -490,8 +518,20 @@
 				577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */,
 				577146761BA8AE2100BBD8E4 /* AcountViewController.swift */,
 				577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */,
+				57CD83091BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift */,
+				57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		575F4F771BB5984F00C1F768 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				575F4F781BB5989800C1F768 /* SwiftyJSON.swift */,
+				14983CF01B557C2D0059A5CA /* ServiceManager.swift */,
+				5753D85C1BB33ACC00378332 /* NetworkOperation.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		5771462E1B99416F00BBD8E4 /* CVCalendar */ = {
@@ -591,6 +631,9 @@
 				579F15021B728B20009488CA /* NotificationHelper.swift */,
 				14CDA5531B728C6100FB040F /* GeneralHelper.swift */,
 				57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */,
+				14896B8E1BB5D81000AC693D /* ICMSHelper.swift */,
+				14896B901BB6134F00AC693D /* ValidationHelper.swift */,
+				14896B921BB7258900AC693D /* QuestionHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -608,6 +651,7 @@
 			children = (
 				6A2CEF841B7A86530083B568 /* CustomButton.swift */,
 				577146701BA0DD2500BBD8E4 /* SubTableCell.swift */,
+				57CD830B1BBB1056009CEB72 /* CustomDatePicker.swift */,
 			);
 			name = "Custom Objects";
 			sourceTree = "<group>";
@@ -656,7 +700,9 @@
 		14983CBB1B557A170059A5CA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Inflexxion;
 				TargetAttributes = {
 					14983CC21B557A170059A5CA = {
@@ -718,6 +764,7 @@
 				14983D281B5586950059A5CA /* UInt8Extension.swift in Sources */,
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
 				577146571B99426100BBD8E4 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
+				575F4F791BB5989800C1F768 /* SwiftyJSON.swift in Sources */,
 				5771464F1B99426100BBD8E4 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				577146521B99426100BBD8E4 /* CVCalendarTouchController.swift in Sources */,
 				577146621B99426100BBD8E4 /* CVShape.swift in Sources */,
@@ -734,6 +781,7 @@
 				148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */,
 				5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */,
 				14DAF7541B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift in Sources */,
+				14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */,
 				5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */,
 				14983D201B5586950059A5CA /* NSDataExtension.swift in Sources */,
 				579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */,
@@ -747,11 +795,13 @@
 				5771464D1B99426100BBD8E4 /* CVCalendarManager.swift in Sources */,
 				14983D1B1B5586950059A5CA /* Hash.swift in Sources */,
 				14983D151B5586950059A5CA /* Authenticator.swift in Sources */,
+				5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */,
 				140DED141B67C6C0001F6A3F /* RequiredRule.swift in Sources */,
 				140DED201B67D380001F6A3F /* MinLengthRule.swift in Sources */,
 				140DED161B67C703001F6A3F /* RegexRule.swift in Sources */,
 				14983D2D1B5586950059A5CA /* Utils.swift in Sources */,
 				14983D1C1B5586950059A5CA /* HashBase.swift in Sources */,
+				14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */,
 				140DED1C1B67CC41001F6A3F /* ValidationRule.swift in Sources */,
 				577146511B99426100BBD8E4 /* CVCalendarMonthView.swift in Sources */,
 				14CDA54E1B72796600FB040F /* TechnicalLogItemsDTO.swift in Sources */,
@@ -767,15 +817,18 @@
 				577146501B99426100BBD8E4 /* CVCalendarMonthContentViewController.swift in Sources */,
 				14983D271B5586950059A5CA /* StringExtension.swift in Sources */,
 				14983CF31B557CA60059A5CA /* ApplicationData.swift in Sources */,
+				14896B971BB8984600AC693D /* DataManagerBase.swift in Sources */,
 				14983D1D1B5586950059A5CA /* HMAC.swift in Sources */,
 				577146551B99426100BBD8E4 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				14983D1E1B5586950059A5CA /* IntExtension.swift in Sources */,
+				14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */,
 				140DED181B67CBE0001F6A3F /* Validator.swift in Sources */,
 				5771465A1B99426100BBD8E4 /* CVCalendarWeekContentViewController.swift in Sources */,
 				57FEAB8E1B8CFEC80093AFEE /* FirstAidViewController.swift in Sources */,
 				577146591B99426100BBD8E4 /* CVCalendarViewPresentationMode.swift in Sources */,
 				140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */,
 				140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */,
+				57CD830A1BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift in Sources */,
 				577146561B99426100BBD8E4 /* CVCalendarViewAppearance.swift in Sources */,
 				6A2CEF851B7A86530083B568 /* CustomButton.swift in Sources */,
 				140DED271B69CE68001F6A3F /* Content.swift in Sources */,
@@ -787,12 +840,16 @@
 				14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */,
 				140DED291B69CED6001F6A3F /* Category.swift in Sources */,
 				57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */,
+				14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */,
+				57CD830C1BBB1056009CEB72 /* CustomDatePicker.swift in Sources */,
+				57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */,
 				5771465C1B99426100BBD8E4 /* CVCalendarWeekView.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				577146541B99426100BBD8E4 /* CVCalendarViewAnimator.swift in Sources */,
 				577146791BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift in Sources */,
 				14983D1F1B5586950059A5CA /* MD5.swift in Sources */,
 				57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */,
+				57CD83081BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift in Sources */,
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
 				577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,
@@ -820,6 +877,7 @@
 				14983D131B5586950059A5CA /* AES.swift in Sources */,
 				5771465F1B99426100BBD8E4 /* CVScrollDirection.swift in Sources */,
 				579F15031B728B20009488CA /* NotificationHelper.swift in Sources */,
+				5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */,
 				14983CF11B557C2D0059A5CA /* ServiceManager.swift in Sources */,
 				14983D221B5586950059A5CA /* Padding.swift in Sources */,
 				6A2CEF801B74FE740083B568 /* StrategyListTableViewController.swift in Sources */,
@@ -889,6 +947,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -904,7 +963,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -943,7 +1002,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -960,6 +1019,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Headzup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inflexxion.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Headzup/Headzup-Bridging-Header.h";
@@ -977,6 +1037,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Headzup/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inflexxion.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Headzup/Headzup-Bridging-Header.h";
@@ -998,6 +1059,7 @@
 				);
 				INFOPLIST_FILE = HeadzupTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inflexxion.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Headzup.app/Headzup";
 			};
@@ -1013,6 +1075,7 @@
 				);
 				INFOPLIST_FILE = HeadzupTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.inflexxion.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Headzup.app/Headzup";
 			};

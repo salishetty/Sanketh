@@ -21,18 +21,16 @@ public  class LogInHelper
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
         
-        let serviceUrl:String = AppContext.svcUrl + "Login" as String
-        let membershipId:String = AppContext.membershipUserID
-        let token:String = CryptoUtility().generateSecurityToken() as String
-
-        serviceMgr?.Login(["username":membershipId,"token":token], url: serviceUrl, postCompleted:
+        serviceMgr = ServiceManager()
+        
+     let membershipId:String = AppContext.membershipUserID
+     serviceMgr?.Login(["username":membershipId], completion:
             {
-                (jsonData: NSDictionary?)->() in
+            (jsonData: JSON?)->() in
             if let parseJSON = jsonData
                 {
-                    var status = parseJSON["Status"] as? String
+                    let status = parseJSON["Status"]
                     if(status == "2")
                     {
                         dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedOut, isSecured: true)

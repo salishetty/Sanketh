@@ -17,7 +17,7 @@ class CustomButton: UIButton {
     @IBInspectable var BorderColor:UIColor?
     @IBInspectable var BorderWidth: CGFloat = 0
     
-    required init(coder decoder: NSCoder) {
+    required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         
     }
@@ -49,8 +49,8 @@ class CustomButton: UIButton {
             superview.layer.masksToBounds = true
             superview.clipsToBounds = false
             
-            var viewHeight = superview.frame.height
-            var viewWidth = superview.frame.width
+            let viewHeight = superview.frame.height
+            let viewWidth = superview.frame.width
             layer.frame.size.height = viewHeight
             layer.frame.size.width = viewWidth
             

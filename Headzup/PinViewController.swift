@@ -18,7 +18,6 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     
     @IBOutlet weak var pinTF: UITextField!
     var dataMgr: DataManager?  // initialized in viewDidLoad
-    var serviceMgr: ServiceManager?
     let validator = Validator()
     
     @IBOutlet weak var authErrorView: UIView!
@@ -52,7 +51,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext:manObjContext)
+        
         
         //log out user
         self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedOut, isSecured: true)
@@ -66,27 +65,9 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         AppContext.firstName = username
         
         // Do any additional setup after loading the view.
-        //Error Validation
-        validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
-            // clear error label
-            validationRule.errorLabel?.hidden = true
-            validationRule.errorLabel?.text = ""
-            validationRule.textField.layer.borderColor = UIColor.darkGrayColor().CGColor
-            validationRule.textField.layer.borderWidth = 0.5
-            validationRule.textField.borderStyle = UITextBorderStyle.RoundedRect
-            validationRule.textField.layer.cornerRadius = 5.0
-            
-            }, error:{ (validationError) -> Void in
-                println("error")
-                validationError.errorLabel?.hidden = false
-                validationError.errorLabel?.text = validationError.errorMessage
-                validationError.textField.layer.borderColor = UIColor.redColor().CGColor
-                validationError.textField.layer.borderWidth = 1.0
-                validationError.textField.borderStyle = UITextBorderStyle.RoundedRect
-                validationError.textField.layer.cornerRadius = 5.0
-        })
-        validator.registerField(pinTF, errorLabel: PinErrorLB, rules: [RequiredRule(), PinRule()])
+        //Validate User Pin
+        let validationHelper = ValidationHelper(validator: validator)
+        validationHelper.validatePin(pinTF, pinError: PinErrorLB)
         
         if(AppContext.hasConnectivity() == false)
         {
@@ -113,25 +94,21 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         // Dispose of any resources that can be recreated.
     }
     @IBAction func Login(sender: UIButton) {
-        println("Validating Pin...")
+        print("Validating Pin...")
         validator.validate(self)
     }
     
     func validationSuccessful() {
-        println("Validation Success!")
-        let pin = pinTF.text.uppercaseString
-        let token:String = CryptoUtility().generateSecurityToken() as String
-        
-        //Get login Url
-        var theURL:String = AppContext.svcUrl + "Login"
+        print("Validation Success!")
+        let pin = pinTF.text!.uppercaseString
         
         if AppContext.hasConnectivity() {
-            
-            serviceMgr?.Login(["username":AppContext.membershipUserID, "pin":pin, "token":token], url: theURL, postCompleted: { (jsonData: NSDictionary?)->() in
+            let serviceManager = ServiceManager()
+            serviceManager.Login(["username":AppContext.membershipUserID, "pin":pin], completion: { (jsonData: JSON?)->() in
                 
                 if let parseJSON = jsonData
                 {
-                    var status = parseJSON["Status"] as? String
+                    let status = parseJSON["Status"]
                     if(status == "1")
                     {
                         self.dataMgr?.saveMetaData(MetaDataKeys.LoginStatus, value: LoginStatus.LoggedIn, isSecured: true)
@@ -150,7 +127,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "There has been a change with your access to the Headzup app. Please call us at <xxx-xxxxxxx> or email us at <xxxxxxxxxxx@xxx.com>."
+                            self.authErrorLB.text = ValidationMessage.DISABLED_USER_MESSAGE
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
                             self.authErrorView.backgroundColor = UIColor.redColor()
@@ -161,7 +138,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
                     {
                         dispatch_async(dispatch_get_main_queue()) {
                             
-                            self.authErrorLB.text = "PIN doesn't match this phone number."
+                            self.authErrorLB.text = ValidationMessage.INVALID_PIN_MESSAGE
                             self.authErrorView.addSubview(self.authErrorLB)
                             self.authErrorView.hidden = false
                             self.authErrorView.backgroundColor = UIColor.redColor()
@@ -174,8 +151,8 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
         }
         else
         {
-            println("Check network connection")
-            self.authErrorLB.text = "Check network connection"
+            print("Check network connection")
+            self.authErrorLB.text = ValidationMessage.NETWORK_CONNECTION_ERROR_MESSAGE
             self.authErrorView.addSubview(self.authErrorLB)
             self.authErrorView.hidden = false
         }
@@ -183,7 +160,7 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     }
     
     func validationFailed(errors:[UITextField:ValidationError]) {
-        println("Validation FAILED!")
+        print("Validation FAILED!")
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -193,5 +170,12 @@ class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegat
     deinit
     {
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
     }
 }

@@ -1,14 +1,14 @@
 //
-//  AboutMeViewController.swift
+//  TrackerReminderSettingViewController.swift
 //  Headzup
 //
-//  Created by Sandeep Menon Ayyappankutty on 9/8/15.
-//  Copyright (c) 2015 Inflexxion. All rights reserved.
+//  Created by Sandeep Menon Ayyappankutty on 9/29/15.
+//  Copyright © 2015 Inflexxion. All rights reserved.
 //
 
 import UIKit
 
-class AboutMeViewController: UIViewController {
+class TrackerReminderSettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +21,6 @@ class AboutMeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func BackButton(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        
-    }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
@@ -32,6 +28,7 @@ class AboutMeViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return false
     }
+
     /*
     // MARK: - Navigation
 

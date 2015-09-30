@@ -12,7 +12,7 @@ import UIKit
 
 public class UserInfo {
     public var membershipUserID = ""
-    public var deviceId = UIDevice.currentDevice().identifierForVendor.UUIDString
+    public var deviceId = UIDevice.currentDevice().identifierForVendor!.UUIDString
     public var deviceType =  UIDevice.currentDevice().model
 }
 
@@ -31,24 +31,24 @@ public class AppContext {
     //public static func
     
     public static func list() {
-        println("[loginStatus = \(loginStatus)]")
-        println("[membershipUserID = \(membershipUserID)]")
-        println("[firstName = \(firstName)]")
+        print("[loginStatus = \(loginStatus)]")
+        print("[membershipUserID = \(membershipUserID)]")
+        print("[firstName = \(firstName)]")
         
-        var info = getUserInfo()
-        println("[deviceId = \(info.deviceId)]")
-        println("[deviceType = \(info.deviceType)]")
-        println("[svcUrl = \(svcUrl)]")
+        let info = getUserInfo()
+        print("[deviceId = \(info.deviceId)]")
+        print("[deviceType = \(info.deviceType)]")
+        print("[svcUrl = \(svcUrl)]")
     }
     
     public static func getUserInfo() -> UserInfo {
-        var info = UserInfo()
+        let info = UserInfo()
         info.membershipUserID = membershipUserID
         return info
     }
     public static func hasConnectivity() -> Bool {
         let reachability: Reachability = Reachability.reachabilityForInternetConnection()
-        let networkStatus: Int = reachability.currentReachabilityStatus().value
+        let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
     }
 }

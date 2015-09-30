@@ -19,7 +19,7 @@ public class CryptoUtility
         let iv:[UInt8] = [0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F]
         let key:[UInt8] = [0x2b,0x7e,0x15,0x16,0x28,0xae,0xd2,0xa6,0xab,0xf7,0x15,0x88,0x09,0xcf,0x4f,0x3c];
         
-        var requestTime:String = getRequestExpirationTime(10) // Set it to 10 minute for now
+        let requestTime:String = getRequestExpirationTime(10) // Set it to 10 minute for now
         return getEncryptedData(requestTime, iv: iv, key: key)
     }
     
@@ -34,9 +34,9 @@ public class CryptoUtility
         comps.minute = minutes
         
         let cal = NSCalendar.currentCalendar()
-        var nsDate = NSDate()
+        let nsDate = NSDate()
         
-        let date = cal.dateByAddingComponents(comps, toDate: nsDate, options: nil)
+        let date = cal.dateByAddingComponents(comps, toDate: nsDate, options: [])
         
         //Format the time in UTC
         let formatter = NSDateFormatter()
@@ -61,7 +61,7 @@ public class CryptoUtility
         //3. Encoded String
         let nsData:NSData = NSData(bytes: encryptedData!, length: encryptedData!.count)
         let base64EncodedString:NSString = nsData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
-        println("encode: \(plainText) > \(base64EncodedString)")
+        print("encode: \(plainText) > \(base64EncodedString)")
         
         return base64EncodedString as String
         
@@ -87,7 +87,7 @@ public class CryptoUtility
         //5. Convert to NSString
         let decryptedString = NSString(data: nsDecryptedData, encoding: NSUTF8StringEncoding)
         
-        println("decode: \(encryptedString) > \(decryptedString!)")
+        print("decode: \(encryptedString) > \(decryptedString!)")
         
         return decryptedString!
     }

@@ -35,72 +35,23 @@ class PreventionsSubTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
-        var abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
-        println("response value; \(abtMeResponse?.responseValue)")
-        var responseValue:String?
-        var newResponseValue: String = ""
-        if abtMeResponse != nil
-        {
-            responseValue = abtMeResponse!.responseValue
-        }
-        if cell!.selected == true
-        {
-            //cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            println("label: \(indexPath.row)")
-            if (responseValue != nil && responseValue != "")
-            {
-                //Put the values in Array
-                var responseValueArray:[String] = responseValue!.componentsSeparatedByString(",")
-                //get the value of selected Response
-                var selectedResponseValue = toString(indexPath.row)
-                //If the selected response is in the array - remove it - Deselect!
-                if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
-                    responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
-                    
-                    //var newResponseValue: String?
-                    for var i = 0; i < responseValueArray.count; i++ {
-                        if i < responseValueArray.count - 1
-                        {
-                            newResponseValue += responseValueArray[i] + ","
-                        }
-                        else
-                        {
-                            newResponseValue += responseValueArray[i]
-                        }
-                    }
-                    cell!.accessoryType = UITableViewCellAccessoryType.None
-                }
-                else
-                {
-                
-                    newResponseValue = responseValue! + "," + toString(indexPath.row)
-                    cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-                }
-            }
-            else
-            {
-                newResponseValue = toString(indexPath.row)
-                cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
-            }
-            dataMgr?.saveAboutMeReponse("AMQ_11", dateAdded: NSDate(), responseValue: newResponseValue)
-        }
-        else
-        {
-            cell!.accessoryType = UITableViewCellAccessoryType.None
-        }
+        QuestionHelper.SaveMultiSelectResponse(indexPath, cell: cell, dataMgr: dataMgr!)
         //Remove the gray selection
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    func notEqual<T: Equatable> (that:T) -> ((this:T) -> Bool) {
-        return { (this:T) -> Bool in return this != that }
-    }
-    
-    
+
     /*
     // MARK: - Table view data source
     
@@ -116,42 +67,12 @@ class PreventionsSubTableViewController: UITableViewController {
     return 0
     }
     */
-    var QuestionTextArray: [String] = [AboutMeResponseQuestions.AMQText_1, AboutMeResponseQuestions.AMQText_2, AboutMeResponseQuestions.AMQText_3, AboutMeResponseQuestions.AMQText_4, AboutMeResponseQuestions.AMQText_5, AboutMeResponseQuestions.AMQText_6, AboutMeResponseQuestions.AMQText_7, AboutMeResponseQuestions.AMQText_8, AboutMeResponseQuestions.AMQText_9, AboutMeResponseQuestions.AMQText_10]
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PreventionCell", forIndexPath: indexPath) as! UITableViewCell
-        cell.textLabel?.text = QuestionTextArray[indexPath.row]
-        cell.textLabel?.textColor = UIColor(netHex:0x2387CD)
-        cell.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        cell.textLabel?.numberOfLines = 0
-        cell.textLabel?.textAlignment = NSTextAlignment.Left;
-        cell.textLabel?.font = UIFont.systemFontOfSize(15.0);
-        cell.textLabel?.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
-        
-        
-        var abtMeResponse = dataMgr!.getAboutMeResponse("AMQ_11")
-        var responseValue:String?
-        var responseValueArray:[String]=[]
-        if abtMeResponse != nil
-        {
-            responseValue = abtMeResponse!.responseValue
-            responseValueArray = responseValue!.componentsSeparatedByString(",")
-        }
-        
-        
-        println("Index: \(indexPath.row)")
-        
-        if contains(responseValueArray, toString(indexPath.row))
-        {
-            cell.accessoryType =  UITableViewCellAccessoryType.Checkmark
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryType.None
-        }
-        
-        return cell
-    }
+
+        let cell = tableView.dequeueReusableCellWithIdentifier("PreventionCell", forIndexPath: indexPath) 
+        return QuestionHelper.PopulateMutiSelectQuestions(indexPath, cell: cell, dataMgr: dataMgr!)!
+
+            }
     
     
     /*

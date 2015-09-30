@@ -13,34 +13,37 @@ public extension UIViewController{
     
     func loadViewController(targetViewIdentifier:String)
     {
-        let vc :AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier(targetViewIdentifier)
-        if vc.isKindOfClass(UITabBarController)
-        {
-            let tabview = vc as! UITabBarController
-            self.showViewController(tabview, sender: vc)
-        }
-        else
-        {
-         self.showViewController(vc as! UIViewController, sender: vc)
+        dispatch_async(dispatch_get_main_queue()) {
+            let vc :AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier(targetViewIdentifier)
+            if vc.isKindOfClass(UITabBarController)
+            {
+                let tabview = vc as! UITabBarController
+                self.showViewController(tabview, sender: vc)
+            }
+            else
+            {
+                self.showViewController(vc as! UIViewController, sender: vc)
+            }
         }
     }
     
     func loadViewController(targetViewIdentifier:String,tabIndex:Int)
     {
-        let vc :AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier(targetViewIdentifier)
-        if vc.isKindOfClass(UITabBarController)
-        {
-            let tabview = vc as! UITabBarController
-            self.showViewController(tabview, sender: vc)
-            tabview.selectedIndex = tabIndex
-        }
-        else
-        {
-            self.showViewController(vc as! UIViewController, sender: vc)
+        dispatch_async(dispatch_get_main_queue()) {
+            let vc :AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier(targetViewIdentifier)
+            if vc.isKindOfClass(UITabBarController)
+            {
+                let tabview = vc as! UITabBarController
+                self.showViewController(tabview, sender: vc)
+                tabview.selectedIndex = tabIndex
+            }
+            else
+            {
+                self.showViewController(vc as! UIViewController, sender: vc)
+            }
         }
     }
 }
-
 
 public class NavigationHelper
 {
@@ -49,18 +52,18 @@ public class NavigationHelper
     {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
-        var dataMgr = DataManager(objContext: manObjContext)
+        let dataMgr = DataManager(objContext: manObjContext)
         AppContext.loginStatus = dataMgr.getMetaDataValue(MetaDataKeys.LoginStatus)
         AppContext.membershipUserID = dataMgr.getMetaDataValue(MetaDataKeys.MembershipUserID)
         if(AppContext.loginStatus ==  LoginStatus.LoggedIn)
         {
             if(tagetView.isEmpty)
             {
-            sourceView.loadViewController("TabView",tabIndex: targetID)    
+                sourceView.loadViewController("TabView",tabIndex: targetID)
             }
             else
             {
-              sourceView.loadViewController(tagetView,tabIndex: targetID)
+                sourceView.loadViewController(tagetView,tabIndex: targetID)
             }
         }
         else if (AppContext.loginStatus ==  LoginStatus.LoggedOut && !AppContext.membershipUserID.isEmpty)
@@ -71,6 +74,6 @@ public class NavigationHelper
         {
             sourceView.loadViewController("LogInView")
         }
-
+        
     }
 }

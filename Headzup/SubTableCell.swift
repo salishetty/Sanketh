@@ -19,7 +19,7 @@ class SubTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegate {
         setUpTable()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
        // setUpTable()
     }
@@ -32,7 +32,7 @@ class SubTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegate {
     
     func setUpTable()
     {
-        var contentView =  UIView()
+        let contentView =  UIView()
         contentView.backgroundColor = UIColor.blueColor()
         
         subMenuTable = UITableView(frame: CGRectZero, style:UITableViewStyle.Plain)
@@ -65,7 +65,7 @@ class SubTableCell: UITableViewCell,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cellID") as? UITableViewCell
+        var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cellID") as UITableViewCell!
         if(cell == nil)
         {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cellID")

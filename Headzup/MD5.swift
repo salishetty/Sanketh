@@ -46,7 +46,7 @@ final class MD5 : HashBase, _Hash {
         // Step 2. Append Length a 64-bit representation of lengthInBits
         var lengthInBits = (message.length * 8)
         var lengthBytes = lengthInBits.bytes(64 / 8)
-        tmpMessage.appendBytes(reverse(lengthBytes));
+        tmpMessage.appendBytes(Array(lengthBytes.reverse()));
         
         // Process the message in successive 512-bit chunks:
         let chunkSizeBytes = 512 / 8 // 64
@@ -96,7 +96,7 @@ final class MD5 : HashBase, _Hash {
                 dTemp = D
                 D = C
                 C = B
-                B = B &+ rotateLeft((A &+ F &+ k[j] &+ M[g]), s[j])
+                B = B &+ rotateLeft((A &+ F &+ k[j] &+ M[g]), n: s[j])
                 A = dTemp
             }
             

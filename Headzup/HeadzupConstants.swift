@@ -78,6 +78,21 @@ public struct AboutMeResponseQuestions
     
     
 }
+public struct AboutMeResponseQuestionCode
+{
+    public static let AMQ_1 = "AMQ_1"
+    public static let AMQ_2 = "AMQ_2"
+    public static let AMQ_3 = "AMQ_3"
+    public static let AMQ_4 = "AMQ_4"
+    public static let AMQ_5 = "AMQ_5"
+    public static let AMQ_6 = "AMQ_6"
+    public static let AMQ_7 = "AMQ_7"
+    public static let AMQ_8 = "AMQ_8"
+    public static let AMQ_9 = "AMQ_9"
+    public static let AMQ_10 = "AMQ_10"
+    public static let AMQ_11 = "AMQ_11"
+    
+}
 public struct GroupType
 {
     public static let Favorite = "1"

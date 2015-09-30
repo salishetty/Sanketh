@@ -16,8 +16,6 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
     @IBOutlet weak var pageControl: UIPageControl!
     
     var dataMgr: DataManager?
-    var serviceMgr:ServiceManager?
-    
     var firstAidContents:Array<Int>= []
     
     var transferID:Int = 0
@@ -32,10 +30,10 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         
         self.scrollView.delegate = self
         
-        var size =  scrollView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
-        var contentwidth = scrollView.frame.size.width
-        var screenWidth =  UIScreen.mainScreen().bounds.width
-        var contentHeight = UIScreen.mainScreen().bounds.height * 0.745
+//        var size =  scrollView.systemLayoutSizeFittingSize(UILayoutFittingExpandedSize)
+//        var contentwidth = scrollView.frame.size.width
+        let screenWidth =  UIScreen.mainScreen().bounds.width
+        let contentHeight = UIScreen.mainScreen().bounds.height * 0.745
         
         //Add call to update core data.
         
@@ -43,24 +41,22 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-        serviceMgr = ServiceManager(objContext: manObjContext)
         //If there is network connectivity - Get FirstAid Contents and add/update the contents in ContentGroup
+        
         if AppContext.hasConnectivity()
         {
-            var theURL:String =  AppContext.svcUrl + "getFirstAidContents"
-            
-            serviceMgr?.getFirstAidContent(theURL, postCompleted: { (jsonData: NSArray?)->() in
+            let serviceManager = ServiceManager()
+             serviceManager.getFirstAidContent({ (jsonData: JSON?)->() in
                 //Declare array of ContentIDs which are of Intervention Type
-                var ContentIDArray: [NSNumber] = []
+               
                 if let parseJSON = jsonData {
-                    ContentIDArray = parseJSON as! [NSNumber]
-                    //Save those contents with type = Intervention to 'ContentGroup'
-                    for contID in ContentIDArray
+                     for contentIdJSON in parseJSON
                     {
+                        print("Conetent id for firstaid \(contentIdJSON.1.intValue)")
                         let formatter = NSNumberFormatter()
                         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-                        var groupType = formatter.numberFromString(GroupType.OMG)
-                        self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contID, isActive: false)
+                        let groupType = formatter.numberFromString(GroupType.OMG)
+                        self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentIdJSON.1.intValue, isActive: false)
                     }
                     
                 }
@@ -78,11 +74,11 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         var index:Int32 = 0
         for firstAidContent in self.firstAidContents
         {
-            var theContent = dataMgr?.getContentByID(firstAidContent)
-            var newFirstAid = FirstAidView(firstAid: theContent!)
+            let theContent = dataMgr?.getContentByID(firstAidContent)
+            let newFirstAid = FirstAidView(firstAid: theContent!)
             newFirstAid.firstAidViewDelegate = self
-            var offset = (CGFloat(index) * newFirstAid.bounds.width)
-            newFirstAid.frame.offset(dx: offset, dy: 0)
+            let offset = (CGFloat(index) * newFirstAid.bounds.width)
+            newFirstAid.frame.offsetInPlace(dx: offset, dy: 0)
             
             self.scrollView.addSubview(newFirstAid)
             index++
@@ -90,6 +86,14 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         }
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
