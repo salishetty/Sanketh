@@ -58,66 +58,48 @@ public class DataManager:DataManagerBase
     public func getMetaDataValue(name: String) -> String {
         
         var retVal = ""
-        do{
-            // check if given meta exists
-            let fetchRequest = NSFetchRequest(entityName: "MetaData")
-            fetchRequest.predicate = NSPredicate(format: "name == \"\(name)\"")
-            
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
-            
-            //var theMetaData:MetaData? = nil
-            
-            if (fetchResults.count>0){
-                
-                let theMetaData :MetaData! = fetchResults[0]
-                if(theMetaData?.isSecured == true && AppContext.enc)
-                {
-                    //encrypt value
-                    let decryptedValue = CryptoUtility().getDecryptedData(theMetaData!.value, iv: iv, key: key)
-                    retVal = decryptedValue as String
-                    
-                }
-                else
-                {
-                    retVal = theMetaData!.value
-                }
-                print("found metadata: \(name)->\(retVal)")
-            } else {
-                print("Cannot find matching MetaData for \(name)")
-            }
-            
-        }
-        catch let error as NSError
+        if let fetchResults = super.fetchEntity("MetaData", key: "name", value: name)
         {
-            print("Error fetching Metadata Value: \(error.localizedDescription)")
+             var metaData:[MetaData] = fetchResults as! [MetaData]
+            let theMetaData :MetaData! = metaData[0]
+            if(theMetaData?.isSecured == true && AppContext.enc)
+            {
+                //encrypt value
+                let decryptedValue = CryptoUtility().getDecryptedData(theMetaData!.value, iv: iv, key: key)
+                retVal = decryptedValue as String
+                
+            }
+            else
+            {
+                retVal = theMetaData!.value
+            }
+            print("found metadata: \(name)->\(retVal)")
+        }
+        else
+        {
+            print("Cannot find matching MetaData for \(name)")
         }
         return retVal
-        
     }
     
     public func getAllMetaData() -> [MetaData]?{
-        do
+        if let fetchResults = super.fetchEntity("MetaData")
         {
-            // check if given meta exists
-            let fetchRequest = NSFetchRequest(entityName: "MetaData")
-            
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [MetaData]
-            
+            let metaData:[MetaData] = fetchResults as! [MetaData]
             let c: Int! = fetchResults.count
-            
-            var s = "found \(c) metedata "
-            var m:MetaData!
-            
-            for var i = 0; i < c; i++ {
-                m = fetchResults[i]
-                s += m.toString() + " "
+            var s = "found \(c) MetaData: \n"
+            var theMetaData:MetaData!
+            for var i = 0; i < c; i++
+            {
+                theMetaData = metaData[i]
+                s += theMetaData.toString() + "\n"
             }
             print("\(s)")
-            return fetchResults
+            return metaData
         }
-        catch let error as NSError
+        else
         {
-            print("Error fetching all Metadata: \(error.localizedDescription)")
+            print("No MataData found")
         }
         return nil
     }
@@ -189,135 +171,84 @@ public class DataManager:DataManagerBase
     
     public func getAllContents() -> [Content]?
     {
-        
-        do
+        if let fetchResults = super.fetchEntity("Content")
         {
-            let fetchRequest = NSFetchRequest(entityName: "Content")
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as! [Content]
-            
+            let content:[Content] = fetchResults as! [Content]
             let c: Int! = fetchResults.count
-            
-            var s = "found \(c) strategies: \n"
-            var m:Content!
-            
-            for var i = 0; i < c; i++ {
-                m = fetchResults[i]
-                s += m.toString() + "\n"
+            var s = "found \(c) Contents: \n"
+            var theContent:Content!
+            for var i = 0; i < c; i++
+            {
+                theContent = content[i]
+                s += theContent.toString() + "\n"
             }
             print("\(s)")
-            return fetchResults
+            return content
         }
-        catch let error as NSError
+        else
         {
-            print("Error fetching all Contents: \(error.localizedDescription)")
+            print("No Contents found")
         }
         return nil
     }
     public func getContentByID(contentID:Int)->Content?
     {
-        do{
-            var retVal = ""
-            // check if given Content exists
-            let fetchRequest = NSFetchRequest(entityName: "Content")
-            fetchRequest.predicate = NSPredicate(format: "contentID == \"\(contentID)\"")
+        var theContent:Content!
+        if let fetchResults = super.fetchEntity("Content", key: "contentID", value: String(contentID))
+        {
+            var content:[Content] = fetchResults as! [Content]
+            theContent = content[0]
+            print("found Content: \(theContent?.contentName)")
+        }
+        else
+        {
+            print("Cannot find matching Content for \(contentID)")
+        }
+        return theContent
+    }
+    
+    public func getContentByIDs(contentIDs:String) ->[Content]?
+    {
+        let contentIDsArray = contentIDs.componentsSeparatedByString(",")
+        var theContentArray = [Content]()
+        var contentID:String?
+        for var i = 0; i < contentIDsArray.count; i++ {
+            contentID = contentIDsArray[i]
             
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Content]
-            
+            let fomattedContentID = NSNumberFormatter().numberFromString(contentID!)
+            let newContentID = fomattedContentID!.integerValue
             var theContent:Content!
-            
-            if (fetchResults?.count>0)
+            if let fetchResults = super.fetchEntity("Content", key: "contentID", value: String(newContentID))
             {
-                theContent = fetchResults?[0]
-                
-                retVal = theContent.contentValue
-                print("found Content: \(theContent?.contentName)->\(retVal)")
+                let content:[Content] = fetchResults as! [Content]
+                theContent = content[0]
+                //Fill contentArray
+                theContentArray.append(theContent)
+                print("found Content: \(theContent?.contentName)")
             }
             else
             {
                 print("Cannot find matching Content for \(contentID)")
             }
             
-            return theContent
         }
-        catch let error as NSError
-        {
-            print("Error getting content by ContentID: \(error.localizedDescription)")
-        }
-        return nil
-    }
-    
-    public func getContentByIDs(contentIDs:String) ->[Content]?
-    {
-        do
-        {
-            let fetchRequest = NSFetchRequest(entityName: "Content")
-            let contentIDsArray = contentIDs.componentsSeparatedByString(",")
-            var theContentArray = [Content]()
-            
-            var contentID:String?
-            for var i = 0; i < contentIDsArray.count; i++ {
-                contentID = contentIDsArray[i]
-                
-                let fomattedContentID = NSNumberFormatter().numberFromString(contentID!)
-                let newContentID = fomattedContentID!.integerValue
-                fetchRequest.predicate = NSPredicate(format: "contentID == \"\(newContentID)\"")
-                
-                let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Content]
-                
-                var theContent:Content!
-                if (fetchResults?.count>0)
-                {
-                    theContent = fetchResults?[0]
-                    //Fill contentArray
-                    theContentArray.append(theContent)
-                    print("found Content: \(theContent?.contentName)")
-                }
-                else
-                {
-                    print("Cannot find matching Content for \(contentID)")
-                }
-                
-            }
-            return theContentArray
-        }
-        catch let error as NSError
-        {
-            print("Error returning Content by ContentIDS: \(error.localizedDescription)")
-        }
-        return nil
+        return theContentArray
     }
     
     public func getCategoryByID(categoryID:Int)->Category?
     {
-        do
+        var theCategory:Category!
+        if let fetchResults = super.fetchEntity("Category", key: "categoryID", value: String(categoryID))
         {
-            var retVal = ""
-            // check if given Content exists
-            let fetchRequest = NSFetchRequest(entityName: "Category")
-            fetchRequest.predicate = NSPredicate(format: "categoryID == \"\(categoryID)\"")
-            
-            let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
-            
-            var theCategory:Category!
-            
-            if (fetchResults?.count>0)
-            {
-                theCategory = fetchResults?[0]
-                
-                retVal = theCategory.categoryName
-                print("found Category with Category Name: \(theCategory?.categoryName)->\(retVal)")
-            }
-            else
-            {
-                print("Cannot find matching Content for \(categoryID)")
-            }
-            return theCategory
+            var category:[Category] = fetchResults as! [Category]
+            theCategory = category[0]
+            print("found Category with Category Name: \(theCategory?.categoryName)")
         }
-        catch let error as NSError
+        else
         {
-            print("Error getting Category by ID : \(error.localizedDescription)")
+            print("Cannot find matching Category for \(categoryID)")
         }
-        return nil
+        return theCategory
      }
     
     public func saveContentCategory(categoryID:Int, categoryName:String, contentIDs:String)
@@ -345,26 +276,23 @@ public class DataManager:DataManagerBase
     }
 public func getAllcategories() -> [Category]?
 {
-    do
+    if let fetchResults = super.fetchEntity("Category")
     {
-        let fetchRequest = NSFetchRequest(entityName: "Category")
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [Category]
-        
-        let c: Int! = fetchResults?.count
-        
+        let category:[Category] = fetchResults as! [Category]
+        let c: Int! = fetchResults.count
         var s = "found \(c) Categories: \n"
-        var m:Category!
-        
-        for var i = 0; i < c; i++ {
-            m = fetchResults?[i]
-            s += m.toString() + "\n"
+        var theCategory:Category!
+        for var i = 0; i < c; i++
+        {
+            theCategory = category[i]
+            s += theCategory.toString() + "\n"
         }
         print("\(s)")
-        return fetchResults
+        return category
     }
-    catch let error as NSError
+    else
     {
-        print("Failed to fetch all Categories: \(error.localizedDescription)")
+        print("No categories found")
     }
     return nil
 }
@@ -372,24 +300,17 @@ public func getAllcategories() -> [Category]?
 
 public func saveUserActionLog(actionType:String, actionDateTime:NSDate,contentID:String, comment:String, isSynched:Bool)
 {
-    do
-    {
-        let theData = NSEntityDescription.insertNewObjectForEntityForName("UserActionLog", inManagedObjectContext: dbContext) as! UserActionLog
-        theData.osVersion = UIDevice.currentDevice().systemVersion
-        theData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
-        theData.actionType = actionType
-        theData.actionDateTime = actionDateTime
-        theData.contentID = contentID
-        theData.comment = comment
-        theData.isSynched = isSynched
-        //save to coredata
-        try dbContext.save()
-        print("UserActionLog saved)")
-    }
-    catch let error as NSError
-    {
-        print("Error saving to UserActionLog: \(error.localizedDescription)")
-    }
+    var theProperties: [String: AnyObject] = [:]
+    
+    theProperties["osVersion"] = UIDevice.currentDevice().systemVersion
+    theProperties["appVersion"] = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+    theProperties["actionType"] = actionType
+    theProperties["actionDateTime"] = actionDateTime
+    theProperties["contentID"] = contentID
+    theProperties["comment"] = comment
+    theProperties["isSynched"] = isSynched
+    super.saveEntity("UserActionLog", properties: theProperties) as! UserActionLog
+    print("UserActionLog saved)")
 }
 
 public func getUserActionLogs(max: Int) -> [UserActionLog]? {
@@ -433,27 +354,18 @@ public func getUserActionLogs(max: Int) -> [UserActionLog]? {
 
 public func saveTechnicalLog(message:String, exception:String, moduleName:String, eventDate:String, appVersion:String, osversion:String, logLevel:String, isSynched:Bool)
 {
-    do
-    {
-    
-        let theTechLogData = NSEntityDescription.insertNewObjectForEntityForName("TechnicalLog", inManagedObjectContext: dbContext) as! TechnicalLog
-        theTechLogData.message = message
-        theTechLogData.exception = exception
-        theTechLogData.moduleName = moduleName
-        theTechLogData.eventDate = eventDate
-        theTechLogData.osVersion = UIDevice.currentDevice().systemVersion
-        theTechLogData.appVersion = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
-        theTechLogData.logLevel = logLevel
-        theTechLogData.isSynched = isSynched
-        //save to coredata
-        try dbContext.save()
-        print("TechnicalLog saved)")
-            
-    }
-    catch let error as NSError
-    {
-        print("Error saving to TechnicalLog: \(error.localizedDescription)")
-    }
+    var theProperties: [String: AnyObject] = [:]
+    theProperties["message"] = message
+    theProperties["exception"] = exception
+    theProperties["moduleName"] = moduleName
+    theProperties["eventDate"] = eventDate
+    theProperties["osVersion"] = UIDevice.currentDevice().systemVersion
+    theProperties["appVersion"] = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as! String
+    theProperties["logLevel"] = logLevel
+    theProperties["isSynched"] = isSynched
+    super.saveEntity("TechnicalLog", properties: theProperties) as! TechnicalLog
+    print("TechnicalLog saved)")
+
 }
 public func getTechnicalLogs(max:Int)-> [TechnicalLog]?
 {
@@ -661,20 +573,13 @@ public func getFavoritedContents() -> [ContentGroup]?
 
 public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
 {
-    do
-    {
-        let theUserResponse:AboutMeResponse = NSEntityDescription.insertNewObjectForEntityForName("AboutMeResponse", inManagedObjectContext: dbContext) as! AboutMeResponse
-        theUserResponse.questionID = questionID
-        theUserResponse.dateAdded = dateAdded
-        theUserResponse.responseValue = responseValue
-        //save to coredata
-        try dbContext.save()
-        print("AboutMeResponse saved")
-    }
-    catch let error as NSError
-    {
-        print("Save AboutMe Response failed: \(error.localizedDescription)")
-    }
+    var theProperties: [String: AnyObject] = [:]
+    theProperties["questionID"] = questionID
+    theProperties["dateAdded"] = dateAdded
+    theProperties["responseValue"] = responseValue
+    
+    super.saveEntity("AboutMeResponse", properties: theProperties) as! AboutMeResponse
+    print("AboutMeResponse saved")
 }
 
 public func getAboutMeResponse(questionID:String)->AboutMeResponse?
