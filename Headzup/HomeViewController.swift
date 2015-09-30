@@ -56,7 +56,6 @@ class HomeViewController: UIViewController {
         var objectID:String?
         let gHelper = GeneralHelper()
         let responsesTobeSynched:[AboutMeResponse] = dataMgr!.getResponsesToBeSynched()!
-        let responsesTobeDeleted:[AboutMeResponse] = dataMgr!.getResponsesToBeDeleted()!
         if responsesTobeSynched.count > 0
         {
             var index:Int32 = 0
@@ -68,11 +67,13 @@ class HomeViewController: UIViewController {
                 
                 dict = gHelper.responseItemsToDictionary(responseItems)
                 responseItemsArray["ResponseItem"+String(index)] = dict
+
                 //Abebe have a look
                 //let lastComponent = responseItem.objectID.URIRepresentation().absoluteString.lastPathComponent
                 let lastComponent = responseItem.objectID.URIRepresentation().absoluteString
                 //Integer part of objectID
                 objectID = lastComponent.substringFromIndex(lastComponent.startIndex.advancedBy(1))
+
                 //update index
                 index++
             }
@@ -87,19 +88,21 @@ class HomeViewController: UIViewController {
                     let status = parseJSON["Status"]
                     if(status == 1)
                     {
-                        let synchDate = NSDate()
-                        //if successful, save the last objectID to MetaData
-                        //self.dataMgr?.saveMetaData("AboutMeResponseID", value: objectID!, isSecured: true)
-                        self.dataMgr?.saveMetaData("SynchResponseDate", value: gHelper.convertDateToString(synchDate), isSecured: true)
-                        //var responseToBeDeleted = Array(Set(responses).subtract(mostRecentResponse))
-                        //Delete all synched AboutMe responses
-                        for (_, response) in responsesTobeDeleted.enumerate()
-                        {
-                            print("AboutMe reponses: \(response.questionID): \(response.responseValue):,\(response.dateAdded)")
-                            self.dataMgr?.deleteAboutMeResponse(response)
-                        }
+
+//                        let synchDate = NSDate()
+//                        //if successful, save the last objectID to MetaData
+//                        //self.dataMgr?.saveMetaData("AboutMeResponseID", value: objectID!, isSecured: true)
+//                        self.dataMgr?.saveMetaData("SynchResponseDate", value: gHelper.convertDateToString(synchDate), isSecured: true)
+//                        var responseToBeDeleted = Array(Set(responses).subtract(mostRecentResponse))
+//                        //Delete all synched AboutMe responses
+//                        for (_, response) in responsesTobeDeleted.enumerate()
+//                        {
+//                            print("AboutMe reponses: \(response.questionID): \(response.responseValue):,\(response.dateAdded)")
+//                            self.dataMgr?.deleteAboutMeResponse(response)
+//                        }
                         
                         print("About Me Response synchronized Successfully")
+
                     }
                 }
                 
