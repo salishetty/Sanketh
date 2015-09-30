@@ -10,15 +10,30 @@ import UIKit
 
 class GoalReminderSettingViewController: UIViewController {
 
-    @IBOutlet weak var DatePicker: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
-    @IBOutlet weak var Switch: UISwitch!
+    @IBOutlet weak var OnOffswitch: UISwitch!
+    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        DatePicker.backgroundColor = UIColor(hex:0x5DB8EB,alpha:1)
-//        DatePicker.setValue(UIColor.whiteColor(), forKeyPath: "textColor")
-        // Do any additional setup after loading the view.
+        
+        var currentDate = NSDate()
+       
+       if let currentNotif = NotificationHelper.getNotification(NotificationConstants.GoalName)
+        {
+            currentDate = currentNotif.fireDate!
+            datePicker.minimumDate = currentDate
+            datePicker.date = currentDate
+        }
+        else
+        {
+            OnOffswitch.on = false
+            OnOffswitch.enabled = false
+            saveButton.enabled = false
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,7 +43,20 @@ class GoalReminderSettingViewController: UIViewController {
     
     @IBAction func Save(sender: AnyObject) {
         
+        var selectedTime = datePicker.date
+        
+
+        
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+         return .LightContent
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return false
+    }
+
 
     /*
     // MARK: - Navigation

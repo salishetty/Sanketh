@@ -47,17 +47,19 @@ public class NotificationHelper
     }
     
     
-    static func UpdateGoalNotification(Name : String, goalName: String)
+    static func UpdateNotification(Name : String, notifDate:NSDate? ,notifText: String?)
     {
         let notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications!
-        var datetime:NSDate = NSDate()
+        var alertTime:NSDate = NSDate()
+        var alertBody:String = ""
         for notifyCancel in notifyArray {
             
             let info: [String: String] = notifyCancel.userInfo as! [String: String]
             
             if info["Name"] == Name
             {
-                datetime = notifyCancel.fireDate!
+                alertTime = notifyCancel.fireDate!
+                alertBody = notifyCancel.alertBody!
                 UIApplication.sharedApplication().cancelLocalNotification(notifyCancel)
                 
             }
@@ -67,15 +69,50 @@ public class NotificationHelper
             }
         }
         
-        let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
-            .Minute,
-            value: 2,
-            toDate: datetime,
-            options: NSCalendarOptions(rawValue: 0))
-        EnableGoalNotifcation(tomorrow!, goalName: goalName)
+        if notifDate != nil
+        {
+            alertTime = notifDate!
+            
+        }
+        else
+        {
+            alertTime = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: 1,
+                toDate: alertTime,
+                options: NSCalendarOptions(rawValue: 0))!
+        }
+       
+        if notifText != nil
+        {
+           alertBody = notifText!
+        }
+        
+       
+        if Name == NotificationConstants.GoalName
+        {
+        EnableGoalNotifcation(alertTime, goalText: alertBody)
+        }
+        else
+        {
+            EnableTrackerNotifcation(alertTime)
+        }
 
     }
 
+    static func getNotification(Name : String) -> UILocalNotification?
+    {
+        let notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications!
+        for notification in notifyArray {
+            let info: [String: String] = notification.userInfo as! [String: String]
+            if info["Name"] == Name
+            {
+               return notification
+
+            }
+        }
+        return nil
+    }
     
     static func SetupTrackerNotification(application: UIApplication)
     {
@@ -137,10 +174,10 @@ public class NotificationHelper
    
     }
 
-    static func EnableGoalNotifcation(datetime:NSDate , goalName: String )
+    static func EnableGoalNotifcation(datetime:NSDate , goalText: String )
     {
         let goalNotification: UILocalNotification = UILocalNotification()
-        goalNotification.alertBody = "Your Headzup goal today: " + goalName
+        goalNotification.alertBody = goalText
         //goalNotification.alertAction = "Goal"
         goalNotification.fireDate = datetime
         goalNotification.repeatInterval = NSCalendarUnit.Minute

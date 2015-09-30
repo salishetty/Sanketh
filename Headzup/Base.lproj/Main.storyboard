@@ -629,7 +629,7 @@
         <!--Tracker Reminder-->
         <scene sceneID="bHK-dN-tMH">
             <objects>
-                <viewController title="Tracker Reminder" id="XJF-sK-3Tj" sceneMemberID="viewController">
+                <viewController title="Tracker Reminder" id="XJF-sK-3Tj" customClass="TrackerReminderSettingViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZgT-4O-ige"/>
                         <viewControllerLayoutGuide type="bottom" id="Ezj-eC-kfa"/>
@@ -644,24 +644,25 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XpM-z5-Y3u">
                                 <rect key="frame" x="20" y="84" width="560" height="496"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fa2-Cu-gTz">
-                                        <rect key="frame" x="20" y="101" width="520" height="162"/>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fa2-Cu-gTz" customClass="CustomDatePicker" customModule="Headzup" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="100" width="520" height="250"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="162" id="ImT-On-oZO"/>
+                                            <constraint firstAttribute="height" constant="250" id="ImT-On-oZO"/>
                                         </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="464280374.68023401">
                                             <!--2015-09-18 14:46:14 +0000-->
                                         </date>
                                     </datePicker>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set reminder : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVs-4P-WMh">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set reminder : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVs-4P-WMh">
                                         <rect key="frame" x="20" y="40" width="441" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                        <color key="textColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4OX-ik-rpj">
                                         <rect key="frame" x="471" y="35" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.69411764710000001" green="0.88235294119999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -686,7 +687,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tracker reminder" id="oxw-AC-mEm">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Zh9-HD-wGb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Zh9-HD-wGb">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -773,10 +776,10 @@
                                         <color key="onTintColor" red="0.69411764710000001" green="0.88235294119999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </switch>
                                     <datePicker contentMode="scaleToFill" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bMP-GS-y2y" customClass="CustomDatePicker" customModule="Headzup" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="105" width="520" height="200"/>
+                                        <rect key="frame" x="20" y="105" width="520" height="250"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="H2u-64-RRL"/>
+                                            <constraint firstAttribute="height" constant="250" id="H2u-64-RRL"/>
                                         </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="464285477.78769302">
                                             <!--2015-09-18 16:11:17 +0000-->
@@ -805,6 +808,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Goal reminder" id="kkC-so-hW4">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="g89-sH-sJh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="Save:" destination="dih-Mm-Cx8" id="uhC-AG-v99"/>
                             </connections>
@@ -812,8 +816,9 @@
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="DatePicker" destination="bMP-GS-y2y" id="Oe3-jJ-PuX"/>
-                        <outlet property="Switch" destination="bkd-9O-qyA" id="26I-6g-FAf"/>
+                        <outlet property="OnOffswitch" destination="bkd-9O-qyA" id="HyA-aO-hHD"/>
+                        <outlet property="datePicker" destination="bMP-GS-y2y" id="XEl-ci-Xcj"/>
+                        <outlet property="saveButton" destination="g89-sH-sJh" id="7pB-AO-kM8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wlv-6g-c7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
