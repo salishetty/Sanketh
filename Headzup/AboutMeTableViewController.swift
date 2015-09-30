@@ -119,7 +119,9 @@ class AboutMeTableViewController: UITableViewController {
     }
     func LoadYesNoQuestions()
     {
-        let responses:[AboutMeResponse] = dataMgr!.getMostRecentAboutMeResponses()!
+
+        let responses:[AboutMeResponse] = dataMgr!.getAllAboutMeResponses()!
+
         for response : AboutMeResponse in responses
         {
             switch(response.questionID)
