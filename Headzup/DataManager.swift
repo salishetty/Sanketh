@@ -566,7 +566,9 @@ public func getFavoritedContents() -> [ContentGroup]?
     }
     else
     {
+
         print("No ContentGroup found")
+
     }
     return contentGroup
 }
@@ -591,8 +593,8 @@ public func getAboutMeResponse(questionID:String)->AboutMeResponse?
         fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
         
         //get the latest record
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
-        fetchRequest.fetchLimit = 1
+        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
+        //fetchRequest.fetchLimit = 1
         
         let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
         

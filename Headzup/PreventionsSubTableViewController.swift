@@ -26,6 +26,8 @@ class PreventionsSubTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "PreventionCell")
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +51,7 @@ class PreventionsSubTableViewController: UITableViewController {
         //Remove the gray selection
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+
     /*
     // MARK: - Table view data source
     
@@ -65,9 +68,11 @@ class PreventionsSubTableViewController: UITableViewController {
     }
     */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCellWithIdentifier("PreventionCell", forIndexPath: indexPath) 
         return QuestionHelper.PopulateMutiSelectQuestions(indexPath, cell: cell, dataMgr: dataMgr!)!
-    }
+
+            }
     
     
     /*
