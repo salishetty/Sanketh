@@ -148,25 +148,39 @@ public class DataManager:DataManagerBase
     
     public func saveContent(contentID:NSNumber, contentName:String, contentDescription:String, contentValue:String, contentType:String, imagePath:String, audioPath:String)
     {
-        var theProperties: [String: AnyObject] = [:]
-        var theContent:Content!
-        if let fetchResults = super.fetchEntity("Content", key: "contentID", value: contentID.stringValue)
+        do
         {
-            var content:[Content] = fetchResults as! [Content]
-            theContent = content[0]
-            print("found Content \(theContent.toString())")
+            var theProperties: [String: AnyObject] = [:]
+            var theContent:Content!
+            if let fetchResults = super.fetchEntity("Content", key: "contentID", value: contentID.stringValue)
+            {
+                var content:[Content] = fetchResults as! [Content]
+                theContent = content[0]
+                print("found Content \(theContent.toString())")
+                theContent.contentName = contentName
+                theContent.contentValue = contentValue
+                theContent.contentDescription = contentDescription
+                theContent.imagePath = imagePath
+                theContent.audioPath = audioPath
+                try super.managedContext.save()
+            }
+            else {
+                print("creating new Content: \(contentID) : \(contentName)")
+                theProperties["contentID"] = contentID
+                theProperties["contentName"] = contentName
+                theProperties["contentValue"] = contentValue
+                theProperties["contentDescription"] = contentDescription
+                theProperties["imagePath"] = imagePath
+                theProperties["audioPath"] = audioPath
+                theContent = super.saveEntity("Content", properties: theProperties) as! Content
+                print("Content Saved: \(theContent.toString())")
+            }
+
         }
-        else {
-            print("creating new Content: \(contentID) : \(contentName)")
-            theProperties["contentID"] = contentID
-            theProperties["contentName"] = contentName
-            theProperties["contentValue"] = contentValue
-            theProperties["contentDescription"] = contentDescription
-            theProperties["imagePath"] = imagePath
-            theProperties["audioPath"] = audioPath
-            theContent = super.saveEntity("Content", properties: theProperties) as! Content
+        catch let error as NSError
+        {
+            print("Error saving Content: \(error.localizedDescription) ")
         }
-        print("Content Saved: \(theContent.toString())")
     }
     
     public func getAllContents() -> [Content]?
@@ -253,26 +267,34 @@ public class DataManager:DataManagerBase
     
     public func saveContentCategory(categoryID:Int, categoryName:String, contentIDs:String)
     {
-        var theProperties: [String: AnyObject] = [:]
-        var theCategory:Category!
-        if let fetchResults = super.fetchEntity("Category", key: "categoryID", value: String(categoryID))
+        do
         {
-            var category:[Category] = fetchResults as! [Category]
-            theCategory = category[0]
-            print("found Category \(theCategory.toString())")
+            var theProperties: [String: AnyObject] = [:]
+            var theCategory:Category!
+            if let fetchResults = super.fetchEntity("Category", key: "categoryID", value: String(categoryID))
+            {
+                var category:[Category] = fetchResults as! [Category]
+                theCategory = category[0]
+                print("found Category \(theCategory.toString())")
+                theCategory.categoryName = categoryName
+                theCategory.contentIDs = contentIDs
+                try super.managedContext.save()
+            }
+            else
+            {
+                print("creating new Category: \(categoryID) : \(categoryName)")
+                theProperties["categoryID"] = categoryID
+                theProperties["categoryName"] = categoryName
+                theProperties["contentIDs"] = contentIDs
+                theCategory = super.saveEntity("Category", properties: theProperties) as! Category
+                print("Category Saved: \(theCategory.toString())")
+            }
+
         }
-        else
+        catch let error as NSError
         {
-            print("creating new Category: \(categoryID) : \(categoryName)")
-            theProperties["categoryID"] = categoryID
-            theProperties["categoryName"] = categoryName
-            theProperties["contentIDs"] = contentIDs
-            theCategory = super.saveEntity("Category", properties: theProperties) as! Category
+            print("Error saving Category: \(error.localizedDescription) ")
         }
-        theCategory.categoryID = categoryID
-        theCategory.categoryName = categoryName
-        theCategory.contentIDs = contentIDs
-        print("Category Saved: \(theCategory.toString())")
     }
 public func getAllcategories() -> [Category]?
 {
@@ -575,44 +597,48 @@ public func getFavoritedContents() -> [ContentGroup]?
 
 public func saveAboutMeReponse(questionID:String, dateAdded:NSDate, responseValue:String)
 {
-    var theProperties: [String: AnyObject] = [:]
-    theProperties["questionID"] = questionID
-    theProperties["dateAdded"] = dateAdded
-    theProperties["responseValue"] = responseValue
-    
-    super.saveEntity("AboutMeResponse", properties: theProperties) as! AboutMeResponse
-    print("AboutMeResponse saved")
+    do
+    {
+        var theProperties: [String: AnyObject] = [:]
+        var theAboutMeResponse:AboutMeResponse!
+        if let fetchResults = super.fetchEntity("AboutMeResponse", key: "questionID", value: questionID)
+        {
+            var aboutMeResponse:[AboutMeResponse] = fetchResults as! [AboutMeResponse]
+            theAboutMeResponse = aboutMeResponse[0]
+            theAboutMeResponse.responseValue = responseValue
+            theAboutMeResponse.dateAdded = dateAdded
+            try super.managedContext.save()
+            print("found AboutMeResponse \(theAboutMeResponse.toString())")
+        }
+        else {
+            print("creating new AboutMeResponse: \(questionID) : \(responseValue)")
+            theProperties["questionID"] = questionID
+            theProperties["dateAdded"] = dateAdded
+            theProperties["responseValue"] = responseValue
+            theAboutMeResponse = super.saveEntity("AboutMeResponse", properties: theProperties) as! AboutMeResponse
+            print("Content Saved: \(theAboutMeResponse.toString())")
+        }
+     }
+    catch let error as NSError
+    {
+        print("Error Saving About Me response: \(error.localizedDescription) ")
+    }
 }
 
 public func getAboutMeResponse(questionID:String)->AboutMeResponse?
 {
-    do
+    var theAboutMeResponse:AboutMeResponse!
+    if let fetchResults = super.fetchEntity("AboutMeResponse", key: "questionID", value: questionID)
     {
-        // check if given meta exists
-        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
-        fetchRequest.predicate = NSPredicate(format: "questionID == \"\(questionID)\"")
-        
-        //get the latest record
-        //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateAdded", ascending: false)]
-        //fetchRequest.fetchLimit = 1
-        
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
-        
-        var theAboutMeResponse:AboutMeResponse!
-        if (fetchResults?.count>0){
-            theAboutMeResponse = fetchResults?[0]
-            print("Found AboutMeResponse with QuestionID: \(theAboutMeResponse.questionID)")
-        } else {
-            print("No AboutMeResponse Found with a matching record for questionID:\(questionID)")
-        }
-        
-        return theAboutMeResponse
+        var aboutMeResponse:[AboutMeResponse] = fetchResults as! [AboutMeResponse]
+        theAboutMeResponse = aboutMeResponse[0]
+        print("Found AboutMeResponse with responseValue: \(theAboutMeResponse.responseValue)")
     }
-    catch let error as NSError
+    else
     {
-        print("fetch failed for AboutMeResponse: \(error.localizedDescription)")
+        print("No AboutMeResponse Found with a matching record for questionID:\(questionID)")
     }
-    return nil
+    return theAboutMeResponse
 }
 
 public func getMostRecentAboutMeResponses() -> [AboutMeResponse]?
