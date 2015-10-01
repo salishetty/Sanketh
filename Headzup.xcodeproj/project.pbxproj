@@ -79,6 +79,7 @@
 		14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA5531B728C6100FB040F /* GeneralHelper.swift */; };
 		14DAF7541B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAF7531B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift */; };
 		14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */; };
+		14E8E07B1BBDDCA60058474F /* SynchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8E07A1BBDDCA60058474F /* SynchHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		5700DB271B839A23004796AE /* DemoAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5700DB261B839A23004796AE /* DemoAudio.mp3 */; };
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
@@ -228,6 +229,7 @@
 		14CDA5531B728C6100FB040F /* GeneralHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralHelper.swift; sourceTree = "<group>"; };
 		14DAF7531B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItemsDTO.swift; sourceTree = "<group>"; };
 		14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentGroup.swift; sourceTree = "<group>"; };
+		14E8E07A1BBDDCA60058474F /* SynchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchHelper.swift; sourceTree = "<group>"; };
 		5700DB261B839A23004796AE /* DemoAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DemoAudio.mp3; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 				14896B8E1BB5D81000AC693D /* ICMSHelper.swift */,
 				14896B901BB6134F00AC693D /* ValidationHelper.swift */,
 				14896B921BB7258900AC693D /* QuestionHelper.swift */,
+				14E8E07A1BBDDCA60058474F /* SynchHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
 				577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,
+				14E8E07B1BBDDCA60058474F /* SynchHelper.swift in Sources */,
 				140710A51B7A8DD900F731EB /* DateExtensions.swift in Sources */,
 				577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */,
 				577146601B99426100BBD8E4 /* CVSelectionType.swift in Sources */,
