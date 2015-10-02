@@ -95,7 +95,7 @@ public class NotificationHelper
         }
         else
         {
-            EnableTrackerNotifcation(alertTime)
+        EnableTrackerNotifcation(alertTime)
         }
 
     }

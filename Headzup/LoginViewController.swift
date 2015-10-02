@@ -137,7 +137,13 @@ class LoginViewController: UIViewController,  ValidationDelegate, UITextFieldDel
                             AppContext.membershipUserID = memberhipUserID                        
                             self.dataMgr?.saveUserActionLog(UserActions.Login, actionDateTime: NSDate(), contentID: "", comment: "Login", isSynched: false)
                         
-                          self.loadViewController("TabView",tabIndex:0)
+                        //enable tracker notification
+                        let date: NSDate = NSDate()
+                        let cal: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+                        let fireDate: NSDate = cal.dateBySettingHour(8, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions())!
+                        NotificationHelper.EnableTrackerNotifcation(fireDate)
+                        
+                        self.loadViewController("TabView",tabIndex:0)
                     }
                     else if(status == "2")
                     {

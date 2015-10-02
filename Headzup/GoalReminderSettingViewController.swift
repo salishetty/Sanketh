@@ -43,9 +43,22 @@ class GoalReminderSettingViewController: UIViewController {
     
     @IBAction func Save(sender: AnyObject) {
         
-        var selectedTime = datePicker.date
+        let selectedTime = datePicker.date
+        let currentDate : NSDate = NSDate()
+        let compareResult = currentDate.compare(currentDate)
+        var alertTime:NSDate = selectedTime
+        if compareResult == NSComparisonResult.OrderedAscending {
+            alertTime = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: 1,
+                toDate: selectedTime,
+                options: NSCalendarOptions(rawValue: 0))!
+            
+        }
         
-
+        //TODO: Get current goal text
+        
+        NotificationHelper.UpdateNotification(NotificationConstants.GoalName, notifDate: alertTime, notifText: nil)
         
     }
     

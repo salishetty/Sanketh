@@ -10,10 +10,29 @@ import UIKit
 
 class TrackerReminderSettingViewController: UIViewController {
 
+    @IBOutlet weak var datePicker: CustomDatePicker!
+    @IBOutlet weak var onOffSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        if let currentNotif = NotificationHelper.getNotification(NotificationConstants.TrackerName)
+        {
+           
+            let currentDate = currentNotif.fireDate!
+            datePicker.minimumDate = currentDate
+            datePicker.date = currentDate
+        }
+        else
+        {
+            //enable tracker notification
+            let date: NSDate = NSDate()
+            let cal: NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+            let fireDate: NSDate = cal.dateBySettingHour(8, minute: 0, second: 0, ofDate: date, options: NSCalendarOptions())!
+            datePicker.minimumDate = fireDate
+            datePicker.date = fireDate
+            onOffSwitch.on = false
+        }
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,6 +48,32 @@ class TrackerReminderSettingViewController: UIViewController {
         return false
     }
 
+    @IBAction func SaveBT(sender: AnyObject) {
+       
+        if (onOffSwitch.on == true)
+        {
+        let selectedTime = datePicker.date
+        let currentDate : NSDate = NSDate()
+        let compareResult = currentDate.compare(currentDate)
+        var alertTime:NSDate = selectedTime
+        if compareResult == NSComparisonResult.OrderedAscending {
+            alertTime = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: 1,
+                toDate: selectedTime,
+                options: NSCalendarOptions(rawValue: 0))!
+            
+        }
+        NotificationHelper.UpdateNotification(NotificationConstants.TrackerName, notifDate: alertTime, notifText: nil)
+        }
+        else
+        {
+            NotificationHelper.DisableNotification(NotificationConstants.TrackerName)
+        }
+
+    }
+    
+    
     /*
     // MARK: - Navigation
 
