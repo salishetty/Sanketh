@@ -681,42 +681,38 @@ public func getAllAboutMeResponses() -> [AboutMeResponse]?
     }
     return nil
 }
-public func getResponsesToBeSynched() -> [AboutMeResponse]?
+public func getResponsesTobeSynched() -> [AboutMeResponse]?
 {
-    do
+    var theAboutMeResponse:AboutMeResponse!
+    var aboutMeResponses = [AboutMeResponse]()
+    let synchDate = getMetaDataValue("SynchResponseDate")
+    if let fetchResults = super.fetchEntity("AboutMeResponse")
     {
-        let fetchRequest = NSFetchRequest(entityName: "AboutMeResponse")
-        let fetchResults = try dbContext!.executeFetchRequest(fetchRequest) as? [AboutMeResponse]
-        
-        let c: Int! = fetchResults?.count
-        let synchDate = getMetaDataValue("SynchResponseDate")
-        
+        let c: Int! = fetchResults.count
         var s = "found \(c) About me responses: \n"
-        var m:AboutMeResponse!
-        var responses = [AboutMeResponse]()
         if synchDate != ""
         {
             for var i = 0; i < c; i++ {
-                m = fetchResults?[i]
-                if m.dateAdded.isGreaterThanDate(GeneralHelper.convertStringToDate(synchDate))
+                theAboutMeResponse = fetchResults[i] as! AboutMeResponse
+                if theAboutMeResponse.dateAdded.isGreaterThanDate(GeneralHelper.convertStringToDate(synchDate))
                 {
-                    responses.append(m)
+                    aboutMeResponses.append(theAboutMeResponse)
                 }
-                s += m.toString() + "\n"
+                s += theAboutMeResponse.toString() + "\n"
             }
             print("\(s)")
         }
         else
         {
-            responses = fetchResults!
+            aboutMeResponses = fetchResults as! [AboutMeResponse]
         }
-        return responses
+        
     }
-    catch let error as NSError
+    else
     {
-        print("fetch failed to get  all AboutMeResponse to be Synched: \(error.localizedDescription)")
+        print("No AboutMeResponse Found with a matching record")
     }
-    return nil
+    return aboutMeResponses
 }
 
 public func getResponsesToBeDeleted() -> [AboutMeResponse]?
@@ -724,7 +720,6 @@ public func getResponsesToBeDeleted() -> [AboutMeResponse]?
     do
     {
         let QuestionIDArray: [String] = ["AMQ_1", "AMQ_2", "AMQ_3", "AMQ_4", "AMQ_5", "AMQ_6", "AMQ_7", "AMQ_8", "AMQ_9", "AMQ_10", "AMQ_11"]
-        let gHelpers = GeneralHelper()
         
         var abtMeResponseArray = [AboutMeResponse]()
         for questionID in QuestionIDArray
@@ -738,7 +733,7 @@ public func getResponsesToBeDeleted() -> [AboutMeResponse]?
             let c: Int! = fetchResults.count
             var theAboutMeResponse:AboutMeResponse!
             if (c > 1){
-                fetchResults.sortInPlace({gHelpers.convertDateToString($0.dateAdded) < gHelpers.convertDateToString($1.dateAdded)})
+                fetchResults.sortInPlace({GeneralHelper.convertDateToString($0.dateAdded) < GeneralHelper.convertDateToString($1.dateAdded)})
                 for var i = 0; i < c - 1; i++ {
                     theAboutMeResponse = fetchResults[i]
                     abtMeResponseArray.append(theAboutMeResponse!)

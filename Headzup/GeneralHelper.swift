@@ -25,11 +25,11 @@ public class GeneralHelper
     {
         return [FavoriteKeys.MembershipUserID:favoriteItems.membershipUserId, FavoriteKeys.GroupType:favoriteItems.groupType.stringValue, FavoriteKeys.ContentID:favoriteItems.contentID.stringValue, FavoriteKeys.IsActive:favoriteItems.isActive]
     }
-    func responseItemsToDictionary(responseItems: ResponseItems) -> [String:String]
+    public static func responseItemsToDictionary(responseItems: ResponseItems) -> [String:String]
     {
         return [AboutMeResponseKeys.MembershipUserID:responseItems.membershipUserId, AboutMeResponseKeys.QuestionID:responseItems.questionID, AboutMeResponseKeys.ResponseValue:responseItems.responseValue, AboutMeResponseKeys.DateAdded:responseItems.dateAdded as String]
     }
-    func convertDateToString(date:NSDate)->String
+    public static func convertDateToString(date:NSDate)->String
     {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
