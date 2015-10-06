@@ -4,7 +4,17 @@ PODS:
 
 DEPENDENCIES:
   - CryptoSwift
-  - CVCalendar (~> 1.1.4)
+  - CVCalendar (from `https://github.com/Mozharovsky/CVCalendar`, branch `master`)
+
+EXTERNAL SOURCES:
+  CVCalendar:
+    :branch: master
+    :git: https://github.com/Mozharovsky/CVCalendar
+
+CHECKOUT OPTIONS:
+  CVCalendar:
+    :commit: d951cd3892304b1ee0ffb932ab5fad214562d09e
+    :git: https://github.com/Mozharovsky/CVCalendar
 
 SPEC CHECKSUMS:
   CryptoSwift: 05b7e813763fc7a0e8726e962365d6e09f091098
