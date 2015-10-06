@@ -7,7 +7,7 @@ use_frameworks!
 target 'Headzup' do
 
 pod 'CryptoSwift'
-
+pod 'CVCalendar', '~> 1.1.4'
 end
 
 target 'HeadzupTests' do

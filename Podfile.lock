@@ -1,10 +1,13 @@
 PODS:
   - CryptoSwift (0.0.16)
+  - CVCalendar (1.1.4)
 
 DEPENDENCIES:
   - CryptoSwift
+  - CVCalendar (~> 1.1.4)
 
 SPEC CHECKSUMS:
   CryptoSwift: 05b7e813763fc7a0e8726e962365d6e09f091098
+  CVCalendar: ebeb7b3cb9eaa2c136ed70ce655f07907fc785d7
 
 COCOAPODS: 0.38.2
