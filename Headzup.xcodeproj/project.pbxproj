@@ -138,6 +138,7 @@
 		6A2CEF821B7520C70083B568 /* StrategyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */; };
 		6A2CEF851B7A86530083B568 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2CEF841B7A86530083B568 /* CustomButton.swift */; };
 		6AB5BB8F1B710D6B00CF2DAD /* ToolboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */; };
+		EF8D8CA63357BCF024679BF3 /* Pods_Headzup.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97E081C9EB3F3D4F2E6E00C1 /* Pods_Headzup.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -230,6 +231,7 @@
 		14DAF7531B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteItemsDTO.swift; sourceTree = "<group>"; };
 		14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentGroup.swift; sourceTree = "<group>"; };
 		14E8E07A1BBDDCA60058474F /* SynchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchHelper.swift; sourceTree = "<group>"; };
+		44426D2C4CC4237154DD34B8 /* Pods-Headzup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Headzup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Headzup/Pods-Headzup.debug.xcconfig"; sourceTree = "<group>"; };
 		5700DB261B839A23004796AE /* DemoAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DemoAudio.mp3; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -288,6 +290,8 @@
 		6A2CEF811B7520C70083B568 /* StrategyDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategyDetailsViewController.swift; sourceTree = "<group>"; };
 		6A2CEF841B7A86530083B568 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6AB5BB8E1B710D6B00CF2DAD /* ToolboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolboxViewController.swift; sourceTree = "<group>"; };
+		97E081C9EB3F3D4F2E6E00C1 /* Pods_Headzup.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Headzup.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3DE1C326902EC80C4B22B14 /* Pods-Headzup.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Headzup.release.xcconfig"; path = "Pods/Target Support Files/Pods-Headzup/Pods-Headzup.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF8D8CA63357BCF024679BF3 /* Pods_Headzup.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +361,8 @@
 				14983CC51B557A170059A5CA /* Headzup */,
 				14983CDE1B557A170059A5CA /* HeadzupTests */,
 				14983CC41B557A170059A5CA /* Products */,
+				60D521C171789AB71485E70E /* Pods */,
+				61B217F6867DE9744B710D24 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -649,6 +656,23 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		60D521C171789AB71485E70E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				44426D2C4CC4237154DD34B8 /* Pods-Headzup.debug.xcconfig */,
+				E3DE1C326902EC80C4B22B14 /* Pods-Headzup.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		61B217F6867DE9744B710D24 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				97E081C9EB3F3D4F2E6E00C1 /* Pods_Headzup.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6A2CEF831B7A85EE0083B568 /* Custom Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,9 +690,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 14983CE51B557A170059A5CA /* Build configuration list for PBXNativeTarget "Headzup" */;
 			buildPhases = (
+				165D46FA3A7E61FB4835C92E /* Check Pods Manifest.lock */,
 				14983CBF1B557A170059A5CA /* Sources */,
 				14983CC01B557A170059A5CA /* Frameworks */,
 				14983CC11B557A170059A5CA /* Resources */,
+				14660EE20E264EC9FDFEFD1E /* Embed Pods Frameworks */,
+				919C5E2248F1C55528221AC0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -758,6 +785,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14660EE20E264EC9FDFEFD1E /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Headzup/Pods-Headzup-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		165D46FA3A7E61FB4835C92E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		919C5E2248F1C55528221AC0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Headzup/Pods-Headzup-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		14983CBF1B557A170059A5CA /* Sources */ = {
@@ -1016,6 +1091,7 @@
 		};
 		14983CE61B557A170059A5CA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44426D2C4CC4237154DD34B8 /* Pods-Headzup.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1034,6 +1110,7 @@
 		};
 		14983CE71B557A170059A5CA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3DE1C326902EC80C4B22B14 /* Pods-Headzup.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
