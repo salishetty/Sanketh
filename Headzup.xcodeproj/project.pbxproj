@@ -85,7 +85,6 @@
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
 		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		575F4F791BB5989800C1F768 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575F4F781BB5989800C1F768 /* SwiftyJSON.swift */; settings = {ASSET_TAGS = (); }; };
 		5771466B1B9F648200BBD8E4 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466A1B9F648200BBD8E4 /* AboutMeViewController.swift */; };
 		5771466F1B9F862300BBD8E4 /* AboutMeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466E1B9F862300BBD8E4 /* AboutMeTableViewController.swift */; };
 		577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146701BA0DD2500BBD8E4 /* SubTableCell.swift */; };
@@ -211,7 +210,6 @@
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		5753D85A1BB1F76700378332 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		5753D85C1BB33ACC00378332 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
-		575F4F781BB5989800C1F768 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		5771466A1B9F648200BBD8E4 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
 		5771466E1B9F862300BBD8E4 /* AboutMeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeTableViewController.swift; sourceTree = "<group>"; };
 		577146701BA0DD2500BBD8E4 /* SubTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTableCell.swift; sourceTree = "<group>"; };
@@ -483,7 +481,6 @@
 		575F4F771BB5984F00C1F768 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				575F4F781BB5989800C1F768 /* SwiftyJSON.swift */,
 				14983CF01B557C2D0059A5CA /* ServiceManager.swift */,
 				5753D85C1BB33ACC00378332 /* NetworkOperation.swift */,
 			);
@@ -699,7 +696,6 @@
 			files = (
 				14983D281B5586950059A5CA /* UInt8Extension.swift in Sources */,
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
-				575F4F791BB5989800C1F768 /* SwiftyJSON.swift in Sources */,
 				14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				5771466B1B9F648200BBD8E4 /* AboutMeViewController.swift in Sources */,

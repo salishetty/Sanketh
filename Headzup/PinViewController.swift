@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import SwiftyJSON
 class PinViewController: UIViewController,ValidationDelegate, UITextFieldDelegate
     
 {

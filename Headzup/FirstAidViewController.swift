@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-
+import SwiftyJSON
 class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!

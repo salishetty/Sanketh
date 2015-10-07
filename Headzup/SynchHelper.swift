@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 public class SynchHelper
 {
     public static func SynchTailoringQuestions(dataMgr:DataManager, svcMgr:ServiceManager) {
