@@ -16,6 +16,7 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+*.xcuserdata
 
 ## Other
 *.xccheckout
@@ -25,3 +26,4 @@ xcuserdata
 xcuserdata/*
 .DS_Store
 UserInterfaceState.xcuserstate
+*.xcuserstate
