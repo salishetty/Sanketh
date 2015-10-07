@@ -12,7 +12,7 @@ import CoreData
 class HomeViewController: UIViewController {
 
     var dataMgr: DataManager?
-    
+    var svcMgr: ServiceManager?
     
     @IBOutlet weak var greetingLB: UILabel!
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
     @IBAction func SynchTailoringQuestions(sender: UIButton) {
 
         //Synch Tailoring questions - to be removed later
-        SynchHelper.SynchTailoringQuestions(dataMgr!)
+        SynchHelper.SynchTailoringQuestions(dataMgr!, svcMgr: svcMgr!)
     }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent

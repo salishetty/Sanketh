@@ -7,7 +7,7 @@
 //  Copyright (c) 2015 Inflexxion. All rights reserved.
 
 import Foundation
-struct ServiceManager
+public struct ServiceManager
 {
     func Login(params : Dictionary<String, String>, completion : (jsonData: JSON?) -> ())
     {
@@ -23,7 +23,7 @@ struct ServiceManager
         }
     }
     
-    func synchUserActions(params : Dictionary<String, String>, completion : (jsonData: JSON?) -> ())
+    func synchUserActions(params : Dictionary<String,Dictionary<String, String>>, completion : (jsonData: JSON?) -> ())
     {
         guard let theURL:NSURL =  NSURL(string:AppContext.svcUrl + SeriviceApi.UserAction.key)
             else
@@ -37,7 +37,7 @@ struct ServiceManager
         }
     }
     
-    func synchTechnicalLog(params : Dictionary<String, String>, completion : (jsonData: JSON?) -> ())
+    func synchTechnicalLog(params : Dictionary<String,Dictionary<String, String>>, completion : (jsonData: JSON?) -> ())
     {
         guard let theURL:NSURL =  NSURL(string:AppContext.svcUrl + SeriviceApi.TechnicalLog.key)
             else
