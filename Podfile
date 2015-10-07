@@ -8,6 +8,8 @@ target 'Headzup' do
 
 pod 'CryptoSwift'
 pod 'CVCalendar', :git => 'https://github.com/Mozharovsky/CVCalendar', :branch => 'master'
+pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+
 end
 
 target 'HeadzupTests' do
