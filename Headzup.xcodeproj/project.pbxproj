@@ -85,6 +85,7 @@
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
 		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; settings = {ASSET_TAGS = (); }; };
+		575B65471BC6CDFC008F1368 /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B65461BC6CDFC008F1368 /* TrackerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		5771466B1B9F648200BBD8E4 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466A1B9F648200BBD8E4 /* AboutMeViewController.swift */; };
 		5771466F1B9F862300BBD8E4 /* AboutMeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466E1B9F862300BBD8E4 /* AboutMeTableViewController.swift */; };
 		577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146701BA0DD2500BBD8E4 /* SubTableCell.swift */; };
@@ -210,6 +211,7 @@
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		5753D85A1BB1F76700378332 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
 		5753D85C1BB33ACC00378332 /* NetworkOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperation.swift; sourceTree = "<group>"; };
+		575B65461BC6CDFC008F1368 /* TrackerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerViewController.swift; sourceTree = "<group>"; };
 		5771466A1B9F648200BBD8E4 /* AboutMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeViewController.swift; sourceTree = "<group>"; };
 		5771466E1B9F862300BBD8E4 /* AboutMeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutMeTableViewController.swift; sourceTree = "<group>"; };
 		577146701BA0DD2500BBD8E4 /* SubTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubTableCell.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 				577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */,
 				57CD83091BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift */,
 				57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */,
+				575B65461BC6CDFC008F1368 /* TrackerViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				140DED1E1B67CFE6001F6A3F /* PinRule.swift in Sources */,
 				14983D181B5586950059A5CA /* Cipher.swift in Sources */,
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
+				575B65471BC6CDFC008F1368 /* TrackerViewController.swift in Sources */,
 				5771466F1B9F862300BBD8E4 /* AboutMeTableViewController.swift in Sources */,
 				577146731BA7C97300BBD8E4 /* AccountTableViewController.swift in Sources */,
 				14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */,
