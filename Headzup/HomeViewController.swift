@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
-
+        
         // Do any additional setup after loading the view.
         //Display greeting message
         let firstName =  dataMgr!.getMetaDataValue(MetaDataKeys.FirstName)
@@ -35,9 +35,9 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func SynchTailoringQuestions(sender: UIButton) {
-
+        let svcMgr = ServiceManager()
         //Synch Tailoring questions - to be removed later
-        SynchHelper.SynchTailoringQuestions(dataMgr!, svcMgr: svcMgr!)
+        SynchHelper.SynchTailoringQuestions(dataMgr!, svcMgr: svcMgr)
     }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
