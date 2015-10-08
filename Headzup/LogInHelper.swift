@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import CoreData
-
+import SwiftyJSON
 public  class LogInHelper
 {
     class func isDisabled() -> Bool

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 public class ICMSHelper
 {
     public static func processContent(jsonData: JSON?, dataMgr:DataManager)

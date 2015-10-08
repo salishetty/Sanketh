@@ -7,6 +7,7 @@
 //  Copyright (c) 2015 Inflexxion. All rights reserved.
 
 import Foundation
+import SwiftyJSON
 public struct ServiceManager
 {
     func Login(params : Dictionary<String, String>, completion : (jsonData: JSON?) -> ())

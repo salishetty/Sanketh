@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 class NetworkOperation : NSURLSession
 {
     lazy var config: NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
