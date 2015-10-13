@@ -2613,6 +2613,25 @@
             </objects>
             <point key="canvasLocation" x="600" y="4292"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="MV6-uc-W3m">
+            <objects>
+                <viewController id="pNt-MU-Pxf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E37-o4-QPb"/>
+                        <viewControllerLayoutGuide type="bottom" id="toE-Qq-5ue"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gWt-Me-0Yc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H9N-kg-N0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1276" y="4299"/>
+        </scene>
         <!--Splash View Controller-->
         <scene sceneID="UGp-48-cIg">
             <objects>
@@ -2738,7 +2757,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="500" height="50"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                        <state key="normal" title="Track for today">
+                                        <state key="normal" title="Track your headache">
                                             <color key="titleColor" red="0.13725490200000001" green="0.52941176469999995" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -2973,6 +2992,9 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="YesButton:" destination="kpC-36-wdH" eventType="touchUpInside" id="VuP-fp-nqp"/>
+                                                    <segue destination="pNt-MU-Pxf" kind="popoverPresentation" popoverAnchorView="5oA-uZ-ax7" id="Mka-aD-P2E">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
