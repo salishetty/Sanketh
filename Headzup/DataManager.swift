@@ -756,4 +756,44 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
     dbContext.deleteObject(aboutMeResponse)
 }
 
+    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:NSNumber, helpfulContent:NSNumber)
+    {
+        var theProperties: [String: AnyObject] = [:]
+        var theTrackerResponse:TrackerResponse!
+        print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
+        theProperties["trackDate"] = trackDate
+        theProperties["hadHeadache"] = hadHeadache
+        theProperties["painLevel"] = painLevel
+        theProperties["affectSleep"] = affectSleep
+        theProperties["affectActivity"] = affectActivity
+        theProperties["painReasons"] = painReasons
+        theProperties["helpfulContent"] = helpfulContent
+        
+        theTrackerResponse = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
+        print("Tracker response Saved: \(theTrackerResponse.toString())")
+    }
+    
+    public func getAllTrackerResponses() -> [TrackerResponse]?
+    {
+        if let fetchResults = super.fetchEntity("TrackerResponse")
+        {
+            let trackerResponse:[TrackerResponse] = fetchResults as! [TrackerResponse]
+            let c: Int! = fetchResults.count
+            var s = "found \(c) TrackerResponses: \n"
+            var theTrackerResponse:TrackerResponse!
+            for var i = 0; i < c; i++
+            {
+                theTrackerResponse = trackerResponse[i]
+                s += theTrackerResponse.toString() + "\n"
+            }
+            print("\(s)")
+            return trackerResponse
+        }
+        else
+        {
+            print("No TrackerResponses found")
+        }
+        return nil
+    }
+
 }
