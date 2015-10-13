@@ -1,6 +1,6 @@
 PODS:
   - CryptoSwift (0.0.16)
-  - CVCalendar (1.1.4)
+  - CVCalendar (1.2.0)
   - SwiftyJSON (2.3.0)
 
 DEPENDENCIES:
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   CVCalendar:
-    :commit: d951cd3892304b1ee0ffb932ab5fad214562d09e
+    :commit: 9749553c5a5c749b700551c02f662684594002b6
     :git: https://github.com/Mozharovsky/CVCalendar
   SwiftyJSON:
     :commit: 3b5d0d4e0c19173b1bf0dc823bde25ad870f70c0
@@ -25,7 +25,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   CryptoSwift: 05b7e813763fc7a0e8726e962365d6e09f091098
-  CVCalendar: ebeb7b3cb9eaa2c136ed70ce655f07907fc785d7
+  CVCalendar: dbef506272939db7218b831b5d0327a3688d974e
   SwiftyJSON: 8d6b61a70277ef2a5d710d372e06e7e2d87fb9e4
 
 COCOAPODS: 0.38.2

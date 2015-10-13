@@ -72,7 +72,6 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
     }
 
 
-
     //MonthLabel
     func presentedDateUpdated(date: CVDate) {
         if monthLabel.text != date.globalDescription && self.animationFinished {
@@ -170,6 +169,11 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
     func dotMarker(moveOffsetOnDayView dayView: DayView) -> CGFloat {
         return 15
     }
+
+    func dotMarker(sizeOnDayView dayView: DayView) -> CGFloat {
+        return 17
+    }
+
     //Primary View :Head Ache view
 
     func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
