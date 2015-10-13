@@ -23,17 +23,25 @@ class TrackerConfirmViewController: UIViewController {
         let dateString = formatter.stringFromDate(selectedDate!)
 
         let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
+        let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
+        if (isToday)
+        {
+            ConfirmLabel.text = "Have you had a headache today, \(dateString)?"
 
-if (isToday)
-{
-    ConfirmLabel.text = "Have you had a headache today, \(dateString)?"
-
+        }
+        else if (isYesterday)
+        {
+            ConfirmLabel.text = "Have you had a headache yesterday, \(dateString)?"
         }
         else
-{
-
+        {
+            ConfirmLabel.text = "Have you had a headache on, \(dateString)?"
+            
         }
-    }
+
+
+
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -42,11 +50,43 @@ if (isToday)
     
     @IBAction func YesButton(sender: AnyObject) {
 
+        let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
+        let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
+        if (isToday)
+        {
+
+        }
+        else if (isYesterday)
+        {
+
+        }
+        else
+        {
+
+
+        }
+
 
     }
 
     @IBAction func NoButton(sender: AnyObject) {
-        
+
+        let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
+        let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
+        if (isToday)
+        {
+                    }
+        else if (isYesterday)
+        {
+
+        }
+        else
+        {
+            
+
+        }
+
+
     }
     /*
     // MARK: - Navigation

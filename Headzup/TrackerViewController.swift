@@ -160,13 +160,16 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
     }
 
     func dotMarker(colorOnDayView dayView: CVCalendarDayView) -> [UIColor] {
-        return [UIColor(netHex:0x78AC2D)]
+        return [UIColor(netHex:0xB1E100)]
     }
 
     func dotMarker(shouldMoveOnHighlightingOnDayView dayView: CVCalendarDayView) -> Bool {
-        return false
+        return true
     }
 
+    func dotMarker(moveOffsetOnDayView dayView: DayView) -> CGFloat {
+        return 15
+    }
     //Primary View :Head Ache view
 
     func preliminaryView(viewOnDayView dayView: DayView) -> UIView {
@@ -254,7 +257,7 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
 extension TrackerViewController :CVCalendarViewAppearanceDelegate
 {
     func spaceBetweenWeekViews() -> CGFloat {
-        return 1
+        return 0
     }
 
     func dayLabelPresentWeekdayInitallyBold() -> Bool {
@@ -262,19 +265,19 @@ extension TrackerViewController :CVCalendarViewAppearanceDelegate
     }
 
     func spaceBetweenDayViews() -> CGFloat {
-        return 2
+        return 0
     }
 
     func dayLabelWeekdaySelectedBackgroundColor() -> UIColor {
-        return UIColor(netHex:0xF6771A)
+        return UIColor(netHex:0x5DB8EB)
     }
 
     func dayLabelPresentWeekdayHighlightedBackgroundColor() -> UIColor {
         return UIColor(netHex:0xEE2546)
     }
 
-    func dotMarkerColor() -> UIColor {
-        return UIColor(netHex:0xB1E100)
-    }
+//    func dotMarkerColor() -> UIColor {
+//        return UIColor(netHex:0xB1E100)
+//    }
 }
 
