@@ -47,6 +47,43 @@ public class SynchHelper
             )
         }
     }
+    public static func SynchTrackerQuestions(dataMgr:DataManager, svcMgr:ServiceManager) {
+        
+        var dict = Dictionary<String, String>()
+        var responseItemsArray = [String:Dictionary<String, String>]()
+        let trackerResponses:[TrackerResponse] = dataMgr.getAllTrackerResponses()!
+        var index:Int32 = 0
+        if trackerResponses.count > 0
+        {
+            for responseItem in trackerResponses
+            {
+                //print("AboutMeResponse Items: \(responseItem.questionID): \(responseItem.responseValue):\((responseItem.dateAdded))")
+                
+                let responseItems = TrackerResponseItems(trackDate: GeneralHelper.convertDateToString(responseItem.trackDate), hadHeadache: responseItem.hadHeadache, painLevel: responseItem.painLevel, affectSleep: responseItem.affectSleep, affectActivity: responseItem.affectActivity, painReasons: responseItem.painReasons, helpfulContent: responseItem.helpfulContent)
+                dict = self.trackerResponseItemsToDictionary(responseItems)
+                responseItemsArray["TrackerResponseItem"+String(index)] = dict
+                //update index
+                index++
+            }
+        }
+        if(responseItemsArray.count > 0)
+        {
+            svcMgr.synchTrackerResponse(responseItemsArray , completion: { (jsonData: JSON?)->() in
+                
+                if let parseJSON = jsonData {
+                    let status = parseJSON["Status"]
+                    if(status == 1)
+                    {
+                        let synchDate = NSDate()
+                        dataMgr.saveMetaData("SynchResponseDate", value: GeneralHelper.convertDateToString(synchDate), isSecured: true)
+                        print("Tracker Response synchronized Successfully")
+                    }
+                }
+                }
+            )
+        }
+    }
+
     public static func SynchFavorites(dataMgr:DataManager, svcMgr:ServiceManager)
     {
         let membershipUserID = self.getMembershipID()
@@ -200,6 +237,10 @@ public class SynchHelper
     public static func responseItemsToDictionary(responseItems: ResponseItems) -> [String:String]
     {
         return [AboutMeResponseKeys.MembershipUserID:responseItems.membershipUserId, AboutMeResponseKeys.QuestionID:responseItems.questionID, AboutMeResponseKeys.ResponseValue:responseItems.responseValue, AboutMeResponseKeys.DateAdded:responseItems.dateAdded as String]
+    }
+    public static func trackerResponseItemsToDictionary(responseItems: TrackerResponseItems) -> [String:String]
+    {
+        return [TrackerResponseKeys.TrackDate:responseItems.trackDate as String, TrackerResponseKeys.hadHeadache:responseItems.hadHeadache.stringValue, TrackerResponseKeys.painLevel:responseItems.painLevel.stringValue, TrackerResponseKeys.affectSleep:responseItems.affectSleep.stringValue, TrackerResponseKeys.affectActivity:responseItems.affectActivity.stringValue, TrackerResponseKeys.painReasons:responseItems.painReasons, TrackerResponseKeys.helpfulContent:responseItems.helpfulContent]
     }
     public static func getMembershipID() -> String
     {

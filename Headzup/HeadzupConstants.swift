@@ -63,6 +63,17 @@ public struct AboutMeResponseKeys
     public static let ResponseValue = "ResponseValue"
     public static let DateAdded = "LastModifiedDate"
 }
+public struct TrackerResponseKeys
+{
+    public static let TrackDate = "TrackDate"
+    public static let hadHeadache = "HadHeadache"
+    public static let painLevel = "PainLevel"
+    public static let affectSleep = "AffectSleep"
+    public static let affectActivity = "AffectActivity"
+    public static let painReasons = "PainReasons"
+    public static let helpfulContent = "HelpfulContent"
+
+}
 public struct AboutMeResponseQuestions
 {
     public static let AMQText_1 = "Relaxation, Meditation, Deep Breathing, etc"
