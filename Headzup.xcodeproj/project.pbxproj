@@ -96,6 +96,7 @@
 		577146791BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
+		5789948D1BCEF25000C315FD /* TrackerTodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
@@ -223,6 +224,7 @@
 		577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreventionsSubTableViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTodayTableViewController.swift; sourceTree = "<group>"; };
 		579182971B6EC294004ACFDD /* LogInHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInHelper.swift; sourceTree = "<group>"; };
 		579182991B6EC853004ACFDD /* NotificationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTests.swift; sourceTree = "<group>"; };
 		579F15021B728B20009488CA /* NotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationHelper.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */,
 				575B65461BC6CDFC008F1368 /* TrackerViewController.swift */,
 				575B65481BC71B78008F1368 /* TrackerConfirmViewController.swift */,
+				5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				14983D201B5586950059A5CA /* NSDataExtension.swift in Sources */,
 				579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */,
 				140DED1E1B67CFE6001F6A3F /* PinRule.swift in Sources */,
+				5789948D1BCEF25000C315FD /* TrackerTodayTableViewController.swift in Sources */,
 				14983D181B5586950059A5CA /* Cipher.swift in Sources */,
 				14983D191B5586950059A5CA /* CipherBlockMode.swift in Sources */,
 				575B65471BC6CDFC008F1368 /* TrackerViewController.swift in Sources */,
