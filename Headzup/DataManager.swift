@@ -758,19 +758,49 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
 
     public func saveTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:NSNumber, helpfulContent:NSNumber)
     {
-        var theProperties: [String: AnyObject] = [:]
-        var theTrackerResponse:TrackerResponse!
-        print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
-        theProperties["trackDate"] = trackDate
-        theProperties["hadHeadache"] = hadHeadache
-        theProperties["painLevel"] = painLevel
-        theProperties["affectSleep"] = affectSleep
-        theProperties["affectActivity"] = affectActivity
-        theProperties["painReasons"] = painReasons
-        theProperties["helpfulContent"] = helpfulContent
-        
-        theTrackerResponse = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
-        print("Tracker response Saved: \(theTrackerResponse.toString())")
+        do
+        {
+            var theProperties: [String: AnyObject] = [:]
+            var theTrackerResponse:TrackerResponse!
+            if let fetchResults = super.fetchEntity("TrackerResponse")
+            {
+                var trackerResponse:[TrackerResponse] = fetchResults as! [TrackerResponse]
+                theTrackerResponse = trackerResponse[0]
+                
+                if theTrackerResponse.trackDate.isEqualtoDate(trackDate)
+                {
+                    theTrackerResponse.trackDate = trackDate
+                    theTrackerResponse.hadHeadache = hadHeadache
+                    theTrackerResponse.painLevel = painLevel
+                    theTrackerResponse.affectSleep = affectSleep
+                    theTrackerResponse.affectActivity = affectActivity
+                    theTrackerResponse.painReasons = painReasons.stringValue
+                    theTrackerResponse.helpfulContent = helpfulContent.stringValue
+                    
+                    try super.managedContext.save()
+                    print("found TrackerResponse \(theTrackerResponse.toString())")
+                }
+            }
+            else
+            {
+                print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
+                theProperties["trackDate"] = trackDate
+                theProperties["hadHeadache"] = hadHeadache
+                theProperties["painLevel"] = painLevel
+                theProperties["affectSleep"] = affectSleep
+                theProperties["affectActivity"] = affectActivity
+                theProperties["painReasons"] = painReasons
+                theProperties["helpfulContent"] = helpfulContent
+                theTrackerResponse = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
+                print("Tracker response Saved: \(theTrackerResponse.toString())")
+            }
+ 
+        }
+        catch let error as NSError
+        {
+            print("Error updating TrackerResponse) : \(error.localizedDescription) ")
+        }
+
     }
     
     public func getAllTrackerResponses() -> [TrackerResponse]?

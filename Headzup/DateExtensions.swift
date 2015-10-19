@@ -28,15 +28,17 @@ extension NSDate
         }
         return isLess
     }
-    /*func isEqualToDate(dateToCompare:NSDate) -> Bool
+    func isEqualtoDate(dateToCompare : NSDate) -> Bool
     {
         var isEqualTo = false
+
         if self.compare(dateToCompare) == NSComparisonResult.OrderedSame
         {
             isEqualTo = true
         }
         return isEqualTo
-    }*/
+    }
+
     func addDays(daysToAdd:Int)->NSDate
     {
         let secondsInDays:NSTimeInterval = Double(daysToAdd)*60*60*24
