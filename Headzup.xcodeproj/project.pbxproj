@@ -494,6 +494,8 @@
 				57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */,
 				575B65461BC6CDFC008F1368 /* TrackerViewController.swift */,
 				575B65481BC71B78008F1368 /* TrackerConfirmViewController.swift */,
+				147840A21BD6767500F8EEFF /* CauseOfPainViewController.swift */,
+				147840A41BD6769600F8EEFF /* EffectivenessViewController.swift */,
 				5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */,
 				57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */,
 			);
