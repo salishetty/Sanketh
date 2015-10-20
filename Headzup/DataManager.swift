@@ -756,7 +756,7 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
     dbContext.deleteObject(aboutMeResponse)
 }
 
-    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:NSNumber, helpfulContent:NSNumber)
+    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
     {
         do
         {
@@ -774,8 +774,8 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
                     theTrackerResponse.painLevel = painLevel
                     theTrackerResponse.affectSleep = affectSleep
                     theTrackerResponse.affectActivity = affectActivity
-                    theTrackerResponse.painReasons = painReasons.stringValue
-                    theTrackerResponse.helpfulContent = helpfulContent.stringValue
+                    theTrackerResponse.painReasons = painReasons
+                    theTrackerResponse.helpfulContent = helpfulContent
                     
                     try super.managedContext.save()
                     print("found TrackerResponse \(theTrackerResponse.toString())")
