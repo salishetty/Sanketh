@@ -24,6 +24,10 @@
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
+		1478409F1BCD8FDB00F8EEFF /* TrackerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */; settings = {ASSET_TAGS = (); }; };
+		147840A11BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */; settings = {ASSET_TAGS = (); }; };
+		147840A31BD6767500F8EEFF /* CauseOfPainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147840A21BD6767500F8EEFF /* CauseOfPainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		147840A51BD6769600F8EEFF /* EffectivenessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147840A41BD6769600F8EEFF /* EffectivenessViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
@@ -145,6 +149,10 @@
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
+		1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerResponse.swift; sourceTree = "<group>"; };
+		147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerResponseItemsDTO.swift; sourceTree = "<group>"; };
+		147840A21BD6767500F8EEFF /* CauseOfPainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CauseOfPainViewController.swift; sourceTree = "<group>"; };
+		147840A41BD6769600F8EEFF /* EffectivenessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectivenessViewController.swift; sourceTree = "<group>"; };
 		14896B8A1BB3412100AC693D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		14896B8E1BB5D81000AC693D /* ICMSHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ICMSHelper.swift; sourceTree = "<group>"; };
 		14896B901BB6134F00AC693D /* ValidationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationHelper.swift; sourceTree = "<group>"; };
@@ -389,6 +397,7 @@
 		14983CEB1B557A8E0059A5CA /* HeadzupData */ = {
 			isa = PBXGroup;
 			children = (
+				1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */,
 				148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */,
 				14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */,
 				14CDA5511B727BCF00FB040F /* UserActionLog.swift */,
@@ -447,6 +456,7 @@
 				14CDA54D1B72796600FB040F /* TechnicalLogItemsDTO.swift */,
 				14DAF7531B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift */,
 				148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */,
+				147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */,
 			);
 			name = DTO;
 			sourceTree = "<group>";
@@ -709,6 +719,7 @@
 				14983D281B5586950059A5CA /* UInt8Extension.swift in Sources */,
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
 				14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */,
+				1478409F1BCD8FDB00F8EEFF /* TrackerResponse.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				5771466B1B9F648200BBD8E4 /* AboutMeViewController.swift in Sources */,
 				14983D2F1B558EFD0059A5CA /* Generics.swift in Sources */,
@@ -730,6 +741,7 @@
 				575B65471BC6CDFC008F1368 /* TrackerViewController.swift in Sources */,
 				5771466F1B9F862300BBD8E4 /* AboutMeTableViewController.swift in Sources */,
 				577146731BA7C97300BBD8E4 /* AccountTableViewController.swift in Sources */,
+				147840A31BD6767500F8EEFF /* CauseOfPainViewController.swift in Sources */,
 				14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */,
 				14983D1B1B5586950059A5CA /* Hash.swift in Sources */,
 				57316B951BD6AEC1008DE5E8 /* HAReasonTableViewController.swift in Sources */,
@@ -769,6 +781,7 @@
 				14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */,
 				140DED291B69CED6001F6A3F /* Category.swift in Sources */,
 				57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */,
+				147840A51BD6769600F8EEFF /* EffectivenessViewController.swift in Sources */,
 				14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */,
 				57CD830C1BBB1056009CEB72 /* CustomDatePicker.swift in Sources */,
 				57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */,
@@ -777,6 +790,7 @@
 				14983D1F1B5586950059A5CA /* MD5.swift in Sources */,
 				57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */,
 				57CD83081BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift in Sources */,
+				147840A11BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift in Sources */,
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
 				577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,

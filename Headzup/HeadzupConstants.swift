@@ -63,6 +63,17 @@ public struct AboutMeResponseKeys
     public static let ResponseValue = "ResponseValue"
     public static let DateAdded = "LastModifiedDate"
 }
+public struct TrackerResponseKeys
+{
+    public static let TrackDate = "TrackDate"
+    public static let hadHeadache = "HadHeadache"
+    public static let painLevel = "PainLevel"
+    public static let affectSleep = "AffectSleep"
+    public static let affectActivity = "AffectActivity"
+    public static let painReasons = "PainReasons"
+    public static let helpfulContent = "HelpfulContent"
+
+}
 public struct AboutMeResponseQuestions
 {
     public static let AMQText_1 = "Relaxation, Meditation, Deep Breathing, etc"
@@ -92,6 +103,23 @@ public struct AboutMeResponseQuestionCode
     public static let AMQ_10 = "AMQ_10"
     public static let AMQ_11 = "AMQ_11"
     
+}
+public struct TrackerResponseQuestionCode
+{
+    public static let TQ_1 = "TQ_1"
+    public static let TQ_2 = "TQ_2"
+    public static let TQ_3 = "TQ_3"
+    public static let TQ_4 = "TQ_4"
+    public static let TQ_5 = "TQ_5"
+    public static let TQ_6 = "TQ_6"
+    public static let TQ_7 = "TQ_7"
+    public static let TQ_8 = "TQ_8"
+    public static let TQ_9 = "TQ_9"
+    public static let TQ_10 = "TQ_10"
+    public static let TQ_11 = "TQ_11"
+    public static let TQ_12 = "TQ_12"
+    public static let TQ_13 = "TQ_13"
+    public static let TQ_14 = "TQ_14"
 }
 public struct GroupType
 {

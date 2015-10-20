@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
     <entity name="AboutMeResponse" representedClassName="Headzup.AboutMeResponse" syncable="YES">
         <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="questionID" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,6 +40,15 @@
         <attribute name="moduleName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="osVersion" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="TrackerResponse" representedClassName="Headzup.TrackerResponse" syncable="YES">
+        <attribute name="affectActivity" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="affectSleep" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="hadHeadache" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="helpfulContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="painLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="painReasons" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackDate" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
     <entity name="UserActionLog" representedClassName="Headzup.UserActionLog" syncable="YES">
         <attribute name="actionDateTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="actionType" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,12 +59,13 @@
         <attribute name="osVersion" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AboutMeResponse" positionX="-45" positionY="90" width="128" height="90"/>
         <element name="Category" positionX="-54" positionY="54" width="128" height="90"/>
         <element name="Content" positionX="-63" positionY="9" width="128" height="150"/>
         <element name="ContentGroup" positionX="-45" positionY="90" width="128" height="105"/>
         <element name="MetaData" positionX="-63" positionY="-18" width="128" height="90"/>
         <element name="TechnicalLog" positionX="-45" positionY="54" width="128" height="165"/>
         <element name="UserActionLog" positionX="-36" positionY="99" width="128" height="150"/>
-        <element name="AboutMeResponse" positionX="-45" positionY="90" width="128" height="90"/>
+        <element name="TrackerResponse" positionX="-36" positionY="99" width="128" height="150"/>
     </elements>
 </model>

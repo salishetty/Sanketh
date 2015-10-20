@@ -79,6 +79,19 @@ public struct ServiceManager
             completion(jsonData: dataJSON)
         }
     }
+    func synchTrackerResponse(params : Dictionary<String,Dictionary<String, String>>, completion : (jsonData: JSON?) -> ())
+    {
+        guard let theURL:NSURL =  NSURL(string:AppContext.svcUrl + SeriviceApi.TrackerResponse.key)
+            else
+        {
+            print("Could not construct a valid About Me URL")
+            return
+        }
+        let networkOperation = NetworkOperation(url: theURL)
+        networkOperation.Post(params) { (let dataJSON) -> Void in
+            completion(jsonData: dataJSON)
+        }
+    }
     
     func getContent(completion : (jsonData: JSON?) -> ())
     {
@@ -117,6 +130,7 @@ enum SeriviceApi {
     case TechnicalLog
     case UserAction
     case Favorite
+    case TrackerResponse
     
     var key: String {
         get {
@@ -128,6 +142,7 @@ enum SeriviceApi {
             case .TechnicalLog: return "SynchTechnicalLogItems"
             case .UserAction: return "TrackUserAction"
             case .Favorite: return "SynchFavoriteItems"
+            case .TrackerResponse: return "SynchTrackerResponse"
             }
         }
     }
