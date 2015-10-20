@@ -81,6 +81,7 @@
 		14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */; };
 		14E8E07B1BBDDCA60058474F /* SynchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8E07A1BBDDCA60058474F /* SynchHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		5700DB271B839A23004796AE /* DemoAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5700DB261B839A23004796AE /* DemoAudio.mp3 */; };
+		57316B951BD6AEC1008DE5E8 /* HAReasonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
 		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
@@ -209,6 +210,7 @@
 		14E8E07A1BBDDCA60058474F /* SynchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchHelper.swift; sourceTree = "<group>"; };
 		44426D2C4CC4237154DD34B8 /* Pods-Headzup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Headzup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Headzup/Pods-Headzup.debug.xcconfig"; sourceTree = "<group>"; };
 		5700DB261B839A23004796AE /* DemoAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DemoAudio.mp3; sourceTree = "<group>"; };
+		57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HAReasonTableViewController.swift; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		5753D85A1BB1F76700378332 /* ContextManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextManager.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				575B65461BC6CDFC008F1368 /* TrackerViewController.swift */,
 				575B65481BC71B78008F1368 /* TrackerConfirmViewController.swift */,
 				5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */,
+				57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				577146731BA7C97300BBD8E4 /* AccountTableViewController.swift in Sources */,
 				14983D2B1B5586950059A5CA /* UInt64Extension.swift in Sources */,
 				14983D1B1B5586950059A5CA /* Hash.swift in Sources */,
+				57316B951BD6AEC1008DE5E8 /* HAReasonTableViewController.swift in Sources */,
 				14983D151B5586950059A5CA /* Authenticator.swift in Sources */,
 				5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */,
 				140DED141B67C6C0001F6A3F /* RequiredRule.swift in Sources */,

@@ -1,21 +1,14 @@
 //
-//  TrackerTodayTableViewController.swift
+//  HAReasonTableViewController.swift
 //  Headzup
 //
-//  Created by Sandeep Menon Ayyappankutty on 10/14/15.
+//  Created by Sandeep Menon Ayyappankutty on 10/20/15.
 //  Copyright © 2015 Inflexxion. All rights reserved.
 //
 
 import UIKit
 
-class TrackerTodayTableViewController: UITableViewController {
-
-    @IBOutlet weak var labelQ1: UILabel!
-    @IBOutlet weak var sliderQ1: UISlider!
-
-    @IBOutlet weak var buttonQ2: CustomButton!
-
-    @IBOutlet weak var buttonQ3: CustomButton!
+class HAReasonTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,53 +25,8 @@ class TrackerTodayTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func ValueChanged(sender: AnyObject) {
-        sliderQ1.value = roundf(sender.value)
-        labelQ1.text = NSString(format: "%.0f", sliderQ1.value) as String
-    }
-
-    @IBAction func buttonQ2_Clicked(sender: AnyObject) {
-
-        let button2Popup = UIAlertController(title: "Headache Pain", message: "Choose one", preferredStyle: .Alert)
-        let oneAction = UIAlertAction(title: "Not at all", style: .Default) { (_) in
-            self.buttonQ2.setTitle("Not at all", forState: UIControlState.Normal)
-        }
-        let twoAction = UIAlertAction(title: "A little", style: .Default) { (_) in
-            self.buttonQ2.setTitle("A little", forState: UIControlState.Normal)
-        }
-        let threeAction = UIAlertAction(title: "A lot", style: .Default) { (_) in
-            self.buttonQ2.setTitle("A lot", forState: UIControlState.Normal)
-        }
-        button2Popup.addAction(oneAction)
-        button2Popup.addAction(twoAction)
-        button2Popup.addAction(threeAction)
-        self.presentViewController(button2Popup, animated: true) {
-        }
-
-    }
-
-    @IBAction func buttonQ3_Clicked(sender: AnyObject) {
-        let button3Popup = UIAlertController(title: "Headache Pain", message: "Choose one", preferredStyle: .Alert)
-        let oneAction = UIAlertAction(title: "Not at all", style: .Default) { (_) in
-            self.buttonQ3.setTitle("Not at all", forState: UIControlState.Normal)
-        }
-        let twoAction = UIAlertAction(title: "A little", style: .Default) { (_) in
-            self.buttonQ3.setTitle("A little", forState: UIControlState.Normal)
-        }
-        let threeAction = UIAlertAction(title: "A lot", style: .Default) { (_) in
-            self.buttonQ3.setTitle("A lot", forState: UIControlState.Normal)
-        }
-        button3Popup.addAction(oneAction)
-        button3Popup.addAction(twoAction)
-        button3Popup.addAction(threeAction)
-        self.presentViewController(button3Popup, animated: true) {
-        }
-
-    }
-
-
     // MARK: - Table view data source
-    /*
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
@@ -88,7 +36,7 @@ class TrackerTodayTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
-    */
+
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
