@@ -113,4 +113,18 @@ public class QuestionHelper
         }
         return cell
     }
+    
+    public static func PopulateMutiSelectTrackerQuestions(indexPath:NSIndexPath, cell:UITableViewCell?, dataMgr:DataManager) -> UITableViewCell?
+    {
+        var QuestionTextArray: [String] = [TrackerResponseQuestions.TQText_1, TrackerResponseQuestions.TQText_2, TrackerResponseQuestions.TQText_3, TrackerResponseQuestions.TQText_4, TrackerResponseQuestions.TQText_5, TrackerResponseQuestions.TQText_6, TrackerResponseQuestions.TQText_7, TrackerResponseQuestions.TQText_8, TrackerResponseQuestions.TQText_9, TrackerResponseQuestions.TQText_10, TrackerResponseQuestions.TQText_11, TrackerResponseQuestions.TQText_12, TrackerResponseQuestions.TQText_13, TrackerResponseQuestions.TQText_14]
+        //Apply style to multi-select questions
+        cell!.textLabel?.text = QuestionTextArray[indexPath.row]
+        cell!.textLabel?.textColor = UIColor(netHex:0x2387CD)
+        cell!.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell!.textLabel?.numberOfLines = 0
+        cell!.textLabel?.textAlignment = NSTextAlignment.Left
+        cell!.textLabel?.font = UIFont.systemFontOfSize(15.0)
+        cell!.textLabel?.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
+        return cell
+    }
 }
