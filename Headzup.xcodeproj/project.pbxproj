@@ -99,6 +99,7 @@
 		577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */; };
 		577146771BA8AE2100BBD8E4 /* AcountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146761BA8AE2100BBD8E4 /* AcountViewController.swift */; };
 		577146791BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */; };
+		578739701BD80DAC00868401 /* TrackerTodayFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787396F1BD80DAC00868401 /* TrackerTodayFinalViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
 		5789948D1BCEF25000C315FD /* TrackerTodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -232,6 +233,7 @@
 		577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameChangeViewController.swift; sourceTree = "<group>"; };
 		577146761BA8AE2100BBD8E4 /* AcountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcountViewController.swift; sourceTree = "<group>"; };
 		577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreventionsSubTableViewController.swift; sourceTree = "<group>"; };
+		5787396F1BD80DAC00868401 /* TrackerTodayFinalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTodayFinalViewController.swift; sourceTree = "<group>"; };
 		578792391B5EE98600A7C6D4 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerTodayTableViewController.swift; sourceTree = "<group>"; };
@@ -498,6 +500,7 @@
 				147840A41BD6769600F8EEFF /* EffectivenessViewController.swift */,
 				5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */,
 				57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */,
+				5787396F1BD80DAC00868401 /* TrackerTodayFinalViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				14983D281B5586950059A5CA /* UInt8Extension.swift in Sources */,
 				14983CCE1B557A170059A5CA /* ViewController.swift in Sources */,
 				14CDA54C1B7278D500FB040F /* UserActionItemsDTO.swift in Sources */,
+				578739701BD80DAC00868401 /* TrackerTodayFinalViewController.swift in Sources */,
 				1478409F1BCD8FDB00F8EEFF /* TrackerResponse.swift in Sources */,
 				5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */,
 				5771466B1B9F648200BBD8E4 /* AboutMeViewController.swift in Sources */,
