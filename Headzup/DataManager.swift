@@ -762,13 +762,28 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
         {
             var theProperties: [String: AnyObject] = [:]
             var theTrackerResponse:TrackerResponse!
-            if let fetchResults = super.fetchEntity("TrackerResponse")
-            {
-                var trackerResponse:[TrackerResponse] = fetchResults as! [TrackerResponse]
-                theTrackerResponse = trackerResponse[0]
-                
-                if theTrackerResponse.trackDate.isEqualtoDate(trackDate)
-                {
+            let today = NSDate()
+            let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: 1,
+                toDate: today,
+                options: NSCalendarOptions(rawValue: 0))
+            
+            
+            let yesterday = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: -1,
+                toDate: today,
+                options: NSCalendarOptions(rawValue: 0))
+            
+            
+            let fetchRequest = NSFetchRequest(entityName: "TrackerResponse")
+            fetchRequest.predicate = NSPredicate(format: "(trackDate >= %@) AND (trackDate <= %@)", yesterday!, tomorrow!)
+            if let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                if fetchResult.count > 0 {
+                    var trackerResponse:[TrackerResponse] = fetchResult as! [TrackerResponse]
+                    theTrackerResponse = trackerResponse[0]
+                    print("Found TrackerResponse with the TrackDate: \(theTrackerResponse.trackDate)")
                     theTrackerResponse.trackDate = trackDate
                     theTrackerResponse.hadHeadache = hadHeadache
                     theTrackerResponse.painLevel = painLevel
@@ -776,11 +791,10 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
                     theTrackerResponse.affectActivity = affectActivity
                     theTrackerResponse.painReasons = painReasons
                     theTrackerResponse.helpfulContent = helpfulContent
-                    
                     try super.managedContext.save()
-                    print("found TrackerResponse \(theTrackerResponse.toString())")
                 }
             }
+
             else
             {
                 print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
@@ -801,6 +815,49 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
             print("Error updating TrackerResponse) : \(error.localizedDescription) ")
         }
 
+    }
+    
+    public func getTrackerResponse(trackDate:NSDate)->TrackerResponse?
+    {
+        var theTrackerResponse:TrackerResponse!
+        do
+        {
+            let today = NSDate()
+            let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: 1,
+                toDate: today,
+                options: NSCalendarOptions(rawValue: 0))
+            
+            
+            let yesterday = NSCalendar.currentCalendar().dateByAddingUnit(
+                .Day,
+                value: -1,
+                toDate: today,
+                options: NSCalendarOptions(rawValue: 0))
+            
+            
+            let fetchRequest = NSFetchRequest(entityName: "TrackerResponse")
+            fetchRequest.predicate = NSPredicate(format: "(trackDate >= %@) AND (trackDate <= %@)", yesterday!, tomorrow!)
+            if let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+                if fetchResult.count > 0 {
+                    var trackerResponse:[TrackerResponse] = fetchResult as! [TrackerResponse]
+                    theTrackerResponse = trackerResponse[0]
+                    print("Found TrackerResponse with the TrackDate: \(theTrackerResponse.trackDate)")
+                }
+            }
+            else
+            {
+                print("No TrackerResponse Found with a matching record for trackDate:\(trackDate)")
+            }
+            
+        }
+        catch
+        {
+            
+        }
+        
+      return theTrackerResponse  
     }
     
     public func getAllTrackerResponses() -> [TrackerResponse]?

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class TrackerTodayTableViewController: UITableViewController {
-
+    var dataMgr: DataManager?
     @IBOutlet weak var labelQ1: UILabel!
     @IBOutlet weak var sliderQ1: UISlider!
 
@@ -17,9 +18,17 @@ class TrackerTodayTableViewController: UITableViewController {
 
     @IBOutlet weak var buttonQ3: CustomButton!
 
+    //Global Variables
+    var painLevelVal:NSNumber?
+    var affectSleepVal:NSNumber?
+    var affectActivityVal:NSNumber?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // init data
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -35,6 +44,7 @@ class TrackerTodayTableViewController: UITableViewController {
     @IBAction func ValueChanged(sender: AnyObject) {
         sliderQ1.value = roundf(sender.value)
         labelQ1.text = NSString(format: "%.0f", sliderQ1.value) as String
+        painLevelVal = roundf(sender.value)
     }
 
     @IBAction func buttonQ2_Clicked(sender: AnyObject) {
@@ -42,12 +52,15 @@ class TrackerTodayTableViewController: UITableViewController {
         let button2Popup = UIAlertController(title: "Headache Pain", message: "Choose one", preferredStyle: .Alert)
         let oneAction = UIAlertAction(title: "Not at all", style: .Default) { (_) in
             self.buttonQ2.setTitle("Not at all", forState: UIControlState.Normal)
+            self.affectSleepVal = 0
         }
         let twoAction = UIAlertAction(title: "A little", style: .Default) { (_) in
             self.buttonQ2.setTitle("A little", forState: UIControlState.Normal)
+            self.affectSleepVal = 1
         }
         let threeAction = UIAlertAction(title: "A lot", style: .Default) { (_) in
             self.buttonQ2.setTitle("A lot", forState: UIControlState.Normal)
+            self.affectSleepVal = 2
         }
         button2Popup.addAction(oneAction)
         button2Popup.addAction(twoAction)
@@ -61,12 +74,15 @@ class TrackerTodayTableViewController: UITableViewController {
         let button3Popup = UIAlertController(title: "Headache Pain", message: "Choose one", preferredStyle: .Alert)
         let oneAction = UIAlertAction(title: "Not at all", style: .Default) { (_) in
             self.buttonQ3.setTitle("Not at all", forState: UIControlState.Normal)
+            self.affectActivityVal = 0
         }
         let twoAction = UIAlertAction(title: "A little", style: .Default) { (_) in
             self.buttonQ3.setTitle("A little", forState: UIControlState.Normal)
+            self.affectActivityVal = 1
         }
         let threeAction = UIAlertAction(title: "A lot", style: .Default) { (_) in
             self.buttonQ3.setTitle("A lot", forState: UIControlState.Normal)
+            self.affectActivityVal = 2
         }
         button3Popup.addAction(oneAction)
         button3Popup.addAction(twoAction)
@@ -75,7 +91,14 @@ class TrackerTodayTableViewController: UITableViewController {
         }
 
     }
-
+    @IBAction func NextBN(sender: UIButton) {
+        
+        if let trackerResponse = dataMgr?.getTrackerResponse(NSDate())
+        {
+       dataMgr?.saveTrackerResponse(NSDate(), hadHeadache: trackerResponse.hadHeadache, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: trackerResponse.painReasons, helpfulContent: trackerResponse.helpfulContent)
+        }
+        
+    }
 
     // MARK: - Table view data source
     /*
