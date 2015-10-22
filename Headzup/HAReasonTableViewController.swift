@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import CoreData
 
 class HAReasonTableViewController: UITableViewController {
 
+    var dataMgr: DataManager?
+    var questionTextArray: [String] = [TrackerResponseQuestions.TQText_1, TrackerResponseQuestions.TQText_2, TrackerResponseQuestions.TQText_3, TrackerResponseQuestions.TQText_4, TrackerResponseQuestions.TQText_5, TrackerResponseQuestions.TQText_6, TrackerResponseQuestions.TQText_7, TrackerResponseQuestions.TQText_8, TrackerResponseQuestions.TQText_9, TrackerResponseQuestions.TQText_10, TrackerResponseQuestions.TQText_11, TrackerResponseQuestions.TQText_12, TrackerResponseQuestions.TQText_13, TrackerResponseQuestions.TQText_14]
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // init data
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "CauseOfPainCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,23 +38,71 @@ class HAReasonTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return questionTextArray.count
+        
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CauseOfPainCell", forIndexPath: indexPath)
 
         // Configure the cell...
-
-        return cell
+        return QuestionHelper.PopulateMutiSelectTrackerQuestions(indexPath, cell: cell, dataMgr: dataMgr!)!
+        //return cell
     }
-    */
+
+    var responseValueArray:[String] = []
+    var responseValue: String = ""
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        print("label: \(indexPath.row)")
+        //Put the values in Array
+        var responseValueArray = responseValue.componentsSeparatedByString(",")
+        //get the value of selected Response
+        let selectedResponseValue = String(indexPath.row)
+        //If the selected response is in the array - remove it - Deselect!
+        if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
+            responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
+            
+            //var newResponseValue: String?
+            for var i = 0; i < responseValueArray.count; i++ {
+                if i < responseValueArray.count - 1
+                {
+                    responseValue += responseValueArray[i] + ","
+                }
+                else
+                {
+                    responseValue += responseValueArray[i]
+                }
+            }
+            cell!.accessoryType = UITableViewCellAccessoryType.None
+        }
+        else
+        {
+            
+            responseValue = responseValue + "," + String(indexPath.row)
+            cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+
+        
+        
+        
+        
+        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+        //Remove the gray selection
+        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
+    func notEqual<T: Equatable> (that:T) -> ((this:T) -> Bool) {
+        return { (this:T) -> Bool in return this != that }
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
