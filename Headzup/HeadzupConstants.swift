@@ -65,6 +65,7 @@ public struct AboutMeResponseKeys
 }
 public struct TrackerResponseKeys
 {
+    public static let MembershipUserID = "MembershipUserID"
     public static let TrackDate = "TrackDate"
     public static let hadHeadache = "HadHeadache"
     public static let painLevel = "PainLevel"

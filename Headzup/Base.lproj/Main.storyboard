@@ -2919,7 +2919,7 @@
                                                     <rect key="frame" x="30" y="74" width="520" height="656"/>
                                                     <animations/>
                                                     <connections>
-                                                        <segue destination="5xS-Em-ZIV" kind="embed" id="Qfl-KE-fEY"/>
+                                                        <segue destination="5xS-Em-ZIV" kind="embed" identifier="HAEmbededSegue" id="Qfl-KE-fEY"/>
                                                     </connections>
                                                 </containerView>
                                             </subviews>

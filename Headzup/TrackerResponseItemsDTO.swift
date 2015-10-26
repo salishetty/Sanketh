@@ -9,6 +9,7 @@
 import Foundation
 public class TrackerResponseItems
 {
+    var membershipUserId:String
     var trackDate: String
     var hadHeadache: NSNumber
     var painLevel: NSNumber
@@ -16,8 +17,9 @@ public class TrackerResponseItems
     var affectActivity: NSNumber
     var painReasons: String
     var helpfulContent: String
-    init(trackDate:String, hadHeadache: NSNumber, painLevel: NSNumber, affectSleep: NSNumber, affectActivity: NSNumber, painReasons: String, helpfulContent: String)
+    init(membershipUserId:String, trackDate:String, hadHeadache: NSNumber, painLevel: NSNumber, affectSleep: NSNumber, affectActivity: NSNumber, painReasons: String, helpfulContent: String)
     {
+        self.membershipUserId = membershipUserId
         self.trackDate = trackDate
         self.hadHeadache = hadHeadache
         self.painLevel = painLevel
