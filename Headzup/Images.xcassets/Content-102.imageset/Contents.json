@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "demoImage2.jpeg"
+      "filename" : "sleep.jpeg",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "demoImage2-1.jpeg"
+      "filename" : "sleep-1.jpeg",
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x",
-      "filename" : "demoImage2-2.jpeg"
+      "filename" : "sleep-2.jpeg",
+      "scale" : "3x"
     }
   ],
   "info" : {
