@@ -12,7 +12,7 @@ import CoreData
 class HAReasonTableViewController: UITableViewController {
 
     var dataMgr: DataManager?
-    var questionTextArray: [String] = [TrackerResponseQuestions.TQText_1, TrackerResponseQuestions.TQText_2, TrackerResponseQuestions.TQText_3, TrackerResponseQuestions.TQText_4, TrackerResponseQuestions.TQText_5, TrackerResponseQuestions.TQText_6, TrackerResponseQuestions.TQText_7, TrackerResponseQuestions.TQText_8, TrackerResponseQuestions.TQText_9, TrackerResponseQuestions.TQText_10, TrackerResponseQuestions.TQText_11, TrackerResponseQuestions.TQText_12, TrackerResponseQuestions.TQText_13, TrackerResponseQuestions.TQText_14]
+    var questionTextArray: [String] = [TrackerResponseQuestions.TQText_1, TrackerResponseQuestions.TQText_2, TrackerResponseQuestions.TQText_3, TrackerResponseQuestions.TQText_4, TrackerResponseQuestions.TQText_5, TrackerResponseQuestions.TQText_6, TrackerResponseQuestions.TQText_7, TrackerResponseQuestions.TQText_8, TrackerResponseQuestions.TQText_9, TrackerResponseQuestions.TQText_10, TrackerResponseQuestions.TQText_11, TrackerResponseQuestions.TQText_12, TrackerResponseQuestions.TQText_13]
     override func viewDidLoad() {
         super.viewDidLoad()
 
