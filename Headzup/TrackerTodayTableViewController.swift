@@ -92,12 +92,12 @@ class TrackerTodayTableViewController: UITableViewController {
 
     }
     @IBAction func NextBN(sender: UIButton) {
-        
-        if let trackerResponse = dataMgr?.getTrackerResponse(NSDate())
+        if AppContext.trackDate != nil
         {
-       dataMgr?.saveTrackerResponse(NSDate(), hadHeadache: trackerResponse.hadHeadache, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: trackerResponse.painReasons, helpfulContent: trackerResponse.helpfulContent)
+            let painReasons = self.embededTableViewController.getResponseValue()
+ 
+            dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: 1, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: painReasons, helpfulContent: "")
         }
-        
     }
 
     // MARK: - Table view data source
@@ -157,14 +157,20 @@ class TrackerTodayTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    private var embededTableViewController:HAReasonTableViewController!
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let vc = segue.destinationViewController as? HAReasonTableViewController
+            where segue.identifier == "HAEmbededSegue"
+        {
+            self.embededTableViewController = vc
+        }
     }
-    */
+    
 
 }

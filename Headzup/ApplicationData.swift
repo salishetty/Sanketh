@@ -27,6 +27,8 @@ public class AppContext {
     public static var categories:[Category]?
     public static var svcUrl = ""
     public static var currentView = "HomeView"
+    public static var trackDate = NSDate?()
+    public static var painReasonsResponseValue = ""
     
     //public static func
     

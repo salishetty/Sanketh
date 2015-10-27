@@ -54,15 +54,17 @@ class TrackerConfirmViewController: UIViewController {
         let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
         if (isToday)
         {
-
+            print("selected Date:\(selectedDate)")
+            AppContext.trackDate = selectedDate
         }
         else if (isYesterday)
         {
-
+            print("selected Date:\(selectedDate)")
+            AppContext.trackDate = selectedDate
         }
         else
         {
-
+            
 
         }
 

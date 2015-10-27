@@ -3061,7 +3061,7 @@
                                                     <rect key="frame" x="30" y="74" width="520" height="656"/>
                                                     <animations/>
                                                     <connections>
-                                                        <segue destination="5xS-Em-ZIV" kind="embed" id="Qfl-KE-fEY"/>
+                                                        <segue destination="5xS-Em-ZIV" kind="embed" identifier="HAEmbededSegue" id="Qfl-KE-fEY"/>
                                                     </connections>
                                                 </containerView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(Check all that apply below)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-d2-Hh3">
@@ -3230,6 +3230,9 @@
                                                         <color key="value" red="0.47058823529999999" green="0.67450980390000004" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="DoneBN:" destination="Ag9-8p-t9x" eventType="touchUpInside" id="14U-09-aak"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <animations/>

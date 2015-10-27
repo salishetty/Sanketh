@@ -37,7 +37,8 @@ class HomeViewController: UIViewController {
     @IBAction func SynchTailoringQuestions(sender: UIButton) {
         let svcMgr = ServiceManager()
         //Synch Tailoring questions - to be removed later
-        SynchHelper.SynchTailoringQuestions(dataMgr!, svcMgr: svcMgr)
+        //SynchHelper.SynchTailoringQuestions(dataMgr!, svcMgr: svcMgr)
+        SynchHelper.SynchTrackerQuestions(dataMgr!, svcMgr: svcMgr)
     }
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent

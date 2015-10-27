@@ -48,7 +48,7 @@ public class SynchHelper
         }
     }
     public static func SynchTrackerQuestions(dataMgr:DataManager, svcMgr:ServiceManager) {
-        
+        let membershipUserID = self.getMembershipID()
         var dict = Dictionary<String, String>()
         var responseItemsArray = [String:Dictionary<String, String>]()
         let trackerResponses:[TrackerResponse] = dataMgr.getAllTrackerResponses()!
@@ -59,7 +59,7 @@ public class SynchHelper
             {
                 //print("AboutMeResponse Items: \(responseItem.questionID): \(responseItem.responseValue):\((responseItem.dateAdded))")
                 
-                let responseItems = TrackerResponseItems(trackDate: GeneralHelper.convertDateToString(responseItem.trackDate), hadHeadache: responseItem.hadHeadache, painLevel: responseItem.painLevel, affectSleep: responseItem.affectSleep, affectActivity: responseItem.affectActivity, painReasons: responseItem.painReasons, helpfulContent: responseItem.helpfulContent)
+                let responseItems = TrackerResponseItems(membershipUserId: membershipUserID, trackDate: GeneralHelper.convertDateToString(responseItem.trackDate), hadHeadache: responseItem.hadHeadache, painLevel: responseItem.painLevel, affectSleep: responseItem.affectSleep, affectActivity: responseItem.affectActivity, painReasons: responseItem.painReasons, helpfulContent: responseItem.helpfulContent)
                 dict = self.trackerResponseItemsToDictionary(responseItems)
                 responseItemsArray["TrackerResponseItem"+String(index)] = dict
                 //update index
@@ -240,7 +240,7 @@ public class SynchHelper
     }
     public static func trackerResponseItemsToDictionary(responseItems: TrackerResponseItems) -> [String:String]
     {
-        return [TrackerResponseKeys.TrackDate:responseItems.trackDate as String, TrackerResponseKeys.hadHeadache:responseItems.hadHeadache.stringValue, TrackerResponseKeys.painLevel:responseItems.painLevel.stringValue, TrackerResponseKeys.affectSleep:responseItems.affectSleep.stringValue, TrackerResponseKeys.affectActivity:responseItems.affectActivity.stringValue, TrackerResponseKeys.painReasons:responseItems.painReasons, TrackerResponseKeys.helpfulContent:responseItems.helpfulContent]
+        return [TrackerResponseKeys.MembershipUserID:responseItems.membershipUserId,TrackerResponseKeys.TrackDate:responseItems.trackDate as String, TrackerResponseKeys.hadHeadache:responseItems.hadHeadache.stringValue, TrackerResponseKeys.painLevel:responseItems.painLevel.stringValue, TrackerResponseKeys.affectSleep:responseItems.affectSleep.stringValue, TrackerResponseKeys.affectActivity:responseItems.affectActivity.stringValue, TrackerResponseKeys.painReasons:responseItems.painReasons, TrackerResponseKeys.helpfulContent:responseItems.helpfulContent]
     }
     public static func getMembershipID() -> String
     {

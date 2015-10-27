@@ -51,5 +51,10 @@ extension NSDate
         let dateWithHoursAdded:NSDate = self.dateByAddingTimeInterval(secondsInHours)
         return dateWithHoursAdded
     }
+    func beginningOfDay() -> NSDate {
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Year, .Month, .Day], fromDate: self)
+        return calendar.dateFromComponents(components)!
+    }
 }
 

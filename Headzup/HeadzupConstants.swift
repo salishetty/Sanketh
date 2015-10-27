@@ -65,6 +65,7 @@ public struct AboutMeResponseKeys
 }
 public struct TrackerResponseKeys
 {
+    public static let MembershipUserID = "MembershipUserID"
     public static let TrackDate = "TrackDate"
     public static let hadHeadache = "HadHeadache"
     public static let painLevel = "PainLevel"
@@ -111,15 +112,14 @@ public struct TrackerResponseQuestions
     public static let TQText_3 = "I'm really tired"
     public static let TQText_4 = "I didn't drink enough water"
     public static let TQText_5 = "I have had a lot of Caffeine"
-    public static let TQText_6 = "I am really stressed"
+    public static let TQText_6 = "I'm really stressed"
     public static let TQText_7 = "I did too much physical activity"
     public static let TQText_8 = "I didn't get enough physical activity"
-    public static let TQText_9 = "I am having my period"
+    public static let TQText_9 = "It may be related to my menstrual cycle"
     public static let TQText_10 = "I forgot to take my medication"
-    public static let TQText_11 = "I might have taken too much medication"
-    public static let TQText_12 = "I might need to take more medication medication"
-    public static let TQText_13 = "Something else not listed here"
-    public static let TQText_14 = "I don't know"
+    public static let TQText_11 = "I was looking at a screen too much"
+    public static let TQText_12 = "Something else not listed here"
+    public static let TQText_13 = "I don't know"
 }
 public struct TrackerResponseQuestionCode
 {

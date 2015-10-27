@@ -12,7 +12,7 @@ import CoreData
 class HAReasonTableViewController: UITableViewController {
 
     var dataMgr: DataManager?
-    var questionTextArray: [String] = [TrackerResponseQuestions.TQText_1, TrackerResponseQuestions.TQText_2, TrackerResponseQuestions.TQText_3, TrackerResponseQuestions.TQText_4, TrackerResponseQuestions.TQText_5, TrackerResponseQuestions.TQText_6, TrackerResponseQuestions.TQText_7, TrackerResponseQuestions.TQText_8, TrackerResponseQuestions.TQText_9, TrackerResponseQuestions.TQText_10, TrackerResponseQuestions.TQText_11, TrackerResponseQuestions.TQText_12, TrackerResponseQuestions.TQText_13, TrackerResponseQuestions.TQText_14]
+    var questionTextArray: [String] = [TrackerResponseQuestions.TQText_1, TrackerResponseQuestions.TQText_2, TrackerResponseQuestions.TQText_3, TrackerResponseQuestions.TQText_4, TrackerResponseQuestions.TQText_5, TrackerResponseQuestions.TQText_6, TrackerResponseQuestions.TQText_7, TrackerResponseQuestions.TQText_8, TrackerResponseQuestions.TQText_9, TrackerResponseQuestions.TQText_10, TrackerResponseQuestions.TQText_11, TrackerResponseQuestions.TQText_12, TrackerResponseQuestions.TQText_13]
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,40 +61,44 @@ class HAReasonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        print("label: \(indexPath.row)")
-        //Put the values in Array
-        var responseValueArray = responseValue.componentsSeparatedByString(",")
-        //get the value of selected Response
-        let selectedResponseValue = String(indexPath.row)
-        //If the selected response is in the array - remove it - Deselect!
-        if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
-            responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
-            
-            //var newResponseValue: String?
-            for var i = 0; i < responseValueArray.count; i++ {
-                if i < responseValueArray.count - 1
-                {
-                    responseValue += responseValueArray[i] + ","
+        var newResponseValue: String = ""
+        responseValue = AppContext.painReasonsResponseValue
+         //Put the values in Array
+        if (responseValue != "")
+        {
+            responseValueArray = responseValue.componentsSeparatedByString(",")
+             //get the value of selected Response
+            let selectedResponseValue = String(indexPath.row)
+            //If the selected response is in the array - remove it - Deselect!
+            if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
+                responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
+
+                for var i = 0; i < responseValueArray.count; i++ {
+                    if i < responseValueArray.count - 1
+                    {
+                        newResponseValue += responseValueArray[i] + ","
+                    }
+                    else
+                    {
+                        newResponseValue += responseValueArray[i]
+                    }
                 }
-                else
-                {
-                    responseValue += responseValueArray[i]
-                }
+                cell!.accessoryType = UITableViewCellAccessoryType.None
             }
-            cell!.accessoryType = UITableViewCellAccessoryType.None
+            else
+            {
+                newResponseValue = responseValue + "," + String(indexPath.row)
+                cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            }
         }
         else
         {
-            
-            responseValue = responseValue + "," + String(indexPath.row)
+            newResponseValue = String(indexPath.row)
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
-
-        
-        
-        
-        
-        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+        responseValue = newResponseValue
+        AppContext.painReasonsResponseValue = responseValue
+        print("Response Value\(newResponseValue)")
         //Remove the gray selection
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -103,6 +107,10 @@ class HAReasonTableViewController: UITableViewController {
         return { (this:T) -> Bool in return this != that }
     }
 
+    func getResponseValue() -> String
+    {
+        return responseValue
+    }
 
     /*
     // Override to support conditional editing of the table view.

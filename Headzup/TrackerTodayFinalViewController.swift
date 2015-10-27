@@ -21,6 +21,10 @@ class TrackerTodayFinalViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func DoneBN(sender: UIButton) {
+        //navigate back to Tracker tab
+        self.loadViewController("TabView",tabIndex:2)
+    }
 
     /*
     // MARK: - Navigation
