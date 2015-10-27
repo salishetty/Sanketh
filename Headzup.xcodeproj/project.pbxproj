@@ -24,13 +24,13 @@
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
-		1478409F1BCD8FDB00F8EEFF /* TrackerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */; settings = {ASSET_TAGS = (); }; };
-		147840A11BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */; settings = {ASSET_TAGS = (); }; };
-		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B921BB7258900AC693D /* QuestionHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		14896B971BB8984600AC693D /* DataManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B961BB8984600AC693D /* DataManagerBase.swift */; settings = {ASSET_TAGS = (); }; };
+		1478409F1BCD8FDB00F8EEFF /* TrackerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */; };
+		147840A11BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */; };
+		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; };
+		14896B8F1BB5D81000AC693D /* ICMSHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8E1BB5D81000AC693D /* ICMSHelper.swift */; };
+		14896B911BB6134F00AC693D /* ValidationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B901BB6134F00AC693D /* ValidationHelper.swift */; };
+		14896B931BB7258900AC693D /* QuestionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B921BB7258900AC693D /* QuestionHelper.swift */; };
+		14896B971BB8984600AC693D /* DataManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B961BB8984600AC693D /* DataManagerBase.swift */; };
 		148F17FD1BA7317800AD95A2 /* AboutMeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FC1BA7317800AD95A2 /* AboutMeResponse.swift */; };
 		148F17FF1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148F17FE1BAC988800AD95A2 /* AboutMeResponseItemsDTO.swift */; };
 		14983CC91B557A170059A5CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14983CC81B557A170059A5CA /* AppDelegate.swift */; };
@@ -81,15 +81,16 @@
 		14CDA5541B728C6100FB040F /* GeneralHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CDA5531B728C6100FB040F /* GeneralHelper.swift */; };
 		14DAF7541B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAF7531B7A5E2E00A4AB4D /* FavoriteItemsDTO.swift */; };
 		14DAF7561B7A81AA00A4AB4D /* ContentGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */; };
-		14E8E07B1BBDDCA60058474F /* SynchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8E07A1BBDDCA60058474F /* SynchHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		5700DB271B839A23004796AE /* DemoAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5700DB261B839A23004796AE /* DemoAudio.mp3 */; };
-		57316B951BD6AEC1008DE5E8 /* HAReasonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		14E8E07B1BBDDCA60058474F /* SynchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E8E07A1BBDDCA60058474F /* SynchHelper.swift */; };
+		571AF9D11BDFC130004B45D7 /* DemoAudio.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 571AF9D01BDFC130004B45D7 /* DemoAudio.mp3 */; };
+		571AF9D31BDFEDEB004B45D7 /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571AF9D21BDFEDEB004B45D7 /* OverlayView.swift */; };
+		57316B951BD6AEC1008DE5E8 /* HAReasonTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */; };
 		5747DE541B66E0530054AC96 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE531B66E0530054AC96 /* HomeViewController.swift */; };
 		5747DE561B66E0630054AC96 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5747DE551B66E0630054AC96 /* PinViewController.swift */; };
-		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; settings = {ASSET_TAGS = (); }; };
-		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		575B65471BC6CDFC008F1368 /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B65461BC6CDFC008F1368 /* TrackerViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		575B65491BC71B78008F1368 /* TrackerConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B65481BC71B78008F1368 /* TrackerConfirmViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5753D85B1BB1F76700378332 /* ContextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85A1BB1F76700378332 /* ContextManager.swift */; };
+		5753D85D1BB33ACC00378332 /* NetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753D85C1BB33ACC00378332 /* NetworkOperation.swift */; };
+		575B65471BC6CDFC008F1368 /* TrackerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B65461BC6CDFC008F1368 /* TrackerViewController.swift */; };
+		575B65491BC71B78008F1368 /* TrackerConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575B65481BC71B78008F1368 /* TrackerConfirmViewController.swift */; };
 		5771466B1B9F648200BBD8E4 /* AboutMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466A1B9F648200BBD8E4 /* AboutMeViewController.swift */; };
 		5771466F1B9F862300BBD8E4 /* AboutMeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771466E1B9F862300BBD8E4 /* AboutMeTableViewController.swift */; };
 		577146711BA0DD2500BBD8E4 /* SubTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146701BA0DD2500BBD8E4 /* SubTableCell.swift */; };
@@ -97,17 +98,17 @@
 		577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146741BA89FE400BBD8E4 /* NameChangeViewController.swift */; };
 		577146771BA8AE2100BBD8E4 /* AcountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146761BA8AE2100BBD8E4 /* AcountViewController.swift */; };
 		577146791BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577146781BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift */; };
-		578739701BD80DAC00868401 /* TrackerTodayFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787396F1BD80DAC00868401 /* TrackerTodayFinalViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		578739701BD80DAC00868401 /* TrackerTodayFinalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787396F1BD80DAC00868401 /* TrackerTodayFinalViewController.swift */; };
 		5787923A1B5EE98600A7C6D4 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 578792391B5EE98600A7C6D4 /* SplashViewController.swift */; };
 		5787923C1B5EEFA600A7C6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5787923B1B5EEFA600A7C6D4 /* LoginViewController.swift */; };
-		5789948D1BCEF25000C315FD /* TrackerTodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		5789948D1BCEF25000C315FD /* TrackerTodayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */; };
 		579182981B6EC294004ACFDD /* LogInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182971B6EC294004ACFDD /* LogInHelper.swift */; };
 		5791829A1B6EC853004ACFDD /* NotificationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579182991B6EC853004ACFDD /* NotificationTests.swift */; };
 		579F15031B728B20009488CA /* NotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579F15021B728B20009488CA /* NotificationHelper.swift */; };
-		57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */; settings = {ASSET_TAGS = (); }; };
-		57CD83081BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		57CD830A1BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83091BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		57CD830C1BBB1056009CEB72 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD830B1BBB1056009CEB72 /* CustomDatePicker.swift */; settings = {ASSET_TAGS = (); }; };
+		57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83051BBB0616009CEB72 /* NavigationControllerExtension.swift */; };
+		57CD83081BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83071BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift */; };
+		57CD830A1BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD83091BBB0F0F009CEB72 /* TrackerReminderSettingViewController.swift */; };
+		57CD830C1BBB1056009CEB72 /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CD830B1BBB1056009CEB72 /* CustomDatePicker.swift */; };
 		57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57D8BE171B978FBC00D715AB /* FirstAidDetailsViewController.swift */; };
 		57E1D07B1B83DBBE004D67D3 /* UXHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1D07A1B83DBBE004D67D3 /* UXHelpers.swift */; };
 		57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E6529A1B5DA6320057803C /* NavigationHelper.swift */; };
@@ -214,7 +215,8 @@
 		14DAF7551B7A81AA00A4AB4D /* ContentGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentGroup.swift; sourceTree = "<group>"; };
 		14E8E07A1BBDDCA60058474F /* SynchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SynchHelper.swift; sourceTree = "<group>"; };
 		44426D2C4CC4237154DD34B8 /* Pods-Headzup.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Headzup.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Headzup/Pods-Headzup.debug.xcconfig"; sourceTree = "<group>"; };
-		5700DB261B839A23004796AE /* DemoAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DemoAudio.mp3; sourceTree = "<group>"; };
+		571AF9D01BDFC130004B45D7 /* DemoAudio.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = DemoAudio.mp3; sourceTree = "<group>"; };
+		571AF9D21BDFEDEB004B45D7 /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
 		57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HAReasonTableViewController.swift; sourceTree = "<group>"; };
 		5747DE531B66E0530054AC96 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5747DE551B66E0630054AC96 /* PinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
@@ -462,7 +464,7 @@
 		5700DB231B8386A7004796AE /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				5700DB261B839A23004796AE /* DemoAudio.mp3 */,
+				571AF9D01BDFC130004B45D7 /* DemoAudio.mp3 */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -528,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				57FEAB8F1B8E54E20093AFEE /* FirstAidView.swift */,
+				571AF9D21BDFEDEB004B45D7 /* OverlayView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -647,7 +650,7 @@
 			files = (
 				140DED0B1B62C6CB001F6A3F /* Settings.bundle in Resources */,
 				14983CD11B557A170059A5CA /* Main.storyboard in Resources */,
-				5700DB271B839A23004796AE /* DemoAudio.mp3 in Resources */,
+				571AF9D11BDFC130004B45D7 /* DemoAudio.mp3 in Resources */,
 				14983CD61B557A170059A5CA /* LaunchScreen.xib in Resources */,
 				14983CD31B557A170059A5CA /* Images.xcassets in Resources */,
 			);
@@ -790,6 +793,7 @@
 				57CD83081BBB0EEE009CEB72 /* GoalReminderSettingViewController.swift in Sources */,
 				147840A11BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift in Sources */,
 				14983D241B5586950059A5CA /* Poly1305.swift in Sources */,
+				571AF9D31BDFEDEB004B45D7 /* OverlayView.swift in Sources */,
 				577146751BA89FE400BBD8E4 /* NameChangeViewController.swift in Sources */,
 				57E6529B1B5DA6320057803C /* NavigationHelper.swift in Sources */,
 				14E8E07B1BBDDCA60058474F /* SynchHelper.swift in Sources */,
