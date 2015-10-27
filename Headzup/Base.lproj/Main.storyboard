@@ -3230,6 +3230,9 @@
                                                         <color key="value" red="0.47058823529999999" green="0.67450980390000004" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="DoneBN:" destination="Ag9-8p-t9x" eventType="touchUpInside" id="14U-09-aak"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <animations/>
