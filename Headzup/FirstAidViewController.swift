@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 import SwiftyJSON
-class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidViewDelegate {
+class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidViewDelegate,UIGestureRecognizerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
 
@@ -20,7 +20,9 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
     
     var transferID:Int = 0
     
-    
+    var overlayView = UIView()
+    var activityIndicator = UIActivityIndicatorView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -84,6 +86,8 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
             index++
         }
         }
+
+       showOverLay()
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -98,7 +102,36 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+
+    func showOverLay()
+    {
+    overlayView = UIView(frame: UIScreen.mainScreen().bounds)
+    overlayView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+
+    let imageName = "SwipeHelp"
+    let image = UIImage(named: imageName)
+    let imageView = UIImageView(image: image!)
+    imageView.frame = UIScreen.mainScreen().bounds
+    overlayView.addSubview(imageView)
+
+
+
+    activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+    activityIndicator.center = overlayView.center
+    overlayView.addSubview(activityIndicator)
+    activityIndicator.startAnimating()
+    let tapGesture = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+    tapGesture.delegate = self
+    overlayView.addGestureRecognizer(tapGesture)
+    view.addSubview(overlayView)
+    }
+
+    func handleTap(sender: UITapGestureRecognizer) {
+        activityIndicator.stopAnimating()
+        overlayView.removeFromSuperview()
+    }
+
     func scrollViewDidScroll(scrollView: UIScrollView) {
 
         let pageWidth = scrollView.frame.size.width
