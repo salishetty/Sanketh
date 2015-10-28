@@ -7,16 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class TrackerConfirmViewController: UIViewController {
 
     internal var selectedDate : NSDate?
-
+    var dataMgr: DataManager?
     @IBOutlet weak var ConfirmLabel: UILabel!
 
      override func viewDidLoad() {
         super.viewDidLoad()
 
+        // init data
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        
         let formatter = NSDateFormatter()
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .NoStyle
@@ -64,8 +70,7 @@ class TrackerConfirmViewController: UIViewController {
         }
         else
         {
-            
-
+            dataMgr?.saveOlderTrackerResponse(selectedDate!, hadHeadache: 1, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: "")
         }
 
 
@@ -84,8 +89,7 @@ class TrackerConfirmViewController: UIViewController {
         }
         else
         {
-            
-
+            dataMgr?.saveOlderTrackerResponse(selectedDate!, hadHeadache: 0, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: "")
         }
 
 
