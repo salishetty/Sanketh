@@ -788,22 +788,7 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
             let startOfPreviousDay = previousDate.beginningOfDay() //NSCalendar.currentCalendar().startOfDayForDate(date)
             print("Start of Previous Day\(startOfPreviousDay)")
             
-            
-//            let yesterday = NSCalendar.currentCalendar().dateByAddingUnit(
-//                .Day,
-//                value: -1,
-//                toDate: trackDate,
-//                options: NSCalendarOptions(rawValue: 0))
-//            
-//            // Given date
-//            //let date = NSDate()
-//            
-//            // First moment of a given date
-//            let startOfPreviousDay = yesterday!.beginningOfDay() //NSCalendar.currentCalendar().startOfDayForDate(date)
-//            print("Start of Day\(startOfPreviousDay)")
-            
-            
-            
+             
             let fetchRequest = NSFetchRequest(entityName: "TrackerResponse")
             fetchRequest.predicate = NSPredicate(format: "trackDate >= %@", startOfPreviousDay)
             if let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
@@ -902,36 +887,71 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
         }
 
     }
-    
-    public func getTrackerResponse(trackDate:NSDate)->TrackerResponse?
+    public func saveOlderTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
     {
-        var theTrackerResponse:TrackerResponse!
         do
         {
-            let today = NSDate()
-            let tomorrow = NSCalendar.currentCalendar().dateByAddingUnit(
+            var theProperties: [String: AnyObject] = [:]
+            var trackerResponse = self.getTrackerResponse(trackDate)
+            if trackerResponse != nil
+            {
+                trackerResponse!.trackDate = trackDate
+                trackerResponse!.hadHeadache = hadHeadache
+                trackerResponse!.painLevel = painLevel
+                trackerResponse!.affectSleep = affectSleep
+                trackerResponse!.affectActivity = affectActivity
+                trackerResponse!.painReasons = painReasons
+                trackerResponse!.helpfulContent = helpfulContent
+                try super.managedContext.save()
+            }
+            else
+            {
+                print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
+                theProperties["trackDate"] = trackDate
+                theProperties["hadHeadache"] = hadHeadache
+                theProperties["painLevel"] = painLevel
+                theProperties["affectSleep"] = affectSleep
+                theProperties["affectActivity"] = affectActivity
+                theProperties["painReasons"] = painReasons
+                theProperties["helpfulContent"] = helpfulContent
+                trackerResponse = super.saveEntity("TrackerResponse", properties: theProperties) as? TrackerResponse
+                print("Tracker response Saved: \(trackerResponse!.toString())")
+            }
+        }
+        catch
+        {
+            
+        }
+    }
+    public func getTrackerResponse(trackDate:NSDate)->TrackerResponse?
+    {
+        do
+        {
+            var theTrackerResponse:TrackerResponse!
+            //let today = NSDate()
+            let nextDay = NSCalendar.currentCalendar().dateByAddingUnit(
                 .Day,
                 value: 1,
-                toDate: today,
+                toDate: trackDate,
                 options: NSCalendarOptions(rawValue: 0))
             
             
-            let yesterday = NSCalendar.currentCalendar().dateByAddingUnit(
+            let previousDay = NSCalendar.currentCalendar().dateByAddingUnit(
                 .Day,
                 value: -1,
-                toDate: today,
+                toDate: trackDate,
                 options: NSCalendarOptions(rawValue: 0))
             
             //To return ONLY one particular record from CoreData
             let fetchRequest = NSFetchRequest(entityName: "TrackerResponse")
-            fetchRequest.predicate = NSPredicate(format: "(trackDate > %@) AND (trackDate < %@)", yesterday!, tomorrow!)
+            fetchRequest.predicate = NSPredicate(format: "(trackDate > %@) AND (trackDate < %@)", previousDay!, nextDay!)
             if let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
                 if fetchResult.count > 0 {
                     var trackerResponse:[TrackerResponse] = fetchResult as! [TrackerResponse]
                     theTrackerResponse = trackerResponse[0]
                     
                     //Compare by particular date without involving time
-                    let order = NSCalendar.currentCalendar().compareDate(today, toDate: theTrackerResponse.trackDate,
+                    let order = NSCalendar.currentCalendar().compareDate(trackDate, toDate: theTrackerResponse.trackDate,
                         toUnitGranularity: .Day)
 
                     switch order {
@@ -943,19 +963,19 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
                         return nil
                       }
                 }
+                else
+                {
+                    print("No TrackerResponse Found with a matching record for trackDate:\(trackDate)")
+                    return nil
+                }
             }
-            else
-            {
-                print("No TrackerResponse Found with a matching record for trackDate:\(trackDate)")
-            }
-            
         }
         catch
         {
             
         }
         
-      return theTrackerResponse  
+      return nil
     }
     
     public func getAllTrackerResponses() -> [TrackerResponse]?
