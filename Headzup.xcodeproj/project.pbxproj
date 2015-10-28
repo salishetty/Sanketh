@@ -24,6 +24,7 @@
 		140DED291B69CED6001F6A3F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED281B69CED6001F6A3F /* Category.swift */; };
 		140DED2F1B6AA32B001F6A3F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */; };
 		140DED311B6BB002001F6A3F /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */; };
+		144B49C21BE1775E001770DA /* EffectivenessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144B49C11BE1775E001770DA /* EffectivenessTableViewController.swift */; };
 		1478409F1BCD8FDB00F8EEFF /* TrackerResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */; };
 		147840A11BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */; };
 		14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14896B8A1BB3412100AC693D /* StringExtensions.swift */; };
@@ -149,6 +150,7 @@
 		140DED281B69CED6001F6A3F /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		140DED2E1B6AA32B001F6A3F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		140DED301B6BB002001F6A3F /* PhoneNumberRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneNumberRule.swift; sourceTree = "<group>"; };
+		144B49C11BE1775E001770DA /* EffectivenessTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectivenessTableViewController.swift; sourceTree = "<group>"; };
 		1478409D1BCD8FDB00F8EEFF /* TrackerResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerResponse.swift; sourceTree = "<group>"; };
 		147840A01BCDA0D500F8EEFF /* TrackerResponseItemsDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackerResponseItemsDTO.swift; sourceTree = "<group>"; };
 		14896B8A1BB3412100AC693D /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				5789948C1BCEF25000C315FD /* TrackerTodayTableViewController.swift */,
 				57316B941BD6AEC1008DE5E8 /* HAReasonTableViewController.swift */,
 				5787396F1BD80DAC00868401 /* TrackerTodayFinalViewController.swift */,
+				144B49C11BE1775E001770DA /* EffectivenessTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -785,6 +788,7 @@
 				57D8BE181B978FBC00D715AB /* FirstAidDetailsViewController.swift in Sources */,
 				14896B8B1BB3412100AC693D /* StringExtensions.swift in Sources */,
 				57CD830C1BBB1056009CEB72 /* CustomDatePicker.swift in Sources */,
+				144B49C21BE1775E001770DA /* EffectivenessTableViewController.swift in Sources */,
 				57CD83061BBB0616009CEB72 /* NavigationControllerExtension.swift in Sources */,
 				14983D261B5586950059A5CA /* SHA2.swift in Sources */,
 				577146791BA9C0FF00BBD8E4 /* PreventionsSubTableViewController.swift in Sources */,

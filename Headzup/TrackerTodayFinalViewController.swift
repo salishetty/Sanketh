@@ -26,14 +26,21 @@ class TrackerTodayFinalViewController: UIViewController {
         self.loadViewController("TabView",tabIndex:2)
     }
 
-    /*
+ 
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
+    private var embededTableViewController:EffectivenessTableViewController!
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let vc = segue.destinationViewController as? EffectivenessTableViewController
+            where segue.identifier == "EffectivenessEmbededSegue"
+        {
+            self.embededTableViewController = vc
+        }
     }
-    */
+
+
 
 }

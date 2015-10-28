@@ -3240,7 +3240,7 @@
                                         <rect key="frame" x="40" y="145" width="480" height="266"/>
                                         <animations/>
                                         <connections>
-                                            <segue destination="XTc-ds-hOA" kind="embed" id="NmR-Ua-kkm"/>
+                                            <segue destination="XTc-ds-hOA" kind="embed" identifier="EffectivenessEmbededSegue" id="NmR-Ua-kkm"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -3301,17 +3301,17 @@
             </objects>
             <point key="canvasLocation" x="1276" y="6642"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Effectiveness Table View Controller-->
         <scene sceneID="dYf-5F-tdv">
             <objects>
-                <tableViewController id="XTc-ds-hOA" sceneMemberID="viewController">
+                <tableViewController id="XTc-ds-hOA" customClass="EffectivenessTableViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="PvD-8K-UTN">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="266"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5zJ-RD-ovb">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EffectivenessCell" id="5zJ-RD-ovb">
                                 <rect key="frame" x="0.0" y="28" width="480" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5zJ-RD-ovb" id="lOI-zt-E4z">

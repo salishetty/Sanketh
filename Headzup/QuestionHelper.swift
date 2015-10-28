@@ -127,4 +127,16 @@ public class QuestionHelper
         cell!.textLabel?.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
         return cell
     }
+    public static func PopulateMutiSelectEffectivenessTrackerQuestions(indexPath:NSIndexPath, cell:UITableViewCell?, text:String, dataMgr:DataManager) -> UITableViewCell?
+    {
+        //Apply style to multi-select questions
+        cell!.textLabel?.text = text
+        cell!.textLabel?.textColor = UIColor(netHex:0x2387CD)
+        cell!.textLabel?.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        cell!.textLabel?.numberOfLines = 0
+        cell!.textLabel?.textAlignment = NSTextAlignment.Left
+        cell!.textLabel?.font = UIFont.systemFontOfSize(15.0)
+        cell!.textLabel?.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
+        return cell
+    }
 }
