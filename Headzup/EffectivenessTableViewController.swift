@@ -13,8 +13,7 @@ import SwiftyJSON
 class EffectivenessTableViewController: UITableViewController {
 
     var dataMgr: DataManager?
-    var strategiesArray: [String] = []
-    
+    var strategiesArray = [[String]]()
     override func viewDidLoad() {
         super.viewDidLoad()
         // init data manager
@@ -26,6 +25,7 @@ class EffectivenessTableViewController: UITableViewController {
         {
             self.strategiesArray = AppContext.strategies
         }
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "EffectivenessCell")
      }
 
     override func didReceiveMemoryWarning() {
@@ -42,30 +42,33 @@ class EffectivenessTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("Count of Strategies:\(strategiesArray.count)")
         return strategiesArray.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EffectivenessCell", forIndexPath: indexPath)
-        let text = strategiesArray[indexPath.row]
-        // Configure the cell...
+        let stArray = strategiesArray[indexPath.row]
+        let text = stArray[1]
         return QuestionHelper.PopulateMutiSelectEffectivenessTrackerQuestions(indexPath, cell: cell, text: text, dataMgr: dataMgr!)!
-        //return cell
     }
 
     var responseValueArray:[String] = []
     var responseValue: String = ""
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        let stArray = strategiesArray[indexPath.row]
+        let contentID = stArray[0]
+        
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         var newResponseValue: String = ""
-        responseValue = AppContext.painReasonsResponseValue
+        responseValue = AppContext.EffectivenessResponseValue
         //Put the values in Array
         if (responseValue != "")
         {
             responseValueArray = responseValue.componentsSeparatedByString(",")
             //get the value of selected Response
-            let selectedResponseValue = String(indexPath.row)
+            let selectedResponseValue = contentID// String(indexPath.row)
             //If the selected response is in the array - remove it - Deselect!
             if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
                 responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
@@ -84,18 +87,18 @@ class EffectivenessTableViewController: UITableViewController {
             }
             else
             {
-                newResponseValue = responseValue + "," + String(indexPath.row)
+                newResponseValue = responseValue + "," + contentID// String(indexPath.row)
                 cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
         }
         else
         {
-            newResponseValue = String(indexPath.row)
+            newResponseValue = contentID // String(indexPath.row)
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         responseValue = newResponseValue
-        AppContext.painReasonsResponseValue = responseValue
-        print("Response Value\(newResponseValue)")
+        AppContext.EffectivenessResponseValue = responseValue
+        print("Response Value: \(newResponseValue)")
         //Remove the gray selection
         self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
