@@ -2814,6 +2814,9 @@
                             <constraint firstAttribute="trailing" secondItem="0BI-y5-IxE" secondAttribute="trailing" id="zD4-Dh-fmm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navBar" destination="J4W-qu-qYE" id="Qvk-7m-Pxc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DGA-l1-Ofl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3947,11 +3950,11 @@
             </objects>
             <point key="canvasLocation" x="1276" y="1995"/>
         </scene>
-        <!--FIRST AID-->
+        <!--RELIEF-->
         <scene sceneID="JVS-WE-9cz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B3k-sf-UIp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="3" title="FIRST AID" image="tab-icon-OMG" id="Juc-so-Lup"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="RELIEF" image="tab-icon-OMG" id="Juc-so-Lup"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oEL-U1-FFU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
