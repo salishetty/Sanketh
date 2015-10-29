@@ -102,7 +102,7 @@ class TrackerTodayTableViewController: UITableViewController {
                 displayAlertMessage("Please provide answers to each question")
                 return
             }
-            dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: 1, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: painReasons, helpfulContent: "")
+            dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: true, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: painReasons, helpfulContent: "1329") //Hard Coded ContentID - to be replaced with actual contentID later
         }
     }
     func displayAlertMessage(userMessage:String)
