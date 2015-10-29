@@ -62,10 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     {
                         print("Content IDs for Tracker \(contentIdJSON.1.intValue)")
                         let theContent = dataMgr.getContentByID(contentIdJSON.1.intValue)
-                        
-                        AppContext.strategies.append((theContent?.contentName)!)
+                        AppContext.strategies.append([theContent!.contentID.stringValue, theContent!.contentName])
                     }
-                    
                 }
             })
         }
