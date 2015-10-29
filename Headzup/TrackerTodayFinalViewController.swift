@@ -7,15 +7,22 @@
 //
 
 import UIKit
+import CoreData
 
 class TrackerTodayFinalViewController: UIViewController {
 
+    var dataMgr: DataManager?
   
     @IBOutlet weak var navBar: UINavigationBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // init data manager
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+        
         // Do any additional setup after loading the view.
         let selectedDate = AppContext.trackDate
         let formatter = NSDateFormatter()
@@ -47,6 +54,21 @@ class TrackerTodayFinalViewController: UIViewController {
     }
     
     @IBAction func DoneBN(sender: UIButton) {
+        let trackerResponse = dataMgr!.getTrackerResponse(AppContext.trackDate!)
+        if trackerResponse != nil
+        {
+            if AppContext.InitialResponseTracker == "Yes"
+            {
+                trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
+            dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: true, painLevel: (trackerResponse?.painLevel)!, affectSleep: (trackerResponse?.affectSleep)!, affectActivity: (trackerResponse?.affectActivity)!, painReasons: (trackerResponse?.painReasons)!, helpfulContent: (trackerResponse?.helpfulContent)!)
+            }
+            else
+            {
+                trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
+                dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: false, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: (trackerResponse?.helpfulContent)!)
+            }
+        }
+        
         //navigate back to Tracker tab
         self.loadViewController("TabView",tabIndex:2)
     }

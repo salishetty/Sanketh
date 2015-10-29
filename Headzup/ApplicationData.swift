@@ -31,6 +31,7 @@ public class AppContext {
     public static var painReasonsResponseValue = ""
     public static var EffectivenessResponseValue = ""
     public static var strategies = [[String]]()
+    public static var InitialResponseTracker = ""
     //public static func
     
     public static func list() {

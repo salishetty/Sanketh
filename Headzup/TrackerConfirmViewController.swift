@@ -56,6 +56,7 @@ class TrackerConfirmViewController: UIViewController {
 
         let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
         let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
+        AppContext.InitialResponseTracker = "Yes"
         if (isToday)
         {
             print("selected Date:\(selectedDate)")
@@ -71,13 +72,14 @@ class TrackerConfirmViewController: UIViewController {
             dataMgr?.saveOlderTrackerResponse(selectedDate!, hadHeadache: 1, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: "")
         }
 
-
+        
     }
 
     @IBAction func NoButton(sender: AnyObject) {
 
         let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
         let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
+        AppContext.InitialResponseTracker = "No"
         if (isToday)
         {
                     }
