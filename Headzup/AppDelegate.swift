@@ -50,6 +50,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             AppContext.categories = dataMgr.getAllcategories()
         }
+        
+        if AppContext.hasConnectivity()
+        {
+            dataMgr = DataManager(objContext: manObjContext)
+            let serviceManager = ServiceManager()
+            serviceManager.getTrackerContent({ (jsonData)->() in
+                
+                if let parseJSON = jsonData {
+                    for contentIdJSON in parseJSON
+                    {
+                        print("Content IDs for Tracker \(contentIdJSON.1.intValue)")
+                        let theContent = dataMgr.getContentByID(contentIdJSON.1.intValue)
+                        
+                        AppContext.strategies.append((theContent?.contentName)!)
+                    }
+                    
+                }
+            })
+        }
+
+        
+        
     }
     func registerDefaultsFromSettingsBundle() {
         // this function writes default settings as settings

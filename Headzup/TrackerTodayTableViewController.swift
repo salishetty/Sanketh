@@ -95,9 +95,21 @@ class TrackerTodayTableViewController: UITableViewController {
         if AppContext.trackDate != nil
         {
             let painReasons = self.embededTableViewController.getResponseValue()
- 
+            if (painLevelVal == nil || affectSleepVal == nil || affectActivityVal == nil || painReasons == "")
+            {
+                print("PainLevelVal:\(painLevelVal), AffectSleepVal: \(affectSleepVal), AffectActivityVal: \(affectActivityVal), PainReasons: \(painReasons)")
+                displayAlertMessage("Please provide answers to each question")
+                return
+            }
             dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: 1, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: painReasons, helpfulContent: "")
         }
+    }
+    func displayAlertMessage(userMessage:String)
+    {
+        let myAlert = UIAlertController(title: "Message", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+        myAlert.addAction(okAction)
+        self.presentViewController(myAlert, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source

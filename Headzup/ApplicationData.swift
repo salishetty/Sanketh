@@ -29,6 +29,7 @@ public class AppContext {
     public static var currentView = "HomeView"
     public static var trackDate = NSDate?()
     public static var painReasonsResponseValue = ""
+    public static var strategies: [String] = []
     
     //public static func
     
