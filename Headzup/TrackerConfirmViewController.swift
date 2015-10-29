@@ -27,7 +27,7 @@ class TrackerConfirmViewController: UIViewController {
         formatter.dateStyle = NSDateFormatterStyle.LongStyle
         formatter.timeStyle = .NoStyle
         let dateString = formatter.stringFromDate(selectedDate!)
-
+        AppContext.trackDate = selectedDate
         let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
         let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
         if (isToday)
