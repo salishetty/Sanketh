@@ -60,16 +60,14 @@ class TrackerConfirmViewController: UIViewController {
         if (isToday)
         {
             print("selected Date:\(selectedDate)")
-            AppContext.trackDate = selectedDate
         }
         else if (isYesterday)
         {
             print("selected Date:\(selectedDate)")
-            AppContext.trackDate = selectedDate
         }
         else
         {
-            dataMgr?.saveOlderTrackerResponse(selectedDate!, hadHeadache: 1, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: "")
+
         }
 
         
@@ -82,14 +80,14 @@ class TrackerConfirmViewController: UIViewController {
         AppContext.InitialResponseTracker = "No"
         if (isToday)
         {
-                    }
+        }
         else if (isYesterday)
         {
 
         }
         else
         {
-            dataMgr?.saveOlderTrackerResponse(selectedDate!, hadHeadache: 0, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: "")
+    
         }
 
 

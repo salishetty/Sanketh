@@ -756,138 +756,138 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
     dbContext.deleteObject(aboutMeResponse)
 }
 
-    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:Bool, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
-    {
-        do
-        {
-            var theProperties: [String: AnyObject] = [:]
-            var trackerResponseCurrentDay:TrackerResponse!
-            var trackerResponsePreviousDay:TrackerResponse!
-            let today = NSDate()
-            
-            
-            let previousDate:NSDate
-            
-            let order = NSCalendar.currentCalendar().compareDate(today, toDate: trackDate,
-                toUnitGranularity: .Day)
-            
-            if order == .OrderedSame
-            {
-                previousDate = NSCalendar.currentCalendar().dateByAddingUnit(
-                    .Day,
-                    value: -1,
-                    toDate: trackDate,
-                    options: NSCalendarOptions(rawValue: 0))!
-            }
-            else
-            {
-                previousDate = trackDate
-            }
-            
-            // First moment of a given date
-            let startOfPreviousDay = previousDate.beginningOfDay() //NSCalendar.currentCalendar().startOfDayForDate(date)
-            print("Start of Previous Day\(startOfPreviousDay)")
-            
-             
-            let fetchRequest = NSFetchRequest(entityName: "TrackerResponse")
-            fetchRequest.predicate = NSPredicate(format: "trackDate >= %@", startOfPreviousDay)
-            if let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
-                if fetchResult.count > 0 {
-                    var trackerResponse:[TrackerResponse] = fetchResult as! [TrackerResponse]
-                    
-                    if trackerResponse.count == 2
-                    {
-                        trackerResponsePreviousDay = trackerResponse[0]
-                        trackerResponseCurrentDay = trackerResponse[1]
-                        print("Found TrackerResponse with the TrackDate: \(trackerResponseCurrentDay.trackDate)")
-                        print("Found TrackerResponse with the TrackDate: \(trackerResponsePreviousDay.trackDate)")
-                        //Compare trackDate with today's date without including time
-                        let order = NSCalendar.currentCalendar().compareDate(today, toDate: trackDate,
-                            toUnitGranularity: .Day)
-                        
-                        switch order {
-                            //if they are the same, update currentDay's record
-                        case .OrderedSame:
-                            print("Found TrackerResponse with the TrackDate: \(trackerResponseCurrentDay.trackDate)")
-                            trackerResponseCurrentDay.trackDate = trackDate
-                            trackerResponseCurrentDay.hadHeadache = hadHeadache
-                            trackerResponseCurrentDay.painLevel = painLevel
-                            trackerResponseCurrentDay.affectSleep = affectSleep
-                            trackerResponseCurrentDay.affectActivity = affectActivity
-                            trackerResponseCurrentDay.painReasons = painReasons
-                            trackerResponseCurrentDay.helpfulContent = helpfulContent
-                            try super.managedContext.save()
-                            //Otherwise update yesterday's record
-                        default:
-                            print("Found TrackerResponse with the TrackDate: \(trackerResponsePreviousDay.trackDate)")
-                            trackerResponsePreviousDay.trackDate = trackDate
-                            trackerResponsePreviousDay.hadHeadache = hadHeadache
-                            trackerResponsePreviousDay.painLevel = painLevel
-                            trackerResponsePreviousDay.affectSleep = affectSleep
-                            trackerResponsePreviousDay.affectActivity = affectActivity
-                            trackerResponsePreviousDay.painReasons = painReasons
-                            trackerResponsePreviousDay.helpfulContent = helpfulContent
-                            try super.managedContext.save()
-                            
-                        }
-                    }
-                    else
-                    {
-                        let theTrackerResponse = trackerResponse[0]
-                        print("Found TrackerResponse with the TrackDate: \(theTrackerResponse.trackDate)")
-                        
-                        let order = NSCalendar.currentCalendar().compareDate(theTrackerResponse.trackDate, toDate: trackDate,
-                            toUnitGranularity: .Day)
-                        
-                        if order == .OrderedSame
-                        {
-                            theTrackerResponse.trackDate = trackDate
-                            theTrackerResponse.hadHeadache = hadHeadache
-                            theTrackerResponse.painLevel = painLevel
-                            theTrackerResponse.affectSleep = affectSleep
-                            theTrackerResponse.affectActivity = affectActivity
-                            theTrackerResponse.painReasons = painReasons
-                            theTrackerResponse.helpfulContent = helpfulContent
-                            try super.managedContext.save()
-                        }
-                        else
-                        {
-                            print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
-                            theProperties["trackDate"] = trackDate
-                            theProperties["hadHeadache"] = hadHeadache
-                            theProperties["painLevel"] = painLevel
-                            theProperties["affectSleep"] = affectSleep
-                            theProperties["affectActivity"] = affectActivity
-                            theProperties["painReasons"] = painReasons
-                            theProperties["helpfulContent"] = helpfulContent
-                            trackerResponseCurrentDay = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
-                            print("Tracker response Saved: \(trackerResponseCurrentDay.toString())")
-                        }
-                    }
-                }
-                else
-                {
-                    print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
-                    theProperties["trackDate"] = trackDate
-                    theProperties["hadHeadache"] = hadHeadache
-                    theProperties["painLevel"] = painLevel
-                    theProperties["affectSleep"] = affectSleep
-                    theProperties["affectActivity"] = affectActivity
-                    theProperties["painReasons"] = painReasons
-                    theProperties["helpfulContent"] = helpfulContent
-                    trackerResponseCurrentDay = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
-                    print("Tracker response Saved: \(trackerResponseCurrentDay.toString())")
-                }
-
-            }
-        }
-        catch let error as NSError
-        {
-            print("Error updating TrackerResponse) : \(error.localizedDescription) ")
-        }
-
-    }
-    public func saveOlderTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
+//    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:Bool, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
+//    {
+//        do
+//        {
+//            var theProperties: [String: AnyObject] = [:]
+//            var trackerResponseCurrentDay:TrackerResponse!
+//            var trackerResponsePreviousDay:TrackerResponse!
+//            let today = NSDate()
+//            
+//            
+//            let previousDate:NSDate
+//            
+//            let order = NSCalendar.currentCalendar().compareDate(today, toDate: trackDate,
+//                toUnitGranularity: .Day)
+//            
+//            if order == .OrderedSame
+//            {
+//                previousDate = NSCalendar.currentCalendar().dateByAddingUnit(
+//                    .Day,
+//                    value: -1,
+//                    toDate: trackDate,
+//                    options: NSCalendarOptions(rawValue: 0))!
+//            }
+//            else
+//            {
+//                previousDate = trackDate
+//            }
+//            
+//            // First moment of a given date
+//            let startOfPreviousDay = previousDate.beginningOfDay() //NSCalendar.currentCalendar().startOfDayForDate(date)
+//            print("Start of Previous Day\(startOfPreviousDay)")
+//            
+//             
+//            let fetchRequest = NSFetchRequest(entityName: "TrackerResponse")
+//            fetchRequest.predicate = NSPredicate(format: "trackDate >= %@", startOfPreviousDay)
+//            if let fetchResult = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject] {
+//                if fetchResult.count > 0 {
+//                    var trackerResponse:[TrackerResponse] = fetchResult as! [TrackerResponse]
+//                    
+//                    if trackerResponse.count == 2
+//                    {
+//                        trackerResponsePreviousDay = trackerResponse[0]
+//                        trackerResponseCurrentDay = trackerResponse[1]
+//                        print("Found TrackerResponse with the TrackDate: \(trackerResponseCurrentDay.trackDate)")
+//                        print("Found TrackerResponse with the TrackDate: \(trackerResponsePreviousDay.trackDate)")
+//                        //Compare trackDate with today's date without including time
+//                        let order = NSCalendar.currentCalendar().compareDate(today, toDate: trackDate,
+//                            toUnitGranularity: .Day)
+//                        
+//                        switch order {
+//                            //if they are the same, update currentDay's record
+//                        case .OrderedSame:
+//                            print("Found TrackerResponse with the TrackDate: \(trackerResponseCurrentDay.trackDate)")
+//                            trackerResponseCurrentDay.trackDate = trackDate
+//                            trackerResponseCurrentDay.hadHeadache = hadHeadache
+//                            trackerResponseCurrentDay.painLevel = painLevel
+//                            trackerResponseCurrentDay.affectSleep = affectSleep
+//                            trackerResponseCurrentDay.affectActivity = affectActivity
+//                            trackerResponseCurrentDay.painReasons = painReasons
+//                            trackerResponseCurrentDay.helpfulContent = helpfulContent
+//                            try super.managedContext.save()
+//                            //Otherwise update yesterday's record
+//                        default:
+//                            print("Found TrackerResponse with the TrackDate: \(trackerResponsePreviousDay.trackDate)")
+//                            trackerResponsePreviousDay.trackDate = trackDate
+//                            trackerResponsePreviousDay.hadHeadache = hadHeadache
+//                            trackerResponsePreviousDay.painLevel = painLevel
+//                            trackerResponsePreviousDay.affectSleep = affectSleep
+//                            trackerResponsePreviousDay.affectActivity = affectActivity
+//                            trackerResponsePreviousDay.painReasons = painReasons
+//                            trackerResponsePreviousDay.helpfulContent = helpfulContent
+//                            try super.managedContext.save()
+//                            
+//                        }
+//                    }
+//                    else
+//                    {
+//                        let theTrackerResponse = trackerResponse[0]
+//                        print("Found TrackerResponse with the TrackDate: \(theTrackerResponse.trackDate)")
+//                        
+//                        let order = NSCalendar.currentCalendar().compareDate(theTrackerResponse.trackDate, toDate: trackDate,
+//                            toUnitGranularity: .Day)
+//                        
+//                        if order == .OrderedSame
+//                        {
+//                            theTrackerResponse.trackDate = trackDate
+//                            theTrackerResponse.hadHeadache = hadHeadache
+//                            theTrackerResponse.painLevel = painLevel
+//                            theTrackerResponse.affectSleep = affectSleep
+//                            theTrackerResponse.affectActivity = affectActivity
+//                            theTrackerResponse.painReasons = painReasons
+//                            theTrackerResponse.helpfulContent = helpfulContent
+//                            try super.managedContext.save()
+//                        }
+//                        else
+//                        {
+//                            print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
+//                            theProperties["trackDate"] = trackDate
+//                            theProperties["hadHeadache"] = hadHeadache
+//                            theProperties["painLevel"] = painLevel
+//                            theProperties["affectSleep"] = affectSleep
+//                            theProperties["affectActivity"] = affectActivity
+//                            theProperties["painReasons"] = painReasons
+//                            theProperties["helpfulContent"] = helpfulContent
+//                            trackerResponseCurrentDay = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
+//                            print("Tracker response Saved: \(trackerResponseCurrentDay.toString())")
+//                        }
+//                    }
+//                }
+//                else
+//                {
+//                    print("creating new TrackerResponse: \(trackDate) : \(hadHeadache)")
+//                    theProperties["trackDate"] = trackDate
+//                    theProperties["hadHeadache"] = hadHeadache
+//                    theProperties["painLevel"] = painLevel
+//                    theProperties["affectSleep"] = affectSleep
+//                    theProperties["affectActivity"] = affectActivity
+//                    theProperties["painReasons"] = painReasons
+//                    theProperties["helpfulContent"] = helpfulContent
+//                    trackerResponseCurrentDay = super.saveEntity("TrackerResponse", properties: theProperties) as! TrackerResponse
+//                    print("Tracker response Saved: \(trackerResponseCurrentDay.toString())")
+//                }
+//
+//            }
+//        }
+//        catch let error as NSError
+//        {
+//            print("Error updating TrackerResponse) : \(error.localizedDescription) ")
+//        }
+//
+//    }
+    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
     {
         do
         {

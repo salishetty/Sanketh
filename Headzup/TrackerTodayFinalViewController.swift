@@ -65,10 +65,14 @@ class TrackerTodayFinalViewController: UIViewController {
             else
             {
                 trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
-                dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: false, painLevel: 0, affectSleep: 0, affectActivity: 0, painReasons: "", helpfulContent: (trackerResponse?.helpfulContent)!)
+                dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: false, painLevel: -1, affectSleep: -1, affectActivity: -1, painReasons: "", helpfulContent: (trackerResponse?.helpfulContent)!)
             }
         }
-        
+        else
+        {
+            let helpfulContent = self.embededTableViewController.getResponseValue()
+            dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: false, painLevel: -1, affectSleep: -1, affectActivity: -1, painReasons: "", helpfulContent: helpfulContent)
+        }
         //navigate back to Tracker tab
         self.loadViewController("TabView",tabIndex:2)
     }

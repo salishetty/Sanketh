@@ -2715,7 +2715,7 @@
                                         <rect key="frame" x="20" y="152" width="520" height="234"/>
                                         <animations/>
                                         <connections>
-                                            <segue destination="fGt-MX-4L7" kind="embed" id="CZD-9H-XEw"/>
+                                            <segue destination="fGt-MX-4L7" kind="embed" identifier="EffectivenessEmbededSegue" id="CZD-9H-XEw"/>
                                         </connections>
                                     </containerView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJW-lV-eGt">
@@ -2736,6 +2736,9 @@
                                                         <color key="value" red="0.47058823529999999" green="0.67450980390000004" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="DoneBN:" destination="tDv-4F-Wfi" eventType="touchUpInside" id="qwa-UM-0Tg"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <animations/>
