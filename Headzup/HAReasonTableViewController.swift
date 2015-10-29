@@ -68,7 +68,7 @@ class HAReasonTableViewController: UITableViewController {
         {
             responseValueArray = responseValue.componentsSeparatedByString(",")
              //get the value of selected Response
-            let selectedResponseValue = String(indexPath.row)
+            let selectedResponseValue = String(indexPath.row + TrackerResponseConst.StartingEnumerationID)
             //If the selected response is in the array - remove it - Deselect!
             if responseValueArray.filter({ srValue in srValue == selectedResponseValue }).count > 0 {
                 responseValueArray = responseValueArray.filter(notEqual(selectedResponseValue))
@@ -87,13 +87,13 @@ class HAReasonTableViewController: UITableViewController {
             }
             else
             {
-                newResponseValue = responseValue + "," + String(indexPath.row)
+                newResponseValue = responseValue + "," + String(indexPath.row + TrackerResponseConst.StartingEnumerationID)
                 cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
         }
         else
         {
-            newResponseValue = String(indexPath.row)
+            newResponseValue = String(indexPath.row + TrackerResponseConst.StartingEnumerationID)
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         responseValue = newResponseValue

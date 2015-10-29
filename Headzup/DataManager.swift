@@ -756,7 +756,7 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
     dbContext.deleteObject(aboutMeResponse)
 }
 
-    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:NSNumber, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
+    public func saveTrackerResponse(trackDate:NSDate, hadHeadache:Bool, painLevel:NSNumber, affectSleep:NSNumber, affectActivity:NSNumber, painReasons:String, helpfulContent:String)
     {
         do
         {

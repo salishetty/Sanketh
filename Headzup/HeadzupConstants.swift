@@ -71,7 +71,7 @@ public struct TrackerResponseKeys
     public static let painLevel = "PainLevel"
     public static let affectSleep = "AffectSleep"
     public static let affectActivity = "AffectActivity"
-    public static let painReasons = "PainReasons"
+    public static let painReasons = "PainReason"
     public static let helpfulContent = "HelpfulContent"
 
 }
@@ -137,6 +137,10 @@ public struct TrackerResponseQuestionCode
     public static let TQ_12 = "TQ_12"
     public static let TQ_13 = "TQ_13"
     public static let TQ_14 = "TQ_14"
+}
+public struct TrackerResponseConst
+{
+    public static let StartingEnumerationID = 15
 }
 public struct GroupType
 {
