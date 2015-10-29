@@ -2682,10 +2682,10 @@
             </objects>
             <point key="canvasLocation" x="1276" y="4299"/>
         </scene>
-        <!--View Controller-->
+        <!--Tracker Today Final View Controller-->
         <scene sceneID="LCh-n6-AEE">
             <objects>
-                <viewController id="tDv-4F-Wfi" sceneMemberID="viewController">
+                <viewController id="tDv-4F-Wfi" customClass="TrackerTodayFinalViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oH1-Mm-8TK"/>
                         <viewControllerLayoutGuide type="bottom" id="GBf-Yh-KS9"/>
@@ -2709,7 +2709,7 @@
                                 <rect key="frame" x="20" y="84" width="560" height="496"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p7b-7I-uEv">
-                                        <rect key="frame" x="20" y="151" width="520" height="235"/>
+                                        <rect key="frame" x="20" y="152" width="520" height="234"/>
                                         <animations/>
                                         <connections>
                                             <segue destination="fGt-MX-4L7" kind="embed" id="CZD-9H-XEw"/>
@@ -2773,7 +2773,6 @@
                                     <constraint firstItem="rje-si-tbC" firstAttribute="top" secondItem="jS1-Me-YEx" secondAttribute="bottom" constant="10" id="0oV-h6-idT"/>
                                     <constraint firstAttribute="trailing" secondItem="4Bn-82-3wg" secondAttribute="trailing" constant="20" id="2OR-oa-AXJ"/>
                                     <constraint firstItem="jS1-Me-YEx" firstAttribute="leading" secondItem="IjU-wK-rue" secondAttribute="leading" constant="20" id="8cc-gb-RLE"/>
-                                    <constraint firstItem="oJW-lV-eGt" firstAttribute="top" secondItem="p7b-7I-uEv" secondAttribute="bottom" constant="20" id="8va-AA-guL"/>
                                     <constraint firstItem="p7b-7I-uEv" firstAttribute="top" secondItem="4Bn-82-3wg" secondAttribute="bottom" constant="10" id="Atm-MI-Ow8"/>
                                     <constraint firstItem="4Bn-82-3wg" firstAttribute="leading" secondItem="IjU-wK-rue" secondAttribute="leading" constant="20" id="B1F-WK-a2k"/>
                                     <constraint firstItem="4Bn-82-3wg" firstAttribute="top" secondItem="rje-si-tbC" secondAttribute="bottom" constant="20" id="E2P-rR-2gW"/>
@@ -2796,19 +2795,19 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="0BI-y5-IxE" firstAttribute="leading" secondItem="TIe-qp-4aT" secondAttribute="leading" id="9Vj-Nj-YBY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="0BI-y5-IxE" secondAttribute="trailing" constant="-20" id="B9k-69-Vgg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0BI-y5-IxE" secondAttribute="trailing" priority="999" constant="-20" id="B9k-69-Vgg"/>
                             <constraint firstItem="IjU-wK-rue" firstAttribute="top" secondItem="J4W-qu-qYE" secondAttribute="bottom" constant="20" id="CPa-bi-CMw"/>
                             <constraint firstItem="J4W-qu-qYE" firstAttribute="leading" secondItem="0BI-y5-IxE" secondAttribute="leading" id="EVB-iL-CdH"/>
+                            <constraint firstItem="GBf-Yh-KS9" firstAttribute="top" secondItem="0BI-y5-IxE" secondAttribute="bottom" id="L8W-gE-jne"/>
                             <constraint firstItem="J4W-qu-qYE" firstAttribute="trailing" secondItem="0BI-y5-IxE" secondAttribute="trailing" id="LDz-hc-AWn"/>
                             <constraint firstItem="IjU-wK-rue" firstAttribute="leading" secondItem="TIe-qp-4aT" secondAttribute="leading" constant="20" id="P0l-5F-kf4"/>
+                            <constraint firstItem="0BI-y5-IxE" firstAttribute="leading" secondItem="TIe-qp-4aT" secondAttribute="leading" id="PTf-se-zdO"/>
                             <constraint firstItem="GBf-Yh-KS9" firstAttribute="top" secondItem="IjU-wK-rue" secondAttribute="bottom" constant="20" id="e65-Gr-O0D"/>
-                            <constraint firstItem="0BI-y5-IxE" firstAttribute="top" secondItem="TIe-qp-4aT" secondAttribute="topMargin" id="gy0-aB-g9s"/>
+                            <constraint firstAttribute="trailing" secondItem="0BI-y5-IxE" secondAttribute="trailing" id="fTK-vj-Wx9"/>
                             <constraint firstAttribute="trailing" secondItem="IjU-wK-rue" secondAttribute="trailing" constant="20" id="jah-RU-nkb"/>
                             <constraint firstItem="GBf-Yh-KS9" firstAttribute="top" secondItem="0BI-y5-IxE" secondAttribute="bottom" id="kAM-Zh-quj"/>
                             <constraint firstItem="J4W-qu-qYE" firstAttribute="top" secondItem="oH1-Mm-8TK" secondAttribute="bottom" id="oJv-wx-0h4"/>
-                            <constraint firstItem="0BI-y5-IxE" firstAttribute="leading" secondItem="TIe-qp-4aT" secondAttribute="leadingMargin" constant="-20" id="tAW-C9-m6u"/>
-                            <constraint firstItem="0BI-y5-IxE" firstAttribute="top" secondItem="TIe-qp-4aT" secondAttribute="top" id="xnO-xx-7p5"/>
+                            <constraint firstItem="0BI-y5-IxE" firstAttribute="top" secondItem="TIe-qp-4aT" secondAttribute="top" id="wTj-em-eur"/>
                             <constraint firstAttribute="trailing" secondItem="0BI-y5-IxE" secondAttribute="trailing" id="zD4-Dh-fmm"/>
                         </constraints>
                     </view>
@@ -3332,17 +3331,17 @@
             </objects>
             <point key="canvasLocation" x="2010" y="6642"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Effectiveness Table View Controller-->
         <scene sceneID="XRH-8d-oGO">
             <objects>
-                <tableViewController id="fGt-MX-4L7" sceneMemberID="viewController">
+                <tableViewController id="fGt-MX-4L7" customClass="EffectivenessTableViewController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Q2s-Lm-oA3">
-                        <rect key="frame" x="0.0" y="0.0" width="520" height="235"/>
+                        <rect key="frame" x="0.0" y="0.0" width="520" height="234"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3Mr-HC-1Zt">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EffectivenessCell" id="3Mr-HC-1Zt">
                                 <rect key="frame" x="0.0" y="28" width="520" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Mr-HC-1Zt" id="Hoi-61-qzc">
