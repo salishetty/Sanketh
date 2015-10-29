@@ -45,8 +45,6 @@ class TrackerConfirmViewController: UIViewController {
             
         }
 
-
-
 }
 
     override func didReceiveMemoryWarning() {

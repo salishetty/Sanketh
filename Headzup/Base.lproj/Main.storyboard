@@ -2630,7 +2630,7 @@
         <!--Track For Today-->
         <scene sceneID="MV6-uc-W3m">
             <objects>
-                <viewController id="pNt-MU-Pxf" sceneMemberID="viewController">
+                <viewController id="pNt-MU-Pxf" customClass="TrackTodayContainerController" customModule="Headzup" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E37-o4-QPb"/>
                         <viewControllerLayoutGuide type="bottom" id="toE-Qq-5ue"/>
@@ -2677,6 +2677,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Track For Today" id="xoe-k3-guM"/>
+                    <connections>
+                        <outlet property="navBar" destination="Tef-oL-OaJ" id="qg9-z5-j3z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H9N-kg-N0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
