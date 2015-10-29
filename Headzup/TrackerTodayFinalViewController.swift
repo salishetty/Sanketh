@@ -10,10 +10,35 @@ import UIKit
 
 class TrackerTodayFinalViewController: UIViewController {
 
+  
+    @IBOutlet weak var navBar: UINavigationBar!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let selectedDate = AppContext.trackDate
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .NoStyle
+        let dateString = formatter.stringFromDate(selectedDate!)
+
+        let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
+        let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
+        if (isToday)
+        {
+            navBar.topItem?.title = "Track for Today"
+
+        }
+        else if (isYesterday)
+        {
+            navBar.topItem?.title = "Track for Yesterday"
+        }
+        else
+        {
+            navBar.topItem?.title = "Track For \(dateString)"
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
