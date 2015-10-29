@@ -503,7 +503,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-cB-ZTf">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundSwipe" translatesAutoresizingMaskIntoConstraints="NO" id="CBy-cB-ZTf">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
                             </imageView>
@@ -514,7 +514,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="437"/>
                                         <animations/>
                                     </scrollView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" translatesAutoresizingMaskIntoConstraints="NO" id="ETd-qd-9Rq">
+                                    <pageControl hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" translatesAutoresizingMaskIntoConstraints="NO" id="ETd-qd-9Rq">
                                         <rect key="frame" x="249" y="442" width="103" height="30"/>
                                         <animations/>
                                         <constraints>
@@ -536,14 +536,14 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CBy-cB-ZTf" secondAttribute="trailing" id="0uk-kL-qG4"/>
-                            <constraint firstItem="CBy-cB-ZTf" firstAttribute="top" secondItem="L1i-gj-TDo" secondAttribute="top" id="Gli-hf-3Hv"/>
-                            <constraint firstAttribute="bottom" secondItem="CBy-cB-ZTf" secondAttribute="bottom" id="H4t-Wo-bEv"/>
                             <constraint firstItem="kOF-5a-fvG" firstAttribute="top" secondItem="n48-F5-BvP" secondAttribute="bottom" constant="10" id="J3m-rf-ecM"/>
+                            <constraint firstAttribute="trailing" secondItem="CBy-cB-ZTf" secondAttribute="trailing" id="NQ7-ia-GDI"/>
                             <constraint firstItem="kOF-5a-fvG" firstAttribute="leading" secondItem="L1i-gj-TDo" secondAttribute="leading" id="VgN-j9-3df"/>
-                            <constraint firstItem="CBy-cB-ZTf" firstAttribute="leading" secondItem="L1i-gj-TDo" secondAttribute="leading" id="iAq-ak-eDH"/>
+                            <constraint firstItem="CBy-cB-ZTf" firstAttribute="leading" secondItem="L1i-gj-TDo" secondAttribute="leading" id="ZlS-y9-LYS"/>
                             <constraint firstAttribute="trailing" secondItem="kOF-5a-fvG" secondAttribute="trailing" id="miS-3b-XJp"/>
                             <constraint firstItem="J7d-F2-Fzt" firstAttribute="top" secondItem="kOF-5a-fvG" secondAttribute="bottom" id="q8f-eK-yEH"/>
+                            <constraint firstItem="CBy-cB-ZTf" firstAttribute="top" secondItem="L1i-gj-TDo" secondAttribute="top" id="qZ1-tf-kkO"/>
+                            <constraint firstAttribute="bottom" secondItem="CBy-cB-ZTf" secondAttribute="bottom" id="vxv-Jy-uHo"/>
                             <constraint firstAttribute="centerX" secondItem="kOF-5a-fvG" secondAttribute="centerX" id="xn7-gB-wPc"/>
                         </constraints>
                     </view>
@@ -3986,6 +3986,7 @@
     <resources>
         <image name="HeadzupLogo" width="400" height="99"/>
         <image name="background" width="414" height="736"/>
+        <image name="backgroundSwipe" width="214" height="378"/>
         <image name="tab-icon-Account" width="15" height="15"/>
         <image name="tab-icon-Home" width="15" height="15"/>
         <image name="tab-icon-OMG" width="15" height="15"/>
