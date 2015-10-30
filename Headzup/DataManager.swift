@@ -1001,4 +1001,22 @@ public func deleteAboutMeResponse(aboutMeResponse:AboutMeResponse)
         return nil
     }
 
+    public func getDaysTrackerCompleted(trackedMonth:Int) -> [Int]
+    {
+        var trackerResponse:[Int] = []
+        let trackerResponses:[TrackerResponse] = self.getAllTrackerResponses()!
+        if trackerResponses.count > 0
+        {
+            for response in trackerResponses
+            {
+               let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components([.Month, .Day], fromDate:response.trackDate)
+                if components.month == trackedMonth
+                {
+                    trackerResponse.append(components.day)
+                }
+            }
+        }
+        return trackerResponse
+    }
 }
