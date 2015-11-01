@@ -44,7 +44,8 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
         let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
         dataMgr = DataManager(objContext: manObjContext)
         //If there is network connectivity - Get FirstAid Contents and add/update the contents in ContentGroup
-
+        print("Starting time:\(NSDate())")
+        
         if AppContext.hasConnectivity()
         {
             let serviceManager = ServiceManager()
@@ -54,17 +55,21 @@ class FirstAidViewController: UIViewController, UIScrollViewDelegate,FirstAidVie
                 if let parseJSON = jsonData {
                     for contentIdJSON in parseJSON
                     {
+                        print("Recieved time:\(NSDate())")
                         print("Conetent id for firstaid \(contentIdJSON.1.intValue)")
                         let formatter = NSNumberFormatter()
                         formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
                         let groupType = formatter.numberFromString(GroupType.OMG)
                         self.dataMgr!.saveContentGroup(groupType!, dateModified: NSDate(), contentID: contentIdJSON.1.intValue, isActive: false)
+                        print("Saved time:\(NSDate())")
                     }
 
                 }
             })
         }
-
+        print("Starting sleep:\(NSDate())")
+        sleep(2)
+        print("Wakeup time:\(NSDate())")
         self.firstAidContents = dataMgr!.getFirstAidContents()
 
         if self.firstAidContents.count > 0

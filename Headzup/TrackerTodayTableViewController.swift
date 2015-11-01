@@ -99,7 +99,7 @@ class TrackerTodayTableViewController: UITableViewController {
             if (painLevelVal == nil || affectSleepVal == nil || affectActivityVal == nil || painReasons == "")
             {
                 print("PainLevelVal:\(painLevelVal), AffectSleepVal: \(affectSleepVal), AffectActivityVal: \(affectActivityVal), PainReasons: \(painReasons)")
-                displayAlertMessage("Please provide answers to each question")
+                displayAlertMessage("All questions are required")
                 return
             }
             dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: true, painLevel: painLevelVal!, affectSleep: affectSleepVal!, affectActivity: affectActivityVal!, painReasons: painReasons, helpfulContent: "")

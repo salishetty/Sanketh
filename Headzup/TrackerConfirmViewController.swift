@@ -28,6 +28,10 @@ class TrackerConfirmViewController: UIViewController {
         formatter.timeStyle = .NoStyle
         let dateString = formatter.stringFromDate(selectedDate!)
         AppContext.trackDate = selectedDate
+        //Reset the values of painRaesons and Effectiveness comma separated values to empty strings
+        AppContext.painReasonsResponseValue = ""
+        AppContext.EffectivenessResponseValue = ""
+        
         let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
         let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
         if (isToday)
@@ -57,6 +61,7 @@ class TrackerConfirmViewController: UIViewController {
         let isToday = NSCalendar.currentCalendar().isDateInToday(selectedDate!)
         let  isYesterday =  NSCalendar.currentCalendar().isDateInYesterday(selectedDate!)
         AppContext.InitialResponseTracker = "Yes"
+        
         if (isToday)
         {
             print("selected Date:\(selectedDate)")

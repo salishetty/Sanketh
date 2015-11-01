@@ -18,6 +18,7 @@ public struct MetaDataKeys{
     public static let FirstName = "FirstName"
     public static let MembershipUserID = "MembershipUserID"
     public static let SvcUrl = "SvcUrl"
+    public static let categoriesSaved = "CategoriesSaved"
 }
 public struct UserActions {
     public static let Login = "1"
