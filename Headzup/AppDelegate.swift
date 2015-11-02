@@ -50,8 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             AppContext.categories = dataMgr.getAllcategories()
         }
-        
-        if AppContext.hasConnectivity()
+        let categoriesSaved = dataMgr.getMetaDataValue(MetaDataKeys.categoriesSaved)
+        if categoriesSaved == "1"
         {
             dataMgr = DataManager(objContext: manObjContext)
             let serviceManager = ServiceManager()

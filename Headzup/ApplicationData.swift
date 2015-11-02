@@ -32,6 +32,7 @@ public class AppContext {
     public static var EffectivenessResponseValue = ""
     public static var strategies = [[String]]()
     public static var InitialResponseTracker = ""
+    public static var categoriesSaved = false
     //public static func
     
     public static func list() {

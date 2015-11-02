@@ -122,7 +122,7 @@ public struct ServiceManager
     }
     func getTrackerContent(completion : (jsonData: JSON?) -> ())
     {
-        guard let theURL:NSURL =  NSURL(string:AppContext.svcUrl + SeriviceApi.FirstAid.key)
+        guard let theURL:NSURL =  NSURL(string:AppContext.svcUrl + SeriviceApi.Tracker.key)
             else
         {
             print("Could not construct a valid first aid content url")
@@ -144,7 +144,7 @@ enum SeriviceApi {
     case UserAction
     case Favorite
     case TrackerResponse
-    case tracker
+    case Tracker
     
     var key: String {
         get {
@@ -157,7 +157,7 @@ enum SeriviceApi {
             case .UserAction: return "TrackUserAction"
             case .Favorite: return "SynchFavoriteItems"
             case .TrackerResponse: return "SynchTrackerResponse"
-            case .tracker: return "getTrackerContents"
+            case .Tracker: return "getTrackerContents"
             }
         }
     }

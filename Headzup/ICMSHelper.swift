@@ -68,12 +68,28 @@ public class ICMSHelper
             dataMgr.saveContentCategory(0, categoryName: "View All", contentIDs: String(viewAllContentIDs.characters.dropLast()))
             
             //Save those contents with type = Intervention to 'ContentGroup'
-            for contID in contentIDsArray
-            {
-                let groupType = GeneralHelper.convertStringToNSNumber(GroupType.OMG)
-                let contentID = GeneralHelper.convertStringToNSNumber(contID)
-                dataMgr.saveContentGroup(groupType, dateModified: NSDate(), contentID: contentID, isActive: false)
-            }
+//            for contID in contentIDsArray
+//            {
+//                let groupType = GeneralHelper.convertStringToNSNumber(GroupType.OMG)
+//                let contentID = GeneralHelper.convertStringToNSNumber(contID)
+//                dataMgr.saveContentGroup(groupType, dateModified: NSDate(), contentID: contentID, isActive: false)
+//            }
+
+            //Call a service to get Effectiveness Questions
+            let serviceManager = ServiceManager()
+            serviceManager.getTrackerContent({ (jsonData)->() in
+                
+                if let parseJSON = jsonData {
+                    for contentIdJSON in parseJSON
+                    {
+                        print("Content IDs for Tracker \(contentIdJSON.1.intValue)")
+                        let theContent = dataMgr.getContentByID(contentIdJSON.1.intValue)
+                        AppContext.strategies.append([theContent!.contentID.stringValue, theContent!.contentName])
+                        AppContext.categoriesSaved = true
+                        dataMgr.saveMetaData(MetaDataKeys.categoriesSaved, value: "1", isSecured: true)
+                    }
+                }
+            })
 
     }
 }

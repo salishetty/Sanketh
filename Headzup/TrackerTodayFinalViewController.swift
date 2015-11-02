@@ -60,10 +60,15 @@ class TrackerTodayFinalViewController: UIViewController {
             if AppContext.InitialResponseTracker == "Yes"
             {
                 trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
+                
+                print("TrackerResponse: \(AppContext.trackDate), \(true), \((trackerResponse?.painLevel)!), \((trackerResponse?.affectSleep)!), \((trackerResponse?.affectActivity)!), \((trackerResponse?.painReasons)!), \((trackerResponse?.helpfulContent)!)")
+                
             dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: true, painLevel: (trackerResponse?.painLevel)!, affectSleep: (trackerResponse?.affectSleep)!, affectActivity: (trackerResponse?.affectActivity)!, painReasons: (trackerResponse?.painReasons)!, helpfulContent: (trackerResponse?.helpfulContent)!)
             }
             else
             {
+                print("TrackerResponse: \(AppContext.trackDate), \(false), \((trackerResponse?.painLevel)!), \((trackerResponse?.affectSleep)!), \((trackerResponse?.affectActivity)!), \((trackerResponse?.painReasons)!), \((trackerResponse?.helpfulContent)!)")
+                
                 trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
                 dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: false, painLevel: -1, affectSleep: -1, affectActivity: -1, painReasons: "", helpfulContent: (trackerResponse?.helpfulContent)!)
             }
