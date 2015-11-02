@@ -167,7 +167,7 @@ currentMonth = trackedMonth
 
     //Dot Marker
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-        let daysGoalCompleted = [1,2,4,8,13,16,19,22,23,25,28,29]
+        let daysGoalCompleted = [1]
         guard let date = dayView.date else
         {
             return false
@@ -203,11 +203,12 @@ currentMonth = trackedMonth
     }
 
     func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        getTrackedDays(dayView.date.month)
         guard let date = dayView.date else
         {
             return false
         }
+        getTrackedDays(dayView.date.month)
+
         if daysNoHeadache.contains((date.day)) {
             return true
         }
@@ -256,11 +257,12 @@ currentMonth = trackedMonth
     //Set dates for supplementary view
     func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
 
-       getTrackedDays(dayView.date.month)
+
         guard let date = dayView.date else
         {
             return false
         }
+        getTrackedDays(dayView.date.month)
         if daysHadHeadache.contains((date.day)) {
              return true
         }
