@@ -1023,19 +1023,22 @@ public class DataManager:DataManagerBase
     public func getDaysHadHeadache(trackedMonth:Int) -> [Int]
     {
         var trackerResponse:[Int] = []
-        let trackerResponses:[TrackerResponse] = self.getAllTrackerResponses()!
-        if trackerResponses.count > 0
+        if self.getAllTrackerResponses() != nil
         {
-            for response in trackerResponses
+            let trackerResponses:[TrackerResponse] = self.getAllTrackerResponses()!
+            if trackerResponses.count > 0
             {
-                if(response.hadHeadache == true)
+                for response in trackerResponses
                 {
-                    
-                    let calendar = NSCalendar.currentCalendar()
-                    let components = calendar.components([.Month, .Day], fromDate:response.trackDate)
-                    if components.month == trackedMonth
+                    if(response.hadHeadache == true)
                     {
-                        trackerResponse.append(components.day)
+                        
+                        let calendar = NSCalendar.currentCalendar()
+                        let components = calendar.components([.Month, .Day], fromDate:response.trackDate)
+                        if components.month == trackedMonth
+                        {
+                            trackerResponse.append(components.day)
+                        }
                     }
                 }
             }
@@ -1046,18 +1049,21 @@ public class DataManager:DataManagerBase
     public func getDaysNoHeadache(trackedMonth:Int) -> [Int]
     {
         var trackerResponse:[Int] = []
-        let trackerResponses:[TrackerResponse] = self.getAllTrackerResponses()!
-        if trackerResponses.count > 0
+        if (self.getAllTrackerResponses() != nil)
         {
-            for response in trackerResponses
+            let trackerResponses:[TrackerResponse] = self.getAllTrackerResponses()!
+            if trackerResponses.count > 0
             {
-                if(response.hadHeadache == false)
+                for response in trackerResponses
                 {
-                    let calendar = NSCalendar.currentCalendar()
-                    let components = calendar.components([.Month, .Day], fromDate:response.trackDate)
-                    if components.month == trackedMonth
+                    if(response.hadHeadache == false)
                     {
-                        trackerResponse.append(components.day)
+                        let calendar = NSCalendar.currentCalendar()
+                        let components = calendar.components([.Month, .Day], fromDate:response.trackDate)
+                        if components.month == trackedMonth
+                        {
+                            trackerResponse.append(components.day)
+                        }
                     }
                 }
             }
