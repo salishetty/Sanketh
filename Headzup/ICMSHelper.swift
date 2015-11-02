@@ -75,6 +75,7 @@ public class ICMSHelper
 //                dataMgr.saveContentGroup(groupType, dateModified: NSDate(), contentID: contentID, isActive: false)
 //            }
 
+            sleep(5)
             //Call a service to get Effectiveness Questions
             let serviceManager = ServiceManager()
             serviceManager.getTrackerContent({ (jsonData)->() in
