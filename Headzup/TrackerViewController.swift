@@ -209,7 +209,7 @@ currentMonth = trackedMonth
         }
         getTrackedDays(dayView.date.month)
 
-        if daysNoHeadache.contains((date.day)) {
+        if daysHadHeadache.contains((date.day)) {
             return true
         }
         return false
@@ -263,7 +263,7 @@ currentMonth = trackedMonth
             return false
         }
         getTrackedDays(dayView.date.month)
-        if daysHadHeadache.contains((date.day)) {
+        if daysNoHeadache.contains((date.day)) {
              return true
         }
        return false
