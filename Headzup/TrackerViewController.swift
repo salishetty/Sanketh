@@ -207,6 +207,12 @@ currentMonth = trackedMonth
         {
             return false
         }
+        if ((monthLabel.text?.isEmpty) == true){
+            if (dayView.isCurrentDay)
+            {
+                presentedDateUpdated(dayView.date)
+            }
+        }
         getTrackedDays(dayView.date.month)
 
         if daysHadHeadache.contains((date.day)) {
