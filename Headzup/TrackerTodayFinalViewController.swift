@@ -57,9 +57,18 @@ class TrackerTodayFinalViewController: UIViewController {
         let trackerResponse = dataMgr!.getTrackerResponse(AppContext.trackDate!)
         if trackerResponse != nil
         {
+            trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
+            
+            if (trackerResponse!.helpfulContent == "")
+                {
+                    print("HelpfulContent:\(trackerResponse!.helpfulContent)")
+                    displayAlertMessage("All questions are required")
+                    return
+            }
+            
             if AppContext.InitialResponseTracker == "Yes"
             {
-                trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
+                
                 
                 print("TrackerResponse: \(AppContext.trackDate), \(true), \((trackerResponse?.painLevel)!), \((trackerResponse?.affectSleep)!), \((trackerResponse?.affectActivity)!), \((trackerResponse?.painReasons)!), \((trackerResponse?.helpfulContent)!)")
                 
@@ -69,7 +78,7 @@ class TrackerTodayFinalViewController: UIViewController {
             {
                 print("TrackerResponse: \(AppContext.trackDate), \(false), \((trackerResponse?.painLevel)!), \((trackerResponse?.affectSleep)!), \((trackerResponse?.affectActivity)!), \((trackerResponse?.painReasons)!), \((trackerResponse?.helpfulContent)!)")
                 
-                trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
+                //trackerResponse!.helpfulContent = AppContext.EffectivenessResponseValue
                 dataMgr?.saveTrackerResponse(AppContext.trackDate!, hadHeadache: false, painLevel: -1, affectSleep: -1, affectActivity: -1, painReasons: "", helpfulContent: (trackerResponse?.helpfulContent)!)
             }
         }
@@ -82,6 +91,13 @@ class TrackerTodayFinalViewController: UIViewController {
         self.loadViewController("TabView",tabIndex:2)
     }
 
+    func displayAlertMessage(userMessage:String)
+    {
+        let myAlert = UIAlertController(title: "Message", message: userMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil)
+        myAlert.addAction(okAction)
+        self.presentViewController(myAlert, animated: true, completion: nil)
+    }
  
     // MARK: - Navigation
 

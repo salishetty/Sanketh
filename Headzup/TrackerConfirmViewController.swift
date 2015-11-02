@@ -45,7 +45,7 @@ class TrackerConfirmViewController: UIViewController {
         }
         else
         {
-            ConfirmLabel.text = "Have you had a headache on, \(dateString)?"
+            ConfirmLabel.text = "Did you have a headache on, \(dateString)?"
             
         }
 
