@@ -8,6 +8,8 @@
 
 import UIKit
 import CVCalendar
+import CoreData
+
 class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarMenuViewDelegate {
 
     @IBOutlet weak var calendarView: CVCalendarView!
@@ -18,9 +20,19 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
     var shouldShowDaysOut = true
     var animationFinished = true
 
-
+    var dataMgr: DataManager?
+    var currentMonth = 0
+    var daysGoalCompleted:[Int] = []
+    var daysHadHeadache:[Int] = []
+    var daysNoHeadache:[Int] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // init data
+        let theAppDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let manObjContext:NSManagedObjectContext = theAppDelegate.managedObjectContext!
+        dataMgr = DataManager(objContext: manObjContext)
+
 
         // Calendar delegate [Required]
         self.calendarView.calendarDelegate = self
@@ -111,7 +123,15 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
         }
     }
 
-
+func getTrackedDays(trackedMonth:Int)
+{
+if (trackedMonth != currentMonth )
+{
+daysHadHeadache = dataMgr!.getDaysHadHeadache(trackedMonth)
+daysNoHeadache = dataMgr!.getDaysNoHeadache(trackedMonth)
+currentMonth = trackedMonth
+}
+}
 
     /// Required method to implement!
     func presentationMode() -> CalendarMode {
@@ -147,7 +167,7 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
 
     //Dot Marker
     func dotMarker(shouldShowOnDayView dayView: CVCalendarDayView) -> Bool {
-        let daysGoalCompleted = [1,2,4,8,13,16,19,22,23,25,28,29]
+        let daysGoalCompleted = [1]
         guard let date = dayView.date else
         {
             return false
@@ -183,12 +203,13 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
     }
 
     func preliminaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        let daysofHeadache = [7,9,11,17,19,22,15,28]
         guard let date = dayView.date else
         {
             return false
         }
-        if daysofHeadache.contains((date.day)) {
+        getTrackedDays(dayView.date.month)
+
+        if daysNoHeadache.contains((date.day)) {
             return true
         }
         return false
@@ -235,12 +256,14 @@ class TrackerViewController: UIViewController,CVCalendarViewDelegate,CVCalendarM
 
     //Set dates for supplementary view
     func supplementaryView(shouldDisplayOnDayView dayView: DayView) -> Bool {
-        let daysofNoHeadache = [1,2,3,4,5, 20,21,23,17,30]
+
+
         guard let date = dayView.date else
         {
             return false
         }
-        if daysofNoHeadache.contains((date.day)) {
+        getTrackedDays(dayView.date.month)
+        if daysHadHeadache.contains((date.day)) {
              return true
         }
        return false
